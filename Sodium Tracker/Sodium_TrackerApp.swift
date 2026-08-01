@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Sodium_TrackerApp: App {
@@ -13,5 +14,6 @@ struct Sodium_TrackerApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: SodiumEntry.self)
     }
 }
