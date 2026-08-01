@@ -6,30 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     var body: some View {
-        TabView {
-            TodayView()
-                .tabItem {
-                    Label("Today", systemImage: "drop.fill")
-                }
-
-            HistoryView()
-                .tabItem {
-                    Label("History", systemImage: "calendar")
-                }
-
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gearshape")
-                }
-        }
-        .tint(Theme.brand)
+        RootView()
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: SodiumEntry.self, inMemory: true)
+        .modelContainer(for: [LogEntry.self, CustomFood.self, Favorite.self], inMemory: true)
 }
