@@ -14,6 +14,7 @@ struct RootView: View {
     @Environment(\.modelContext) private var modelContext
 
     @AppStorage(PinchDefaults.theme) private var theme = "light"
+    @AppStorage(PinchDefaults.palette) private var palettePick = PalettePick.ocean.rawValue
     @AppStorage(PinchDefaults.hasOnboarded) private var hasOnboarded = false
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
@@ -23,7 +24,9 @@ struct RootView: View {
 
     @State private var ui = UIState()
 
-    private var palette: PinchPalette { theme == "dark" ? .dark : .light }
+    private var palette: PinchPalette {
+        PinchPalette.resolve(PalettePick(rawValue: palettePick) ?? .ocean, dark: theme == "dark")
+    }
 
     private var goal: Int {
         (GoalChoice(rawValue: goalChoiceRaw) ?? .fda).milligrams(custom: customGoal)
@@ -52,6 +55,7 @@ struct RootView: View {
         .environment(ui)
         .preferredColorScheme(theme == "dark" ? .dark : .light)
         .animation(.easeInOut(duration: 0.4), value: theme)
+        .animation(.easeInOut(duration: 0.4), value: palettePick)
         .task(id: ui.toast?.id) {
             guard ui.toast != nil else { return }
             try? await Task.sleep(for: .seconds(2.8))

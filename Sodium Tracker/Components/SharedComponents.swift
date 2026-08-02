@@ -301,6 +301,98 @@ struct FoodIconTile: View {
     }
 }
 
+// MARK: - Settings icon tiles (v2)
+
+/// Which glyph a settings tile shows. Paths are the design's 20×20 SVGs.
+enum SettingsGlyph {
+    case moon, bubble, bell, heart, widgetGrid, exportArrow, play, person
+}
+
+/// v2 settings row tile: 30×30, radius 9, fixed accent background, white glyph.
+struct SettingsIconTile: View {
+    let color: Color
+    let glyph: SettingsGlyph
+
+    private let vb = CGSize(width: 20, height: 20)
+
+    var body: some View {
+        RoundedRectangle(cornerRadius: 9, style: .continuous)
+            .fill(color)
+            .frame(width: 30, height: 30)
+            .overlay(glyphView.frame(width: 15, height: 15))
+    }
+
+    private var s: CGFloat { 15 / 20 }
+
+    @ViewBuilder private var glyphView: some View {
+        switch glyph {
+        case .moon:
+            SVGShape("M15.8 12.2 A6.6 6.6 0 1 1 7.8 4.2 A5.3 5.3 0 0 0 15.8 12.2 Z", viewBox: vb)
+                .fill(.white)
+        case .bubble:
+            SVGShape("M10 3 C5.5 3 3 5.6 3 9 C3 10.8 3.8 12.4 5.1 13.5 L4.4 16.6 L7.8 15 C8.5 15.2 9.2 15.3 10 15.3 C14.5 15.3 17 12.7 17 9.2 C17 5.6 14.5 3 10 3 Z", viewBox: vb)
+                .fill(.white)
+        case .bell:
+            ZStack {
+                SVGShape("M10 2.6 C7.1 2.6 5.7 4.7 5.7 7.4 C5.7 10.7 4.7 11.9 4 12.9 C3.7 13.4 4 14 4.6 14 L15.4 14 C16 14 16.3 13.4 16 12.9 C15.3 11.9 14.3 10.7 14.3 7.4 C14.3 4.7 12.9 2.6 10 2.6 Z", viewBox: vb)
+                    .fill(.white)
+                SVGShape("M8.3 15.8 C8.6 16.6 9.2 17.1 10 17.1 C10.8 17.1 11.4 16.6 11.7 15.8 Z", viewBox: vb)
+                    .fill(.white)
+            }
+        case .heart:
+            SVGShape("M10 17 C10 17 2.5 12.5 2.5 7.5 C2.5 5 4.5 3 7 3 C8.3 3 9.4 3.6 10 4.5 C10.6 3.6 11.7 3 13 3 C15.5 3 17.5 5 17.5 7.5 C17.5 12.5 10 17 10 17 Z", viewBox: vb)
+                .fill(.white)
+        case .widgetGrid:
+            ZStack {
+                RoundedRectangle(cornerRadius: 1.6 * s).fill(.white)
+                    .frame(width: 6.2 * s, height: 6.2 * s)
+                    .position(x: 6.1 * s, y: 6.1 * s)
+                RoundedRectangle(cornerRadius: 1.6 * s).fill(.white)
+                    .frame(width: 6.2 * s, height: 6.2 * s)
+                    .position(x: 13.9 * s, y: 6.1 * s)
+                RoundedRectangle(cornerRadius: 1.6 * s).fill(.white)
+                    .frame(width: 6.2 * s, height: 6.2 * s)
+                    .position(x: 6.1 * s, y: 13.9 * s)
+                Circle().fill(.white)
+                    .frame(width: 6.2 * s, height: 6.2 * s)
+                    .position(x: 13.9 * s, y: 13.9 * s)
+            }
+            .frame(width: 15, height: 15)
+        case .exportArrow:
+            ZStack {
+                SVGShape("M10 3 V11.2 M6.6 8 L10 11.4 L13.4 8", viewBox: vb)
+                    .stroke(.white, style: StrokeStyle(lineWidth: 2 * s, lineCap: .round, lineJoin: .round))
+                SVGShape("M4 15.8 H16", viewBox: vb)
+                    .stroke(.white, style: StrokeStyle(lineWidth: 2 * s, lineCap: .round))
+            }
+        case .play:
+            SVGShape("M7.6 6.4 L14 10 L7.6 13.6 Z", viewBox: vb)
+                .fill(.white)
+        case .person:
+            ZStack {
+                Circle().fill(.white)
+                    .frame(width: 6.2 * s, height: 6.2 * s)
+                    .position(x: 10 * s, y: 7 * s)
+                SVGShape("M3.8 16.2 C4.4 13 7 11.4 10 11.4 C13 11.4 15.6 13 16.2 16.2 Z", viewBox: vb)
+                    .fill(.white)
+            }
+            .frame(width: 15, height: 15)
+        }
+    }
+}
+
+/// The design's fixed tile accents (same in every palette and theme).
+enum SettingsTileColors {
+    static let theme = Color(hex: 0x7A6FF0)
+    static let chatter = Color(hex: 0x3E9ED9)
+    static let checkins = Color(hex: 0xD9942B)
+    static let health = Color(hex: 0xE2604C)
+    static let widget = Color(hex: 0x9B59D0)
+    static let export = Color(hex: 0x43A876)
+    static let replay = Color(hex: 0x2FA8A0)
+    static let user = Color(hex: 0x7B8794)
+}
+
 // MARK: - Sunken text field
 
 /// Labelled input on a sunk tile (Quick log / New food forms).

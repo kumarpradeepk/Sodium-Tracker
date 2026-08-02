@@ -199,8 +199,7 @@ struct TrendsScreen: View {
                 .monospacedDigit()
                 .foregroundStyle(isLive ? p.brand : p.ink3)
             RoundedRectangle(cornerRadius: 7, style: .continuous)
-                .fill(over ? p.coral : p.brand)
-                .opacity(isLive ? 1 : (over ? 0.55 : 0.45))
+                .fill(p.barFill(over: over, live: isLive).gradient)
                 .frame(maxWidth: 30)
                 .frame(height: height)
                 .overlay {
@@ -210,7 +209,7 @@ struct TrendsScreen: View {
                             .padding(-2.5)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 9, style: .continuous)
-                                    .strokeBorder(p.brand, lineWidth: 2)
+                                    .strokeBorder(over ? p.coral : p.brand, lineWidth: 2)
                                     .padding(-4.5)
                             )
                     }
@@ -286,7 +285,7 @@ struct TrendsScreen: View {
                                     Capsule().fill(p.sunk)
                                     Capsule()
                                         .fill(over ? p.coral : p.brand)
-                                        .opacity(0.75)
+                                        .opacity(0.88)
                                         .frame(width: geo.size.width * CGFloat(min(1, Double(mg) / Double(goal))))
                                 }
                             }

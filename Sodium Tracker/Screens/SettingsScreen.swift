@@ -16,6 +16,7 @@ struct SettingsScreen: View {
     @Environment(\.modelContext) private var modelContext
 
     @AppStorage(PinchDefaults.theme) private var theme = "light"
+    @AppStorage(PinchDefaults.palette) private var palettePick = PalettePick.ocean.rawValue
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
     @AppStorage(PinchDefaults.chatty) private var chatty = true
@@ -231,21 +232,47 @@ struct SettingsScreen: View {
     // MARK: - Appearance
 
     private var appearanceCard: some View {
-        PinchCard(padding: EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16)) {
-            HStack {
-                Text("Theme")
-                    .pinchBody(14, .semibold)
-                    .foregroundStyle(p.ink)
-                Spacer()
-                PinchSegmented(
-                    segments: [
-                        PinchSegment(value: "light", label: "Light"),
-                        PinchSegment(value: "dark", label: "Dark"),
-                    ],
-                    selection: $theme,
-                    bordered: false
-                )
-                .frame(width: 150)
+        PinchCard {
+            VStack(spacing: 0) {
+                HStack {
+                    HStack(spacing: 11) {
+                        SettingsIconTile(color: SettingsTileColors.theme, glyph: .moon)
+                        Text("Theme")
+                            .pinchBody(14, .semibold)
+                            .foregroundStyle(p.ink)
+                    }
+                    Spacer()
+                    PinchSegmented(
+                        segments: [
+                            PinchSegment(value: "light", label: "Light"),
+                            PinchSegment(value: "dark", label: "Dark"),
+                        ],
+                        selection: $theme,
+                        bordered: false
+                    )
+                    .frame(width: 150)
+                }
+                .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
+
+                // The design's Ocean/Sage/Iris palettes, surfaced in-app.
+                HStack {
+                    Text("Palette")
+                        .pinchBody(14, .semibold)
+                        .foregroundStyle(p.ink)
+                    Spacer()
+                    PinchSegmented(
+                        segments: PalettePick.allCases.map {
+                            PinchSegment(value: $0.rawValue, label: $0.label)
+                        },
+                        selection: $palettePick,
+                        bordered: false
+                    )
+                    .frame(width: 210)
+                }
+                .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
+                .overlay(alignment: .top) {
+                    Rectangle().fill(p.line).frame(height: 1)
+                }
             }
         }
     }
@@ -259,12 +286,14 @@ struct SettingsScreen: View {
                     title: "Pinch's chatter",
                     sub: "Little encouragements under the ring",
                     isOn: $chatty,
+                    tile: SettingsIconTile(color: SettingsTileColors.chatter, glyph: .bubble),
                     first: true
                 )
                 toggleRow(
                     title: "Meal check-ins",
                     sub: "Gentle waves at mealtimes. Never guilt.",
-                    isOn: $notif
+                    isOn: $notif,
+                    tile: SettingsIconTile(color: SettingsTileColors.checkins, glyph: .bell)
                 )
 
                 if notif {
@@ -279,8 +308,15 @@ struct SettingsScreen: View {
         }
     }
 
-    private func toggleRow(title: String, sub: String, isOn: Binding<Bool>, first: Bool = false) -> some View {
-        HStack {
+    private func toggleRow(
+        title: String,
+        sub: String,
+        isOn: Binding<Bool>,
+        tile: SettingsIconTile? = nil,
+        first: Bool = false
+    ) -> some View {
+        HStack(spacing: 11) {
+            if let tile { tile }
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
                     .pinchBody(14, .semibold)
@@ -351,11 +387,8 @@ struct SettingsScreen: View {
     private var dataCard: some View {
         PinchCard {
             VStack(spacing: 0) {
-                HStack(spacing: 10) {
-                    LineIcon(
-                        d: "M10 17 C10 17 2.5 12.5 2.5 7.5 C2.5 5 4.5 3 7 3 C8.3 3 9.4 3.6 10 4.5 C10.6 3.6 11.7 3 13 3 C15.5 3 17.5 5 17.5 7.5 C17.5 12.5 10 17 10 17 Z",
-                        size: 18, stroke: 1.7, color: p.coral
-                    )
+                HStack(spacing: 11) {
+                    SettingsIconTile(color: SettingsTileColors.health, glyph: .heart)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Sync with Apple Health")
                             .pinchBody(14, .semibold)
@@ -369,14 +402,19 @@ struct SettingsScreen: View {
                 }
                 .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
 
-                navRow(title: "Home-screen widget", sub: "The ring, at a glance") {
+                navRow(
+                    title: "Home-screen widget",
+                    sub: "The ring, at a glance",
+                    tile: SettingsIconTile(color: SettingsTileColors.widget, glyph: .widgetGrid)
+                ) {
                     ui.widgetOpen = true
                 }
 
                 Button {
                     exportCSV()
                 } label: {
-                    HStack {
+                    HStack(spacing: 11) {
+                        SettingsIconTile(color: SettingsTileColors.export, glyph: .exportArrow)
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Export my data")
                                 .pinchBody(14, .semibold)
@@ -400,10 +438,11 @@ struct SettingsScreen: View {
                 Button {
                     ui.beginOnboarding()
                 } label: {
-                    HStack {
+                    HStack(spacing: 11) {
+                        SettingsIconTile(color: SettingsTileColors.replay, glyph: .play)
                         Text("Replay welcome")
                             .pinchBody(14, .semibold)
-                            .foregroundStyle(p.brand)
+                            .foregroundStyle(p.ink)
                         Spacer()
                         SVGShape("M1 1 L7 7 L1 13", viewBox: CGSize(width: 8, height: 14))
                             .stroke(p.ink3, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
@@ -418,9 +457,15 @@ struct SettingsScreen: View {
         }
     }
 
-    private func navRow(title: String, sub: String, action: @escaping () -> Void) -> some View {
+    private func navRow(
+        title: String,
+        sub: String,
+        tile: SettingsIconTile? = nil,
+        action: @escaping () -> Void
+    ) -> some View {
         Button(action: action) {
-            HStack {
+            HStack(spacing: 11) {
+                if let tile { tile }
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
                         .pinchBody(14, .semibold)
@@ -455,7 +500,8 @@ struct SettingsScreen: View {
     private var accountCard: some View {
         let id = SeedData.userID()
         return PinchCard(padding: EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16)) {
-            HStack {
+            HStack(spacing: 11) {
+                SettingsIconTile(color: SettingsTileColors.user, glyph: .person)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("User ID")
                         .pinchBody(14, .semibold)
