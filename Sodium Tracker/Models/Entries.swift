@@ -37,6 +37,9 @@ final class LogEntry {
     var foodID: String?
     var adhocName: String?
     var adhocMg: Int?
+    /// Portion label for ad-hoc entries (e.g. a FatSecret serving like
+    /// "1 cup"); nil means the design's "quick log" label.
+    var adhocServing: String?
     var servings: Double
     var mealRaw: String
     var loggedAt: Date
@@ -45,6 +48,7 @@ final class LogEntry {
         foodID: String? = nil,
         adhocName: String? = nil,
         adhocMg: Int? = nil,
+        adhocServing: String? = nil,
         servings: Double = 1,
         meal: Meal,
         loggedAt: Date = .now
@@ -52,6 +56,7 @@ final class LogEntry {
         self.foodID = foodID
         self.adhocName = adhocName
         self.adhocMg = adhocMg
+        self.adhocServing = adhocServing
         self.servings = servings
         self.mealRaw = meal.rawValue
         self.loggedAt = loggedAt
@@ -127,7 +132,13 @@ enum EntryResolver {
     /// Resolves an entry against the built-in catalog plus the user's shelf.
     static func resolve(_ entry: LogEntry, customFoods: [CustomFood]) -> ResolvedEntry {
         if let name = entry.adhocName, let mg = entry.adhocMg {
-            return ResolvedEntry(entry: entry, name: name, serving: "quick log", baseMg: mg, category: .custom)
+            return ResolvedEntry(
+                entry: entry,
+                name: name,
+                serving: entry.adhocServing ?? "quick log",
+                baseMg: mg,
+                category: .custom
+            )
         }
         if let id = entry.foodID {
             if let food = FoodItem.builtIn(id) {
