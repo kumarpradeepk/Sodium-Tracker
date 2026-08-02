@@ -15,14 +15,16 @@ import SwiftData
 // printed number to Quick log.
 
 struct ScannerScreen: View {
+    @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
 
-    // The scanner is always dark, regardless of theme (per the design).
+    // The scanner chrome is always dark, regardless of theme (per the design);
+    // v2 draws its accents from the palette's scan tokens.
     private let bg = Color(hex: 0x0B1412)
     private let ink = Color(hex: 0xF0EBE0)
-    private let teal = Color(hex: 0x38C9B7)
     private let amber = Color(hex: 0xEFB544)
     private let cardBg = Color(hex: 0x142523)
+    private var acc: Color { p.scanAcc }
 
     private var isBarcode: Bool { ui.scanMode == .barcode }
     private var frameHeight: CGFloat { isBarcode ? 150 : 280 }
@@ -129,10 +131,10 @@ struct ScannerScreen: View {
             if ui.scanPhase == .found {
                 ZStack {
                     Circle()
-                        .fill(teal.opacity(0.16))
-                        .overlay(Circle().strokeBorder(teal, lineWidth: 2))
+                        .fill(p.scanAccSoft)
+                        .overlay(Circle().strokeBorder(acc, lineWidth: 2))
                     SVGShape("M14 22.5 L19.5 28 L30 16.5", viewBox: CGSize(width: 44, height: 44))
-                        .stroke(teal, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+                        .stroke(acc, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
                 }
                 .frame(width: 44, height: 44)
                 .transition(.scale(scale: 0.86).combined(with: .opacity))
@@ -157,7 +159,7 @@ struct ScannerScreen: View {
 
     private var cornerMark: some View {
         SVGShape("M0 26 V8 C0 3.6 3.6 0 8 0 H26", viewBox: CGSize(width: 26, height: 26))
-            .stroke(teal, style: StrokeStyle(lineWidth: 3, lineCap: .round))
+            .stroke(acc, style: StrokeStyle(lineWidth: 3, lineCap: .round))
             .frame(width: 26, height: 26)
     }
 
@@ -165,12 +167,12 @@ struct ScannerScreen: View {
         KeyframeAnimator(initialValue: 0.1, repeating: true) { fraction in
             GeometryReader { geo in
                 LinearGradient(
-                    colors: [teal.opacity(0), teal, teal.opacity(0)],
+                    colors: [acc.opacity(0), acc, acc.opacity(0)],
                     startPoint: .leading, endPoint: .trailing
                 )
                 .frame(height: 2)
                 .clipShape(Capsule())
-                .shadow(color: teal.opacity(0.7), radius: 6)
+                .shadow(color: p.scanAccGlow, radius: 6)
                 .padding(.horizontal, 10)
                 .offset(y: geo.size.height * fraction)
             }
@@ -186,9 +188,9 @@ struct ScannerScreen: View {
         VStack(spacing: 12) {
             HStack(spacing: 11) {
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(teal.opacity(0.13))
+                    .fill(p.scanAccSoft)
                     .frame(width: 38, height: 38)
-                    .overlay(LineIcon(d: FoodCategory.meal.iconPath, size: 20, color: teal))
+                    .overlay(LineIcon(d: FoodCategory.meal.iconPath, size: 20, color: acc))
 
                 VStack(alignment: .leading, spacing: 1) {
                     Text(isBarcode ? "Campbell's chicken noodle" : "From the label")
@@ -229,10 +231,10 @@ struct ScannerScreen: View {
                 } label: {
                     Text("Use this")
                         .pinchBody(13.5, .bold)
-                        .foregroundStyle(Color(hex: 0x04211D))
+                        .foregroundStyle(p.scanInk)
                         .frame(maxWidth: .infinity)
                         .frame(height: 44)
-                        .background(Capsule().fill(teal))
+                        .background(Capsule().fill(acc))
                 }
                 .buttonStyle(.pressScale(0.97))
                 .frame(maxWidth: .infinity)

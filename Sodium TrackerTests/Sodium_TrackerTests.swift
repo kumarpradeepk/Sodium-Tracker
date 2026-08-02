@@ -7,12 +7,67 @@
 
 import Testing
 import Foundation
+import SwiftUI
 @testable import Sodium_Tracker
+
+// MARK: - Palettes (v2: Ocean / Sage / Iris, light + dark)
+
+struct PaletteTests {
+    @Test func resolveReturnsRequestedFamilyAndTheme() {
+        for pick in PalettePick.allCases {
+            let light = PinchPalette.resolve(pick, dark: false)
+            let dark = PinchPalette.resolve(pick, dark: true)
+            #expect(!light.isDark)
+            #expect(dark.isDark)
+            #expect(light.brand != dark.brand, "\(pick.rawValue) light/dark must differ")
+        }
+    }
+
+    @Test func brandTokensMatchDesign() {
+        #expect(PinchPalette.resolve(.ocean, dark: false).brand == Color(hex: 0x1668A8))
+        #expect(PinchPalette.resolve(.ocean, dark: true).brand == Color(hex: 0x5CB3E8))
+        #expect(PinchPalette.resolve(.sage, dark: false).brand == Color(hex: 0x35705A))
+        #expect(PinchPalette.resolve(.sage, dark: true).brand == Color(hex: 0x8CC3A6))
+        #expect(PinchPalette.resolve(.iris, dark: false).brand == Color(hex: 0x5A52C4))
+        #expect(PinchPalette.resolve(.iris, dark: true).brand == Color(hex: 0xA29BEE))
+    }
+
+    @Test func fallbackIsOceanLight() {
+        #expect(PinchPalette.fallback == PinchPalette.oceanLight)
+    }
+
+    @Test func scanAccentsAreSharedAcrossThemesOfAFamily() {
+        for pick in PalettePick.allCases {
+            let light = PinchPalette.resolve(pick, dark: false)
+            let dark = PinchPalette.resolve(pick, dark: true)
+            #expect(light.scanAcc == dark.scanAcc)
+            #expect(light.scanInk == dark.scanInk)
+        }
+    }
+
+    @Test func ringGlowIsFixedPerFamily() {
+        for pick in PalettePick.allCases {
+            let light = PinchPalette.resolve(pick, dark: false)
+            let dark = PinchPalette.resolve(pick, dark: true)
+            #expect(light.ringGlow(pct: 10) == dark.ringGlow(pct: 10))
+            #expect(light.ringGlow(pct: 85) == dark.ringGlow(pct: 85))
+            #expect(light.ringGlow(pct: 120) == dark.ringGlow(pct: 120))
+        }
+    }
+
+    @Test func barFillsPickTheRightGradient() {
+        let p = PinchPalette.oceanLight
+        #expect(p.barFill(over: false, live: true) == p.barNow)
+        #expect(p.barFill(over: true, live: true) == p.barNowOver)
+        #expect(p.barFill(over: false, live: false) == p.barUnder)
+        #expect(p.barFill(over: true, live: false) == p.barOver)
+    }
+}
 
 // MARK: - Tone & mood thresholds (design's sodium tone scale)
 
 struct ToneScaleTests {
-    let palette = PinchPalette.light
+    let palette = PinchPalette.resolve(.ocean, dark: false)
 
     @Test func toneBands() {
         #expect(palette.tone(0) == palette.brand)

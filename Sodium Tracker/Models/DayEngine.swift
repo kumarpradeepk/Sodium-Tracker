@@ -25,6 +25,7 @@ enum GoalChoice: String, CaseIterable {
 
 enum PinchDefaults {
     static let theme = "theme"                       // "light" | "dark"
+    static let palette = "palette"                   // PalettePick raw: ocean | sage | iris
     static let goalChoice = "goalChoice"             // GoalChoice raw
     static let customGoal = "customGoal"             // 500...4000 step 50
     static let chatty = "chatty"                     // Pinch's chatter
