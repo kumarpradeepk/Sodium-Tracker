@@ -12,6 +12,11 @@
 //
 
 import Foundation
+import os
+
+/// Shared logger for the FatSecret integration. Filter the Xcode console
+/// with "FatSecret" to follow the whole chain.
+let fatSecretLog = Logger(subsystem: "com.kabi.sodium.tracker", category: "FatSecret")
 
 enum FatSecretConfig {
     /// Your OAuth 2 client credentials from platform.fatsecret.com.
@@ -26,6 +31,16 @@ enum FatSecretConfig {
     static var isEnabled: Bool {
         !clientID.isEmpty && !clientSecret.isEmpty
     }
+
+    /// Logs the credential situation exactly once per launch.
+    static let logConfigurationOnce: Void = {
+        if isEnabled {
+            let masked = clientID.prefix(4) + "…(\(clientID.count) chars)"
+            fatSecretLog.info("✅ credentials loaded (client id: \(masked, privacy: .public)) — remote search ENABLED")
+        } else {
+            fatSecretLog.warning("⚠️ no credentials found (env vars or FatSecretSecrets.plist) — remote search DISABLED, local catalog only")
+        }
+    }()
 
     private static func resolve(_ envKey: String, plistKey: String) -> String {
         if let env = ProcessInfo.processInfo.environment[envKey], !env.isEmpty {
@@ -93,13 +108,16 @@ actor FatSecretService {
     // MARK: Public API
 
     func search(_ query: String, maxResults: Int = 20) async throws -> [RemoteFood] {
+        _ = FatSecretConfig.logConfigurationOnce
         let data = try await call(params: [
             "method": "foods.search",
             "search_expression": query,
             "max_results": String(maxResults),
             "format": "json",
         ])
-        return try FatSecretParser.searchResults(from: data)
+        let hits = try FatSecretParser.searchResults(from: data)
+        fatSecretLog.info("🔎 \"\(query, privacy: .public)\" → \(hits.count) result(s)")
+        return hits
     }
 
     func details(id: String) async throws -> RemoteFoodDetail {
@@ -108,7 +126,19 @@ actor FatSecretService {
             "food_id": id,
             "format": "json",
         ])
-        return try FatSecretParser.foodDetail(from: data)
+        do {
+            let detail = try FatSecretParser.foodDetail(from: data)
+            fatSecretLog.info("🧂 \(detail.name, privacy: .public): \(detail.sodiumMg) mg per \(detail.serving, privacy: .public)")
+            return detail
+        } catch {
+            fatSecretLog.error("✗ food \(id, privacy: .public) has no usable sodium data: \(Self.snippet(data), privacy: .public)")
+            throw error
+        }
+    }
+
+    /// First 300 chars of a response body, for error logs.
+    private static func snippet(_ data: Data) -> String {
+        String(decoding: data.prefix(300), as: UTF8.self)
     }
 
     // MARK: Transport
@@ -123,20 +153,35 @@ actor FatSecretService {
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpBody = formEncode(params).data(using: .utf8)
 
+        let method = params["method"] ?? "?"
+        fatSecretLog.debug("→ \(method, privacy: .public) \(params["search_expression"] ?? params["food_id"] ?? "", privacy: .public)")
         let (data, response) = try await session.data(for: request)
-        guard let http = response as? HTTPURLResponse else { throw FatSecretError.badResponse }
+        guard let http = response as? HTTPURLResponse else {
+            fatSecretLog.error("✗ \(method, privacy: .public): no HTTP response")
+            throw FatSecretError.badResponse
+        }
+        fatSecretLog.debug("← \(method, privacy: .public) HTTP \(http.statusCode) (\(data.count) bytes)")
         if http.statusCode == 401 {
+            fatSecretLog.notice("token rejected (401) — refreshing and retrying once")
             // Token expired server-side: refresh once and retry.
             token = nil
             let fresh = try await validToken()
             request.setValue("Bearer \(fresh)", forHTTPHeaderField: "Authorization")
             let (data2, response2) = try await session.data(for: request)
             guard (response2 as? HTTPURLResponse)?.statusCode == 200 else {
+                fatSecretLog.error("✗ \(method, privacy: .public) failed after token refresh: \(Self.snippet(data2), privacy: .public)")
                 throw FatSecretError.badResponse
             }
             return data2
         }
-        guard http.statusCode == 200 else { throw FatSecretError.badResponse }
+        guard http.statusCode == 200 else {
+            fatSecretLog.error("✗ \(method, privacy: .public) HTTP \(http.statusCode): \(Self.snippet(data), privacy: .public)")
+            throw FatSecretError.badResponse
+        }
+        if let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+           let apiError = root["error"] as? [String: Any] {
+            fatSecretLog.error("✗ \(method, privacy: .public) API error: \(String(describing: apiError), privacy: .public)")
+        }
         return data
     }
 
@@ -152,14 +197,18 @@ actor FatSecretService {
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpBody = "grant_type=client_credentials&scope=basic".data(using: .utf8)
 
+        fatSecretLog.debug("→ requesting OAuth token")
         let (data, response) = try await session.data(for: request)
-        guard (response as? HTTPURLResponse)?.statusCode == 200,
+        let status = (response as? HTTPURLResponse)?.statusCode ?? -1
+        guard status == 200,
               let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               let value = json["access_token"] as? String else {
+            fatSecretLog.error("✗ token request failed (HTTP \(status)): \(Self.snippet(data), privacy: .public) — check Client ID/Secret and that OAuth 2.0 is enabled for your FatSecret app")
             throw FatSecretError.badResponse
         }
         let lifetime = (json["expires_in"] as? Double) ?? 3600
         token = (value, Date.now.addingTimeInterval(lifetime))
+        fatSecretLog.info("✅ OAuth token obtained (expires in \(Int(lifetime)) s)")
         return value
     }
 

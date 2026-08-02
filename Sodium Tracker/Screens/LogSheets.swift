@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftData
+import os
 
 // MARK: - Log a food (z40)
 
@@ -72,6 +73,7 @@ struct LogSheet: View {
 
     /// Debounced FatSecret lookup; quietly does nothing without credentials.
     private func runRemoteSearch() async {
+        _ = FatSecretConfig.logConfigurationOnce
         guard FatSecretConfig.isEnabled, query.count >= 2 else {
             remoteResults = []
             remoteSearching = false
@@ -85,8 +87,11 @@ struct LogSheet: View {
             let hits = try await FatSecretService.shared.search(query)
             guard !Task.isCancelled else { return }
             remoteResults = hits
+        } catch is CancellationError {
+            return
         } catch {
             guard !Task.isCancelled else { return }
+            fatSecretLog.error("search for \"\(query, privacy: .public)\" failed: \(String(describing: error), privacy: .public)")
             remoteResults = []
         }
     }
@@ -352,6 +357,7 @@ struct LogSheet: View {
                     category: .custom
                 ))
             } catch {
+                fatSecretLog.notice("falling back to Quick log for \"\(food.name, privacy: .public)\": \(String(describing: error), privacy: .public)")
                 ui.openQuickLog(prefillName: food.name)
             }
         }
