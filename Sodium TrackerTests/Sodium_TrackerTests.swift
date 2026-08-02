@@ -199,6 +199,20 @@ struct DayEngineTests {
         #expect(resolved.totalMg == 640)
     }
 
+    @Test func adhocEntriesCarryTheirServingLabel() {
+        // FatSecret-sourced entries keep the API's portion description.
+        let remote = LogEntry(
+            adhocName: "Campbell's Chicken Noodle",
+            adhocMg: 870,
+            adhocServing: "1 cup",
+            servings: 1.5,
+            meal: .lunch
+        )
+        let resolved = EntryResolver.resolve(remote, customFoods: [])
+        #expect(resolved.serving == "1 cup")
+        #expect(resolved.totalMg == 1305)
+    }
+
     @Test func customFoodsResolve() {
         let soup = CustomFood(id: "cf1", name: "Nana's lentil soup", serving: "1 bowl", mg: 410)
         let logged = LogEntry(foodID: "cf1", servings: 2, meal: .dinner)
@@ -454,6 +468,89 @@ struct CSVTests {
         #expect(lines[1].contains("Greek yogurt"))
         #expect(lines[2].contains("\"Food, with comma\""))
         #expect(lines[2].hasSuffix("300"))
+    }
+}
+
+// MARK: - FatSecret parsing
+
+struct FatSecretParserTests {
+    @Test func parsesSearchResultArray() throws {
+        let json = """
+        {"foods":{"food":[
+            {"food_id":"33691","food_name":"Chicken Noodle Soup","brand_name":"Campbell's",
+             "food_description":"Per 1 cup - Calories: 60kcal | Fat: 1.50g"},
+            {"food_id":"35718","food_name":"Ramen Noodles",
+             "food_description":"Per 100g - Calories: 436kcal | Fat: 17.6g"}
+        ],"max_results":"20","total_results":"2","page_number":"0"}}
+        """
+        let hits = try FatSecretParser.searchResults(from: Data(json.utf8))
+        #expect(hits.count == 2)
+        #expect(hits[0].id == "33691")
+        #expect(hits[0].brand == "Campbell's")
+        #expect(hits[0].subtitle == "Campbell's")
+        #expect(hits[1].brand == nil)
+        #expect(hits[1].subtitle == "Per 100g")
+    }
+
+    @Test func parsesSingleObjectQuirk() throws {
+        // FatSecret returns a lone object (not a 1-element array) for single hits.
+        let json = """
+        {"foods":{"food":{"food_id":"99","food_name":"Miso Soup",
+            "food_description":"Per 1 cup - Calories: 84kcal"},"total_results":"1"}}
+        """
+        let hits = try FatSecretParser.searchResults(from: Data(json.utf8))
+        #expect(hits.count == 1)
+        #expect(hits[0].name == "Miso Soup")
+    }
+
+    @Test func emptyResultsAreNotAnError() throws {
+        let json = #"{"foods":{"max_results":"20","total_results":"0","page_number":"0"}}"#
+        let hits = try FatSecretParser.searchResults(from: Data(json.utf8))
+        #expect(hits.isEmpty)
+    }
+
+    @Test func parsesDetailWithStringNumbers() throws {
+        let json = """
+        {"food":{"food_id":"33691","food_name":"Chicken Noodle Soup",
+         "servings":{"serving":[
+            {"serving_description":"1 cup","calories":"60","sodium":"870"},
+            {"serving_description":"100 g","calories":"25","sodium":"363"}
+        ]}}}
+        """
+        let detail = try FatSecretParser.foodDetail(from: Data(json.utf8))
+        #expect(detail.name == "Chicken Noodle Soup")
+        #expect(detail.serving == "1 cup")
+        #expect(detail.sodiumMg == 870)
+        #expect(detail.calories == 60)
+    }
+
+    @Test func detailSkipsServingsWithoutSodium() throws {
+        let json = """
+        {"food":{"food_name":"Mystery Snack","servings":{"serving":[
+            {"serving_description":"1 bag","calories":"150"},
+            {"serving_description":"100 g","sodium":"492.5"}
+        ]}}}
+        """
+        let detail = try FatSecretParser.foodDetail(from: Data(json.utf8))
+        #expect(detail.serving == "100 g")
+        #expect(detail.sodiumMg == 493)
+    }
+
+    @Test func detailWithNoSodiumThrows() {
+        let json = """
+        {"food":{"food_name":"Water","servings":{"serving":
+            {"serving_description":"1 glass","calories":"0"}}}}
+        """
+        #expect(throws: FatSecretError.self) {
+            _ = try FatSecretParser.foodDetail(from: Data(json.utf8))
+        }
+    }
+
+    @Test func numberCoercionHandlesStringsAndDoubles() {
+        #expect(FatSecretParser.number("870") == 870)
+        #expect(FatSecretParser.number(12.5) == 12.5)
+        #expect(FatSecretParser.number("abc") == nil)
+        #expect(FatSecretParser.number(nil) == nil)
     }
 }
 

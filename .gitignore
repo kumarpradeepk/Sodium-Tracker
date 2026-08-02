@@ -1,0 +1,7 @@
+# Xcode
+DerivedData/
+xcuserdata/
+*.xcuserstate
+
+# Secrets — never commit real API credentials
+FatSecretSecrets.plist

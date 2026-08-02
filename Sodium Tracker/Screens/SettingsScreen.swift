@@ -82,6 +82,14 @@ struct SettingsScreen: View {
                     .foregroundStyle(p.ink3)
                     .frame(maxWidth: .infinity)
                     .padding(.top, 22)
+
+                if FatSecretConfig.isEnabled {
+                    Text("Nutrition search powered by FatSecret")
+                        .pinchBody(10.5)
+                        .foregroundStyle(p.ink3)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 4)
+                }
             }
             .padding(.horizontal, 20)
             .padding(.top, 16)

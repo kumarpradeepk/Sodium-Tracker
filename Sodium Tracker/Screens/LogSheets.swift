@@ -20,6 +20,11 @@ struct LogSheet: View {
 
     @FocusState private var searchFocused: Bool
 
+    // FatSecret live search
+    @State private var remoteResults: [RemoteFood] = []
+    @State private var remoteSearching = false
+    @State private var loadingRemoteID: String?
+
     private var query: String {
         ui.search.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -47,6 +52,7 @@ struct LogSheet: View {
                                 .padding(.top, 12)
                         }
                         resultSections
+                        remoteSection
                     }
                     .padding(EdgeInsets(top: 6, leading: 20, bottom: 40, trailing: 20))
                 }
@@ -58,6 +64,30 @@ struct LogSheet: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 searchFocused = true
             }
+        }
+        .task(id: query) {
+            await runRemoteSearch()
+        }
+    }
+
+    /// Debounced FatSecret lookup; quietly does nothing without credentials.
+    private func runRemoteSearch() async {
+        guard FatSecretConfig.isEnabled, query.count >= 2 else {
+            remoteResults = []
+            remoteSearching = false
+            return
+        }
+        remoteSearching = true
+        defer { remoteSearching = false }
+        try? await Task.sleep(for: .milliseconds(350))
+        guard !Task.isCancelled else { return }
+        do {
+            let hits = try await FatSecretService.shared.search(query)
+            guard !Task.isCancelled else { return }
+            remoteResults = hits
+        } catch {
+            guard !Task.isCancelled else { return }
+            remoteResults = []
         }
     }
 
@@ -177,7 +207,7 @@ struct LogSheet: View {
 
     @ViewBuilder private var resultSections: some View {
         let sections = self.sections
-        if !query.isEmpty && sections.isEmpty {
+        if !query.isEmpty && sections.isEmpty && remoteResults.isEmpty && !remoteSearching {
             noResults
         } else {
             ForEach(Array(sections.enumerated()), id: \.offset) { _, section in
@@ -229,6 +259,101 @@ struct LogSheet: View {
         .buttonStyle(.plain)
         .overlay(alignment: .top) {
             if !first { Rectangle().fill(p.line).frame(height: 1) }
+        }
+    }
+
+    // MARK: FatSecret results
+
+    @ViewBuilder private var remoteSection: some View {
+        if !query.isEmpty, query.count >= 2, FatSecretConfig.isEnabled,
+           remoteSearching || !remoteResults.isEmpty {
+            Text("FROM FATSECRET")
+                .pinchBody(11, .bold, tracking: 0.13)
+                .foregroundStyle(p.ink3)
+                .padding(EdgeInsets(top: 16, leading: 2, bottom: 8, trailing: 2))
+
+            PinchCard {
+                VStack(spacing: 0) {
+                    if remoteResults.isEmpty {
+                        HStack(spacing: 10) {
+                            ProgressView()
+                                .controlSize(.small)
+                            Text("Searching the big shelf…")
+                                .pinchBody(12.5)
+                                .foregroundStyle(p.ink3)
+                        }
+                        .padding(EdgeInsets(top: 14, leading: 14, bottom: 14, trailing: 14))
+                    } else {
+                        ForEach(Array(remoteResults.enumerated()), id: \.element.id) { index, food in
+                            remoteRow(food, first: index == 0)
+                        }
+                    }
+                }
+            }
+
+            Text("Powered by FatSecret")
+                .pinchBody(9.5, .bold, tracking: 0.08)
+                .foregroundStyle(p.ink3)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.top, 8)
+        }
+    }
+
+    private func remoteRow(_ food: RemoteFood, first: Bool) -> some View {
+        Button {
+            pickRemote(food)
+        } label: {
+            HStack(spacing: 11) {
+                FoodIconTile(category: .meal)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(food.name)
+                        .pinchBody(14, .semibold)
+                        .foregroundStyle(p.ink)
+                        .lineLimit(1)
+                    Text(food.subtitle)
+                        .pinchBody(11.5)
+                        .foregroundStyle(p.ink3)
+                        .lineLimit(1)
+                }
+                Spacer(minLength: 8)
+                if loadingRemoteID == food.id {
+                    ProgressView()
+                        .controlSize(.small)
+                } else {
+                    SVGShape("M1 1 L7 7 L1 13", viewBox: CGSize(width: 8, height: 14))
+                        .stroke(p.ink3, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+                        .frame(width: 6, height: 10)
+                }
+            }
+            .padding(EdgeInsets(top: 11, leading: 14, bottom: 11, trailing: 14))
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .disabled(loadingRemoteID != nil)
+        .overlay(alignment: .top) {
+            if !first { Rectangle().fill(p.line).frame(height: 1) }
+        }
+    }
+
+    /// Fetches the food's sodium, then opens the portion sheet exactly like a
+    /// local pick. Foods without sodium data fall back to Quick log.
+    private func pickRemote(_ food: RemoteFood) {
+        guard loadingRemoteID == nil else { return }
+        loadingRemoteID = food.id
+        Task {
+            defer { loadingRemoteID = nil }
+            do {
+                let detail = try await FatSecretService.shared.details(id: food.id)
+                ui.pick(FoodItem(
+                    id: FatSecretConfig.idPrefix + food.id,
+                    name: detail.name,
+                    serving: detail.serving,
+                    mg: detail.sodiumMg,
+                    category: .custom
+                ))
+            } catch {
+                ui.openQuickLog(prefillName: food.name)
+            }
         }
     }
 
@@ -350,9 +475,23 @@ struct PortionSheet: View {
     private func toggleFavorite(_ food: FoodItem) {
         if let existing = favorites.first(where: { $0.foodID == food.id }) {
             modelContext.delete(existing)
-        } else {
-            modelContext.insert(Favorite(foodID: food.id))
+            return
         }
+        // Favoriting a FatSecret food saves it to the shelf first, so the
+        // favorite resolves offline from then on.
+        if food.id.hasPrefix(FatSecretConfig.idPrefix) {
+            let descriptor = FetchDescriptor<CustomFood>()
+            let existingShelf = (try? modelContext.fetch(descriptor)) ?? []
+            if !existingShelf.contains(where: { $0.id == food.id }) {
+                modelContext.insert(CustomFood(
+                    id: food.id,
+                    name: food.name,
+                    serving: food.serving,
+                    mg: food.mg
+                ))
+            }
+        }
+        modelContext.insert(Favorite(foodID: food.id))
     }
 
     private func stepper(_ food: FoodItem) -> some View {
@@ -398,15 +537,36 @@ struct PortionSheet: View {
 
     private func add(_ food: FoodItem) {
         let day = ui.selectedDay()
-        modelContext.insert(LogEntry(
-            foodID: food.id,
-            servings: ui.servings,
-            meal: ui.meal,
-            loggedAt: timestamp(for: day)
-        ))
+        let stamp = timestamp(for: day)
+
+        if food.id.hasPrefix(FatSecretConfig.idPrefix),
+           !customFoodExists(food.id) {
+            // FatSecret foods that aren't on the shelf log as self-contained
+            // entries carrying their own name, portion and sodium.
+            modelContext.insert(LogEntry(
+                adhocName: food.name,
+                adhocMg: food.mg,
+                adhocServing: food.serving,
+                servings: ui.servings,
+                meal: ui.meal,
+                loggedAt: stamp
+            ))
+        } else {
+            modelContext.insert(LogEntry(
+                foodID: food.id,
+                servings: ui.servings,
+                meal: ui.meal,
+                loggedAt: stamp
+            ))
+        }
         let mg = totalMg
         ui.closeAllSheets()
         ui.showToast("\(food.name) · \(PinchFormat.mg(mg)) mg", ToastCopy.line(forAdded: mg))
+    }
+
+    private func customFoodExists(_ id: String) -> Bool {
+        let descriptor = FetchDescriptor<CustomFood>(predicate: #Predicate { $0.id == id })
+        return ((try? modelContext.fetch(descriptor)) ?? []).isEmpty == false
     }
 }
 
