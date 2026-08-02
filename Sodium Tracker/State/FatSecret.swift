@@ -15,13 +15,30 @@ import Foundation
 
 enum FatSecretConfig {
     /// Your OAuth 2 client credentials from platform.fatsecret.com.
-    static let clientID =
-        ProcessInfo.processInfo.environment["FATSECRET_CLIENT_ID"] ?? ""
-    static let clientSecret =
-        ProcessInfo.processInfo.environment["FATSECRET_CLIENT_SECRET"] ?? ""
+    /// Resolution order:
+    ///   1. FATSECRET_CLIENT_ID / FATSECRET_CLIENT_SECRET scheme env vars
+    ///   2. FatSecretSecrets.plist bundled with the app (git-ignored — copy
+    ///      FatSecretSecrets.sample.plist into "Sodium Tracker/Resources/",
+    ///      rename it, and fill in the two values)
+    static let clientID = resolve("FATSECRET_CLIENT_ID", plistKey: "ClientID")
+    static let clientSecret = resolve("FATSECRET_CLIENT_SECRET", plistKey: "ClientSecret")
 
     static var isEnabled: Bool {
         !clientID.isEmpty && !clientSecret.isEmpty
+    }
+
+    private static func resolve(_ envKey: String, plistKey: String) -> String {
+        if let env = ProcessInfo.processInfo.environment[envKey], !env.isEmpty {
+            return env
+        }
+        if let url = Bundle.main.url(forResource: "FatSecretSecrets", withExtension: "plist"),
+           let data = try? Data(contentsOf: url),
+           let plist = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any],
+           let value = plist[plistKey] as? String,
+           !value.hasPrefix("YOUR-") {
+            return value
+        }
+        return ""
     }
 
     /// Prefix for FatSecret-sourced food ids, so entries and favorites can
