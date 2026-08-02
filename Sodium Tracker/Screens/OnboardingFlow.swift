@@ -32,21 +32,24 @@ struct OnboardingFlow: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            p.bg.ignoresSafeArea()
-
-            // Radial glow behind the top of every step
-            Circle()
-                .fill(
-                    RadialGradient(
-                        colors: [p.brandSoft, p.brandSoft.opacity(0)],
-                        center: .center,
-                        startRadius: 0,
-                        endRadius: 230 * 0.66
-                    )
-                )
-                .frame(width: 460, height: 460)
-                .offset(y: -120)
+            // The oversized radial glow is decoration only — it lives in an
+            // overlay so its 460pt frame can never widen the layout (a layout
+            // child here pushes every step ~33pt off-screen).
+            p.bg
                 .ignoresSafeArea()
+                .overlay(alignment: .top) {
+                    Circle()
+                        .fill(
+                            RadialGradient(
+                                colors: [p.brandSoft, p.brandSoft.opacity(0)],
+                                center: .center,
+                                startRadius: 0,
+                                endRadius: 230 * 0.66
+                            )
+                        )
+                        .frame(width: 460, height: 460)
+                        .offset(y: -120)
+                }
 
             step
                 .id(ui.obStep)
