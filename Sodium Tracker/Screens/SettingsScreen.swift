@@ -13,6 +13,7 @@ import UIKit
 struct SettingsScreen: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
+    @Environment(SubscriptionStore.self) private var subscriptions
     @Environment(\.modelContext) private var modelContext
 
     @AppStorage(PinchDefaults.theme) private var theme = "light"
@@ -21,8 +22,6 @@ struct SettingsScreen: View {
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
     @AppStorage(PinchDefaults.chatty) private var chatty = true
     @AppStorage(PinchDefaults.notif) private var notif = true
-    @AppStorage(PinchDefaults.health) private var health = true
-    @AppStorage(PinchDefaults.plus) private var plus = false
     @AppStorage(PinchDefaults.mealRemBreakfast) private var remBreakfast = true
     @AppStorage(PinchDefaults.mealRemLunch) private var remLunch = false
     @AppStorage(PinchDefaults.mealRemDinner) private var remDinner = true
@@ -124,7 +123,7 @@ struct SettingsScreen: View {
                         Text("Pinch Plus")
                             .pinchBody(14.5, .bold)
                             .foregroundStyle(p.ink)
-                        if plus {
+                        if subscriptions.isPremium {
                             Text("ON")
                                 .pinchBody(9, .heavy, tracking: 0.1)
                                 .foregroundStyle(p.onBrand)
@@ -133,9 +132,9 @@ struct SettingsScreen: View {
                                 .background(Capsule().fill(p.brand))
                         }
                     }
-                    Text(plus
+                    Text(subscriptions.isPremium
                          ? "Active — thanks for keeping Pinch fed."
-                         : "The extras: month view, widget, your shelf, export.")
+                         : "4-week trends, unlimited shelf foods, and export.")
                         .pinchBody(11.5)
                         .foregroundStyle(p.ink3)
                         .lineSpacing(2)
@@ -146,7 +145,7 @@ struct SettingsScreen: View {
                 Button {
                     ui.payOpen = true
                 } label: {
-                    Text(plus ? "Manage plan" : "See what's inside")
+                    Text(subscriptions.isPremium ? "Manage plan" : "See what's inside")
                         .pinchBody(12, .bold)
                         .foregroundStyle(p.brand)
                         .padding(.horizontal, 13)
@@ -395,29 +394,6 @@ struct SettingsScreen: View {
     private var dataCard: some View {
         PinchCard {
             VStack(spacing: 0) {
-                HStack(spacing: 11) {
-                    SettingsIconTile(color: SettingsTileColors.health, glyph: .heart)
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Sync with Apple Health")
-                            .pinchBody(14, .semibold)
-                            .foregroundStyle(p.ink)
-                        Text("Writes dietary sodium")
-                            .pinchBody(11.5)
-                            .foregroundStyle(p.ink3)
-                    }
-                    Spacer()
-                    PinchSwitch(isOn: $health)
-                }
-                .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
-
-                navRow(
-                    title: "Home-screen widget",
-                    sub: "The ring, at a glance",
-                    tile: SettingsIconTile(color: SettingsTileColors.widget, glyph: .widgetGrid)
-                ) {
-                    ui.widgetOpen = true
-                }
-
                 Button {
                     exportCSV()
                 } label: {
@@ -432,6 +408,14 @@ struct SettingsScreen: View {
                                 .foregroundStyle(p.ink3)
                         }
                         Spacer()
+                        if !subscriptions.isPremium {
+                            Text("PLUS")
+                                .pinchBody(9, .heavy, tracking: 0.09)
+                                .foregroundStyle(p.brand)
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 3)
+                                .background(Capsule().fill(p.brandSoft))
+                        }
                         LineIcon(
                             d: "M10 3 V13 M6 9.5 L10 13.5 L14 9.5 M4 16.5 H16",
                             size: 15, stroke: 1.8, color: p.ink3
@@ -495,6 +479,10 @@ struct SettingsScreen: View {
     }
 
     private func exportCSV() {
+        guard PremiumAccessPolicy.allows(.csvExport, isPremium: subscriptions.isPremium) else {
+            ui.payOpen = true
+            return
+        }
         if let url = CSVExporter.writeTempFile(entries: entries, customFoods: customFoods) {
             exportURL = url
             showShare = true

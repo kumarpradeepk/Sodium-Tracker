@@ -166,6 +166,48 @@ struct GoalTests {
     }
 }
 
+// MARK: - Label conversion
+
+struct SodiumConverterTests {
+    @Test func keepsSodiumMilligramsAsEntered() {
+        #expect(SodiumConverter.sodiumMilligrams(from: "470", unit: .sodiumMilligrams) == 470)
+        #expect(SodiumConverter.sodiumMilligrams(from: "470.4", unit: .sodiumMilligrams) == 470)
+    }
+
+    @Test func convertsSaltGramsToSodiumMilligrams() {
+        #expect(SodiumConverter.sodiumMilligrams(from: "1", unit: .saltGrams) == 393)
+        #expect(SodiumConverter.sodiumMilligrams(from: "1.5", unit: .saltGrams) == 590)
+        #expect(SodiumConverter.sodiumMilligrams(from: "1,5", unit: .saltGrams) == 590)
+    }
+
+    @Test func rejectsInvalidOrNonPositiveInput() {
+        #expect(SodiumConverter.sodiumMilligrams(from: "", unit: .saltGrams) == nil)
+        #expect(SodiumConverter.sodiumMilligrams(from: "0", unit: .saltGrams) == nil)
+        #expect(SodiumConverter.sodiumMilligrams(from: "nope", unit: .sodiumMilligrams) == nil)
+    }
+}
+
+// MARK: - Premium access
+
+struct PremiumAccessPolicyTests {
+    @Test func paidEntitlementUnlocksEveryPremiumFeature() {
+        for feature in PremiumFeature.allCases {
+            #expect(PremiumAccessPolicy.allows(feature, isPremium: true, customFoodCount: 999))
+        }
+    }
+
+    @Test func freeTierCannotUseTrendsOrExport() {
+        #expect(!PremiumAccessPolicy.allows(.monthTrends, isPremium: false))
+        #expect(!PremiumAccessPolicy.allows(.csvExport, isPremium: false))
+    }
+
+    @Test func freeShelfHasAnEnforcedLimit() {
+        let limit = PremiumAccessPolicy.freeCustomFoodLimit
+        #expect(PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: false, customFoodCount: limit - 1))
+        #expect(!PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: false, customFoodCount: limit))
+    }
+}
+
 // MARK: - Day engine
 
 @MainActor

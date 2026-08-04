@@ -12,6 +12,7 @@ import SwiftData
 struct TrendsScreen: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
+    @Environment(SubscriptionStore.self) private var subscriptions
 
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
@@ -28,7 +29,7 @@ struct TrendsScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 header
 
-                if ui.trMode == .week {
+                if shownMode == .week {
                     weekNav
                         .frame(maxWidth: .infinity)
                         .padding(.top, 14)
@@ -61,6 +62,12 @@ struct TrendsScreen: View {
 
     // MARK: - Header
 
+    private var shownMode: TrendsMode {
+        PremiumAccessPolicy.allows(.monthTrends, isPremium: subscriptions.isPremium)
+            ? ui.trMode
+            : .week
+    }
+
     private var header: some View {
         @Bindable var ui = ui
         return HStack(alignment: .bottom) {
@@ -78,7 +85,17 @@ struct TrendsScreen: View {
                     PinchSegment(value: TrendsMode.week, label: "Week"),
                     PinchSegment(value: TrendsMode.month, label: "Month"),
                 ],
-                selection: $ui.trMode
+                selection: Binding(
+                    get: { shownMode },
+                    set: { newMode in
+                        if newMode == .month,
+                           !PremiumAccessPolicy.allows(.monthTrends, isPremium: subscriptions.isPremium) {
+                            ui.payOpen = true
+                        } else {
+                            ui.trMode = newMode
+                        }
+                    }
+                )
             )
             .frame(width: 150)
             .padding(.bottom, 4)

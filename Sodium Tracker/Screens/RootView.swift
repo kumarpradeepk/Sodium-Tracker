@@ -45,11 +45,9 @@ struct RootView: View {
                 .animation(.pinchSheet, value: ui.picked)
                 .animation(.pinchSheet, value: ui.qlOpen)
                 .animation(.pinchSheet, value: ui.cfOpen)
-                .animation(.easeInOut(duration: 0.25), value: ui.scanOpen)
                 .animation(.timingCurve(0.2, 0.9, 0.3, 1, duration: 0.35), value: ui.toast)
                 .animation(.easeInOut(duration: 0.3), value: ui.showOnboarding)
                 .animation(.pinchSheet, value: ui.payOpen)
-                .animation(.pinchSheet, value: ui.widgetOpen)
         }
         .environment(\.pinch, palette)
         .environment(ui)
@@ -130,10 +128,6 @@ struct RootView: View {
         if ui.cfOpen {
             CreateFoodSheet().zIndex(50)
         }
-        // z52 — scanner
-        if ui.scanOpen {
-            ScannerScreen().zIndex(52)
-        }
         // z60 — toast
         if let toast = ui.toast {
             VStack {
@@ -148,12 +142,9 @@ struct RootView: View {
         if ui.showOnboarding {
             OnboardingFlow().zIndex(70)
         }
-        // z80 — paywall & widget promo
+        // z80 — verified StoreKit paywall
         if ui.payOpen {
             PaywallSheet().zIndex(80)
-        }
-        if ui.widgetOpen {
-            WidgetSheet().zIndex(80)
         }
     }
 

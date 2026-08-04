@@ -23,6 +23,40 @@ enum GoalChoice: String, CaseIterable {
     }
 }
 
+enum SodiumInputUnit: String, CaseIterable {
+    case sodiumMilligrams
+    case saltGrams
+
+    var fieldLabel: String {
+        switch self {
+        case .sodiumMilligrams: "SODIUM MG"
+        case .saltGrams: "SALT G"
+        }
+    }
+}
+
+enum SodiumConverter {
+    /// Sodium chloride is about 39.34% sodium by mass.
+    static let sodiumMilligramsPerSaltGram = 393.4
+
+    static func sodiumMilligrams(from text: String, unit: SodiumInputUnit) -> Int? {
+        let normalized = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: ",", with: ".")
+        guard let value = Double(normalized), value.isFinite, value > 0 else { return nil }
+        let milligrams: Double
+        switch unit {
+        case .sodiumMilligrams: milligrams = value
+        case .saltGrams: milligrams = value * sodiumMilligramsPerSaltGram
+        }
+        guard milligrams <= Double(Int.max) else { return nil }
+        return Int(milligrams.rounded())
+    }
+
+    static func saltGrams(fromSodiumMilligrams milligrams: Int) -> Double {
+        Double(milligrams) / sodiumMilligramsPerSaltGram
+    }
+}
+
 enum PinchDefaults {
     static let theme = "theme"                       // "light" | "dark"
     static let palette = "palette"                   // PalettePick raw: ocean | sage | iris
@@ -30,8 +64,6 @@ enum PinchDefaults {
     static let customGoal = "customGoal"             // 500...4000 step 50
     static let chatty = "chatty"                     // Pinch's chatter
     static let notif = "notif"                       // meal check-ins master
-    static let health = "health"                     // Apple Health sync pref
-    static let plus = "plus"                         // Pinch Plus active
     static let mealRemBreakfast = "mealRemBreakfast"
     static let mealRemLunch = "mealRemLunch"
     static let mealRemDinner = "mealRemDinner"

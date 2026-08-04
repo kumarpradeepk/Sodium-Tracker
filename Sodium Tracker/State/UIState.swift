@@ -14,8 +14,6 @@ enum PinchTab: String, CaseIterable {
 }
 
 enum TrendsMode { case week, month }
-enum ScanMode { case barcode, label }
-enum ScanPhase { case scanning, found }
 enum PlusPlan { case yearly, monthly }
 
 struct PinchToast: Identifiable, Equatable {
@@ -47,6 +45,7 @@ final class UIState {
     var qlOpen = false
     var qlName = ""
     var qlMg = ""
+    var qlUnit: SodiumInputUnit = .sodiumMilligrams
     var qlMeal: Meal = .lunch
     var qlFav = false
 
@@ -55,24 +54,18 @@ final class UIState {
     var cfName = ""
     var cfServe = ""
     var cfMg = ""
+    var cfUnit: SodiumInputUnit = .sodiumMilligrams
     var cfMore = false
     var cfCal = ""
     var cfCarb = ""
     var cfProt = ""
     var cfFat = ""
 
-    // MARK: Scanner
-    var scanOpen = false
-    var scanMode: ScanMode = .barcode
-    var scanPhase: ScanPhase = .scanning
-    var scanToken = 0                 // restarts the fake-scan timer
-
     // MARK: Other overlays
     var calOpen = false
     var notifCenterOpen = false
     var payOpen = false
     var plan: PlusPlan = .yearly
-    var widgetOpen = false
 
     // MARK: Toast
     var toast: PinchToast?
@@ -112,7 +105,6 @@ final class UIState {
         logOpen = false
         qlOpen = false
         cfOpen = false
-        scanOpen = false
         calOpen = false
         search = ""
     }
@@ -120,6 +112,7 @@ final class UIState {
     func openQuickLog(prefillName: String = "", prefillMg: String = "") {
         qlName = prefillName
         qlMg = prefillMg
+        qlUnit = .sodiumMilligrams
         qlMeal = Meal.auto()
         qlFav = false
         qlOpen = true
@@ -129,20 +122,13 @@ final class UIState {
         cfName = ""
         cfServe = ""
         cfMg = ""
+        cfUnit = .sodiumMilligrams
         cfMore = false
         cfCal = ""
         cfCarb = ""
         cfProt = ""
         cfFat = ""
         cfOpen = true
-    }
-
-    func startScan(_ mode: ScanMode) {
-        scanMode = mode
-        scanPhase = .scanning
-        scanOpen = true
-        logOpen = false
-        scanToken += 1
     }
 
     func beginOnboarding() {
