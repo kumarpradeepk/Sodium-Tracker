@@ -402,6 +402,7 @@ struct SunkField: View {
     let placeholder: String
     @Binding var text: String
     var numeric = false
+    var allowsDecimal = false
     var labelColor: Color?
     var highlighted = false
     var focused: FocusState<Bool>.Binding?
@@ -422,10 +423,18 @@ struct SunkField: View {
             .pinchBody(15, numeric ? .bold : .semibold)
             .foregroundStyle(p.ink)
             .monospacedDigit()
-            .keyboardType(numeric ? .numberPad : .default)
+            .keyboardType(numeric ? (allowsDecimal ? .decimalPad : .numberPad) : .default)
             .onChange(of: text) { _, newValue in
                 if numeric {
-                    let filtered = newValue.filter(\.isNumber)
+                    var hasSeparator = false
+                    let filtered = newValue.filter { character in
+                        if character.isNumber { return true }
+                        if allowsDecimal, (character == "." || character == ","), !hasSeparator {
+                            hasSeparator = true
+                            return true
+                        }
+                        return false
+                    }
                     if filtered != newValue { text = filtered }
                 }
             }

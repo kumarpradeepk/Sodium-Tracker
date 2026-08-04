@@ -374,6 +374,18 @@ struct TodayScreen: View {
                 .foregroundStyle(p.tone(resolved.totalMg))
 
             Button {
+                logAgain(resolved)
+            } label: {
+                Image(systemName: "arrow.clockwise")
+                    .font(.system(size: 11.5, weight: .bold))
+                    .foregroundStyle(p.brand)
+                    .frame(width: 26, height: 26)
+                    .background(Circle().fill(p.brandSoft))
+            }
+            .buttonStyle(.pressScale(0.85))
+            .accessibilityLabel("Log \(resolved.name) again today")
+
+            Button {
                 withAnimation(.easeOut(duration: 0.25)) {
                     modelContext.delete(resolved.entry)
                 }
@@ -398,6 +410,23 @@ struct TodayScreen: View {
             ? resolved.serving
             : "\(PinchFormat.servings(resolved.entry.servings)) × \(resolved.serving)"
         return "\(portion) · \(PinchFormat.time(resolved.entry.loggedAt))"
+    }
+
+    private func logAgain(_ resolved: ResolvedEntry) {
+        let source = resolved.entry
+        modelContext.insert(LogEntry(
+            foodID: source.foodID,
+            adhocName: source.adhocName,
+            adhocMg: source.adhocMg,
+            adhocServing: source.adhocServing,
+            servings: source.servings,
+            meal: Meal.auto(),
+            loggedAt: .now
+        ))
+        ui.showToast(
+            "\(resolved.name) · \(PinchFormat.mg(resolved.totalMg)) mg",
+            isToday ? "Logged again." : "Logged again for today."
+        )
     }
 
     private var emptyState: some View {

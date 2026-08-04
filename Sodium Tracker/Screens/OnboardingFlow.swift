@@ -2,8 +2,8 @@
 //  OnboardingFlow.swift
 //  Sodium Tracker
 //
-//  Eight-step welcome: meet Pinch, why, diet, budget, check-ins, Apple Health,
-//  widget, all set. Replayable from Settings.
+//  Eight-step welcome: meet Pinch, why, diet, budget, check-ins, label units,
+//  fast logging, all set. Replayable from Settings.
 //
 
 import SwiftUI
@@ -16,7 +16,6 @@ struct OnboardingFlow: View {
     @AppStorage(PinchDefaults.hasOnboarded) private var hasOnboarded = false
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
-    @AppStorage(PinchDefaults.health) private var health = true
     @AppStorage(PinchDefaults.notif) private var notif = true
     @AppStorage(PinchDefaults.mealRemBreakfast) private var remBreakfast = true
     @AppStorage(PinchDefaults.mealRemLunch) private var remLunch = false
@@ -98,8 +97,8 @@ struct OnboardingFlow: View {
         case 2: dietStep
         case 3: budgetStep
         case 4: checkinsStep
-        case 5: healthStep
-        case 6: widgetStep
+        case 5: labelStep
+        case 6: fastLoggingStep
         default: allSetStep
         }
     }
@@ -331,51 +330,35 @@ struct OnboardingFlow: View {
         }
     }
 
-    // Step 5 — health
+    // Step 5 — label units
 
-    private var healthStep: some View {
+    private var labelStep: some View {
         stepScaffold(
-            title: "Apple Health",
-            sub: "Your sodium logs can flow into Health — one tidy record.",
+            title: "Any label works",
+            sub: "Some labels show sodium in mg. Others show salt in grams. Pinch handles both.",
             ctaTitle: "Continue",
             ctaEnabled: true
         ) {
             VStack(spacing: 10) {
                 benefitRow(
-                    tile: p.coralSoft,
-                    icon: "M10 17 C10 17 2.5 12.5 2.5 7.5 C2.5 5 4.5 3 7 3 C8.3 3 9.4 3.6 10 4.5 C10.6 3.6 11.7 3 13 3 C15.5 3 17.5 5 17.5 7.5 C17.5 12.5 10 17 10 17 Z",
-                    color: p.coral,
-                    text: "Writes dietary sodium automatically"
-                )
-                benefitRow(
                     tile: p.brandSoft,
-                    icon: "M4 16.5 V11 M10 16.5 V4.5 M16 16.5 V8",
+                    icon: "M4 5 H16 M4 10 H13 M4 15 H10",
                     color: p.brand,
-                    text: "All your health trends in one place",
-                    strokeWidth: 2.2
+                    text: "Choose Sodium mg for US nutrition labels",
+                    strokeWidth: 2
                 )
                 benefitRow(
                     tile: p.amberSoft,
-                    icon: "M10 2.5 L16.5 5 V9.5 C16.5 13.5 13.8 16.6 10 17.5 C6.2 16.6 3.5 13.5 3.5 9.5 V5 Z M7.2 10 L9.2 12 L13 8.2",
+                    icon: "M5 4 H15 V16 H5 Z M8 8 H12 M8 12 H12",
                     color: p.amber,
-                    text: "Private — stays on your device"
+                    text: "Choose Salt g for UK and European labels"
                 )
-
-                PinchCard(padding: EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16)) {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Allow Health sync")
-                                .pinchBody(14, .semibold)
-                                .foregroundStyle(p.ink)
-                            Text("iOS will confirm once")
-                                .pinchBody(11.5)
-                                .foregroundStyle(p.ink3)
-                        }
-                        Spacer()
-                        PinchSwitch(isOn: $health)
-                    }
-                }
-                .padding(.top, 2)
+                benefitRow(
+                    tile: p.coralSoft,
+                    icon: "M4 10 H16 M12 6 L16 10 L12 14",
+                    color: p.coral,
+                    text: "1 g salt converts to about 393 mg sodium"
+                )
             }
         }
     }
@@ -399,20 +382,35 @@ struct OnboardingFlow: View {
         )
     }
 
-    // Step 6 — widget
+    // Step 6 — fast logging
 
-    private var widgetStep: some View {
+    private var fastLoggingStep: some View {
         stepScaffold(
-            title: "Pinch on your Home Screen",
-            sub: "The ring at a glance — widget folks stay on track more.",
+            title: "Make logging easy",
+            sub: "The best tracker is the one that takes only a few taps.",
             ctaTitle: "Got it",
             ctaEnabled: true
         ) {
-            VStack(alignment: .leading, spacing: 0) {
-                WidgetMock(goal: goal, entries: entries, customFoods: customFoods)
-                WidgetSteps()
-                    .padding(.top, 16)
-                    .padding(.horizontal, 4)
+            VStack(spacing: 10) {
+                benefitRow(
+                    tile: p.brandSoft,
+                    icon: "M3 10 H17 M10 3 V17",
+                    color: p.brand,
+                    text: "Quick log when you already know the number",
+                    strokeWidth: 2
+                )
+                benefitRow(
+                    tile: p.coralSoft,
+                    icon: "M10 17 C10 17 2.5 12.5 2.5 7.5 C2.5 5 4.5 3 7 3 C8.3 3 9.4 3.6 10 4.5 C10.6 3.6 11.7 3 13 3 C15.5 3 17.5 5 17.5 7.5 C17.5 12.5 10 17 10 17 Z",
+                    color: p.coral,
+                    text: "Favorite foods you reach for often"
+                )
+                benefitRow(
+                    tile: p.amberSoft,
+                    icon: "M15.5 6 A6 6 0 1 0 16 13 M15.5 6 V2.5 M15.5 6 H12",
+                    color: p.amber,
+                    text: "Tap the repeat arrow to log any item again"
+                )
             }
         }
     }
