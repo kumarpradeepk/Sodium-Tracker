@@ -17,7 +17,7 @@ struct PressScaleStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? scale : 1)
-            .animation(.easeOut(duration: 0.15), value: configuration.isPressed)
+            .animation(.interpolatingSpring(stiffness: 280, damping: 22), value: configuration.isPressed)
     }
 }
 
@@ -28,10 +28,10 @@ extension ButtonStyle where Self == PressScaleStyle {
 
 // MARK: - Card
 
-/// Standard Pinch card: card bg, hairline border, radius 18 (20 for large).
+/// Standard Pinch card: card bg, hairline border, and the design's 22pt radius.
 struct PinchCard<Content: View>: View {
     @Environment(\.pinch) private var p
-    var radius: CGFloat = 18
+    var radius: CGFloat = 22
     var padding: EdgeInsets?
     @ViewBuilder var content: Content
 
@@ -208,6 +208,8 @@ struct RadioCard<Content: View>: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(selected ? .isSelected : [])
+        .accessibilityValue(selected ? "Selected" : "Not selected")
         .animation(.easeInOut(duration: 0.2), value: selected)
     }
 }
@@ -494,7 +496,16 @@ struct PinchSheet<Content: View>: View {
             )
             .pinchCardShadow(p)
             .padding(.top, topInset ?? 0)
-            .transition(.move(edge: .bottom).combined(with: .opacity))
+            .transition(
+                .asymmetric(
+                    insertion: .opacity
+                        .combined(with: .scale(scale: 0.9, anchor: .bottom))
+                        .combined(with: .offset(y: 16)),
+                    removal: .opacity
+                        .combined(with: .scale(scale: 0.96, anchor: .bottom))
+                        .combined(with: .offset(y: 12))
+                )
+            )
         }
     }
 }

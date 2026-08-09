@@ -24,7 +24,7 @@ struct PaletteTests {
     }
 
     @Test func brandTokensMatchDesign() {
-        #expect(PinchPalette.resolve(.ocean, dark: false).brand == Color(hex: 0x1668A8))
+        #expect(PinchPalette.resolve(.ocean, dark: false).brand == Color(hex: 0x2E6FBD))
         #expect(PinchPalette.resolve(.ocean, dark: true).brand == Color(hex: 0x5CB3E8))
         #expect(PinchPalette.resolve(.sage, dark: false).brand == Color(hex: 0x35705A))
         #expect(PinchPalette.resolve(.sage, dark: true).brand == Color(hex: 0x8CC3A6))
@@ -163,6 +163,11 @@ struct GoalTests {
         #expect(GoalChoice.aha.milligrams(custom: 9999) == 1500)
         #expect(GoalChoice.fda.milligrams(custom: 9999) == 2300)
         #expect(GoalChoice.custom.milligrams(custom: 2000) == 2000)
+    }
+
+    @Test func customGoalUsesPrototypeBoundsAndStep() {
+        #expect(PinchDefaults.customGoalRange == 800...3000)
+        #expect(PinchDefaults.customGoalStep == 100)
     }
 }
 

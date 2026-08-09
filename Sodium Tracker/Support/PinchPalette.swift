@@ -117,43 +117,43 @@ struct PinchPalette: Equatable {
 
     static let oceanLight = PinchPalette(
         isDark: false,
-        page: Color(hex: 0xEDF0F3),
-        bg: Color(hex: 0xF6F8F9),
+        page: Color(hex: 0xE2E7EF),
+        bg: Color(hex: 0xEDF1F6),
         card: Color(hex: 0xFFFFFF),
-        sunk: Color(hex: 0xE7EBEE),
-        chip: Color(hex: 0xEFF2F4),
-        dock: Color(hex: 0xFFFFFF, opacity: 0.88),
-        scrim: Color(hex: 0x0F1A22, opacity: 0.42),
-        ink: Color(hex: 0x0F1E26),
-        ink2: Color(hex: 0x4E6270),
-        ink3: Color(hex: 0x8FA1AC),
-        line: Color(hex: 0x0F1E26, opacity: 0.11),
-        brand: Color(hex: 0x1668A8),
-        brandDeep: Color(hex: 0x0F5288),
-        brandSoft: Color(hex: 0xE1EDF6),
-        onBrand: Color(hex: 0xF7FBFE),
-        coral: Color(hex: 0xD96545),
-        coralSoft: Color(hex: 0xF8E6DE),
-        amber: Color(hex: 0xC08A1E),
-        amberSoft: Color(hex: 0xF5EBD3),
-        shaker: Color(hex: 0xFDFDFB),
-        shakerLine: Color(hex: 0xDFE4E4),
-        grain: Color(hex: 0xCFD8DC),
-        capHole: Color(hex: 0x0C3A5C),
-        pinchInk: Color(hex: 0x14242E),
+        sunk: Color(hex: 0xE3EAF3),
+        chip: Color(hex: 0xE3ECF7),
+        dock: Color(hex: 0xFFFFFF, opacity: 0.92),
+        scrim: Color(hex: 0x1F3A5C, opacity: 0.16),
+        ink: Color(hex: 0x1F3A5C),
+        ink2: Color(hex: 0x5B6B82),
+        ink3: Color(hex: 0x7C8AA0),
+        line: Color(hex: 0x1F3A5C, opacity: 0.08),
+        brand: Color(hex: 0x2E6FBD),
+        brandDeep: Color(hex: 0x205998),
+        brandSoft: Color(hex: 0xE1EDF9),
+        onBrand: Color(hex: 0xFFFFFF),
+        coral: Color(hex: 0xE5484D),
+        coralSoft: Color(hex: 0xFDE8EA),
+        amber: Color(hex: 0xB0821F),
+        amberSoft: Color(hex: 0xF5E4C0),
+        shaker: Color(hex: 0xFFFFFF),
+        shakerLine: Color(hex: 0xC7D3E3),
+        grain: Color(hex: 0xC7D3E3),
+        capHole: Color(hex: 0x1F3A5C),
+        pinchInk: Color(hex: 0x1F3A5C),
         knob: Color(hex: 0xFFFFFF),
-        barNow: BarFill(top: Color(hex: 0x3D8FC9), bottom: Color(hex: 0x1668A8)),
-        barNowOver: BarFill(top: Color(hex: 0xE67C52), bottom: Color(hex: 0xD96545)),
-        barUnder: BarFill(top: Color(hex: 0xA6C8E0), bottom: Color(hex: 0x7FAFD2)),
-        barOver: BarFill(top: Color(hex: 0xEFB39B), bottom: Color(hex: 0xE28E68)),
-        scanAcc: Color(hex: 0x5CB3E8),
-        scanAccGlow: Color(hex: 0x5CB3E8, opacity: 0.7),
-        scanAccSoft: Color(hex: 0x5CB3E8, opacity: 0.15),
-        scanInk: Color(hex: 0x04121C),
-        glowBrand: Color(hex: 0x1668A8, opacity: 0.35),
-        glowAmber: Color(hex: 0xC08A1E, opacity: 0.35),
-        glowCoral: Color(hex: 0xD96545, opacity: 0.42),
-        shadowTint: Color(hex: 0x0F1E26)
+        barNow: BarFill(top: Color(hex: 0x4C85C9), bottom: Color(hex: 0x2E6FBD)),
+        barNowOver: BarFill(top: Color(hex: 0xE4B34C), bottom: Color(hex: 0xDFA32B)),
+        barUnder: BarFill(top: Color(hex: 0xA8C2DF), bottom: Color(hex: 0x7EA5D1)),
+        barOver: BarFill(top: Color(hex: 0xECD28E), bottom: Color(hex: 0xDFAE45)),
+        scanAcc: Color(hex: 0x2E6FBD),
+        scanAccGlow: Color(hex: 0x2E6FBD, opacity: 0.7),
+        scanAccSoft: Color(hex: 0x2E6FBD, opacity: 0.15),
+        scanInk: Color(hex: 0x1F3A5C),
+        glowBrand: Color(hex: 0x2E6FBD, opacity: 0.28),
+        glowAmber: Color(hex: 0xDFA32B, opacity: 0.32),
+        glowCoral: Color(hex: 0xE5484D, opacity: 0.34),
+        shadowTint: Color(hex: 0x1F3A5C)
     )
 
     static let oceanDark = PinchPalette(
@@ -187,13 +187,13 @@ struct PinchPalette: Equatable {
         barNowOver: BarFill(top: Color(hex: 0xFFA47F), bottom: Color(hex: 0xF27B52)),
         barUnder: BarFill(top: Color(hex: 0x28455C), bottom: Color(hex: 0x1F3749)),
         barOver: BarFill(top: Color(hex: 0x8A4C38), bottom: Color(hex: 0x6F3A29)),
-        scanAcc: Color(hex: 0x5CB3E8),
-        scanAccGlow: Color(hex: 0x5CB3E8, opacity: 0.7),
-        scanAccSoft: Color(hex: 0x5CB3E8, opacity: 0.15),
-        scanInk: Color(hex: 0x04121C),
-        glowBrand: Color(hex: 0x1668A8, opacity: 0.35),
-        glowAmber: Color(hex: 0xC08A1E, opacity: 0.35),
-        glowCoral: Color(hex: 0xD96545, opacity: 0.42),
+        scanAcc: Color(hex: 0x2E6FBD),
+        scanAccGlow: Color(hex: 0x2E6FBD, opacity: 0.7),
+        scanAccSoft: Color(hex: 0x2E6FBD, opacity: 0.15),
+        scanInk: Color(hex: 0x1F3A5C),
+        glowBrand: Color(hex: 0x2E6FBD, opacity: 0.28),
+        glowAmber: Color(hex: 0xDFA32B, opacity: 0.32),
+        glowCoral: Color(hex: 0xE5484D, opacity: 0.34),
         shadowTint: Color(hex: 0x000000)
     )
 
@@ -404,10 +404,10 @@ struct PinchPalette: Equatable {
     // MARK: - Shadows (CSS blur ≈ 2 × SwiftUI radius)
 
     var cardShadow1: (color: Color, radius: CGFloat, y: CGFloat) {
-        isDark ? (Color.black.opacity(0.35), 2, 2) : (shadowTint.opacity(0.05), 1, 1)
+        isDark ? (Color.black.opacity(0.30), 3, 2) : (shadowTint.opacity(0.05), 2, 1)
     }
     var cardShadow2: (color: Color, radius: CGFloat, y: CGFloat) {
-        isDark ? (Color.black.opacity(0.5), 22, 18) : (shadowTint.opacity(0.10), 17, 14)
+        isDark ? (Color.black.opacity(0.42), 10, 7) : (shadowTint.opacity(0.10), 8, 5)
     }
     var segShadow: (color: Color, radius: CGFloat, y: CGFloat) {
         isDark ? (Color.black.opacity(0.5), 1.5, 1) : (shadowTint.opacity(0.14), 1.5, 1)

@@ -77,8 +77,8 @@ enum PinchDefaults {
     static let obDiet = "obDiet"
 
     static let customGoalDefault = 2000
-    static let customGoalRange = 500...4000
-    static let customGoalStep = 50
+    static let customGoalRange = 800...3000
+    static let customGoalStep = 100
 }
 
 /// Aggregations for one calendar day.

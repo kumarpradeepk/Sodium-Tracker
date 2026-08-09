@@ -255,7 +255,7 @@ struct TrendsScreen: View {
 
         return VStack(spacing: 10) {
             HStack(spacing: 10) {
-                StatCard(value: PinchFormat.mg(week.average), caption: "avg mg / day")
+                StatCard(value: PinchFormat.mg(week.average), caption: "average mg per day")
                 StatCard(
                     value: deltaLabel,
                     caption: "this week vs last",
@@ -503,7 +503,7 @@ struct TrendsScreen: View {
         let over = totals.filter { $0 > goal }.count
 
         return HStack(spacing: 10) {
-            StatCard(value: PinchFormat.mg(avg), caption: "avg mg / day", valueSize: 20)
+            StatCard(value: PinchFormat.mg(avg), caption: "average mg per day", valueSize: 20)
             StatCard(value: "\(under) of \(totals.count)", caption: "days under", valueSize: 20)
             StatCard(value: "\(over)", caption: "salty days", valueColor: p.coral, valueSize: 20)
         }
