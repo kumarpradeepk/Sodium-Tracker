@@ -13,6 +13,7 @@ struct TodayScreen: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
@@ -21,6 +22,28 @@ struct TodayScreen: View {
 
     @Query(sort: \LogEntry.loggedAt) private var entries: [LogEntry]
     @Query private var customFoods: [CustomFood]
+
+    @State private var displayedConsumed = 0.0
+    @State private var revealBubble = false
+    @State private var revealCards = false
+    @State private var revealQuickHeader = false
+    @State private var revealChips = false
+    @State private var ringPulse: CGFloat = 1
+    @State private var mascotHop: CGFloat = 0
+    @State private var mascotTilt = 0.0
+    @State private var mascotWaving = false
+    @State private var mascotReaction = PinchMascot.Reaction.none
+    @State private var bellSwing = 0.0
+    @State private var bellDotDismissed = false
+    @State private var streakBurst = false
+    @State private var ringBurst = false
+    @State private var lastAddedEntry: LogEntry?
+    @State private var ringCenter = CGPoint.zero
+    @State private var chipCenters: [String: CGPoint] = [:]
+    @State private var flight: SodiumFlight?
+    @State private var flightProgress: CGFloat = 0
+    @State private var dayTransitionOffset: CGFloat = 0
+    @State private var dayTransitionOpacity = 1.0
 
     private var goal: Int {
         (GoalChoice(rawValue: goalChoiceRaw) ?? .fda).milligrams(custom: customGoal)
@@ -36,13 +59,36 @@ struct TodayScreen: View {
     private var consumed: Int { dayEntries.reduce(0) { $0 + $1.totalMg } }
     private var pct: Double { goal > 0 ? Double(consumed) / Double(goal) * 100 : 0 }
     private var remain: Int { goal - consumed }
-    private var mood: Mood { Mood.forPercent(pct) }
+    private var mood: Mood {
+        if remain < 0 { return .over }
+        if remain < 150 { return .wary }
+        return pct < 40 ? .fresh : .ok
+    }
 
     private var streak: Int { DayEngine.streak(entries) }
 
     private var bubbleLine: String {
-        if isToday { return mood.line }
+        if isToday {
+            if consumed == 0 {
+                return "Fresh page — plenty of room today."
+            }
+            if remain < 0 {
+                return "\(PinchFormat.mg(-remain)) mg over budget. Ease up tonight — tomorrow resets."
+            }
+            if remain < 150 {
+                return "\(PinchFormat.mg(remain)) mg left — a light bite still fits."
+            }
+            let fits = usualFoods.filter { $0.mg <= remain }.count
+            if fits == 0 {
+                return "\(PinchFormat.mg(remain)) mg left — under every usual pick. Go fresh for dinner."
+            }
+            return "\(PinchFormat.mg(remain)) mg left — \(fits) of your usual picks fit."
+        }
         return Mood.pastLine(empty: dayEntries.isEmpty, over: remain < 0)
+    }
+
+    private var usualFoods: [FoodItem] {
+        UsualSuspects.ids.compactMap { FoodItem.builtIn($0) }
     }
 
     var body: some View {
@@ -50,55 +96,77 @@ struct TodayScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 headerRow
                 titleRow
+                    .padding(.top, 10)
                 ringBlock
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 6)
+                    .padding(.top, 8)
 
                 if chatty {
                     speechBubble
                         .frame(maxWidth: .infinity)
-                        .padding(.top, 24)
+                        .padding(.top, 10)
+                        .opacity(revealBubble ? 1 : 0)
+                        .offset(y: revealBubble ? 0 : 12)
+                        .scaleEffect(revealBubble ? 1 : 0.96)
                 }
 
                 statDuo
-                    .padding(.top, 18)
+                    .padding(.top, 16)
+                    .opacity(revealCards ? 1 : 0)
+                    .offset(y: revealCards ? 0 : 14)
+                    .scaleEffect(revealCards ? 1 : 0.96)
 
-                SectionKicker(text: "USUAL SUSPECTS")
-                    .padding(.top, 22)
-                    .padding(.bottom, 10)
+                quickHeader
+                    .padding(.top, 24)
+                    .padding(.bottom, 12)
+                    .opacity(revealQuickHeader ? 1 : 0)
+                    .offset(y: revealQuickHeader ? 0 : 10)
                 quickChips
-
-                SectionKicker(text: isToday ? "LOGGED TODAY" : "LOGGED THIS DAY")
-                    .padding(.top, 20)
-                    .padding(.bottom, 10)
-                loggedList
+                    .opacity(revealChips ? 1 : 0)
+                    .offset(y: revealChips ? 0 : 12)
+                    .scaleEffect(revealChips ? 1 : 0.97)
             }
             .padding(.horizontal, 20)
             .padding(.top, 8)
             .padding(.bottom, 150)
+            .offset(x: dayTransitionOffset)
+            .opacity(dayTransitionOpacity)
         }
         .scrollIndicators(.hidden)
+        .coordinateSpace(name: "todayStage")
+        .onPreferenceChange(RingCenterPreferenceKey.self) { ringCenter = $0 }
+        .onPreferenceChange(ChipCentersPreferenceKey.self) { chipCenters = $0 }
+        .overlay(alignment: .topLeading) { flightOverlay }
+        .background(p.bg.ignoresSafeArea())
+        .task { await stageEntrance() }
+        .task(id: ui.quickAddRequest?.id) {
+            guard let request = ui.quickAddRequest else { return }
+            await receiveQuickAdd(request)
+        }
+        .onChange(of: consumed) { oldValue, newValue in
+            animateConsumption(from: oldValue, to: newValue)
+        }
     }
 
     // MARK: - Header
 
     private var headerRow: some View {
         HStack {
-            HStack(spacing: 2) {
+            HStack(spacing: 4) {
                 ChevronButton(
                     direction: .leading,
                     enabled: ui.selOffset > UIState.minOffset,
                     filled: false,
-                    size: 28
+                    size: 30
                 ) {
-                    ui.selOffset = max(UIState.minOffset, ui.selOffset - 1)
+                    changeDay(to: max(UIState.minOffset, ui.selOffset - 1))
                 }
                 Button {
                     ui.calOpen = true
                 } label: {
                     Text(PinchFormat.kicker(day))
-                        .pinchBody(11, .bold, tracking: 0.14)
-                        .foregroundStyle(p.ink3)
+                        .pinchBody(13.5, .heavy, tracking: 0.14)
+                        .foregroundStyle(p.ink2)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 3)
                 }
@@ -107,9 +175,9 @@ struct TodayScreen: View {
                     direction: .trailing,
                     enabled: ui.selOffset < 0,
                     filled: false,
-                    size: 28
+                    size: 30
                 ) {
-                    ui.selOffset = min(0, ui.selOffset + 1)
+                    changeDay(to: min(0, ui.selOffset + 1))
                 }
             }
             .padding(.leading, -6)
@@ -117,7 +185,7 @@ struct TodayScreen: View {
             Spacer()
 
             Button {
-                ui.notifCenterOpen = true
+                ringBell()
             } label: {
                 ZStack(alignment: .topTrailing) {
                     LineIcon(
@@ -125,20 +193,22 @@ struct TodayScreen: View {
                         size: 16,
                         color: p.ink2
                     )
-                    .frame(width: 32, height: 32)
-                    .background(Circle().fill(p.chip))
-                    .overlay(Circle().strokeBorder(p.line, lineWidth: 1))
+                    .frame(width: 46, height: 46)
+                    .rotationEffect(.degrees(bellSwing), anchor: .top)
+                    .background(Circle().fill(p.card))
+                    .overlay(Circle().strokeBorder(p.line.opacity(0.6), lineWidth: 1))
+                    .pinchSegShadow(p)
 
                     Circle()
                         .fill(p.coral)
-                        .frame(width: 7, height: 7)
+                        .frame(width: 8, height: 8)
                         .overlay(Circle().strokeBorder(p.bg, lineWidth: 1.5))
-                        .offset(x: -5, y: 5)
-                        .opacity(notif ? 1 : 0)
+                        .offset(x: -6, y: 6)
+                        .opacity(notif && !bellDotDismissed ? 1 : 0)
                 }
             }
             .buttonStyle(.pressScale(0.92))
-            .accessibilityLabel("Nudges")
+            .accessibilityLabel("Open meal check-ins and nudges")
         }
         .padding(.bottom, 2)
     }
@@ -146,118 +216,181 @@ struct TodayScreen: View {
     private var titleRow: some View {
         HStack(alignment: .top) {
             Text(PinchFormat.dayTitle(day))
-                .pinchDisplay(30, .bold)
+                .pinchDisplay(45, .heavy, tracking: -0.035)
                 .foregroundStyle(p.ink)
             Spacer()
-            HStack(spacing: 6) {
-                SVGShape("M10 1.5 L12.2 7.8 L18.5 10 L12.2 12.2 L10 18.5 L7.8 12.2 L1.5 10 L7.8 7.8 Z")
-                    .fill(p.amber)
-                    .frame(width: 13, height: 13)
-                Text("\(streak)-day streak")
-                    .pinchBody(12.5, .bold)
-                    .foregroundStyle(p.amber)
+            Button {
+                playStreakBurst()
+            } label: {
+                HStack(spacing: 7) {
+                    SVGShape("M10 1.5 L12.2 7.8 L18.5 10 L12.2 12.2 L10 18.5 L7.8 12.2 L1.5 10 L7.8 7.8 Z")
+                        .fill(p.amber)
+                        .frame(width: 15, height: 15)
+                    Text("\(streak)-day streak")
+                        .pinchBody(16, .bold)
+                        .foregroundStyle(p.amber)
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(Capsule().fill(p.amberSoft))
+                .scaleEffect(streakBurst ? 1.06 : 1)
+                .overlay { streakSparkles }
             }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 7)
-            .background(Capsule().fill(p.amberSoft))
-            .overlay(Capsule().strokeBorder(p.line, lineWidth: 1))
-            .padding(.top, 4)
+            .buttonStyle(.pressScale(0.96))
+            .accessibilityLabel("\(streak) day streak")
+            .padding(.top, 3)
         }
     }
 
     // MARK: - Ring + mascot
 
     private var ringBlock: some View {
-        ZStack(alignment: .top) {
-            ProgressRing(consumed: consumed, goal: goal, size: 250)
+        let size: CGFloat = 316
+        let radius: CGFloat = 134
+        let rawFraction = goal > 0 ? max(displayedConsumed / Double(goal), 0) : 0
+        let arcFraction = rawFraction > 1 ? min(rawFraction - 1, 1) : min(rawFraction, 1)
+        let visualRemain = goal - Int(displayedConsumed.rounded())
+        let radians = (-90 + (arcFraction * 360)) * Double.pi / 180
+        let mascotPoint = CGPoint(
+            x: size / 2 + radius * CGFloat(cos(radians)),
+            y: size / 2 + radius * CGFloat(sin(radians))
+        )
+
+        return ZStack {
+            ProgressRing(consumed: displayedConsumed, goal: goal, size: size, pulse: ringPulse)
 
             VStack(spacing: 0) {
-                Text(PinchFormat.mg(consumed))
-                    .font(PinchFonts.display(46, .heavy))
-                    .tracking(46 * -0.03)
+                AnimatedMilligramText(value: displayedConsumed)
+                    .font(PinchFonts.display(58, .heavy))
+                    .tracking(58 * -0.02)
                     .monospacedDigit()
                     .foregroundStyle(p.ink)
-                    .contentTransition(.numericText())
-                    .animation(.snappy, value: consumed)
 
                 Button {
-                    withAnimation(.easeOut(duration: 0.35)) { ui.tab = .settings }
+                    withAnimation(.interpolatingSpring(stiffness: 180, damping: 22)) {
+                        ui.selectTab(.settings)
+                    }
                 } label: {
                     Text("of \(PinchFormat.mg(goal)) mg")
-                        .pinchBody(13)
+                        .pinchBody(16, .medium)
                         .foregroundStyle(p.ink2)
                         .underline(true, pattern: .dot, color: p.ink3)
                 }
                 .buttonStyle(.plain)
-                .padding(.top, 4)
+                .padding(.top, 1)
 
-                Text(remain >= 0
-                     ? "\(PinchFormat.mg(remain)) mg left"
-                     : "over by \(PinchFormat.mg(-remain)) mg")
-                    .pinchBody(11.5, .bold)
-                    .foregroundStyle(p.remainColor(remain: remain, pct: pct))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 4)
-                    .background(Capsule().fill(p.chip))
-                    .padding(.top, 7)
+                Text(visualRemain >= 0
+                     ? "\(PinchFormat.mg(visualRemain)) mg left"
+                     : "\(PinchFormat.mg(-visualRemain)) mg over")
+                    .font(PinchFonts.body(19, .heavy))
+                    .foregroundStyle(visualRemain < 0 ? p.amber : p.remainColor(remain: visualRemain, pct: rawFraction * 100))
+                    .padding(.top, 9)
             }
-            .padding(.top, 62)
+            .offset(y: -2)
 
-            PinchMascot(variant: .hero(mood), width: 104)
-                .frame(maxHeight: .infinity, alignment: .bottom)
-                .offset(y: 12)
+            PinchMascot(
+                variant: .hero(mood),
+                width: 52,
+                energy: .full,
+                waving: mascotWaving,
+                reaction: mascotReaction
+            )
+                .rotationEffect(.degrees(mascotTilt))
+                .offset(y: mascotHop)
+                .position(mascotPoint)
+
+            ringSparkles
         }
-        .frame(width: 250, height: 250)
+        .frame(width: size, height: size)
+        .background {
+            GeometryReader { proxy in
+                let frame = proxy.frame(in: .named("todayStage"))
+                Color.clear.preference(
+                    key: RingCenterPreferenceKey.self,
+                    value: CGPoint(x: frame.midX, y: frame.midY)
+                )
+            }
+        }
     }
 
     private var speechBubble: some View {
-        ZStack(alignment: .top) {
-            Text(bubbleLine)
-                .pinchBody(13)
-                .foregroundStyle(p.ink2)
-                .multilineTextAlignment(.center)
-                .padding(EdgeInsets(top: 9, leading: 14, bottom: 9, trailing: 14))
-                .frame(maxWidth: 270)
-                .fixedSize(horizontal: true, vertical: true)
-                .background(
-                    RoundedRectangle(cornerRadius: 14, style: .continuous).fill(p.card)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .strokeBorder(p.line, lineWidth: 1)
-                )
-                .pinchSegShadow(p)
+        let radius: CGFloat = 134
+        let rawFraction = goal > 0 ? max(displayedConsumed / Double(goal), 0) : 0
+        let arcFraction = rawFraction > 1 ? min(rawFraction - 1, 1) : min(rawFraction, 1)
+        let radians = (-90 + (arcFraction * 360)) * Double.pi / 180
+        let tailOffset = min(max(radius * CGFloat(cos(radians)), -132), 132)
 
+        return ZStack(alignment: .top) {
             Rectangle()
                 .fill(p.card)
-                .frame(width: 9, height: 9)
+                .frame(width: 13, height: 13)
                 .rotationEffect(.degrees(45))
-                .overlay(
-                    Rectangle()
-                        .strokeBorder(p.line, lineWidth: 1)
-                        .rotationEffect(.degrees(45))
-                        .mask(alignment: .top) { Rectangle().frame(height: 7) }
-                )
-                .offset(y: -4.5)
+                .offset(x: tailOffset)
+                .offset(y: -6)
+
+            HStack(spacing: 12) {
+                Text(bubbleLine)
+                    .pinchBody(15.5, .medium)
+                    .foregroundStyle(p.ink2)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(2)
+                    .frame(maxWidth: .infinity)
+
+                if lastAddedEntry != nil, isToday {
+                    Button("Undo") { undoLastAdd() }
+                        .pinchBody(13, .bold)
+                        .foregroundStyle(p.brand)
+                        .buttonStyle(.pressScale(0.94))
+                }
+            }
+            .padding(.horizontal, 20)
+            .frame(maxWidth: .infinity)
+            .frame(minHeight: 72)
+            .background(
+                RoundedRectangle(cornerRadius: 20, style: .continuous).fill(p.card)
+            )
+            .shadow(color: p.shadowTint.opacity(p.isDark ? 0.22 : 0.05), radius: 8, y: 4)
         }
     }
 
     // MARK: - Stats
 
     private var statDuo: some View {
-        HStack(spacing: 10) {
-            StatCard(
+        HStack(spacing: 12) {
+            todayStatCard(
                 value: remain >= 0 ? PinchFormat.mg(remain) : "−\(PinchFormat.mg(-remain))",
                 caption: remain >= 0
                     ? (isToday ? "mg left today" : "mg was left over")
                     : "mg over budget",
-                valueColor: p.remainColor(remain: remain, pct: pct)
+                valueColor: remain < 0 ? p.amber : p.remainColor(remain: remain, pct: pct)
             )
-            StatCard(
+            todayStatCard(
                 value: "\(underCountThisWeek) of 7",
                 caption: "days under budget this week"
             )
         }
+    }
+
+    private func todayStatCard(value: String, caption: String, valueColor: Color? = nil) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(value)
+                .font(PinchFonts.display(34, .bold))
+                .monospacedDigit()
+                .foregroundStyle(valueColor ?? p.ink)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+            Text(caption)
+                .pinchBody(15)
+                .foregroundStyle(p.ink2)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, minHeight: 108, alignment: .leading)
+        .padding(.horizontal, 20)
+        .background(
+            RoundedRectangle(cornerRadius: 22, style: .continuous).fill(p.card)
+        )
+        .accessibilityElement(children: .combine)
     }
 
     private var underCountThisWeek: Int {
@@ -266,34 +399,62 @@ struct TodayScreen: View {
 
     // MARK: - Quick chips
 
+    private var quickHeader: some View {
+        HStack(alignment: .firstTextBaseline) {
+            SectionKicker(text: "USUAL SUSPECTS")
+            Spacer()
+            Text("vs. \(PinchFormat.mg(max(0, remain))) mg left")
+                .pinchBody(13.5, .semibold)
+                .foregroundStyle(p.ink3.opacity(0.68))
+        }
+    }
+
     private var quickChips: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 8) {
                 ForEach(UsualSuspects.ids, id: \.self) { id in
                     if let food = FoodItem.builtIn(id) {
+                        let fits = remain >= food.mg
                         Button {
                             quickAdd(food)
                         } label: {
                             HStack(spacing: 7) {
                                 Text("+")
-                                    .pinchBody(13, .bold)
+                                    .pinchBody(16, .bold)
                                     .foregroundStyle(p.brand)
-                                    .frame(width: 18, height: 18)
+                                    .frame(width: 26, height: 26)
                                     .background(Circle().fill(p.brandSoft))
                                 Text(food.name)
-                                    .pinchBody(13, .semibold)
+                                    .pinchBody(16, .bold)
                                     .foregroundStyle(p.ink)
+                                    .lineLimit(1)
                                 Text(PinchFormat.mg(food.mg))
-                                    .pinchBody(11.5, .semibold)
+                                    .pinchBody(15, .semibold)
                                     .monospacedDigit()
-                                    .foregroundStyle(p.ink3)
+                                    .foregroundStyle(fits ? p.brand : p.amber)
+                                Text(fits ? "FITS" : "WON’T FIT")
+                                        .pinchBody(10.5, .bold, tracking: 0.08)
+                                        .foregroundStyle(fits ? p.brand : p.amber)
+                                        .padding(.horizontal, 9)
+                                        .padding(.vertical, 5)
+                                        .background(Capsule().fill(fits ? p.brandSoft : p.amberSoft))
                             }
-                            .padding(EdgeInsets(top: 9, leading: 11, bottom: 9, trailing: 14))
+                            .padding(EdgeInsets(top: 8, leading: 9, bottom: 8, trailing: 14))
                             .background(Capsule().fill(p.card))
-                            .overlay(Capsule().strokeBorder(p.line, lineWidth: 1))
-                            .pinchSegShadow(p)
+                            .shadow(color: p.shadowTint.opacity(p.isDark ? 0.24 : 0.06), radius: 8, y: 4)
                         }
                         .buttonStyle(.pressScale)
+                        .disabled(flight != nil)
+                        .background {
+                            GeometryReader { proxy in
+                                let frame = proxy.frame(in: .named("todayStage"))
+                                Color.clear.preference(
+                                    key: ChipCentersPreferenceKey.self,
+                                    value: [food.id: CGPoint(x: frame.midX, y: frame.midY)]
+                                )
+                            }
+                        }
+                        .accessibilityLabel("\(food.name), \(PinchFormat.mg(food.mg)) milligrams. \(fits ? "Fits in today’s remaining budget" : "Does not fit in today’s remaining budget"). Add to log")
                     }
                 }
             }
@@ -306,10 +467,89 @@ struct TodayScreen: View {
     }
 
     private func quickAdd(_ food: FoodItem) {
-        let meal = Meal.auto()
-        let stamp = timestamp(for: day)
-        modelContext.insert(LogEntry(foodID: food.id, servings: 1, meal: meal, loggedAt: stamp))
+        guard flight == nil else { return }
+
+        let source = chipCenters[food.id] ?? CGPoint(x: ringCenter.x, y: ringCenter.y + 170)
+        flight = SodiumFlight(
+            title: "+\(PinchFormat.mg(food.mg)) mg",
+            source: source,
+            destination: ringCenter
+        )
+        flightProgress = 0
+
+        if reduceMotion {
+            completeQuickAdd(food)
+        } else {
+            withAnimation(.easeInOut(duration: 0.62)) { flightProgress = 1 }
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(620))
+                completeQuickAdd(food)
+            }
+        }
+    }
+
+    @MainActor private func completeQuickAdd(_ food: FoodItem) {
+        let wasOver = consumed > goal
+        let willBeOver = consumed + food.mg > goal
+        let entry = LogEntry(
+            foodID: food.id,
+            servings: 1,
+            meal: Meal.auto(),
+            loggedAt: timestamp(for: day)
+        )
+        modelContext.insert(entry)
+        lastAddedEntry = entry
+        flight = nil
+        flightProgress = 0
+        playMascotReaction(wasOver: wasOver, willBeOver: willBeOver)
         ui.showToast("\(food.name) · \(PinchFormat.mg(food.mg)) mg", ToastCopy.line(forAdded: food.mg))
+    }
+
+    @MainActor private func receiveQuickAdd(_ request: QuickAddRequest) async {
+        // The menu closes and the Today tab settles before the pill launches,
+        // matching the 340 ms tab handoff in the showcase prototype.
+        if !reduceMotion {
+            try? await Task.sleep(for: .milliseconds(340))
+            guard !Task.isCancelled else { return }
+        }
+
+        let source = CGPoint(
+            x: ringCenter.x,
+            y: ringCenter.y + 305
+        )
+        flight = SodiumFlight(
+            title: "+\(PinchFormat.mg(request.milligrams)) mg",
+            source: source,
+            destination: ringCenter
+        )
+        flightProgress = 0
+
+        if !reduceMotion {
+            withAnimation(.easeInOut(duration: 0.62)) { flightProgress = 1 }
+            try? await Task.sleep(for: .milliseconds(620))
+            guard !Task.isCancelled else { return }
+        }
+
+        let wasOver = consumed > goal
+        let willBeOver = consumed + request.milligrams > goal
+        let entry = LogEntry(
+            adhocName: request.name,
+            adhocMg: request.milligrams,
+            adhocServing: "1 serving",
+            servings: 1,
+            meal: Meal.auto(),
+            loggedAt: .now
+        )
+        modelContext.insert(entry)
+        lastAddedEntry = entry
+        flight = nil
+        flightProgress = 0
+        ui.quickAddRequest = nil
+        playMascotReaction(wasOver: wasOver, willBeOver: willBeOver)
+        ui.showToast(
+            "\(request.name) · \(PinchFormat.mg(request.milligrams)) mg",
+            ToastCopy.line(forAdded: request.milligrams)
+        )
     }
 
     // MARK: - Logged list
@@ -383,7 +623,7 @@ struct TodayScreen: View {
                     .background(Circle().fill(p.brandSoft))
             }
             .buttonStyle(.pressScale(0.85))
-            .accessibilityLabel("Log \(resolved.name) again today")
+            .accessibilityLabel(isToday ? "Log \(resolved.name) again today" : "Log \(resolved.name) again on this day")
 
             Button {
                 withAnimation(.easeOut(duration: 0.25)) {
@@ -397,7 +637,7 @@ struct TodayScreen: View {
                     .background(Circle().fill(.clear))
             }
             .buttonStyle(.pressScale(0.85))
-            .accessibilityLabel("Remove \(resolved.name)")
+            .accessibilityLabel("Remove \(resolved.name) from this day")
         }
         .padding(EdgeInsets(top: 9, leading: 16, bottom: 9, trailing: 16))
         .overlay(alignment: .top) {
@@ -454,6 +694,306 @@ struct TodayScreen: View {
             RoundedRectangle(cornerRadius: 18, style: .continuous)
                 .strokeBorder(p.grain, style: StrokeStyle(lineWidth: 1, dash: [4, 4]))
         )
+    }
+
+    // MARK: - Motion and feedback
+
+    @ViewBuilder private var flightOverlay: some View {
+        if let flight {
+            FlyingSodiumPill(flight: flight, progress: flightProgress)
+                .allowsHitTesting(false)
+                .zIndex(20)
+        }
+    }
+
+    @ViewBuilder private var streakSparkles: some View {
+        ForEach(0..<5, id: \.self) { index in
+            SVGShape("M10 1.5 L12.2 7.8 L18.5 10 L12.2 12.2 L10 18.5 L7.8 12.2 L1.5 10 L7.8 7.8 Z")
+                .fill(index.isMultiple(of: 2) ? p.amber : p.brand)
+                .frame(width: 7, height: 7)
+                .scaleEffect(streakBurst ? 1 : 0.2)
+                .opacity(streakBurst ? 1 : 0)
+                .offset(
+                    x: CGFloat([-48, -22, 8, 35, 55][index]),
+                    y: CGFloat([-16, -29, -34, -25, -8][index])
+                )
+        }
+    }
+
+    @ViewBuilder private var ringSparkles: some View {
+        ForEach(0..<7, id: \.self) { index in
+            let angle = Double(index) / 7 * Double.pi * 2
+            let distance: CGFloat = ringBurst ? 62 : 10
+            Text("✦")
+                .font(.system(size: CGFloat(9 + (index % 3) * 2), weight: .bold))
+                .foregroundStyle(index.isMultiple(of: 2) ? p.amber : p.brand)
+                .offset(
+                    x: cos(angle) * distance,
+                    y: sin(angle) * distance + (ringBurst ? 12 : 0)
+                )
+                .rotationEffect(.degrees(ringBurst ? Double(index * 64) : 0))
+                .scaleEffect(ringBurst ? 1 : 0.2)
+                .opacity(ringBurst ? 0 : 1)
+        }
+        .allowsHitTesting(false)
+    }
+
+    @MainActor private func stageEntrance() async {
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            displayedConsumed = 0
+            revealBubble = false
+            revealCards = false
+            revealQuickHeader = false
+            revealChips = false
+            lastAddedEntry = nil
+        }
+
+        if reduceMotion {
+            displayedConsumed = Double(consumed)
+            revealBubble = true
+            revealCards = true
+            revealQuickHeader = true
+            revealChips = true
+            return
+        }
+
+        try? await Task.sleep(for: .milliseconds(420))
+        guard !Task.isCancelled else { return }
+        mascotTilt = 14
+        withAnimation(.interpolatingSpring(mass: 1, stiffness: 40, damping: 8.5, initialVelocity: 0)) {
+            displayedConsumed = Double(consumed)
+        }
+        withAnimation(.interpolatingSpring(stiffness: 120, damping: 11)) {
+            mascotTilt = 0
+        }
+
+        try? await Task.sleep(for: .milliseconds(530))
+        guard !Task.isCancelled else { return }
+        withAnimation(.interpolatingSpring(stiffness: 180, damping: 19)) {
+            revealBubble = true
+        }
+
+        try? await Task.sleep(for: .milliseconds(200))
+        guard !Task.isCancelled else { return }
+        withAnimation(.interpolatingSpring(stiffness: 180, damping: 19)) {
+            revealCards = true
+        }
+
+        try? await Task.sleep(for: .milliseconds(150))
+        guard !Task.isCancelled else { return }
+        withAnimation(.interpolatingSpring(stiffness: 190, damping: 20)) {
+            revealQuickHeader = true
+        }
+
+        try? await Task.sleep(for: .milliseconds(80))
+        guard !Task.isCancelled else { return }
+        withAnimation(.interpolatingSpring(stiffness: 190, damping: 20)) {
+            revealChips = true
+        }
+
+        try? await Task.sleep(for: .milliseconds(520))
+        guard !Task.isCancelled else { return }
+        playMascotReaction(wasOver: false, willBeOver: remain < 0)
+    }
+
+    private func animateConsumption(from oldValue: Int, to newValue: Int) {
+        guard oldValue != newValue else { return }
+        if reduceMotion {
+            displayedConsumed = Double(newValue)
+            return
+        }
+        mascotTilt = newValue > oldValue ? 12 : -12
+        withAnimation(.interpolatingSpring(mass: 1, stiffness: 40, damping: 8.5, initialVelocity: 0)) {
+            displayedConsumed = Double(newValue)
+        }
+        withAnimation(.interpolatingSpring(stiffness: 120, damping: 11).delay(0.08)) {
+            mascotTilt = 0
+        }
+    }
+
+    private func playMascotReaction(wasOver: Bool, willBeOver: Bool) {
+        guard !reduceMotion else { return }
+        mascotReaction = willBeOver ? .shock : .joy
+        mascotWaving = !willBeOver
+
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            ringPulse = 1.045
+            mascotHop = willBeOver ? -8 : -14
+            mascotTilt = willBeOver ? 14 : -10
+        }
+        withAnimation(.interpolatingSpring(stiffness: 160, damping: 10)) {
+            ringPulse = 1
+            mascotHop = 0
+            mascotTilt = 0
+        }
+
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(1_000))
+            mascotWaving = false
+            try? await Task.sleep(for: .milliseconds(willBeOver ? 600 : 700))
+            withAnimation(.easeInOut(duration: 0.28)) { mascotReaction = .none }
+        }
+    }
+
+    private func undoLastAdd() {
+        guard let entry = lastAddedEntry else { return }
+        let amount = EntryResolver.resolve(entry, customFoods: customFoods).totalMg
+        let returnsUnder = consumed > goal && consumed - amount <= goal
+        withAnimation(.interpolatingSpring(stiffness: 180, damping: 20)) {
+            modelContext.delete(entry)
+            lastAddedEntry = nil
+            if returnsUnder { streakBurst = true }
+        }
+        if returnsUnder {
+            ringBurst = false
+            withAnimation(.easeOut(duration: 0.85)) { ringBurst = true }
+            playMascotReaction(wasOver: true, willBeOver: false)
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(900))
+                var transaction = Transaction()
+                transaction.disablesAnimations = true
+                withTransaction(transaction) { ringBurst = false }
+            }
+        }
+        ui.showToast("Entry removed", "Back to the number before that add.")
+    }
+
+    private func changeDay(to offset: Int) {
+        guard offset != ui.selOffset else { return }
+        lastAddedEntry = nil
+        guard !reduceMotion else {
+            ui.selOffset = offset
+            return
+        }
+        let direction: CGFloat = offset > ui.selOffset ? 1 : -1
+        withAnimation(.easeInOut(duration: 0.16)) {
+            dayTransitionOffset = -direction * 38
+            dayTransitionOpacity = 0.35
+        }
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(160))
+            var transaction = Transaction()
+            transaction.disablesAnimations = true
+            withTransaction(transaction) {
+                ui.selOffset = offset
+                dayTransitionOffset = direction * 38
+            }
+            withAnimation(.interpolatingSpring(stiffness: 180, damping: 22)) {
+                dayTransitionOffset = 0
+                dayTransitionOpacity = 1
+            }
+        }
+    }
+
+    private func ringBell() {
+        guard !reduceMotion else {
+            ui.notifCenterOpen = true
+            return
+        }
+        bellDotDismissed.toggle()
+        playMascotReaction(wasOver: false, willBeOver: false)
+        withAnimation(.easeInOut(duration: 0.10)) { bellSwing = 16 }
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(110))
+            withAnimation(.easeInOut(duration: 0.11)) { bellSwing = -13 }
+            try? await Task.sleep(for: .milliseconds(120))
+            withAnimation(.easeInOut(duration: 0.10)) { bellSwing = 9 }
+            try? await Task.sleep(for: .milliseconds(110))
+            withAnimation(.easeInOut(duration: 0.10)) { bellSwing = -6 }
+            try? await Task.sleep(for: .milliseconds(110))
+            withAnimation(.easeInOut(duration: 0.12)) { bellSwing = 0 }
+            try? await Task.sleep(for: .milliseconds(100))
+            ui.notifCenterOpen = true
+        }
+    }
+
+    private func playStreakBurst() {
+        guard !reduceMotion else { return }
+        playMascotReaction(wasOver: false, willBeOver: false)
+        streakBurst = false
+        withAnimation(.easeOut(duration: 0.58)) { streakBurst = true }
+        Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(620))
+            var transaction = Transaction()
+            transaction.disablesAnimations = true
+            withTransaction(transaction) { streakBurst = false }
+        }
+    }
+}
+
+private struct SodiumFlight: Equatable {
+    let id = UUID()
+    let title: String
+    let source: CGPoint
+    let destination: CGPoint
+}
+
+private struct FlyingSodiumPill: View, Animatable {
+    @Environment(\.pinch) private var p
+    let flight: SodiumFlight
+    var progress: CGFloat
+
+    var animatableData: CGFloat {
+        get { progress }
+        set { progress = newValue }
+    }
+
+    var body: some View {
+        let control = CGPoint(
+            x: (flight.source.x + flight.destination.x) / 2,
+            y: min(flight.source.y, flight.destination.y) - 92
+        )
+        let point = quadraticPoint(from: flight.source, control: control, to: flight.destination, t: progress)
+        let fade = progress < 0.76 ? 1 : max(0, 1 - Double((progress - 0.76) / 0.24))
+
+        Text(flight.title)
+            .pinchBody(13, .bold)
+            .monospacedDigit()
+            .foregroundStyle(p.onBrand)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 7)
+            .background(Capsule().fill(p.brand))
+            .shadow(color: p.glowBrand, radius: 7, y: 3)
+            .position(point)
+            .scaleEffect(1 - progress * 0.18)
+            .opacity(fade)
+    }
+
+    private func quadraticPoint(from: CGPoint, control: CGPoint, to: CGPoint, t: CGFloat) -> CGPoint {
+        let inverse = 1 - t
+        return CGPoint(
+            x: inverse * inverse * from.x + 2 * inverse * t * control.x + t * t * to.x,
+            y: inverse * inverse * from.y + 2 * inverse * t * control.y + t * t * to.y
+        )
+    }
+}
+
+private struct AnimatedMilligramText: View, Animatable {
+    var value: Double
+
+    var animatableData: Double {
+        get { value }
+        set { value = newValue }
+    }
+
+    var body: some View {
+        Text(PinchFormat.mg(Int(value.rounded())))
+    }
+}
+
+private struct RingCenterPreferenceKey: PreferenceKey {
+    static var defaultValue = CGPoint.zero
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) { value = nextValue() }
+}
+
+private struct ChipCentersPreferenceKey: PreferenceKey {
+    static var defaultValue: [String: CGPoint] = [:]
+    static func reduce(value: inout [String: CGPoint], nextValue: () -> [String: CGPoint]) {
+        value.merge(nextValue(), uniquingKeysWith: { _, new in new })
     }
 }
 

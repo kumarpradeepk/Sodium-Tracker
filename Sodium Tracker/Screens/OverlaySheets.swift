@@ -265,7 +265,7 @@ struct NudgesSheet: View {
                 tileColor: p.brand,
                 tile: AnyView(PinchGlyph(width: 13)),
                 time: "Yesterday 6:30 PM",
-                body: "Dinner check-in — \(PinchFormat.mg(max(0, yesterdayRemain))) mg still in the budget. Soup counts, I'm watching."
+                body: "Dinner check-in — \(PinchFormat.mg(max(0, yesterdayRemain))) mg still in the budget. Soup counts, I’m keeping track."
             )
             recentCard(
                 tileColor: p.amber,
@@ -380,7 +380,7 @@ struct PaywallSheet: View {
                         .padding(.top, 4)
 
                     VStack(alignment: .leading, spacing: 8) {
-                        perk("4-week trends & the salt calendar")
+                        perk("Four-week trends and the salt calendar")
                         perk("Your shelf — unlimited custom foods")
                         perk("CSV export — every logged entry")
                     }
@@ -422,7 +422,7 @@ struct PaywallSheet: View {
                     }
 
                     HStack(spacing: 7) {
-                        Button("Restore purchase") {
+                        Button("Restore purchases") {
                             Task { await subscriptions.restore() }
                         }
                         Text("·")
@@ -491,7 +491,7 @@ struct PaywallSheet: View {
             return subscriptions.isLoading ? "Loading price…" : "Currently unavailable"
         }
         let cadence = plan == .yearly ? "year" : "month"
-        return "\(product.displayPrice) / \(cadence) · cancel anytime"
+        return "\(product.displayPrice) per \(cadence) · Cancel anytime"
     }
 
     private func continueTapped() {

@@ -145,7 +145,7 @@ struct SettingsScreen: View {
                 Button {
                     ui.payOpen = true
                 } label: {
-                    Text(subscriptions.isPremium ? "Manage plan" : "See what's inside")
+                    Text(subscriptions.isPremium ? "Manage plan" : "See what’s inside")
                         .pinchBody(12, .bold)
                         .foregroundStyle(p.brand)
                         .padding(.horizontal, 13)
@@ -180,7 +180,7 @@ struct SettingsScreen: View {
                         .foregroundStyle(p.ink)
                         .contentTransition(.numericText())
                         .animation(.snappy, value: goal)
-                    Text("mg / day")
+                    Text("mg per day")
                         .pinchBody(13)
                         .foregroundStyle(p.ink3)
                 }
@@ -204,7 +204,7 @@ struct SettingsScreen: View {
                         Slider(
                             value: Binding(
                                 get: { Double(customGoal) },
-                                set: { customGoal = Int($0 / 50) * 50 }
+                                set: { customGoal = Int($0 / Double(PinchDefaults.customGoalStep)) * PinchDefaults.customGoalStep }
                             ),
                             in: Double(PinchDefaults.customGoalRange.lowerBound)...Double(PinchDefaults.customGoalRange.upperBound)
                         )
@@ -290,7 +290,7 @@ struct SettingsScreen: View {
         PinchCard {
             VStack(spacing: 0) {
                 toggleRow(
-                    title: "Pinch's chatter",
+                    title: "Pinch’s chatter",
                     sub: "Little encouragements under the ring",
                     isOn: $chatty,
                     tile: SettingsIconTile(color: SettingsTileColors.chatter, glyph: .bubble),
@@ -379,7 +379,7 @@ struct SettingsScreen: View {
                         .pinchBody(10.5)
                         .foregroundStyle(p.ink3)
                 }
-                Text("Dinner check-in — \(PinchFormat.mg(max(0, todayRemain))) mg still in the budget. You've got this.")
+                Text("Dinner check-in — \(PinchFormat.mg(max(0, todayRemain))) mg still in the budget. You’ve got this.")
                     .pinchBody(12)
                     .foregroundStyle(p.ink2)
                     .lineSpacing(3)

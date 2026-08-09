@@ -10,7 +10,9 @@ import SwiftUI
 
 struct DockBar: View {
     @Environment(\.pinch) private var p
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Binding var tab: PinchTab
+    var isAddOpen = false
     let onAdd: () -> Void
 
     // v2 icon geometry: 20-unit viewBox rendered at 24pt.
@@ -45,6 +47,8 @@ struct DockBar: View {
                 SVGShape("M10 3.5 V16.5 M3.5 10 H16.5")
                     .stroke(p.onBrand, style: StrokeStyle(lineWidth: 2.6 * 25 / 20, lineCap: .round))
                     .frame(width: 25, height: 25)
+                    .rotationEffect(.degrees(isAddOpen ? 45 : 0))
+                    .animation(reduceMotion ? nil : .interpolatingSpring(stiffness: 220, damping: 18), value: isAddOpen)
                     .frame(width: 64, height: 64)
                     .background(Circle().fill(p.brand))
                     .shadow(color: p.brand.opacity(0.55), radius: 11, y: 6)
@@ -105,6 +109,8 @@ struct DockBar: View {
         } label: {
             VStack(spacing: 4) {
                 icon(color)
+                    .scaleEffect(active ? 1.08 : 1)
+                    .animation(reduceMotion ? nil : .interpolatingSpring(stiffness: 260, damping: 18), value: active)
                 Text(label)
                     .pinchBody(11, .heavy, tracking: 0.01)
                     .foregroundStyle(color)

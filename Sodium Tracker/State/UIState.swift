@@ -11,6 +11,8 @@ import Observation
 
 enum PinchTab: String, CaseIterable {
     case today, trends, awards, settings
+
+    var order: Int { Self.allCases.firstIndex(of: self) ?? 0 }
 }
 
 enum TrendsMode { case week, month }
@@ -22,10 +24,20 @@ struct PinchToast: Identifiable, Equatable {
     let sub: String
 }
 
+/// A one-tap add launched from the floating FAB menu. TodayScreen consumes the
+/// request only after its amount pill has completed the showcase flight into
+/// the progress ring.
+struct QuickAddRequest: Identifiable, Equatable {
+    let id = UUID()
+    let name: String
+    let milligrams: Int
+}
+
 @Observable
 final class UIState {
     // MARK: Navigation
     var tab: PinchTab = .today
+    var tabDirection: CGFloat = 1
     var selOffset = 0                 // 0 = today, negative = days back (≥ -13)
     var trMode: TrendsMode = .week
     var weekSel = 0                   // 0 = this week, 1 = last week
@@ -34,6 +46,8 @@ final class UIState {
 
     // MARK: Log sheet
     var logOpen = false
+    var quickAddOpen = false
+    var quickAddRequest: QuickAddRequest?
     var search = ""
 
     // MARK: Portion sheet
@@ -86,6 +100,12 @@ final class UIState {
         toast = PinchToast(title: title, sub: sub)
     }
 
+    func selectTab(_ target: PinchTab) {
+        guard target != tab else { return }
+        tabDirection = target.order >= tab.order ? 1 : -1
+        tab = target
+    }
+
     /// Opens the portion sheet for a food and counts the lookup (Label Sleuth).
     func pick(_ food: FoodItem) {
         picked = food
@@ -103,6 +123,7 @@ final class UIState {
     func closeAllSheets() {
         picked = nil
         logOpen = false
+        quickAddOpen = false
         qlOpen = false
         cfOpen = false
         calOpen = false

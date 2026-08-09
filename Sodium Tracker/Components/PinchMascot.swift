@@ -37,17 +37,9 @@ private enum MascotArt {
 
 // MARK: - Animation values
 
-private struct BobValue {
-    var y: CGFloat = 0
-}
-
 private struct TwinkleValue {
     var opacity: Double = 0.2
     var scale: CGFloat = 0.75
-}
-
-private struct BlinkValue {
-    var scaleY: CGFloat = 1
 }
 
 private struct DripValue {
@@ -67,14 +59,39 @@ struct PinchMascot: View {
         case toastMini      // toast avatar — static smile
     }
 
+    enum Energy: Equatable {
+        case full
+        case subtle
+    }
+
+    /// Short-lived expressions used by the Today choreography. The resting
+    /// expression still comes from `Mood`; these match the showcase's joy and
+    /// over-budget shock feature swaps.
+    enum Reaction: Equatable {
+        case none
+        case joy
+        case shock
+    }
+
+    private struct WaveValue {
+        var angle = -58.0
+    }
+
     @Environment(\.pinch) private var p
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let variant: Variant
     var width: CGFloat = 104
+    var energy: Energy = .full
+    var waving = false
+    var reaction: Reaction = .none
+
+    @State private var blinkScaleY: CGFloat = 1
 
     private var height: CGFloat { width * MascotArt.viewBox.height / MascotArt.viewBox.width }
     private var s: CGFloat { width / MascotArt.viewBox.width }
 
     private var animated: Bool {
+        guard !reduceMotion else { return false }
         if case .toastMini = variant { return false }
         return true
     }
@@ -82,19 +99,27 @@ struct PinchMascot: View {
     var body: some View {
         Group {
             if animated {
-                KeyframeAnimator(initialValue: BobValue(), repeating: true) { value in
-                    core.offset(y: value.y)
-                } keyframes: { _ in
-                    KeyframeTrack(\.y) {
-                        CubicKeyframe(-4 * s, duration: 1.7)
-                        CubicKeyframe(0, duration: 1.7)
-                    }
+                TimelineView(.animation(minimumInterval: 1.0 / 60.0)) { timeline in
+                    let time = timeline.date.timeIntervalSinceReferenceDate
+                    let amplitude: CGFloat = energy == .full ? 1.6 : 0.8
+                    core.offset(y: CGFloat(sin(time * 2.2)) * amplitude)
                 }
             } else {
                 core
             }
         }
         .frame(width: width, height: height)
+        .task(id: animated) {
+            blinkScaleY = 1
+            guard animated else { return }
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .milliseconds(Int.random(in: 2_600...5_000)))
+                guard !Task.isCancelled else { return }
+                withAnimation(.easeInOut(duration: 0.08)) { blinkScaleY = 0.1 }
+                try? await Task.sleep(for: .milliseconds(80))
+                withAnimation(.easeInOut(duration: 0.08)) { blinkScaleY = 1 }
+            }
+        }
     }
 
     // MARK: composition
@@ -161,22 +186,27 @@ struct PinchMascot: View {
             circleDot(cx: 69, cy: 3, r: 2.6, color: p.amber)
         }
 
-        // Cap + holes + band
-        svg(low ? MascotArt.capLow : MascotArt.cap).fill(p.brand)
-        if !usesLowGeometry {
-            circleDot(cx: 52, cy: 21, r: 2.6, color: p.capHole)
-            circleDot(cx: 60, cy: 16.5, r: 2.6, color: p.capHole)
-            circleDot(cx: 68, cy: 21, r: 2.6, color: p.capHole)
+        // Cap + holes + band. Crossing the budget gives the cap the prototype
+        // spring pop while the face swaps to shock.
+        Group {
+            svg(low ? MascotArt.capLow : MascotArt.cap).fill(p.brand)
+            if !usesLowGeometry {
+                circleDot(cx: 52, cy: 21, r: 2.6, color: p.capHole)
+                circleDot(cx: 60, cy: 16.5, r: 2.6, color: p.capHole)
+                circleDot(cx: 68, cy: 21, r: 2.6, color: p.capHole)
+            }
+            RoundedRectangle(cornerRadius: 3.5 * s)
+                .fill(p.brandDeep)
+                .frame(width: 48 * s, height: 7 * s)
+                .position(x: 60 * s, y: (low ? 41.5 : 39.5) * s)
         }
-        RoundedRectangle(cornerRadius: 3.5 * s)
-            .fill(p.brandDeep)
-            .frame(width: 48 * s, height: 7 * s)
-            .position(x: 60 * s, y: (low ? 41.5 : 39.5) * s)
+        .offset(y: reaction == .shock ? -8 * s : 0)
+        .animation(.interpolatingSpring(stiffness: 200, damping: 12), value: reaction)
 
         // Arms (not on the party variant, matching the design)
         if !low {
             arm(cx: 30, cy: 84, rotation: 16)
-            arm(cx: 90, cy: 84, rotation: -16)
+            rightArm
         }
 
         // Body
@@ -195,16 +225,33 @@ struct PinchMascot: View {
         .position(x: cx * s, y: cy * s)
     }
 
+    @ViewBuilder private var rightArm: some View {
+        if animated && waving {
+            KeyframeAnimator(initialValue: WaveValue(), repeating: true) { value in
+                arm(cx: 90, cy: 84, rotation: value.angle)
+            } keyframes: { _ in
+                KeyframeTrack(\.angle) {
+                    CubicKeyframe(-86, duration: 0.12)
+                    CubicKeyframe(-30, duration: 0.12)
+                    CubicKeyframe(-86, duration: 0.12)
+                    CubicKeyframe(-58, duration: 0.12)
+                }
+            }
+        } else {
+            arm(cx: 90, cy: 84, rotation: -16)
+                .animation(.interpolatingSpring(stiffness: 120, damping: 11), value: waving)
+        }
+    }
+
     @ViewBuilder private var face: some View {
         let low = usesLowGeometry
         let eyeY: CGFloat = low ? 74 : 72
         let blushY: CGFloat = low ? 83 : 81
 
-        switch variant {
-        case .allSet:
+        if reaction == .joy {
             stroke(MascotArt.happyEyeLeft, width: 2.4)
             stroke(MascotArt.happyEyeRight, width: 2.4)
-        default:
+        } else {
             blinkingEyes(y: eyeY)
         }
 
@@ -217,41 +264,39 @@ struct PinchMascot: View {
             .position(x: 79 * s, y: blushY * s)
 
         // Brows + mouth by variant
-        switch variant {
-        case .hero(let mood):
+        if reaction == .joy {
+            stroke(MascotArt.happySmile, width: 2.7)
+        } else if reaction == .shock {
+            stroke("M43 62.5 Q48.5 61.5 53.5 64", width: 2.2)
+            stroke("M66.5 64 Q71.5 61.5 77 62.5", width: 2.2)
+            Ellipse()
+                .fill(p.pinchInk)
+                .frame(width: 6.2 * s, height: 8 * s)
+                .position(x: 60 * s, y: 88 * s)
+        } else {
+            switch variant {
+            case .hero(let mood):
             stroke(mood.browLeft, width: 2.2).opacity(mood.browOpacity)
             stroke(mood.browRight, width: 2.2).opacity(mood.browOpacity)
             stroke(mood.mouth, width: 2.6)
             naLabel
-        case .welcome:
-            stroke(MascotArt.okSmile, width: 2.6)
-            naLabel
-        case .allSet:
-            stroke(MascotArt.happySmile, width: 2.6)
-        case .party:
-            stroke(MascotArt.smileLow, width: 2.6)
-        case .toastMini:
-            stroke(MascotArt.okSmile, width: 2.6)
+            case .welcome:
+                stroke(MascotArt.okSmile, width: 2.6)
+                naLabel
+            case .allSet:
+                stroke(MascotArt.happySmile, width: 2.6)
+            case .party:
+                stroke(MascotArt.smileLow, width: 2.6)
+            case .toastMini:
+                stroke(MascotArt.okSmile, width: 2.6)
+            }
         }
     }
 
     private func blinkingEyes(y: CGFloat) -> some View {
         let anchor = UnitPoint(x: 0.5, y: y / MascotArt.viewBox.height)
-        return Group {
-            if animated {
-                KeyframeAnimator(initialValue: BlinkValue(), repeating: true) { value in
-                    eyes(y: y).scaleEffect(x: 1, y: value.scaleY, anchor: anchor)
-                } keyframes: { _ in
-                    KeyframeTrack(\.scaleY) {
-                        LinearKeyframe(1, duration: 4.18)
-                        LinearKeyframe(0.1, duration: 0.14)
-                        LinearKeyframe(1, duration: 0.28)
-                    }
-                }
-            } else {
-                eyes(y: y)
-            }
-        }
+        return eyes(y: y)
+            .scaleEffect(x: 1, y: animated ? blinkScaleY : 1, anchor: anchor)
     }
 
     private func eyes(y: CGFloat) -> some View {
@@ -270,7 +315,7 @@ struct PinchMascot: View {
     }
 
     @ViewBuilder private var sweatDrop: some View {
-        if case .hero(let mood) = variant, mood.showsSweat {
+        if reaction == .shock || (reaction == .none && heroMood?.showsSweat == true) {
             KeyframeAnimator(initialValue: DripValue(), repeating: true) { value in
                 svg(MascotArt.sweat)
                     .fill(Color(hex: 0x8FD3E8))
@@ -289,6 +334,11 @@ struct PinchMascot: View {
                 }
             }
         }
+    }
+
+    private var heroMood: Mood? {
+        if case .hero(let mood) = variant { return mood }
+        return nil
     }
 
     // MARK: primitives

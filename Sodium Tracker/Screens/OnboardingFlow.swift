@@ -65,6 +65,9 @@ struct OnboardingFlow: View {
                 }
             }
             .padding(.top, 14)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("Setup progress")
+            .accessibilityValue("Step \(ui.obStep + 1) of 8")
 
             // Back button
             if ui.obStep > 0 {
@@ -79,6 +82,7 @@ struct OnboardingFlow: View {
                             .background(Circle().fill(p.sunk))
                     }
                     .buttonStyle(.pressScale(0.92))
+                    .accessibilityLabel("Back")
                     Spacer()
                 }
                 .padding(.horizontal, 20)
@@ -178,8 +182,8 @@ struct OnboardingFlow: View {
 
     private var dietStep: some View {
         stepScaffold(
-            title: "How's the plate lately?",
-            sub: "No judgment — it just tunes Pinch's tips.",
+            title: "How’s the plate lately?",
+            sub: "No judgment — it just tunes Pinch’s tips.",
             ctaTitle: "Continue",
             ctaEnabled: ui.obDiet != nil
         ) {
@@ -219,10 +223,10 @@ struct OnboardingFlow: View {
             sub: "Milligrams of sodium per day. You can change it anytime.",
             ctaTitle: "Set my budget · \(PinchFormat.mg(goal)) mg",
             ctaEnabled: true,
-            footnote: "Not medical advice — ask your doctor what's right for you."
+            footnote: "Not medical advice — ask your doctor what’s right for you."
         ) {
             VStack(spacing: 10) {
-                goalCard(.aha, mg: "1,500", title: "Heart & kidney care", sub: "AHA strict — doctor-ordered limits")
+                goalCard(.aha, mg: "1,500", title: "Heart & kidney care", sub: "AHA strict — a clinician-recommended limit")
                 goalCard(.fda, mg: "2,300", title: "Standard budget", sub: "FDA guideline for most adults")
                 goalCard(.custom, mg: PinchFormat.mg(customGoal), title: "Custom", sub: "Slide to your prescribed number")
 
@@ -231,15 +235,15 @@ struct OnboardingFlow: View {
                         Slider(
                             value: Binding(
                                 get: { Double(customGoal) },
-                                set: { customGoal = Int($0 / 50) * 50 }
+                                set: { customGoal = Int($0 / Double(PinchDefaults.customGoalStep)) * PinchDefaults.customGoalStep }
                             ),
                             in: Double(PinchDefaults.customGoalRange.lowerBound)...Double(PinchDefaults.customGoalRange.upperBound)
                         )
                         .tint(p.brand)
                         HStack {
-                            Text("500")
+                            Text(PinchFormat.mg(PinchDefaults.customGoalRange.lowerBound))
                             Spacer()
-                            Text("4,000")
+                            Text(PinchFormat.mg(PinchDefaults.customGoalRange.upperBound))
                         }
                         .pinchBody(11)
                         .foregroundStyle(p.ink3)
@@ -421,7 +425,7 @@ struct OnboardingFlow: View {
         VStack(spacing: 0) {
             Spacer().frame(height: 54)
             PinchMascot(variant: .allSet, width: 140)
-            Text("You're all set")
+            Text("You’re all set")
                 .pinchDisplay(32, .heavy)
                 .foregroundStyle(p.ink)
                 .padding(.top, 22)

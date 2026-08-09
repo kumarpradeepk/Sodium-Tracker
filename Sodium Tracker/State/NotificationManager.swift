@@ -34,11 +34,11 @@ enum NotificationManager {
         let mg = PinchFormat.mg(max(0, remaining))
         switch meal {
         case "Breakfast":
-            return "Morning check-in — a fresh page, \(mg) mg to play with. Log breakfast when you're ready."
+            return "Morning check-in — a fresh page, \(mg) mg to play with. Log breakfast when you’re ready."
         case "Lunch":
             return "Lunch check-in — \(mg) mg still in the budget. Keeping count together."
         default:
-            return "Dinner check-in — \(mg) mg still in the budget. Soup counts, I'm watching."
+            return "Dinner check-in — \(mg) mg still in the budget. Soup counts, I’m keeping track."
         }
     }
 

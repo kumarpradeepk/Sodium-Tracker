@@ -152,7 +152,7 @@ struct LogSheet: View {
             }
 
             if !subscriptions.isPremium {
-                Text("\(max(0, PremiumAccessPolicy.freeCustomFoodLimit - customFoods.count)) of \(PremiumAccessPolicy.freeCustomFoodLimit) free shelf spots left · Plus is unlimited")
+                Text("\(max(0, PremiumAccessPolicy.freeCustomFoodLimit - customFoods.count)) of \(PremiumAccessPolicy.freeCustomFoodLimit) free shelf spots left. Pinch Plus is unlimited.")
                     .pinchBody(10.5, .semibold)
                     .foregroundStyle(p.ink3)
                     .padding(.horizontal, 4)
@@ -376,7 +376,7 @@ struct LogSheet: View {
             Text("Nothing salty by that name")
                 .pinchBody(14.5, .semibold)
                 .foregroundStyle(p.ink2)
-            Text("Try \"soup\", \"pizza\" or \"ramen\" — or quick-log the mg yourself.")
+            Text("Try \"soup,\" \"pizza,\" or \"ramen\" — or use Quick log to enter the milligrams yourself.")
                 .pinchBody(12.5)
                 .foregroundStyle(p.ink3)
                 .multilineTextAlignment(.center)
@@ -396,6 +396,85 @@ struct LogSheet: View {
         }
         .frame(maxWidth: .infinity)
         .padding(EdgeInsets(top: 36, leading: 20, bottom: 20, trailing: 20))
+    }
+}
+
+// MARK: - Quick add (z40)
+
+/// The FAB's lightweight first stop. The three one-tap choices come from the
+/// motion prototype; full catalog search and manual entry remain one tap away.
+struct QuickAddSheet: View {
+    @Environment(\.pinch) private var p
+    @Environment(UIState.self) private var ui
+
+    private struct Option: Identifiable {
+        let id: String
+        let title: String
+        let milligrams: Int
+    }
+
+    private let options = [
+        Option(id: "fresh-dinner", title: "Fresh dinner", milligrams: 380),
+        Option(id: "soup-cup", title: "Soup cup", milligrams: 290),
+        Option(id: "light-snack", title: "Light snack", milligrams: 150),
+    ]
+
+    var body: some View {
+        VStack {
+            Spacer()
+            VStack(spacing: 8) {
+                Text("QUICK ADD")
+                    .pinchBody(11.5, .heavy, tracking: 0.13)
+                    .foregroundStyle(p.ink3)
+
+                ForEach(options) { option in
+                    optionButton(option)
+                }
+            }
+            .padding(.bottom, 122)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .ignoresSafeArea()
+        .transition(
+            .asymmetric(
+                insertion: .opacity
+                    .combined(with: .scale(scale: 0.90, anchor: .bottom))
+                    .combined(with: .offset(y: 16)),
+                removal: .opacity
+                    .combined(with: .scale(scale: 0.94, anchor: .bottom))
+                    .combined(with: .offset(y: 10))
+            )
+        )
+    }
+
+    private func optionButton(_ option: Option) -> some View {
+        Button {
+            add(option)
+        } label: {
+            HStack(spacing: 18) {
+                Text(option.title)
+                    .pinchBody(16, .heavy)
+                    .foregroundStyle(p.ink)
+                Spacer()
+                Text("+\(PinchFormat.mg(option.milligrams)) mg")
+                    .pinchBody(15, .heavy)
+                    .monospacedDigit()
+                    .foregroundStyle(p.brand)
+            }
+            .padding(.horizontal, 18)
+            .frame(width: 230, height: 48)
+            .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(p.card))
+            .shadow(color: p.shadowTint.opacity(p.isDark ? 0.26 : 0.14), radius: 11, y: 6)
+        }
+        .buttonStyle(.pressScale(0.95))
+        .accessibilityLabel("Add \(option.title), \(option.milligrams) milligrams")
+    }
+
+    private func add(_ option: Option) {
+        withAnimation(.pinchMenu) { ui.quickAddOpen = false }
+        ui.selOffset = 0
+        ui.selectTab(.today)
+        ui.quickAddRequest = QuickAddRequest(name: option.title, milligrams: option.milligrams)
     }
 }
 
