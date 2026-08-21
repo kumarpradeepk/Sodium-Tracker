@@ -31,18 +31,22 @@ struct AwardsScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                Text("KEEP SHAKING")
+                PinchText("SMALL WINS")
                     .pinchBody(11, .bold, tracking: 0.14)
                     .foregroundStyle(p.ink3)
-                Text("Awards")
+                PinchText("Awards")
                     .pinchDisplay(30, .bold)
                     .foregroundStyle(p.ink)
                     .padding(.top, 2)
+                PinchText("Quiet proof that showing up counts.")
+                    .pinchBody(12.5)
+                    .foregroundStyle(p.ink3)
+                    .padding(.top, 3)
 
                 streakCard
                     .padding(.top, 16)
 
-                SectionKicker(text: "BADGES")
+                SectionKicker(text: "YOUR BADGES")
                     .padding(.top, 20)
                     .padding(.bottom, 10)
                 badgeGrid
@@ -64,13 +68,13 @@ struct AwardsScreen: View {
                     .frame(width: 30, height: 30)
                     .padding(.bottom, 2)
 
-                Text("\(streak)")
+                PinchText("\(streak)")
                     .font(PinchFonts.display(56, .heavy))
                     .tracking(56 * -0.03)
                     .monospacedDigit()
                     .foregroundStyle(p.ink)
 
-                Text("day logging streak")
+                PinchText("day logging streak")
                     .pinchBody(13.5, .semibold)
                     .foregroundStyle(p.ink2)
                     .padding(.top, 4)
@@ -124,7 +128,7 @@ struct AwardsScreen: View {
                     .frame(width: 26, height: 26)
                     .opacity(future ? 0.45 : 1)
 
-                    Text(["S", "M", "T", "W", "T", "F", "S"][i])
+                    PinchText(["S", "M", "T", "W", "T", "F", "S"][i])
                         .pinchBody(9.5, .bold)
                         .foregroundStyle(p.ink3)
                 }
@@ -136,13 +140,13 @@ struct AwardsScreen: View {
         let next = nextMilestone
         return Group {
             if let next {
-                (Text(next.have).bold().foregroundStyle(p.ink2)
-                 + Text(" is yours — \(next.remaining) more day\(next.remaining == 1 ? "" : "s") to ")
-                 + Text(next.name).bold().foregroundStyle(p.ink2))
+                (PinchText(next.have).bold().foregroundStyle(p.ink2)
+                 + PinchText(" is yours — \(next.remaining) more day\(next.remaining == 1 ? "" : "s") to ")
+                 + PinchText(next.name).bold().foregroundStyle(p.ink2))
                     .pinchBody(12)
                     .foregroundStyle(p.ink3)
             } else {
-                Text("Every streak badge is yours. Keep shaking.")
+                PinchText("Every streak badge is yours. Keep shaking.")
                     .pinchBody(12)
                     .foregroundStyle(p.ink3)
             }
@@ -181,7 +185,7 @@ struct AwardsScreen: View {
                         Circle().strokeBorder(p.grain, style: StrokeStyle(lineWidth: 2, dash: [4, 4]))
                     }
                     if badge.iconPath.isEmpty {
-                        Text(badge.iconText)
+                        PinchText(badge.iconText)
                             .font(PinchFonts.display(14, .heavy))
                             .foregroundStyle(badge.earned ? p.brand : p.ink3)
                     } else {
@@ -195,19 +199,19 @@ struct AwardsScreen: View {
                 }
                 .frame(width: 52, height: 52)
 
-                Text(badge.name)
+                PinchText(badge.name)
                     .pinchBody(13, .bold)
                     .foregroundStyle(p.ink)
                     .padding(.top, 10)
 
-                Text(badge.detail)
+                PinchText(badge.detail)
                     .pinchBody(11)
                     .foregroundStyle(p.ink3)
                     .multilineTextAlignment(.center)
                     .lineSpacing(2)
                     .padding(.top, 3)
 
-                Text(statusLine(badge))
+                PinchText(statusLine(badge))
                     .pinchBody(10.5, .bold)
                     .foregroundStyle(badge.earned ? p.brand : p.ink3)
                     .padding(.top, 7)

@@ -9,7 +9,7 @@
 import Foundation
 
 enum PinchFormat {
-    static let locale = Locale(identifier: "en_US")
+    static let locale = Locale.current
 
     private static let grouping: NumberFormatter = {
         let f = NumberFormatter()

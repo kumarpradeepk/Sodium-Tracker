@@ -2,8 +2,7 @@
 //  OnboardingFlow.swift
 //  Sodium Tracker
 //
-//  Eight-step welcome: meet Pinch, why, diet, budget, check-ins, Apple Health,
-//  widget, all set. Replayable from Settings.
+//  Nine-step welcome shared with Android. Replayable from Settings.
 //
 
 import SwiftUI
@@ -13,10 +12,12 @@ struct OnboardingFlow: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
 
+    /// Shared with Android: setup, label education, permission, and logging.
+    static let stepCount = 9
+
     @AppStorage(PinchDefaults.hasOnboarded) private var hasOnboarded = false
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
-    @AppStorage(PinchDefaults.health) private var health = true
     @AppStorage(PinchDefaults.notif) private var notif = true
     @AppStorage(PinchDefaults.mealRemBreakfast) private var remBreakfast = true
     @AppStorage(PinchDefaults.mealRemLunch) private var remLunch = false
@@ -31,7 +32,7 @@ struct OnboardingFlow: View {
     private var goal: Int { goalChoice.milligrams(custom: customGoal) }
 
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack {
             // The oversized radial glow is decoration only — it lives in an
             // overlay so its 460pt frame can never widen the layout (a layout
             // child here pushes every step ~33pt off-screen).
@@ -51,39 +52,47 @@ struct OnboardingFlow: View {
                         .offset(y: -120)
                 }
 
-            step
-                .id(ui.obStep)
-                .transition(.scale(scale: 0.86).combined(with: .opacity))
-                .animation(.spring(response: 0.4, dampingFraction: 0.72), value: ui.obStep)
+            VStack(spacing: 0) {
+                ZStack(alignment: .top) {
+                    step
+                        .id(ui.obStep)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .transition(.scale(scale: 0.86).combined(with: .opacity))
+                        .animation(.spring(response: 0.4, dampingFraction: 0.72), value: ui.obStep)
 
-            // Progress dots
-            HStack(spacing: 6) {
-                ForEach(0..<8, id: \.self) { i in
-                    Capsule()
-                        .fill(ui.obStep == i ? p.brand : p.grain)
-                        .frame(width: ui.obStep == i ? 18 : 6, height: 6)
-                        .animation(.easeInOut(duration: 0.3), value: ui.obStep)
-                }
-            }
-            .padding(.top, 14)
-
-            // Back button
-            if ui.obStep > 0 {
-                HStack {
-                    Button {
-                        ui.obStep = max(0, ui.obStep - 1)
-                    } label: {
-                        SVGShape("M7 1 L1 7 L7 13", viewBox: CGSize(width: 8, height: 14))
-                            .stroke(p.ink2, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
-                            .frame(width: 8, height: 13)
-                            .frame(width: 32, height: 32)
-                            .background(Circle().fill(p.sunk))
+                    // Back button
+                    if ui.obStep > 0 && ui.obStep != 6 {
+                        HStack {
+                            Button {
+                                ui.obStep = max(0, ui.obStep - 1)
+                            } label: {
+                                SVGShape("M7 1 L1 7 L7 13", viewBox: CGSize(width: 8, height: 14))
+                                    .stroke(p.ink2, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+                                    .frame(width: 8, height: 13)
+                                    .frame(width: 32, height: 32)
+                                    .background(Circle().fill(p.sunk))
+                            }
+                            .buttonStyle(.pressScale(0.92))
+                            Spacer()
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 6)
                     }
-                    .buttonStyle(.pressScale(0.92))
-                    Spacer()
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 6)
+
+                // The notifications screen owns its header and progress.
+                if ui.obStep != 6 {
+                    HStack(spacing: 6) {
+                        ForEach(0..<Self.stepCount, id: \.self) { i in
+                            Capsule()
+                                .fill(ui.obStep == i ? p.brand : p.grain)
+                                .frame(width: ui.obStep == i ? 18 : 6, height: 6)
+                                .animation(.easeInOut(duration: 0.3), value: ui.obStep)
+                        }
+                    }
+                    .padding(.top, 8)
+                    .padding(.bottom, 12)
+                }
             }
         }
         .transition(.opacity)
@@ -98,21 +107,75 @@ struct OnboardingFlow: View {
         case 2: dietStep
         case 3: budgetStep
         case 4: checkinsStep
-        case 5: healthStep
-        case 6: widgetStep
+        case 5: labelStep
+        case 6: notificationsStep
+        case 7: fastLoggingStep
         default: allSetStep
         }
+    }
+
+    /// The design's permission ask. `checkinsStep` above chooses *which*
+    /// reminders; this one asks for the system permission to send them, and a
+    /// decline hands off to `NudgeEngine` to re-ask later in the app.
+    private var notificationsStep: some View {
+        NotificationsOnboardingScreen(
+            context: nudgeContext,
+            step: ui.obStep + 1,
+            totalSteps: Self.stepCount,
+            onBack: { ui.obStep = max(0, ui.obStep - 1) },
+            onAllow: {
+                notif = true
+                // `refresh` is what actually prompts for authorization.
+                let today = DayEngine.total(entries, on: .now, customFoods: customFoods)
+                NotificationManager.refresh(remaining: goal - today)
+                NudgeEngine.recordAccepted(state: NudgeState.load()).save()
+                advance()
+            },
+            onLater: {
+                // Deferring a system permission must not prompt later as a
+                // side effect of entering the dashboard. Start the normal
+                // re-ask cooldown from today instead.
+                notif = false
+                var state = NudgeState.load()
+                state.lastAskDay = Calendar.current.startOfDay(for: .now).timeIntervalSinceReferenceDate
+                state.save()
+                advance()
+            }
+        )
+    }
+
+    /// Live numbers for the preview rows, so onboarding promises what the app
+    /// will actually send.
+    private var nudgeContext: NudgeContext {
+        NudgeContext(
+            goal: (GoalChoice(rawValue: goalChoiceRaw) ?? .fda).milligrams(custom: customGoal),
+            consumed: 0,
+            streak: 0,
+            breakfastTime: "8:00 AM",
+            lunchTime: "12:30 PM",
+            dinnerTime: "6:30 PM"
+        )
     }
 
     private var welcome: some View {
         VStack(spacing: 0) {
             Spacer().frame(height: 64)
-            PinchMascot(variant: .welcome, width: 170)
-            Text("Meet Pinch")
+            ZStack {
+                PinchFigure(width: 170)
+                Image(systemName: "sparkles")
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundStyle(p.amber)
+                    .offset(x: -82, y: -47)
+                Image(systemName: "sparkle")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundStyle(p.brand)
+                    .offset(x: 80, y: -62)
+            }
+            PinchText("Meet Pinch")
                 .pinchDisplay(34, .heavy)
                 .foregroundStyle(p.ink)
                 .padding(.top, 26)
-            Text("The kindest way to watch your sodium. One number a day, a friend who keeps count with you.")
+            PinchText("The kindest way to watch your sodium. One number a day, a friend who keeps count with you.")
                 .pinchBody(15)
                 .foregroundStyle(p.ink2)
                 .multilineTextAlignment(.center)
@@ -122,9 +185,10 @@ struct OnboardingFlow: View {
             Spacer()
             PinchCTA(title: "Nice to meet you") { advance() }
             Button {
+                if !hasOnboarded { notif = false }
                 finish()
             } label: {
-                Text("Skip the tour")
+                PinchText("Skip the tour")
                     .pinchBody(13, .semibold)
                     .foregroundStyle(p.ink3)
             }
@@ -199,10 +263,10 @@ struct OnboardingFlow: View {
 
     private func choiceLabel(_ choice: Choice) -> some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(choice.title)
+            PinchText(choice.title)
                 .pinchBody(15, .bold)
                 .foregroundStyle(p.ink)
-            Text(choice.sub)
+            PinchText(choice.sub)
                 .pinchBody(12)
                 .foregroundStyle(p.ink3)
         }
@@ -238,9 +302,9 @@ struct OnboardingFlow: View {
                         )
                         .tint(p.brand)
                         HStack {
-                            Text("500")
+                            PinchText("500")
                             Spacer()
-                            Text("4,000")
+                            PinchText("4,000")
                         }
                         .pinchBody(11)
                         .foregroundStyle(p.ink3)
@@ -257,11 +321,11 @@ struct OnboardingFlow: View {
             HStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 7) {
-                        Text(title)
+                        PinchText(title)
                             .pinchBody(15, .bold)
                             .foregroundStyle(p.ink)
                         if ui.obWhy != nil && choice == suggested {
-                            Text("SUGGESTED")
+                            PinchText("SUGGESTED")
                                 .pinchBody(8.5, .heavy, tracking: 0.09)
                                 .foregroundStyle(p.amber)
                                 .padding(.horizontal, 7)
@@ -269,12 +333,12 @@ struct OnboardingFlow: View {
                                 .background(Capsule().fill(p.amberSoft))
                         }
                     }
-                    Text(sub)
+                    PinchText(sub)
                         .pinchBody(12)
                         .foregroundStyle(p.ink3)
                 }
                 Spacer(minLength: 4)
-                Text(mg)
+                PinchText(mg)
                     .font(PinchFonts.display(20, .heavy))
                     .monospacedDigit()
                     .foregroundStyle(p.ink)
@@ -300,7 +364,7 @@ struct OnboardingFlow: View {
                         checkinRow("Dinner", time: "6:30 PM", isOn: $remDinner)
                     }
                 }
-                Text("Quiet hours respected, always. Tune times later in Settings.")
+                PinchText("Quiet hours respected, always. Tune times later in Settings.")
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
                     .lineSpacing(3)
@@ -312,11 +376,11 @@ struct OnboardingFlow: View {
 
     private func checkinRow(_ name: String, time: String, isOn: Binding<Bool>, first: Bool = false) -> some View {
         HStack(spacing: 10) {
-            Text(name)
+            PinchText(name)
                 .pinchBody(14, .semibold)
                 .foregroundStyle(p.ink)
             Spacer()
-            Text(time)
+            PinchText(time)
                 .pinchBody(12, .bold)
                 .monospacedDigit()
                 .foregroundStyle(p.ink2)
@@ -331,51 +395,40 @@ struct OnboardingFlow: View {
         }
     }
 
-    // Step 5 — health
+    // Step 5 — label units
 
-    private var healthStep: some View {
+    private var labelStep: some View {
         stepScaffold(
-            title: "Apple Health",
-            sub: "Your sodium logs can flow into Health — one tidy record.",
-            ctaTitle: "Continue",
+            title: "Read either label unit",
+            sub: "Pinch stores sodium in milligrams, even when the label gives salt in grams.",
+            ctaTitle: "Got it",
             ctaEnabled: true
         ) {
-            VStack(spacing: 10) {
-                benefitRow(
-                    tile: p.coralSoft,
-                    icon: "M10 17 C10 17 2.5 12.5 2.5 7.5 C2.5 5 4.5 3 7 3 C8.3 3 9.4 3.6 10 4.5 C10.6 3.6 11.7 3 13 3 C15.5 3 17.5 5 17.5 7.5 C17.5 12.5 10 17 10 17 Z",
-                    color: p.coral,
-                    text: "Writes dietary sodium automatically"
-                )
-                benefitRow(
-                    tile: p.brandSoft,
-                    icon: "M4 16.5 V11 M10 16.5 V4.5 M16 16.5 V8",
-                    color: p.brand,
-                    text: "All your health trends in one place",
-                    strokeWidth: 2.2
-                )
-                benefitRow(
-                    tile: p.amberSoft,
-                    icon: "M10 2.5 L16.5 5 V9.5 C16.5 13.5 13.8 16.6 10 17.5 C6.2 16.6 3.5 13.5 3.5 9.5 V5 Z M7.2 10 L9.2 12 L13 8.2",
-                    color: p.amber,
-                    text: "Private — stays on your device"
-                )
-
-                PinchCard(padding: EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16)) {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Allow Health sync")
-                                .pinchBody(14, .semibold)
-                                .foregroundStyle(p.ink)
-                            Text("iOS will confirm once")
-                                .pinchBody(11.5)
-                                .foregroundStyle(p.ink3)
-                        }
-                        Spacer()
-                        PinchSwitch(isOn: $health)
-                    }
+            PinchCard(padding: EdgeInsets(top: 18, leading: 18, bottom: 18, trailing: 18)) {
+                VStack(spacing: 0) {
+                    Circle()
+                        .fill(p.brandSoft)
+                        .frame(width: 52, height: 52)
+                        .overlay(
+                            LineIcon(
+                                d: "M4 15 H16 M6 15 L8 5 H12 L14 15 M7 8 H13",
+                                size: 24,
+                                stroke: 1.9,
+                                color: p.brand
+                            )
+                        )
+                    PinchText("1 g salt ≈ 393 mg sodium")
+                        .pinchDisplay(22, .bold)
+                        .foregroundStyle(p.ink)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 14)
+                    PinchText("Choose Sodium mg or Salt g in Quick log and New food. Pinch does the conversion before saving.")
+                        .pinchBody(12.5)
+                        .foregroundStyle(p.ink2)
+                        .lineSpacing(4)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 8)
                 }
-                .padding(.top, 2)
             }
         }
     }
@@ -386,7 +439,7 @@ struct OnboardingFlow: View {
                 .fill(tile)
                 .frame(width: 32, height: 32)
                 .overlay(LineIcon(d: icon, size: 16, stroke: strokeWidth, color: color))
-            Text(text)
+            PinchText(text)
                 .pinchBody(13.5, .semibold)
                 .foregroundStyle(p.ink)
             Spacer(minLength: 0)
@@ -399,22 +452,58 @@ struct OnboardingFlow: View {
         )
     }
 
-    // Step 6 — widget
+    // Step 7 — fast logging
 
-    private var widgetStep: some View {
+    private var fastLoggingStep: some View {
         stepScaffold(
-            title: "Pinch on your Home Screen",
-            sub: "The ring at a glance — widget folks stay on track more.",
-            ctaTitle: "Got it",
+            title: "Logging stays quick",
+            sub: "Use the path that matches what's in front of you.",
+            ctaTitle: "One more step",
             ctaEnabled: true
         ) {
-            VStack(alignment: .leading, spacing: 0) {
-                WidgetMock(goal: goal, entries: entries, customFoods: customFoods)
-                WidgetSteps()
-                    .padding(.top, 16)
-                    .padding(.horizontal, 4)
+            VStack(spacing: 10) {
+                loggingBenefit(
+                    icon: "M8.5 14.5 A6 6 0 1 1 14.5 8.5 M13 13 L18 18",
+                    title: "Search the shelf",
+                    sub: "Pick a serving and meal"
+                )
+                loggingBenefit(
+                    icon: "M10 3 V17 M3 10 H17",
+                    title: "Quick log",
+                    sub: "Enter the number from a label",
+                    strokeWidth: 2.0
+                )
+                loggingBenefit(
+                    icon: "M10 17 C10 17 2.5 12.5 2.5 7.5 C2.5 5 4.5 3 7 3 C8.3 3 9.4 3.6 10 4.5 C10.6 3.6 11.7 3 13 3 C15.5 3 17.5 5 17.5 7.5 C17.5 12.5 10 17 10 17 Z",
+                    title: "Pin regulars",
+                    sub: "Keep everyday foods one tap away"
+                )
             }
         }
+    }
+
+    private func loggingBenefit(icon: String, title: String, sub: String, strokeWidth: CGFloat = 1.7) -> some View {
+        HStack(spacing: 11) {
+            RoundedRectangle(cornerRadius: 11, style: .continuous)
+                .fill(p.brandSoft)
+                .frame(width: 38, height: 38)
+                .overlay(LineIcon(d: icon, size: 18, stroke: strokeWidth, color: p.brand))
+            VStack(alignment: .leading, spacing: 2) {
+                PinchText(title)
+                    .pinchBody(14, .bold)
+                    .foregroundStyle(p.ink)
+                PinchText(sub)
+                    .pinchBody(11.5)
+                    .foregroundStyle(p.ink3)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(14)
+        .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(p.card))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(p.line, lineWidth: 1)
+        )
     }
 
     // Step 7 — all set
@@ -422,12 +511,12 @@ struct OnboardingFlow: View {
     private var allSetStep: some View {
         VStack(spacing: 0) {
             Spacer().frame(height: 54)
-            PinchMascot(variant: .allSet, width: 140)
-            Text("You're all set")
+            PinchFigure(width: 140)
+            PinchText("You're all set")
                 .pinchDisplay(32, .heavy)
                 .foregroundStyle(p.ink)
                 .padding(.top, 22)
-            Text("Pinch is ready to keep count with you.")
+            PinchText("A clean page, a clear number, and Pinch beside you.")
                 .pinchBody(14)
                 .foregroundStyle(p.ink2)
                 .padding(.top, 8)
@@ -435,14 +524,14 @@ struct OnboardingFlow: View {
             PinchCard {
                 VStack(spacing: 0) {
                     summaryRow("Daily budget", value: "\(PinchFormat.mg(goal)) mg", first: true)
-                    summaryRow("Your why", value: whyLabel)
-                    summaryRow("Check-ins", value: "\(checkinCount) a day")
+                    summaryRow("Why", value: whyLabel)
+                    summaryRow("Check-ins", value: "\(checkinCount)")
                 }
             }
             .padding(.top, 20)
 
             Spacer()
-            PinchCTA(title: "Open my tracker") { finish() }
+            PinchCTA(title: "Start tracking") { finish() }
         }
         .padding(EdgeInsets(top: 40, leading: 28, bottom: 24, trailing: 28))
     }
@@ -457,11 +546,11 @@ struct OnboardingFlow: View {
 
     private func summaryRow(_ label: String, value: String, first: Bool = false) -> some View {
         HStack {
-            Text(label)
+            PinchText(label)
                 .pinchBody(13)
                 .foregroundStyle(p.ink3)
             Spacer()
-            Text(value)
+            PinchText(value)
                 .pinchBody(13, .bold)
                 .monospacedDigit()
                 .foregroundStyle(p.ink)
@@ -484,10 +573,10 @@ struct OnboardingFlow: View {
     ) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Spacer().frame(height: 44)
-            Text(title)
+            PinchText(title)
                 .pinchDisplay(28, .heavy)
                 .foregroundStyle(p.ink)
-            Text(sub)
+            PinchText(sub)
                 .pinchBody(13.5)
                 .foregroundStyle(p.ink2)
                 .lineSpacing(3)
@@ -501,7 +590,7 @@ struct OnboardingFlow: View {
             .scrollBounceBehavior(.basedOnSize)
 
             if let footnote {
-                Text(footnote)
+                PinchText(footnote)
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
                     .frame(maxWidth: .infinity)
@@ -518,7 +607,7 @@ struct OnboardingFlow: View {
     private func advance() {
         if ui.obStep == 1, ui.obWhy == nil { return }
         if ui.obStep == 2, ui.obDiet == nil { return }
-        if ui.obStep < 7 {
+        if ui.obStep < Self.stepCount - 1 {
             ui.obStep += 1
         } else {
             finish()
@@ -531,6 +620,8 @@ struct OnboardingFlow: View {
         ui.tab = .today
         ui.selOffset = 0
         let remaining = goal - DayEngine.total(entries, on: .now, customFoods: customFoods)
-        NotificationManager.refresh(remaining: remaining)
+        if notif {
+            NotificationManager.refresh(remaining: remaining)
+        }
     }
 }

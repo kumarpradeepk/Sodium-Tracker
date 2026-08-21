@@ -15,6 +15,7 @@ struct TrendsScreen: View {
 
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
+    @AppStorage(PinchDefaults.plus) private var plus = false
 
     @Query(sort: \LogEntry.loggedAt) private var entries: [LogEntry]
     @Query private var customFoods: [CustomFood]
@@ -45,7 +46,7 @@ struct TrendsScreen: View {
                         .padding(.top, 14)
                     monthStats
                         .padding(.top, 12)
-                    Text("Tap any tracked day to revisit its log.")
+                    PinchText("Tap any tracked day to revisit its log.")
                         .pinchBody(11.5)
                         .foregroundStyle(p.ink3)
                         .frame(maxWidth: .infinity)
@@ -62,26 +63,36 @@ struct TrendsScreen: View {
     // MARK: - Header
 
     private var header: some View {
-        @Bindable var ui = ui
-        return HStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("THE LONG GAME")
-                    .pinchBody(11, .bold, tracking: 0.14)
-                    .foregroundStyle(p.ink3)
-                Text("Trends")
-                    .pinchDisplay(30, .bold)
-                    .foregroundStyle(p.ink)
-            }
-            Spacer()
+        return VStack(alignment: .leading, spacing: 0) {
+            PinchText("YOUR PATTERN")
+                .pinchBody(11, .bold, tracking: 0.14)
+                .foregroundStyle(p.ink3)
+            PinchText("Trends")
+                .pinchDisplay(30, .bold)
+                .foregroundStyle(p.ink)
+                .padding(.top, 2)
+            PinchText("The numbers, with the edges softened.")
+                .pinchBody(12.5)
+                .foregroundStyle(p.ink3)
+                .padding(.top, 3)
             PinchSegmented(
                 segments: [
                     PinchSegment(value: TrendsMode.week, label: "Week"),
-                    PinchSegment(value: TrendsMode.month, label: "Month"),
+                    PinchSegment(value: TrendsMode.month, label: plus ? "Month" : "Month · Plus"),
                 ],
-                selection: $ui.trMode
+                selection: Binding(
+                    get: { ui.trMode },
+                    set: { mode in
+                        if mode == .month && !PremiumAccessPolicy.allows(.monthTrends, isPremium: plus) {
+                            ui.payOpen = true
+                            ui.trMode = .week
+                        } else {
+                            ui.trMode = mode
+                        }
+                    }
+                )
             )
-            .frame(width: 150)
-            .padding(.bottom, 4)
+            .padding(.top, 16)
         }
     }
 
@@ -102,7 +113,7 @@ struct TrendsScreen: View {
             ChevronButton(direction: .leading, enabled: ui.weekSel == 0) {
                 ui.weekSel = 1
             }
-            Text(PinchFormat.weekRange(
+            PinchText(PinchFormat.weekRange(
                 from: shownWeek.dayDates.first ?? .now,
                 to: shownWeek.dayDates.last ?? .now
             ))
@@ -157,7 +168,7 @@ struct TrendsScreen: View {
                 HStack(spacing: 9) {
                     ForEach(letters.indices, id: \.self) { i in
                         let live = ui.weekSel == 0 && i == letters.count - 1
-                        Text(letters[i])
+                        PinchText(letters[i])
                             .pinchBody(10.5, .bold)
                             .foregroundStyle(live ? p.brand : p.ink3)
                             .frame(maxWidth: .infinity)
@@ -177,7 +188,7 @@ struct TrendsScreen: View {
             Line()
                 .stroke(dotted ? p.ink3 : p.grain, style: StrokeStyle(lineWidth: 1.5, dash: dash))
                 .frame(width: 20, height: 1.5)
-            Text(label)
+            PinchText(label)
                 .pinchBody(9.5, .bold, tracking: 0.08)
                 .foregroundStyle(p.ink3)
         }
@@ -194,7 +205,7 @@ struct TrendsScreen: View {
         let over = mg > goal
         let height = max(3, plotHeight * CGFloat(Double(mg) / maxBar))
         return VStack(spacing: 5) {
-            Text(isLive ? "now" : PinchFormat.thousands(Double(mg)))
+            PinchText(isLive ? "now" : PinchFormat.thousands(Double(mg)))
                 .pinchBody(9, .semibold)
                 .monospacedDigit()
                 .foregroundStyle(isLive ? p.brand : p.ink3)
@@ -275,7 +286,7 @@ struct TrendsScreen: View {
                         jump(to: date)
                     } label: {
                         HStack(spacing: 12) {
-                            Text(Calendar.current.isDateInToday(date) ? "Today" : PinchFormat.shortDay(date))
+                            PinchText(Calendar.current.isDateInToday(date) ? "Today" : PinchFormat.shortDay(date))
                                 .pinchBody(13, .semibold)
                                 .foregroundStyle(p.ink)
                                 .frame(width: 86, alignment: .leading)
@@ -291,7 +302,7 @@ struct TrendsScreen: View {
                             }
                             .frame(height: 5)
 
-                            Text(PinchFormat.mg(mg))
+                            PinchText(PinchFormat.mg(mg))
                                 .pinchBody(12.5, .bold)
                                 .monospacedDigit()
                                 .foregroundStyle(over ? p.coral : p.ink2)
@@ -370,11 +381,11 @@ struct TrendsScreen: View {
         return PinchCard(radius: 20, padding: EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .firstTextBaseline) {
-                    Text("Salt calendar")
+                    PinchText("Salt calendar")
                         .pinchBody(13, .bold)
                         .foregroundStyle(p.ink)
                     Spacer()
-                    Text("LAST 4 WEEKS")
+                    PinchText("LAST 4 WEEKS")
                         .pinchBody(11, .bold, tracking: 0.1)
                         .foregroundStyle(p.ink3)
                 }
@@ -382,7 +393,7 @@ struct TrendsScreen: View {
 
                 LazyVGrid(columns: columns, spacing: 4) {
                     ForEach(["S", "M", "T", "W", "T", "F", "S"].indices, id: \.self) { i in
-                        Text(["S", "M", "T", "W", "T", "F", "S"][i])
+                        PinchText(["S", "M", "T", "W", "T", "F", "S"][i])
                             .pinchBody(9.5, .bold)
                             .foregroundStyle(p.ink3)
                     }
@@ -404,7 +415,7 @@ struct TrendsScreen: View {
                         Circle()
                             .strokeBorder(p.grain, style: StrokeStyle(lineWidth: 1.5, dash: [2, 2]))
                             .frame(width: 8, height: 8)
-                        Text("before Pinch")
+                        PinchText("before Pinch")
                             .pinchBody(10.5)
                             .foregroundStyle(p.ink3)
                     }
@@ -423,7 +434,7 @@ struct TrendsScreen: View {
             jump(to: cell.date)
         } label: {
             VStack(spacing: 4) {
-                Text("\(cell.number)")
+                PinchText("\(cell.number)")
                     .pinchBody(11.5, .bold)
                     .monospacedDigit()
                     .foregroundStyle(cell.tracked ? p.ink : p.ink3)
@@ -464,7 +475,7 @@ struct TrendsScreen: View {
     private func legendDot(_ color: Color, _ label: String) -> some View {
         HStack(spacing: 5) {
             Circle().fill(color).frame(width: 8, height: 8)
-            Text(label)
+            PinchText(label)
                 .pinchBody(10.5)
                 .foregroundStyle(p.ink3)
         }

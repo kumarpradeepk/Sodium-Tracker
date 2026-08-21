@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import Observation
 
 enum PinchTab: String, CaseIterable {
@@ -47,6 +48,7 @@ final class UIState {
     var qlOpen = false
     var qlName = ""
     var qlMg = ""
+    var qlUnit: SodiumInputUnit = .sodiumMilligrams
     var qlMeal: Meal = .lunch
     var qlFav = false
 
@@ -55,6 +57,7 @@ final class UIState {
     var cfName = ""
     var cfServe = ""
     var cfMg = ""
+    var cfUnit: SodiumInputUnit = .sodiumMilligrams
     var cfMore = false
     var cfCal = ""
     var cfCarb = ""
@@ -76,6 +79,24 @@ final class UIState {
 
     // MARK: Toast
     var toast: PinchToast?
+
+    // MARK: Salty dashboard
+    /// Load-in reveals that have fired. Scheduled once per app launch at the
+    /// shell, not read from the engine — a per-frame read here would invalidate
+    /// the whole screen 60 times a second.
+    var revealed: Set<SaltyReveal> = []
+    /// The FAB's QUICK ADD sheet.
+    var quickAddOpen = false
+    /// Entries added this session, newest last — the bubble's Undo link.
+    /// Deliberately not persisted: Undo is a same-session affordance.
+    var undoStack: [PersistentIdentifier] = []
+    /// Day-switch slide (spec §9.1).
+    var daySlide: CGFloat = 0
+    var daySlideOpacity: Double = 1
+    var daySwitching = false
+    /// Tab-switch slide (spec §9.2).
+    var tabSlide: CGFloat = 0
+    var tabSlideOpacity: Double = 1
 
     // MARK: Onboarding (persist flag lives in AppStorage; step state here)
     var showOnboarding = false
@@ -120,6 +141,7 @@ final class UIState {
     func openQuickLog(prefillName: String = "", prefillMg: String = "") {
         qlName = prefillName
         qlMg = prefillMg
+        qlUnit = .sodiumMilligrams
         qlMeal = Meal.auto()
         qlFav = false
         qlOpen = true
@@ -129,6 +151,7 @@ final class UIState {
         cfName = ""
         cfServe = ""
         cfMg = ""
+        cfUnit = .sodiumMilligrams
         cfMore = false
         cfCal = ""
         cfCarb = ""

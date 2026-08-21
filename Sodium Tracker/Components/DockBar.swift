@@ -105,7 +105,7 @@ struct DockBar: View {
         } label: {
             VStack(spacing: 4) {
                 icon(color)
-                Text(label)
+                PinchText(label)
                     .pinchBody(11, .heavy, tracking: 0.01)
                     .foregroundStyle(color)
             }

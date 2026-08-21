@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct Sodium_TrackerApp: App {
+    @State private var purchases = PurchaseManager()
+
     init() {
         // Defaults for keys read outside @AppStorage (NotificationManager
         // reads UserDefaults directly).
@@ -27,6 +29,8 @@ struct Sodium_TrackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(purchases)
+                .task { await purchases.start() }
         }
         .modelContainer(for: [LogEntry.self, CustomFood.self, Favorite.self])
     }

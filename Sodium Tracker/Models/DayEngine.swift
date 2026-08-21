@@ -23,6 +23,30 @@ enum GoalChoice: String, CaseIterable {
     }
 }
 
+/// Units accepted by manual sodium entry on both platforms.
+enum SodiumInputUnit: Hashable {
+    case sodiumMilligrams
+    case saltGrams
+}
+
+enum SodiumConverter {
+    /// One gram of table salt contains approximately 393.4 mg sodium.
+    static let sodiumMilligramsPerSaltGram = 393.4
+
+    static func sodiumMilligrams(_ text: String, unit: SodiumInputUnit) -> Int? {
+        let normalized = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: ",", with: ".")
+        guard let value = Double(normalized), value.isFinite, value > 0 else { return nil }
+        let milligrams = unit == .saltGrams ? value * sodiumMilligramsPerSaltGram : value
+        guard milligrams <= Double(Int.max) else { return nil }
+        return Int(milligrams.rounded())
+    }
+
+    static func saltGrams(milligrams: Int) -> Double {
+        Double(milligrams) / sodiumMilligramsPerSaltGram
+    }
+}
+
 enum PinchDefaults {
     static let theme = "theme"                       // "light" | "dark"
     static let palette = "palette"                   // PalettePick raw: ocean | sage | iris

@@ -163,6 +163,11 @@ struct PinchMascot: View {
 
         // Cap + holes + band
         svg(low ? MascotArt.capLow : MascotArt.cap).fill(p.brand)
+        Capsule()
+            .fill(.white.opacity(0.22))
+            .frame(width: 19 * s, height: 4 * s)
+            .rotationEffect(.degrees(-8))
+            .position(x: 53 * s, y: (low ? 24 : 18) * s)
         if !usesLowGeometry {
             circleDot(cx: 52, cy: 21, r: 2.6, color: p.capHole)
             circleDot(cx: 60, cy: 16.5, r: 2.6, color: p.capHole)
@@ -177,6 +182,18 @@ struct PinchMascot: View {
         if !low {
             arm(cx: 30, cy: 84, rotation: 16)
             arm(cx: 90, cy: 84, rotation: -16)
+        }
+
+        // The canonical Android mascot has grounded little feet. Keeping them
+        // here also prevents the larger onboarding figure from looking as if
+        // it ends abruptly at the body outline.
+        if !low {
+            Capsule().fill(p.brandDeep)
+                .frame(width: 17 * s, height: 8 * s)
+                .position(x: 49 * s, y: 121 * s)
+            Capsule().fill(p.brandDeep)
+                .frame(width: 17 * s, height: 8 * s)
+                .position(x: 71 * s, y: 121 * s)
         }
 
         // Body
@@ -263,7 +280,7 @@ struct PinchMascot: View {
     }
 
     private var naLabel: some View {
-        Text("Na")
+        PinchText("Na")
             .font(PinchFonts.display(11 * s, .semibold))
             .foregroundStyle(p.ink3.opacity(0.55))
             .position(x: 60 * s, y: 104.5 * s)

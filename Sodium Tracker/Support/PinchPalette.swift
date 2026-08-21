@@ -24,12 +24,13 @@ extension Color {
 
 /// Which palette family the app wears. Persisted in AppStorage("palette").
 enum PalettePick: String, CaseIterable, Identifiable {
-    case ocean, sage, iris
+    case salty, ocean, sage, iris
 
     var id: String { rawValue }
 
     var label: String {
         switch self {
+        case .salty: return "Salty"
         case .ocean: return "Ocean"
         case .sage: return "Sage"
         case .iris: return "Iris"
@@ -101,6 +102,8 @@ struct PinchPalette: Equatable {
 
     static func resolve(_ pick: PalettePick, dark: Bool) -> PinchPalette {
         switch (pick, dark) {
+        case (.salty, false): return saltyLight
+        case (.salty, true): return saltyDark
         case (.ocean, false): return oceanLight
         case (.ocean, true): return oceanDark
         case (.sage, false): return sageLight
@@ -110,8 +113,95 @@ struct PinchPalette: Equatable {
         }
     }
 
-    /// Default look: Ocean light.
+    /// Environment default when no palette has been resolved yet. New installs
+    /// still land on Salty — that comes from the AppStorage default.
     static let fallback = oceanLight
+
+    // MARK: - Salty (design default)
+
+    static let saltyLight = PinchPalette(
+        isDark: false,
+        page: Color(hex: 0xE2E7EF),
+        bg: Color(hex: 0xEDF1F6),
+        card: Color(hex: 0xFFFFFF),
+        sunk: Color(hex: 0xE4EAF2),
+        chip: Color(hex: 0xE7EDF5),
+        dock: Color(hex: 0xFAFBFD, opacity: 0.90),
+        scrim: Color(hex: 0x1F3A5C, opacity: 0.16),
+        ink: Color(hex: 0x1F3A5C),
+        ink2: Color(hex: 0x5B6B82),
+        ink3: Color(hex: 0x7C8AA0),
+        line: Color(hex: 0x1F3A5C, opacity: 0.11),
+        brand: Color(hex: 0x2E6FBD),
+        brandDeep: Color(hex: 0x24578F),
+        brandSoft: Color(hex: 0xE3ECF7),
+        onBrand: Color(hex: 0xFFFFFF),
+        coral: Color(hex: 0xE5484D),
+        coralSoft: Color(hex: 0xFBE0E1),
+        amber: Color(hex: 0xC4841D),
+        amberSoft: Color(hex: 0xF5E4C0),
+        shaker: Color(hex: 0xFFFFFF),
+        shakerLine: Color(hex: 0xE3E9F2),
+        grain: Color(hex: 0xC7D3E3),
+        capHole: Color(hex: 0x24578F),
+        pinchInk: Color(hex: 0x1F3A5C),
+        knob: Color(hex: 0xFFFFFF),
+        barNow: BarFill(top: Color(hex: 0x5A93D4), bottom: Color(hex: 0x2E6FBD)),
+        barNowOver: BarFill(top: Color(hex: 0xECC271), bottom: Color(hex: 0xDFA32B)),
+        barUnder: BarFill(top: Color(hex: 0xA9C7E8), bottom: Color(hex: 0x7FA9D6)),
+        barOver: BarFill(top: Color(hex: 0xECC271), bottom: Color(hex: 0xDFA32B)),
+        scanAcc: Color(hex: 0x5C9BE0),
+        scanAccGlow: Color(hex: 0x5C9BE0, opacity: 0.7),
+        scanAccSoft: Color(hex: 0x5C9BE0, opacity: 0.15),
+        scanInk: Color(hex: 0x0A1726),
+        glowBrand: Color(hex: 0x2E6FBD, opacity: 0.35),
+        glowAmber: Color(hex: 0xDFA32B, opacity: 0.35),
+        glowCoral: Color(hex: 0xE5484D, opacity: 0.42),
+        shadowTint: Color(hex: 0x1F3A5C)
+    )
+
+    static let saltyDark = PinchPalette(
+        isDark: true,
+        page: Color(hex: 0x070C14),
+        bg: Color(hex: 0x0C1420),
+        card: Color(hex: 0x16202E),
+        sunk: Color(hex: 0x111A27),
+        chip: Color(hex: 0x1B2637),
+        dock: Color(hex: 0x101824, opacity: 0.90),
+        scrim: Color(hex: 0x000000, opacity: 0.45),
+        ink: Color(hex: 0xE8EEF6),
+        ink2: Color(hex: 0xA9B7C9),
+        ink3: Color(hex: 0x8595AB),
+        line: Color(hex: 0xE8EEF6, opacity: 0.10),
+        brand: Color(hex: 0x5C9BE0),
+        brandDeep: Color(hex: 0x7FB4E8),
+        brandSoft: Color(hex: 0x1B3450),
+        onBrand: Color(hex: 0x08131F),
+        coral: Color(hex: 0xF2656A),
+        coralSoft: Color(hex: 0x3A1D1F),
+        amber: Color(hex: 0xE3B54E),
+        amberSoft: Color(hex: 0x3A2F14),
+        shaker: Color(hex: 0xFFFFFF),
+        shakerLine: Color(hex: 0xE3E9F2),
+        grain: Color(hex: 0x2C3D53),
+        capHole: Color(hex: 0x16202E),
+        pinchInk: Color(hex: 0x1F3A5C),
+        knob: Color(hex: 0xFFFFFF),
+        barNow: BarFill(top: Color(hex: 0x7FB4E8), bottom: Color(hex: 0x4A86C9)),
+        barNowOver: BarFill(top: Color(hex: 0xE3B54E), bottom: Color(hex: 0xC08A1E)),
+        barUnder: BarFill(top: Color(hex: 0x2A4666), bottom: Color(hex: 0x1F3852)),
+        barOver: BarFill(top: Color(hex: 0x6B5324), bottom: Color(hex: 0x4E3C19)),
+        // Scanner accents and ring glows are fixed per family — identical in
+        // light and dark, like every other palette.
+        scanAcc: Color(hex: 0x5C9BE0),
+        scanAccGlow: Color(hex: 0x5C9BE0, opacity: 0.7),
+        scanAccSoft: Color(hex: 0x5C9BE0, opacity: 0.15),
+        scanInk: Color(hex: 0x0A1726),
+        glowBrand: Color(hex: 0x2E6FBD, opacity: 0.35),
+        glowAmber: Color(hex: 0xDFA32B, opacity: 0.35),
+        glowCoral: Color(hex: 0xE5484D, opacity: 0.42),
+        shadowTint: Color(hex: 0x000000)
+    )
 
     // MARK: - Ocean
 

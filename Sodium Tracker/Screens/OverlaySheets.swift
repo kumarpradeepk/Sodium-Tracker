@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftData
+import StoreKit
 
 // MARK: - Scanner (z52)
 // The design's scanner is a guided simulation: scanline for ~1.7 s, then a
@@ -35,14 +36,14 @@ struct ScannerScreen: View {
 
             VStack(spacing: 0) {
                 HStack {
-                    Text("Point & log")
+                    PinchText("Point & log")
                         .font(PinchFonts.display(19, .bold))
                         .foregroundStyle(ink)
                     Spacer()
                     Button {
                         ui.scanOpen = false
                     } label: {
-                        Text("×")
+                        PinchText("×")
                             .font(.system(size: 16))
                             .foregroundStyle(ink)
                             .frame(width: 30, height: 30)
@@ -60,7 +61,7 @@ struct ScannerScreen: View {
                 Spacer()
 
                 scanFrame
-                Text(caption)
+                PinchText(caption)
                     .pinchBody(13)
                     .foregroundStyle(ink.opacity(0.65))
                     .padding(.top, 18)
@@ -108,7 +109,7 @@ struct ScannerScreen: View {
         return Button {
             ui.startScan(mode)
         } label: {
-            Text(label)
+            PinchText(label)
                 .pinchBody(12.5, .semibold)
                 .foregroundStyle(active ? Color(hex: 0x0C1917) : ink.opacity(0.6))
                 .frame(maxWidth: .infinity)
@@ -193,21 +194,21 @@ struct ScannerScreen: View {
                     .overlay(LineIcon(d: FoodCategory.meal.iconPath, size: 20, color: acc))
 
                 VStack(alignment: .leading, spacing: 1) {
-                    Text(isBarcode ? "Campbell's chicken noodle" : "From the label")
+                    PinchText(isBarcode ? "Campbell's chicken noodle" : "From the label")
                         .pinchBody(14.5, .bold)
                         .foregroundStyle(ink)
                         .lineLimit(1)
-                    Text(isBarcode ? "1 cup · canned soup" : "sodium per serving, as printed")
+                    PinchText(isBarcode ? "1 cup · canned soup" : "sodium per serving, as printed")
                         .pinchBody(11.5)
                         .foregroundStyle(ink.opacity(0.55))
                 }
                 Spacer(minLength: 8)
                 VStack(alignment: .trailing, spacing: 0) {
-                    Text(isBarcode ? "870" : "470")
+                    PinchText(isBarcode ? "870" : "470")
                         .pinchBody(17, .heavy)
                         .monospacedDigit()
                         .foregroundStyle(amber)
-                    Text("MG")
+                    PinchText("MG")
                         .pinchBody(9.5, .bold, tracking: 0.08)
                         .foregroundStyle(ink.opacity(0.5))
                 }
@@ -217,7 +218,7 @@ struct ScannerScreen: View {
                 Button {
                     ui.startScan(ui.scanMode)
                 } label: {
-                    Text("Scan again")
+                    PinchText("Scan again")
                         .pinchBody(13.5, .bold)
                         .foregroundStyle(ink)
                         .frame(maxWidth: .infinity)
@@ -229,7 +230,7 @@ struct ScannerScreen: View {
                 Button {
                     useResult()
                 } label: {
-                    Text("Use this")
+                    PinchText("Use this")
                         .pinchBody(13.5, .bold)
                         .foregroundStyle(p.scanInk)
                         .frame(maxWidth: .infinity)
@@ -308,7 +309,7 @@ struct CalendarSheet: View {
         PinchSheet(onClose: { ui.calOpen = false }) {
             VStack(alignment: .leading, spacing: 0) {
                 SheetHeader(title: "Jump to a day") { ui.calOpen = false }
-                Text("Last two weeks · dot shows how salty it ran")
+                PinchText("Last two weeks · dot shows how salty it ran")
                     .pinchBody(12.5)
                     .foregroundStyle(p.ink3)
                     .padding(.top, 2)
@@ -316,7 +317,7 @@ struct CalendarSheet: View {
                 let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 7)
                 LazyVGrid(columns: columns, spacing: 4) {
                     ForEach(["S", "M", "T", "W", "T", "F", "S"].indices, id: \.self) { i in
-                        Text(["S", "M", "T", "W", "T", "F", "S"][i])
+                        PinchText(["S", "M", "T", "W", "T", "F", "S"][i])
                             .pinchBody(9.5, .bold)
                             .foregroundStyle(p.ink3)
                     }
@@ -335,7 +336,7 @@ struct CalendarSheet: View {
                         ui.selOffset = -1
                         ui.calOpen = false
                     } label: {
-                        Text("Yesterday")
+                        PinchText("Yesterday")
                             .pinchBody(14, .bold)
                             .foregroundStyle(p.ink2)
                             .frame(maxWidth: .infinity)
@@ -348,7 +349,7 @@ struct CalendarSheet: View {
                         ui.selOffset = 0
                         ui.calOpen = false
                     } label: {
-                        Text("Today")
+                        PinchText("Today")
                             .pinchBody(14, .bold)
                             .foregroundStyle(p.onBrand)
                             .frame(maxWidth: .infinity)
@@ -373,7 +374,7 @@ struct CalendarSheet: View {
                 ui.calOpen = false
             } label: {
                 VStack(spacing: 4) {
-                    Text("\(cell.number)")
+                    PinchText("\(cell.number)")
                         .pinchBody(13, .bold)
                         .monospacedDigit()
                         .foregroundStyle(selected ? p.onBrand : p.ink)
@@ -461,10 +462,10 @@ struct NudgesSheet: View {
                 size: 26, color: p.ink3
             )
             .padding(.bottom, 8)
-            Text("Nudges are off")
+            PinchText("Nudges are off")
                 .pinchBody(14, .semibold)
                 .foregroundStyle(p.ink2)
-            Text("Pinch stays quiet. Flip them on for gentle mealtime waves.")
+            PinchText("Pinch stays quiet. Flip them on for gentle mealtime waves.")
                 .pinchBody(12)
                 .foregroundStyle(p.ink3)
                 .multilineTextAlignment(.center)
@@ -473,7 +474,7 @@ struct NudgesSheet: View {
             Button {
                 withAnimation(.easeInOut(duration: 0.25)) { notif = true }
             } label: {
-                Text("Turn on nudges")
+                PinchText("Turn on nudges")
                     .pinchBody(12.5, .bold)
                     .foregroundStyle(p.brand)
                     .padding(.horizontal, 16)
@@ -494,7 +495,7 @@ struct NudgesSheet: View {
     }
 
     @ViewBuilder private var onContent: some View {
-        Text("MEAL CHECK-INS")
+        PinchText("MEAL CHECK-INS")
             .pinchBody(11, .bold, tracking: 0.13)
             .foregroundStyle(p.ink3)
             .padding(EdgeInsets(top: 16, leading: 2, bottom: 8, trailing: 2))
@@ -507,7 +508,7 @@ struct NudgesSheet: View {
             }
         }
 
-        Text("RECENT")
+        PinchText("RECENT")
             .pinchBody(11, .bold, tracking: 0.13)
             .foregroundStyle(p.ink3)
             .padding(EdgeInsets(top: 16, leading: 2, bottom: 8, trailing: 2))
@@ -531,7 +532,7 @@ struct NudgesSheet: View {
             )
         }
 
-        Text("One wave per meal, quiet hours respected. Never guilt.")
+        PinchText("One wave per meal, quiet hours respected. Never guilt.")
             .pinchBody(11.5)
             .foregroundStyle(p.ink3)
             .frame(maxWidth: .infinity)
@@ -552,11 +553,11 @@ struct NudgesSheet: View {
 
     private func checkinRow(_ name: String, time: String, isOn: Binding<Bool>, first: Bool = false) -> some View {
         HStack(spacing: 10) {
-            Text(name)
+            PinchText(name)
                 .pinchBody(13.5, .semibold)
                 .foregroundStyle(p.ink)
             Spacer()
-            Text(time)
+            PinchText(time)
                 .pinchBody(12, .bold)
                 .monospacedDigit()
                 .foregroundStyle(p.ink2)
@@ -579,15 +580,15 @@ struct NudgesSheet: View {
                 .overlay(tile)
             VStack(alignment: .leading, spacing: 2) {
                 HStack {
-                    Text("PINCH")
+                    PinchText("PINCH")
                         .pinchBody(11, .bold, tracking: 0.06)
                         .foregroundStyle(p.ink2)
                     Spacer()
-                    Text(time)
+                    PinchText(time)
                         .pinchBody(10.5)
                         .foregroundStyle(p.ink3)
                 }
-                Text(body)
+                PinchText(body)
                     .pinchBody(12)
                     .foregroundStyle(p.ink2)
                     .lineSpacing(3)
@@ -607,6 +608,8 @@ struct NudgesSheet: View {
 struct PaywallSheet: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
+    @Environment(PurchaseManager.self) private var purchases
+    @Environment(\.openURL) private var openURL
 
     @AppStorage(PinchDefaults.plus) private var plus = false
 
@@ -622,20 +625,20 @@ struct PaywallSheet: View {
                     PinchMascot(variant: .party, width: 86)
                         .padding(.top, -8)
 
-                    Text("Pinch Plus")
+                    PinchText("Pinch Plus")
                         .pinchDisplay(26, .heavy)
                         .foregroundStyle(p.ink)
                         .padding(.top, 6)
-                    Text("Tracking is free forever. Plus adds the extras.")
+                    PinchText("Tracking is free forever. Plus adds the extras.")
                         .pinchBody(13)
                         .foregroundStyle(p.ink2)
                         .padding(.top, 4)
 
                     VStack(alignment: .leading, spacing: 8) {
-                        perk("Month view & the salt calendar")
+                        perk("Four-week trends and calendar")
                         perk("Home-screen widget")
-                        perk("Your shelf — unlimited custom foods")
-                        perk("CSV export & full history")
+                        perk("Unlimited custom shelf foods")
+                        perk("CSV export for every logged entry")
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 16)
@@ -644,31 +647,52 @@ struct PaywallSheet: View {
                         planCard(
                             plan: .yearly,
                             title: "Yearly",
-                            tag: "2 MONTHS FREE",
-                            sub: "$19.99 / year · about $1.67 a month"
+                            tag: "BEST VALUE",
+                            sub: planSubtitle(.yearly, fallback: "Loading yearly price…")
                         )
                         planCard(
                             plan: .monthly,
                             title: "Monthly",
                             tag: nil,
-                            sub: "$2.99 / month · cancel anytime"
+                            sub: planSubtitle(.monthly, fallback: "Loading monthly price…")
                         )
                     }
                     .padding(.top, 16)
 
                     PinchCTA(
-                        title: plus ? "Plus is active" : "Try Plus free for 7 days",
+                        title: ctaTitle,
                         height: 52,
-                        enabled: !plus
+                        enabled: plus || (!purchases.isLoading && purchases.product(for: ui.plan) != nil && !purchases.isPurchasing)
                     ) {
-                        startTrial()
+                        if plus {
+                            openURL(URL(string: "https://apps.apple.com/account/subscriptions")!)
+                        } else {
+                            startPurchase()
+                        }
                     }
                     .padding(.top, 14)
 
-                    Text("7 days free, then your plan · Restore purchase · Terms")
-                        .pinchBody(11)
+                    if let error = purchases.errorMessage {
+                        PinchText(error)
+                            .pinchBody(11)
+                            .foregroundStyle(p.coral)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 10)
+                    }
+
+                    HStack(spacing: 14) {
+                        Button("Restore purchases") { Task { await purchases.restore() } }
+                        Link("Terms", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                    }
+                    .pinchBody(11, .semibold)
+                    .foregroundStyle(p.ink3)
+                    .padding(.top, 12)
+
+                    PinchText("Payment and renewal are handled by the App Store. Cancel anytime in Apple Account subscriptions.")
+                        .pinchBody(10.5)
                         .foregroundStyle(p.ink3)
-                        .padding(.top, 12)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 8)
                 }
                 .padding(EdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 20))
             }
@@ -687,7 +711,7 @@ struct PaywallSheet: View {
                     .frame(width: 16, height: 16)
             }
             .frame(width: 16, height: 16)
-            Text(text)
+            PinchText(text)
                 .pinchBody(13.5)
                 .foregroundStyle(p.ink2)
         }
@@ -697,11 +721,11 @@ struct PaywallSheet: View {
         RadioCard(selected: ui.plan == plan, action: { ui.plan = plan }) {
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 7) {
-                    Text(title)
+                    PinchText(title)
                         .pinchBody(15, .bold)
                         .foregroundStyle(p.ink)
                     if let tag {
-                        Text(tag)
+                        PinchText(tag)
                             .pinchBody(8.5, .heavy, tracking: 0.09)
                             .foregroundStyle(p.amber)
                             .padding(.horizontal, 7)
@@ -709,18 +733,34 @@ struct PaywallSheet: View {
                             .background(Capsule().fill(p.amberSoft))
                     }
                 }
-                Text(sub)
+                PinchText(sub)
                     .pinchBody(12)
                     .foregroundStyle(p.ink3)
             }
         }
     }
 
-    private func startTrial() {
-        guard !plus else { return }
-        plus = true
-        ui.payOpen = false
-        ui.showToast("Plus is on — trial started", "Tracking itself stays free forever.")
+    private var ctaTitle: String {
+        if plus { return "Manage subscription" }
+        if purchases.isPurchasing { return "Working…" }
+        if purchases.isLoading { return "Loading plans…" }
+        return "Continue with Plus"
+    }
+
+    private func planSubtitle(_ plan: PlusPlan, fallback: String) -> String {
+        guard let product = purchases.product(for: plan) else { return fallback }
+        return plan == .yearly
+            ? "\(product.displayPrice) / year · cancel anytime"
+            : "\(product.displayPrice) / month · cancel anytime"
+    }
+
+    private func startPurchase() {
+        Task {
+            if await purchases.purchase(ui.plan) {
+                ui.payOpen = false
+                ui.showToast("Pinch Plus is active", "Your premium tools are unlocked.")
+            }
+        }
     }
 }
 
@@ -805,17 +845,17 @@ struct WidgetMock: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 6) {
                     PinchLogo(width: 12, bodyStroke: 4)
-                    Text("PINCH")
+                    PinchText("PINCH")
                         .pinchBody(9.5, .heavy, tracking: 0.1)
                         .foregroundStyle(p.ink3)
                 }
-                Text(PinchFormat.mg(remain))
+                PinchText(PinchFormat.mg(remain))
                     .font(PinchFonts.display(26, .heavy))
                     .tracking(26 * -0.02)
                     .monospacedDigit()
                     .foregroundStyle(p.ink)
                     .padding(.top, 8)
-                Text("mg left today")
+                PinchText("mg left today")
                     .pinchBody(10.5)
                     .foregroundStyle(p.ink3)
                     .padding(.top, 1)
@@ -856,12 +896,12 @@ struct WidgetSteps: View {
 
     private func step(_ n: Int, _ text: String) -> some View {
         HStack(spacing: 10) {
-            Text("\(n)")
+            PinchText("\(n)")
                 .pinchBody(11, .heavy)
                 .foregroundStyle(p.brand)
                 .frame(width: 20, height: 20)
                 .background(Circle().fill(p.brandSoft))
-            Text(text)
+            PinchText(text)
                 .pinchBody(13)
                 .foregroundStyle(p.ink2)
         }
