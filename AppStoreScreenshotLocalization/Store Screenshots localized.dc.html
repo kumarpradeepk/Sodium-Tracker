@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+  body { margin:0; background:#d7dce3; font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif; }
+  a { color:#2a6db4; text-decoration:none; } a:hover { color:#1f5590; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&amp;family=M+PLUS+Rounded+1c:wght@700;800&amp;family=Noto+Sans+JP:wght@400;700;900&amp;display=swap" rel="stylesheet">
+</helmet>
+<div style="display:inline-block; padding:44px 48px 80px; color:#1b2b40;">
+  <div style="max-width:760px; background:#ffffff; border-radius:18px; padding:26px 30px; box-shadow:0 2px 10px rgba(27,43,64,0.08);">
+    <div style="font-size:26px; font-weight:800; letter-spacing:-0.02em;">Pinch · Store screenshots v3</div>
+    <div style="font-size:14px; color:#5b6575; margin-top:6px;">Zero-dead-space formula per your reference · benefit headline + full-bleed phone · 4 locale sets · iOS + Android</div>
+    <div style="display:flex; flex-direction:column; gap:7px; margin-top:16px; font-size:13.5px; line-height:1.5; color:#3c4658;">
+      <div>· Every panel: bold rounded headline, two-line benefit subtitle, then the phone fills all remaining space and bleeds off the bottom — no empty fields.</div>
+      <div>· Five benefits in order: <b>one-number ring · know before you bite · 3-second log · kind reminders · streaks</b>; Pinch appears in every panel.</div>
+      <div>· Display font Baloo 2 (M PLUS Rounded for Japanese); in-phone UI stays in the app’s real system style.</div>
+      <div>· Keyword “sodium tracker free” carried by panel 1’s headline; closing subtitle is the install push.</div>
+      <div>· Snapshot ×3 → exact 1290 × 2796 (App Store) and 1080 × 1920 (Google Play) PNGs.</div>
+    </div>
+  </div>
+  <sc-for list="{{ rows }}" as="r" hint-placeholder-count="2">
+    <div data-screen-label="{{ r.name }} — {{ r.plat }}" style="margin-top:30px;">
+      <sc-if value="{{ r.first }}" hint-placeholder-val="{{ true }}">
+        <div style="margin:46px 0 10px; display:flex; align-items:baseline; gap:14px;">
+          <div style="font-size:21px; font-weight:800; letter-spacing:-0.01em;">{{ r.name }}</div>
+          <div style="font-size:13px; color:#5b6575;">{{ r.ln }}</div>
+        </div>
+      </sc-if>
+      <div style="font-size:11.5px; font-weight:700; letter-spacing:0.1em; color:#8a93a3; margin-bottom:10px;">{{ r.platU }} · EXPORT {{ r.exp }} PX (SNAPSHOT ×3)</div>
+      <div style="display:flex; gap:18px; align-items:flex-start;">
+
+        <div style="border-radius:6px; overflow:hidden; box-shadow:0 12px 32px rgba(27,43,64,0.18); flex-shrink:0;">
+        <div data-shot="{{ r.sp }}-1" style="position:relative; width:{{ r.pw }}px; height:{{ r.ph }}px; font-size:{{ r.fs }}px; font-family:{{ r.font }}; background:linear-gradient(175deg, #4b8ed3 0%, #2a6db4 48%, #21578f 100%); overflow:hidden; box-sizing:border-box; color:#ffffff; display:flex; flex-direction:column;">
+          <div style="height:40%; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; text-align:center; padding:0 2.6em; flex-shrink:0;">
+            <div style="font-size:4.3em; font-weight:800; line-height:1.1; word-break:{{ r.wb }}; text-wrap:balance;">{{ r.ph1 }}</div>
+            <div style="font-size:2em; line-height:1.45; font-weight:600; color:#eaf3ff; max-width:18.5em; width:fit-content; margin:1em auto 0; padding:0.55em 1.2em; background:rgba(13,40,70,0.28); border-radius:1.3em; text-wrap:pretty;">{{ r.ps1 }}</div>
+          </div>
+          <div style="position:relative; flex:1;">
+            <svg style="position:absolute; right:2.2em; top:-4.8em; width:9em; height:9.75em; transform:rotate(9deg); filter:drop-shadow(0 0 0.2em rgba(255,255,255,0.8));" viewBox="0 0 120 130">
+              <rect x="88" y="42" width="12" height="26" rx="6" transform="rotate(-136 94 55)" fill="#fdfcf8" stroke="#e3e0d6" stroke-width="1.5"></rect>
+              <rect x="30" y="34" width="60" height="84" rx="24" fill="#fdfcf8" stroke="#e3e0d6" stroke-width="1.5"></rect>
+              <rect x="34" y="8" width="52" height="22" rx="10" fill="#16293f"></rect>
+              <rect x="26" y="26" width="68" height="10" rx="5" fill="#0f1e30"></rect>
+              <circle cx="38" cy="72" r="4" fill="#f3c8c2" opacity="0.85"></circle><circle cx="82" cy="72" r="4" fill="#f3c8c2" opacity="0.85"></circle>
+              <ellipse cx="48" cy="64" rx="3.3" ry="4.2" fill="#22314a"></ellipse><circle cx="46.8" cy="62.2" r="1.2" fill="#ffffff" opacity="0.9"></circle>
+              <ellipse cx="72" cy="64" rx="3.3" ry="4.2" fill="#22314a"></ellipse><circle cx="70.8" cy="62.2" r="1.2" fill="#ffffff" opacity="0.9"></circle>
+              <path d="M48 76 Q60 90 72 76 Q60 83 48 76 Z" fill="#22314a"></path>
+              <ellipse cx="60" cy="81" rx="5" ry="3" fill="#d95f43"></ellipse>
+            </svg>
+            <div style="position:absolute; left:50%; transform:translateX(-50%); top:0; width:38em; height:106%; background:#17233a; border-radius:4.2em 4.2em 0 0; padding:0.85em 0.85em 0; box-sizing:border-box; box-shadow:0 0 0 0.55em rgba(255,255,255,0.22), 0 -0.6em 3em rgba(10,25,45,0.35);">
+              <div style="position:relative; width:100%; height:100%; background:#f4f7fb; border-radius:3.4em 3.4em 0 0; overflow:hidden; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:#1b2b40;">
+                <sc-if value="{{ r.isIos }}" hint-placeholder-val="{{ true }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:0.9em; width:7.8em; height:2.3em; border-radius:1.2em; background:#17233a;"></div></sc-if>
+                <sc-if value="{{ r.isAnd }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:1em; width:1.4em; height:1.4em; border-radius:50%; background:#17233a;"></div></sc-if>
+                <div style="position:absolute; top:1.2em; left:2.6em; font-size:1.3em; font-weight:700;">9:41</div>
+                <div style="font-size:1.2em; padding:4.4em 1.9em 0;">
+                  <div style="font-size:0.95em; font-weight:700; letter-spacing:0.1em; color:#5b6575; white-space:nowrap;">{{ r.date }}</div>
+                  <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.3em;">
+                    <div style="font-size:2.2em; font-weight:800; letter-spacing:-0.02em;">{{ r.today }}</div>
+                    <div style="display:flex; align-items:center; gap:0.45em; background:#f3e3bd; color:#a8761c; font-weight:700; font-size:1em; padding:0.5em 1em; border-radius:1.3em; white-space:nowrap;"><svg style="width:0.9em; height:0.9em;" viewBox="0 0 14 14"><path d="M7 0 L8.4 5.6 L14 7 L8.4 8.4 L7 14 L5.6 8.4 L0 7 L5.6 5.6 Z" fill="#c9962e"></path></svg>{{ r.streak }}</div>
+                  </div>
+                  <div style="position:relative; width:15em; height:15em; margin:1.2em auto 0;">
+                    <svg style="position:absolute; inset:0; width:100%; height:100%;" viewBox="0 0 250 250">
+                      <circle cx="125" cy="125" r="106" fill="none" stroke="#c3cbd6" stroke-width="3" stroke-dasharray="0.5 11" stroke-linecap="round"></circle>
+                      <circle cx="125" cy="125" r="106" fill="#dbe6f2" opacity="0.45"></circle>
+                      <circle cx="125" cy="125" r="106" fill="none" stroke="#2a6db4" stroke-width="15" stroke-linecap="round" stroke-dasharray="359 666" transform="rotate(-90 125 125)"></circle>
+                    </svg>
+                    <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.15em;">
+                      <div style="font-size:3.1em; font-weight:800; letter-spacing:-0.03em; line-height:1;">{{ r.big }}</div>
+                      <div style="font-size:1em; color:#5b6575; border-bottom:0.15em dotted #b6bfcb; padding-bottom:0.15em;">{{ r.ofline }}</div>
+                      <div style="font-size:1em; font-weight:700; color:#2a6db4; margin-top:0.15em;">{{ r.leftline }}</div>
+                    </div>
+                    <div style="position:absolute; left:4.1em; top:11.5em; width:3.2em; height:3.95em;">
+                      <svg style="width:100%; height:100%;" viewBox="0 0 60 74"><circle cx="30" cy="42" r="30" fill="#f4f7fb" opacity="0.92"></circle><clipPath id="pinchV3Needle"><rect x="14" y="22" width="32" height="46" rx="14"></rect></clipPath><rect x="14" y="22" width="32" height="46" rx="14" fill="#fdfcf8"></rect><rect x="10" y="43" width="40" height="50" fill="#cfe0f0" clip-path="url(#pinchV3Needle)"></rect><rect x="14" y="22" width="32" height="46" rx="14" fill="none" stroke="#dcd8cc" stroke-width="1.5"></rect><rect x="17" y="4" width="26" height="16" rx="8" fill="#2a6db4"></rect><rect x="12" y="17" width="36" height="7" rx="3.5" fill="#245e9c"></rect><circle cx="23" cy="40" r="2.2" fill="#22314a"></circle><circle cx="37" cy="40" r="2.2" fill="#22314a"></circle><circle cx="19" cy="45" r="2.6" fill="#f3c8c2" opacity="0.8"></circle><circle cx="41" cy="45" r="2.6" fill="#f3c8c2" opacity="0.8"></circle><path d="M23 46 Q30 51 37 46" stroke="#22314a" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+                    </div>
+                  </div>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.9em; margin-top:1.3em;">
+                    <div style="background:#ffffff; border-radius:1.3em; padding:1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <div style="font-size:1.7em; font-weight:800; color:#2a6db4;">{{ r.c1n }}</div>
+                      <div style="font-size:1em; color:#5b6575; margin-top:0.2em;">{{ r.c1l }}</div>
+                    </div>
+                    <div style="background:#ffffff; border-radius:1.3em; padding:1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <div style="font-size:1.7em; font-weight:800;">{{ r.c2n }}</div>
+                      <div style="font-size:1em; color:#5b6575; margin-top:0.2em;">{{ r.c2l }}</div>
+                    </div>
+                  </div>
+                  <div style="font-size:0.95em; font-weight:700; letter-spacing:0.1em; color:#8a93a3; margin:1.6em 0 0.8em;">{{ r.loggedLbl }}</div>
+                  <div style="background:#ffffff; border-radius:1.5em; padding:0.5em 1.4em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:0.9em 0 0.6em;">
+                      <div style="font-size:1.35em; font-weight:800;">{{ r.mealB }}</div>
+                      <div style="font-size:1.1em; color:#5b6575; font-weight:600;">215 mg</div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:0.8em 0; border-top:1px solid #eef0f4;">
+                      <div style="font-size:1.15em; font-weight:600;">{{ r.m1 }}</div><div style="font-size:1.1em; color:#8a93a3;">{{ r.m1m }}</div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:0.8em 0; border-top:1px solid #eef0f4;">
+                      <div style="font-size:1.15em; font-weight:600;">{{ r.m4 }}</div><div style="font-size:1.1em; color:#8a93a3;">{{ r.m4m }}</div>
+                    </div>
+                  </div>
+                  <div style="background:#ffffff; border-radius:1.5em; padding:1.1em 1.4em; margin-top:0.9em; display:flex; justify-content:space-between; align-items:center; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                    <div style="font-size:1.35em; font-weight:800;">{{ r.mealL }}</div>
+                    <div style="font-size:1.1em; color:#5b6575; font-weight:600;">{{ r.m2m }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div style="border-radius:6px; overflow:hidden; box-shadow:0 12px 32px rgba(27,43,64,0.18); flex-shrink:0;">
+        <div data-shot="{{ r.sp }}-2" style="position:relative; width:{{ r.pw }}px; height:{{ r.ph }}px; font-size:{{ r.fs }}px; font-family:{{ r.font }}; background:linear-gradient(175deg, #4b8ed3 0%, #2a6db4 48%, #21578f 100%); overflow:hidden; box-sizing:border-box; color:#ffffff; display:flex; flex-direction:column;">
+          <div style="height:40%; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; text-align:center; padding:0 2.6em; flex-shrink:0;">
+            <div style="font-size:4.3em; font-weight:800; line-height:1.1; word-break:{{ r.wb }}; text-wrap:balance;">{{ r.ph2 }}</div>
+            <div style="font-size:2em; line-height:1.45; font-weight:600; color:#eaf3ff; max-width:18.5em; width:fit-content; margin:1em auto 0; padding:0.55em 1.2em; background:rgba(13,40,70,0.28); border-radius:1.3em; text-wrap:pretty;">{{ r.ps2 }}</div>
+          </div>
+          <div style="position:relative; flex:1;">
+            <div style="position:absolute; left:50%; transform:translateX(-50%); top:0; width:38em; height:106%; background:#17233a; border-radius:4.2em 4.2em 0 0; padding:0.85em 0.85em 0; box-sizing:border-box; box-shadow:0 0 0 0.55em rgba(255,255,255,0.22), 0 -0.6em 3em rgba(10,25,45,0.35);">
+              <div style="position:relative; width:100%; height:100%; background:#f4f7fb; border-radius:3.4em 3.4em 0 0; overflow:hidden; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:#1b2b40;">
+                <sc-if value="{{ r.isIos }}" hint-placeholder-val="{{ true }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:0.9em; width:7.8em; height:2.3em; border-radius:1.2em; background:#17233a;"></div></sc-if>
+                <sc-if value="{{ r.isAnd }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:1em; width:1.4em; height:1.4em; border-radius:50%; background:#17233a;"></div></sc-if>
+                <div style="position:absolute; top:1.2em; left:2.6em; font-size:1.3em; font-weight:700;">9:41</div>
+                <div style="font-size:1.2em; padding:4.4em 1.9em 0;">
+                  <div style="font-size:2.2em; font-weight:800; letter-spacing:-0.02em;">{{ r.today }}</div>
+                  <div style="font-size:0.95em; font-weight:700; letter-spacing:0.1em; color:#8a93a3; margin-top:1.3em;">{{ r.susLabel }}</div>
+                  <div style="display:flex; flex-direction:column; gap:0.8em; margin-top:0.8em;">
+                    <div style="display:flex; align-items:center; gap:0.8em; background:#ffffff; border-radius:1.4em; padding:1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <div style="width:2.2em; height:2.2em; border-radius:1.1em; background:#dbe6f2; color:#2a6db4; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:1.1em; flex-shrink:0;">+</div>
+                      <span style="font-size:1.25em; font-weight:700; line-height:1.25; flex:1;">{{ r.sus1n }}</span>
+                      <span style="font-size:1.2em; font-weight:600; color:#5b6575; white-space:nowrap;">{{ r.sus1m }}</span>
+                    </div>
+                    <div style="position:relative; display:flex; align-items:center; gap:0.8em; background:#ffffff; border-radius:1.4em; padding:1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06); outline:0.22em solid #c9962e;">
+                      <div style="position:absolute; right:-0.5em; top:-1.5em; transform:rotate(4deg); background:#c9962e; color:#ffffff; border-radius:0.8em; padding:0.4em 0.9em; font-size:1em; font-weight:800; letter-spacing:0.05em; box-shadow:0 0.5em 1.4em rgba(27,43,64,0.25); white-space:nowrap;">{{ r.wontfit }}</div>
+                      <div style="width:2.2em; height:2.2em; border-radius:1.1em; background:#f7ecd4; color:#b07d1e; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:1.1em; flex-shrink:0;">!</div>
+                      <span style="font-size:1.25em; font-weight:700; line-height:1.25; flex:1;">{{ r.sus2n }}</span>
+                      <span style="font-size:1.2em; font-weight:600; color:#b07d1e; white-space:nowrap;">{{ r.sus2m }}</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.8em; background:#ffffff; border-radius:1.4em; padding:1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <div style="width:2.2em; height:2.2em; border-radius:1.1em; background:#dbe6f2; color:#2a6db4; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:1.1em; flex-shrink:0;">+</div>
+                      <span style="font-size:1.25em; font-weight:700; line-height:1.25; flex:1;">{{ r.sus3n }}</span>
+                      <span style="font-size:1.2em; font-weight:600; color:#5b6575; white-space:nowrap;">{{ r.sus3m }}</span>
+                    </div>
+                  </div>
+                  <div style="display:flex; align-items:flex-start; gap:0.9em; margin-top:1.4em;">
+                    <svg style="width:2.5em; height:3.25em; flex-shrink:0;" viewBox="0 0 24 31"><rect x="5" y="9" width="14" height="19" rx="6" fill="#fdfcf8" stroke="#dcd8cc" stroke-width="1"></rect><rect x="6.5" y="2" width="11" height="6" rx="3" fill="#2a6db4"></rect><rect x="4.5" y="7" width="15" height="3" rx="1.5" fill="#245e9c"></rect><circle cx="9.5" cy="16" r="1.1" fill="#22314a"></circle><circle cx="14.5" cy="16" r="1.1" fill="#22314a"></circle><path d="M9.5 19.5 Q12 21 14.5 19.5" stroke="#22314a" stroke-width="1.2" fill="none" stroke-linecap="round"></path></svg>
+                    <div style="background:#ffffff; border-radius:1.3em; padding:0.9em 1.2em; font-size:1.2em; line-height:1.4; color:#3c4658; box-shadow:0 0.1em 0.4em rgba(27,43,64,0.07);">{{ r.coach3 }}</div>
+                  </div>
+                  <div style="font-size:0.95em; font-weight:700; letter-spacing:0.1em; color:#8a93a3; margin:1.5em 0 0.8em;">{{ r.swapLbl }}</div>
+                  <div style="display:flex; flex-direction:column; gap:0.8em;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; background:#ffffff; border-radius:1.4em; padding:1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <span style="font-size:1.25em; font-weight:700;">{{ r.sw1 }}</span>
+                      <span style="font-size:1.2em; font-weight:700; color:#2e7d4f; white-space:nowrap;">{{ r.sw1m }}</span>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; background:#ffffff; border-radius:1.4em; padding:1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <span style="font-size:1.25em; font-weight:700;">{{ r.sw2 }}</span>
+                      <span style="font-size:1.2em; font-weight:700; color:#2e7d4f; white-space:nowrap;">{{ r.sw2m }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div style="border-radius:6px; overflow:hidden; box-shadow:0 12px 32px rgba(27,43,64,0.18); flex-shrink:0;">
+        <div data-shot="{{ r.sp }}-3" style="position:relative; width:{{ r.pw }}px; height:{{ r.ph }}px; font-size:{{ r.fs }}px; font-family:{{ r.font }}; background:linear-gradient(175deg, #4b8ed3 0%, #2a6db4 48%, #21578f 100%); overflow:hidden; box-sizing:border-box; color:#ffffff; display:flex; flex-direction:column;">
+          <div style="height:40%; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; text-align:center; padding:0 2.6em; flex-shrink:0;">
+            <div style="font-size:4.3em; font-weight:800; line-height:1.1; word-break:{{ r.wb }}; text-wrap:balance;">{{ r.ph3 }}</div>
+            <div style="font-size:2em; line-height:1.45; font-weight:600; color:#eaf3ff; max-width:18.5em; width:fit-content; margin:1em auto 0; padding:0.55em 1.2em; background:rgba(13,40,70,0.28); border-radius:1.3em; text-wrap:pretty;">{{ r.ps3 }}</div>
+          </div>
+          <div style="position:relative; flex:1;">
+            <div style="position:absolute; left:50%; transform:translateX(-50%); top:0; width:38em; height:106%; background:#17233a; border-radius:4.2em 4.2em 0 0; padding:0.85em 0.85em 0; box-sizing:border-box; box-shadow:0 0 0 0.55em rgba(255,255,255,0.22), 0 -0.6em 3em rgba(10,25,45,0.35);">
+              <div style="position:relative; width:100%; height:100%; background:#f4f7fb; border-radius:3.4em 3.4em 0 0; overflow:hidden; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:#1b2b40;">
+                <sc-if value="{{ r.isIos }}" hint-placeholder-val="{{ true }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:0.9em; width:7.8em; height:2.3em; border-radius:1.2em; background:#17233a;"></div></sc-if>
+                <sc-if value="{{ r.isAnd }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:1em; width:1.4em; height:1.4em; border-radius:50%; background:#17233a;"></div></sc-if>
+                <div style="position:absolute; top:1.2em; left:2.6em; font-size:1.3em; font-weight:700;">9:41</div>
+                <div style="font-size:1.2em; padding:4.4em 1.9em 0;">
+                  <div style="font-size:2.2em; font-weight:800; letter-spacing:-0.02em;">{{ r.p3scr }}</div>
+                  <div style="display:flex; gap:0.7em; margin-top:1.1em;">
+                    <div style="background:#2a6db4; color:#ffffff; font-size:1.1em; font-weight:700; padding:0.55em 1.3em; border-radius:1.5em; white-space:nowrap;">{{ r.segAll }}</div>
+                    <div style="background:#ffffff; color:#5b6575; font-size:1.1em; font-weight:700; padding:0.55em 1.3em; border-radius:1.5em; white-space:nowrap;">{{ r.mealB }}</div>
+                    <div style="background:#ffffff; color:#5b6575; font-size:1.1em; font-weight:700; padding:0.55em 1.3em; border-radius:1.5em; white-space:nowrap;">{{ r.mealL }}</div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:1em; margin-top:1.3em;">
+                    <div style="background:linear-gradient(135deg, #e2705a, #d1604a); border-radius:1.8em; padding:1.2em 1.4em; color:#ffffff; box-shadow:0 0.6em 1.8em rgba(209,96,74,0.35);">
+                      <div style="display:flex; align-items:center; gap:0.8em;">
+                        <div style="width:3em; height:3em; border-radius:1em; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center;"><svg style="width:1.7em; height:1.7em;" viewBox="0 0 24 24"><path d="M4 13 C4 9 7.5 6 12 6 C16.5 6 20 9 20 13 Z" fill="none" stroke="#ffffff" stroke-width="1.8"></path><path d="M3 16 L21 16" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+                        <div><div style="font-size:1em; font-weight:700; opacity:0.9;">{{ r.mealB }}</div><div style="font-size:1.35em; font-weight:800;">{{ r.m1 }}</div></div>
+                      </div>
+                      <div style="display:flex; align-items:center; margin-top:0.8em;"><div style="font-size:1.5em; font-weight:800;">{{ r.m1m }}</div><div style="flex:1;"></div><div style="width:2.6em; height:2.6em; border-radius:50%; background:rgba(255,255,255,0.28); display:flex; align-items:center; justify-content:center; font-size:1.3em; font-weight:800;">+</div></div>
+                    </div>
+                    <div style="background:linear-gradient(135deg, #4a86c4, #2a6db4); border-radius:1.8em; padding:1.2em 1.4em; color:#ffffff; box-shadow:0 0.6em 1.8em rgba(42,109,180,0.35);">
+                      <div style="display:flex; align-items:center; gap:0.8em;">
+                        <div style="width:3em; height:3em; border-radius:1em; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center;"><svg style="width:1.7em; height:1.7em;" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7" fill="none" stroke="#ffffff" stroke-width="1.8"></circle><path d="M8 13 C8 10.8 9.8 9 12 9" stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></div>
+                        <div><div style="font-size:1em; font-weight:700; opacity:0.9;">{{ r.mealL }}</div><div style="font-size:1.35em; font-weight:800;">{{ r.m2 }}</div></div>
+                      </div>
+                      <div style="display:flex; align-items:center; margin-top:0.8em;"><div style="font-size:1.5em; font-weight:800;">{{ r.m2m }}</div><div style="flex:1;"></div><div style="width:2.6em; height:2.6em; border-radius:50%; background:rgba(255,255,255,0.28); display:flex; align-items:center; justify-content:center; font-size:1.3em; font-weight:800;">+</div></div>
+                    </div>
+                    <div style="background:linear-gradient(135deg, #47a98f, #3d9c85); border-radius:1.8em; padding:1.2em 1.4em; color:#ffffff; box-shadow:0 0.6em 1.8em rgba(61,156,133,0.35);">
+                      <div style="display:flex; align-items:center; gap:0.8em;">
+                        <div style="width:3em; height:3em; border-radius:1em; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center;"><svg style="width:1.7em; height:1.7em;" viewBox="0 0 24 24"><path d="M17 5 C13 5 6 8 6 15 C6 17.5 8 19 10 19 C16 19 19 12 19 7 Z" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"></path><path d="M8 17 C10 13 13 10 16 8" stroke="#ffffff" stroke-width="1.4" fill="none" stroke-linecap="round"></path></svg></div>
+                        <div><div style="font-size:1em; font-weight:700; opacity:0.9;">{{ r.mealD }}</div><div style="font-size:1.35em; font-weight:800;">{{ r.m3 }}</div></div>
+                      </div>
+                      <div style="display:flex; align-items:center; margin-top:0.8em;"><div style="font-size:1.5em; font-weight:800;">{{ r.m3m }}</div><div style="flex:1;"></div><div style="width:2.6em; height:2.6em; border-radius:50%; background:rgba(255,255,255,0.28); display:flex; align-items:center; justify-content:center; font-size:1.3em; font-weight:800;">+</div></div>
+                    </div>
+                    <div style="background:linear-gradient(135deg, #9077cf, #7a5fb8); border-radius:1.8em; padding:1.2em 1.4em; color:#ffffff; box-shadow:0 0.6em 1.8em rgba(122,95,184,0.35);">
+                      <div style="display:flex; align-items:center; gap:0.8em;">
+                        <div style="width:3em; height:3em; border-radius:1em; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center;"><svg style="width:1.7em; height:1.7em;" viewBox="0 0 24 24"><circle cx="12" cy="9" r="4.5" fill="none" stroke="#ffffff" stroke-width="1.8"></circle><path d="M7 20 C7 16.5 9 15 12 15 C15 15 17 16.5 17 20" stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round"></path></svg></div>
+                        <div><div style="font-size:1em; font-weight:700; opacity:0.9;">{{ r.mealS }}</div><div style="font-size:1.35em; font-weight:800;">{{ r.m4 }}</div></div>
+                      </div>
+                      <div style="display:flex; align-items:center; margin-top:0.8em;"><div style="font-size:1.5em; font-weight:800;">{{ r.m4m }}</div><div style="flex:1;"></div><div style="width:2.6em; height:2.6em; border-radius:50%; background:rgba(255,255,255,0.28); display:flex; align-items:center; justify-content:center; font-size:1.3em; font-weight:800;">+</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <svg style="position:absolute; right:1.6em; bottom:-2.4em; width:11em; height:11.9em; transform:rotate(-7deg); filter:drop-shadow(0 0 0.22em rgba(255,255,255,0.85)) drop-shadow(0 1em 2em rgba(10,25,45,0.4)); z-index:3;" viewBox="0 0 120 130">
+              <rect x="22" y="66" width="12" height="26" rx="6" transform="rotate(18 28 79)" fill="#fdfcf8" stroke="#e3e0d6" stroke-width="1.5"></rect>
+              <rect x="88" y="42" width="12" height="26" rx="6" transform="rotate(-136 94 55)" fill="#fdfcf8" stroke="#e3e0d6" stroke-width="1.5"></rect>
+              <rect x="30" y="34" width="60" height="84" rx="24" fill="#fdfcf8" stroke="#e3e0d6" stroke-width="1.5"></rect>
+              <rect x="34" y="8" width="52" height="22" rx="10" fill="#16293f"></rect>
+              <rect x="26" y="26" width="68" height="10" rx="5" fill="#0f1e30"></rect>
+              <circle cx="38" cy="72" r="4" fill="#f3c8c2" opacity="0.85"></circle><circle cx="82" cy="72" r="4" fill="#f3c8c2" opacity="0.85"></circle>
+              <ellipse cx="48" cy="64" rx="3.3" ry="4.2" fill="#22314a"></ellipse><circle cx="46.8" cy="62.2" r="1.2" fill="#ffffff" opacity="0.9"></circle>
+              <ellipse cx="72" cy="64" rx="3.3" ry="4.2" fill="#22314a"></ellipse><circle cx="70.8" cy="62.2" r="1.2" fill="#ffffff" opacity="0.9"></circle>
+              <path d="M48 76 Q60 92 72 76 Q60 83 48 76 Z" fill="#22314a"></path>
+              <ellipse cx="60" cy="82" rx="6" ry="3.4" fill="#d95f43"></ellipse>
+            </svg>
+          </div>
+        </div>
+        </div>
+
+        <div style="border-radius:6px; overflow:hidden; box-shadow:0 12px 32px rgba(27,43,64,0.18); flex-shrink:0;">
+        <div data-shot="{{ r.sp }}-4" style="position:relative; width:{{ r.pw }}px; height:{{ r.ph }}px; font-size:{{ r.fs }}px; font-family:{{ r.font }}; background:linear-gradient(175deg, #4b8ed3 0%, #2a6db4 48%, #21578f 100%); overflow:hidden; box-sizing:border-box; color:#ffffff; display:flex; flex-direction:column;">
+          <div style="height:40%; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; text-align:center; padding:0 2.6em; flex-shrink:0;">
+            <div style="font-size:4.3em; font-weight:800; line-height:1.1; word-break:{{ r.wb }}; text-wrap:balance;">{{ r.ph4 }}</div>
+            <div style="font-size:2em; line-height:1.45; font-weight:600; color:#eaf3ff; max-width:18.5em; width:fit-content; margin:1em auto 0; padding:0.55em 1.2em; background:rgba(13,40,70,0.28); border-radius:1.3em; text-wrap:pretty;">{{ r.ps4 }}</div>
+          </div>
+          <div style="position:relative; flex:1;">
+            <div style="position:absolute; left:50%; transform:translateX(-50%); top:0; width:38em; height:106%; background:#17233a; border-radius:4.2em 4.2em 0 0; padding:0.85em 0.85em 0; box-sizing:border-box; box-shadow:0 0 0 0.55em rgba(255,255,255,0.22), 0 -0.6em 3em rgba(10,25,45,0.35);">
+              <div style="position:relative; width:100%; height:100%; background:#f4f7fb; border-radius:3.4em 3.4em 0 0; overflow:hidden; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:#1b2b40;">
+                <sc-if value="{{ r.isIos }}" hint-placeholder-val="{{ true }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:0.9em; width:7.8em; height:2.3em; border-radius:1.2em; background:#17233a;"></div></sc-if>
+                <sc-if value="{{ r.isAnd }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:1em; width:1.4em; height:1.4em; border-radius:50%; background:#17233a;"></div></sc-if>
+                <div style="position:absolute; top:1.2em; left:2.6em; font-size:1.3em; font-weight:700;">9:41</div>
+                <div style="font-size:1.2em; padding:4.4em 1.9em 0;">
+                  <div style="font-size:2.2em; font-weight:800; letter-spacing:-0.02em;">{{ r.p4scr }}</div>
+                  <div style="display:flex; flex-direction:column; gap:0.8em; margin-top:1.2em;">
+                    <div style="display:flex; align-items:center; gap:0.9em; background:#ffffff; border-radius:1.4em; padding:1.1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <div style="flex:1;"><div style="font-size:1.25em; font-weight:700;">{{ r.mealB }}</div><div style="font-size:1.05em; color:#8a93a3;">{{ r.t1 }}</div></div>
+                      <div style="width:3.6em; height:2em; border-radius:1em; background:#2a6db4; position:relative;"><div style="position:absolute; right:0.25em; top:0.25em; width:1.5em; height:1.5em; border-radius:50%; background:#ffffff;"></div></div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.9em; background:#ffffff; border-radius:1.4em; padding:1.1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <div style="flex:1;"><div style="font-size:1.25em; font-weight:700;">{{ r.mealL }}</div><div style="font-size:1.05em; color:#8a93a3;">{{ r.t2 }}</div></div>
+                      <div style="width:3.6em; height:2em; border-radius:1em; background:#2a6db4; position:relative;"><div style="position:absolute; right:0.25em; top:0.25em; width:1.5em; height:1.5em; border-radius:50%; background:#ffffff;"></div></div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:0.9em; background:#ffffff; border-radius:1.4em; padding:1.1em 1.2em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                      <div style="flex:1;"><div style="font-size:1.25em; font-weight:700;">{{ r.mealD }}</div><div style="font-size:1.05em; color:#8a93a3;">{{ r.t3 }}</div></div>
+                      <div style="width:3.6em; height:2em; border-radius:1em; background:#2a6db4; position:relative;"><div style="position:absolute; right:0.25em; top:0.25em; width:1.5em; height:1.5em; border-radius:50%; background:#ffffff;"></div></div>
+                    </div>
+                  </div>
+                  <div style="font-size:0.95em; font-weight:700; letter-spacing:0.1em; color:#8a93a3; margin:1.5em 0 0.8em;">{{ r.prevLbl }}</div>
+                  <div style="background:#ffffff; border-radius:1.6em; padding:1.2em 1.4em; box-shadow:0 0.8em 2.2em rgba(27,43,64,0.14);">
+                    <div style="display:flex; align-items:center; gap:0.7em;">
+                      <div style="width:2.2em; height:2.2em; border-radius:0.65em; background:#2a6db4; display:flex; align-items:center; justify-content:center;"><svg style="width:1.1em; height:1.4em;" viewBox="0 0 24 31"><rect x="5" y="9" width="14" height="19" rx="6" fill="#fdfcf8"></rect><rect x="6.5" y="2" width="11" height="6" rx="3" fill="#1b3550"></rect><rect x="4.5" y="7" width="15" height="3" rx="1.5" fill="#16293f"></rect></svg></div>
+                      <div style="font-size:0.95em; font-weight:700; letter-spacing:0.08em; color:#8a93a3;">PINCH</div>
+                      <div style="flex:1;"></div>
+                      <div style="font-size:0.95em; color:#8a93a3;">{{ r.now }}</div>
+                    </div>
+                    <div style="font-size:1.3em; font-weight:700; margin-top:0.5em;">{{ r.n1t }}</div>
+                    <div style="font-size:1.2em; color:#5b6575; margin-top:0.2em; line-height:1.4;">{{ r.n1b }}</div>
+                  </div>
+                  <div style="display:flex; align-items:flex-start; gap:0.9em; margin-top:1.4em;">
+                    <svg style="width:2.5em; height:3.25em; flex-shrink:0;" viewBox="0 0 24 31"><rect x="5" y="9" width="14" height="19" rx="6" fill="#fdfcf8" stroke="#dcd8cc" stroke-width="1"></rect><rect x="6.5" y="2" width="11" height="6" rx="3" fill="#2a6db4"></rect><rect x="4.5" y="7" width="15" height="3" rx="1.5" fill="#245e9c"></rect><circle cx="9.5" cy="16" r="1.1" fill="#22314a"></circle><circle cx="14.5" cy="16" r="1.1" fill="#22314a"></circle><path d="M9.5 19.5 Q12 21.5 14.5 19.5" stroke="#22314a" stroke-width="1.2" fill="none" stroke-linecap="round"></path></svg>
+                    <div style="background:#ffffff; border-radius:1.3em; padding:0.9em 1.2em; font-size:1.2em; line-height:1.4; color:#3c4658; box-shadow:0 0.1em 0.4em rgba(27,43,64,0.07);">{{ r.p4bub }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div style="border-radius:6px; overflow:hidden; box-shadow:0 12px 32px rgba(27,43,64,0.18); flex-shrink:0;">
+        <div data-shot="{{ r.sp }}-5" style="position:relative; width:{{ r.pw }}px; height:{{ r.ph }}px; font-size:{{ r.fs }}px; font-family:{{ r.font }}; background:linear-gradient(175deg, #4b8ed3 0%, #2a6db4 48%, #21578f 100%); overflow:hidden; box-sizing:border-box; color:#ffffff; display:flex; flex-direction:column;">
+          <div style="height:40%; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; text-align:center; padding:0 2.6em; flex-shrink:0;">
+            <div style="font-size:4.3em; font-weight:800; line-height:1.1; word-break:{{ r.wb }}; text-wrap:balance;">{{ r.ph5 }}</div>
+            <div style="font-size:2em; line-height:1.45; font-weight:600; color:#eaf3ff; max-width:18.5em; width:fit-content; margin:1em auto 0; padding:0.55em 1.2em; background:rgba(13,40,70,0.28); border-radius:1.3em; text-wrap:pretty;">{{ r.ps5 }}</div>
+          </div>
+          <div style="position:relative; flex:1;">
+            <div style="position:absolute; left:50%; transform:translateX(-50%); top:0; width:38em; height:106%; background:#17233a; border-radius:4.2em 4.2em 0 0; padding:0.85em 0.85em 0; box-sizing:border-box; box-shadow:0 0 0 0.55em rgba(255,255,255,0.22), 0 -0.6em 3em rgba(10,25,45,0.35);">
+              <div style="position:relative; width:100%; height:100%; background:#f4f7fb; border-radius:3.4em 3.4em 0 0; overflow:hidden; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:#1b2b40;">
+                <sc-if value="{{ r.isIos }}" hint-placeholder-val="{{ true }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:0.9em; width:7.8em; height:2.3em; border-radius:1.2em; background:#17233a;"></div></sc-if>
+                <sc-if value="{{ r.isAnd }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:50%; transform:translateX(-50%); top:1em; width:1.4em; height:1.4em; border-radius:50%; background:#17233a;"></div></sc-if>
+                <div style="position:absolute; top:1.2em; left:2.6em; font-size:1.3em; font-weight:700;">9:41</div>
+                <div style="font-size:1.2em; padding:4.4em 1.9em 0;">
+                  <div style="font-size:2.2em; font-weight:800; letter-spacing:-0.02em;">{{ r.p5scr }}</div>
+                  <div style="position:relative; width:13.5em; height:13.5em; margin:1.4em auto 0;">
+                    <svg style="position:absolute; inset:0; width:100%; height:100%;" viewBox="0 0 250 250">
+                      <circle cx="125" cy="125" r="106" fill="none" stroke="#eadfc4" stroke-width="14"></circle>
+                      <circle cx="125" cy="125" r="106" fill="none" stroke="#c9962e" stroke-width="14" stroke-linecap="round" stroke-dasharray="666 666" transform="rotate(-90 125 125)"></circle>
+                    </svg>
+                    <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.2em;">
+                      <div style="font-size:4em; font-weight:800; letter-spacing:-0.03em; line-height:1;">{{ r.dayNum }}</div>
+                      <div style="font-size:0.72em; font-weight:800; letter-spacing:0.03em; color:#b07d1e; white-space:nowrap;">{{ r.dayLbl }}</div>
+                    </div>
+                  </div>
+                  <div style="display:flex; justify-content:center; gap:0.7em; margin-top:1.5em;">
+                    <div style="width:2.8em; height:2.8em; border-radius:50%; background:#c9962e; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:1em; font-weight:800;">{{ r.wda }}</div>
+                    <div style="width:2.8em; height:2.8em; border-radius:50%; background:#c9962e; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:1em; font-weight:800;">{{ r.wdb }}</div>
+                    <div style="width:2.8em; height:2.8em; border-radius:50%; background:#c9962e; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:1em; font-weight:800;">{{ r.wdc }}</div>
+                    <div style="width:2.8em; height:2.8em; border-radius:50%; background:#c9962e; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:1em; font-weight:800;">{{ r.wdd }}</div>
+                    <div style="width:2.8em; height:2.8em; border-radius:50%; background:#c9962e; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:1em; font-weight:800;">{{ r.wde }}</div>
+                    <div style="width:2.8em; height:2.8em; border-radius:50%; background:#e8ecf1; color:#8a93a3; display:flex; align-items:center; justify-content:center; font-size:1em; font-weight:800;">{{ r.wdf }}</div>
+                    <div style="width:2.8em; height:2.8em; border-radius:50%; background:#e8ecf1; color:#8a93a3; display:flex; align-items:center; justify-content:center; font-size:1em; font-weight:800;">{{ r.wdg }}</div>
+                  </div>
+                  <div style="font-size:0.95em; font-weight:700; letter-spacing:0.1em; color:#8a93a3; margin:1.6em 0 0.8em;">{{ r.trendLbl }}</div>
+                  <div style="background:#ffffff; border-radius:1.6em; padding:1.3em 1.4em 1.1em; box-shadow:0 0.1em 0.3em rgba(27,43,64,0.06);">
+                    <svg style="width:100%; height:7em;" viewBox="0 0 210 80" preserveAspectRatio="none">
+                      <rect x="4" y="40" width="16" height="40" rx="5" fill="#4a86c4"></rect>
+                      <rect x="34" y="25" width="16" height="55" rx="5" fill="#4a86c4"></rect>
+                      <rect x="64" y="50" width="16" height="30" rx="5" fill="#4a86c4"></rect>
+                      <rect x="94" y="15" width="16" height="65" rx="5" fill="#c9962e"></rect>
+                      <rect x="124" y="35" width="16" height="45" rx="5" fill="#4a86c4"></rect>
+                      <rect x="154" y="10" width="16" height="70" rx="5" fill="#c9962e"></rect>
+                      <rect x="184" y="45" width="16" height="35" rx="5" fill="#4a86c4"></rect>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <svg style="position:absolute; left:2.2em; bottom:-2.6em; width:10.5em; height:11.4em; transform:rotate(6deg); filter:drop-shadow(0 0 0.22em rgba(255,255,255,0.85)) drop-shadow(0 1em 2em rgba(10,25,45,0.4)); z-index:3;" viewBox="0 0 120 130">
+              <rect x="22" y="42" width="12" height="26" rx="6" transform="rotate(136 28 55)" fill="#fdfcf8" stroke="#e3e0d6" stroke-width="1.5"></rect>
+              <rect x="88" y="42" width="12" height="26" rx="6" transform="rotate(-136 94 55)" fill="#fdfcf8" stroke="#e3e0d6" stroke-width="1.5"></rect>
+              <rect x="30" y="34" width="60" height="84" rx="24" fill="#fdfcf8" stroke="#e3e0d6" stroke-width="1.5"></rect>
+              <rect x="34" y="8" width="52" height="22" rx="10" fill="#16293f"></rect>
+              <rect x="26" y="26" width="68" height="10" rx="5" fill="#0f1e30"></rect>
+              <circle cx="38" cy="72" r="4" fill="#f3c8c2" opacity="0.85"></circle><circle cx="82" cy="72" r="4" fill="#f3c8c2" opacity="0.85"></circle>
+              <path d="M44 62 Q48 58 52 62" stroke="#22314a" stroke-width="2.6" fill="none" stroke-linecap="round"></path>
+              <path d="M68 62 Q72 58 76 62" stroke="#22314a" stroke-width="2.6" fill="none" stroke-linecap="round"></path>
+              <path d="M48 76 Q60 92 72 76 Q60 83 48 76 Z" fill="#22314a"></path>
+              <ellipse cx="60" cy="82" rx="6" ry="3.4" fill="#d95f43"></ellipse>
+            </svg>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showIOS&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Platforms&quot;}, &quot;showAndroid&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Platforms&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const latinFont = '"Baloo 2", -apple-system, "Segoe UI", sans-serif';
+    const jpFont = '"M PLUS Rounded 1c", "Noto Sans JP", -apple-system, sans-serif';
+    const ios = { plat: 'App Store (iOS)', platU: 'APP STORE (iOS)', pw: 430, ph: 932, fs: 10, exp: '1290 × 2796', isIos: true, isAnd: false };
+    const and = { plat: 'Google Play (Android)', platU: 'GOOGLE PLAY (ANDROID)', pw: 360, ph: 640, fs: 8.4, exp: '1080 × 1920', isIos: false, isAnd: true };
+    const en = {
+      font: latinFont, wb: 'normal',
+      ph1: 'Your Free Sodium Tracker', ps1: 'Your whole day becomes one simple number, and Pinch rides the ring with you.',
+      ph2: 'Know Before You Bite', ps2: 'Pinch flags anything that won’t fit today’s salt budget, before it reaches your plate.',
+      ph3: 'Log Meals In Seconds', ps3: 'Your usual foods are one tap each. Faster than reaching for the shaker.',
+      ph4: 'Reminders, Not Nagging', ps4: 'Three gentle check-ins a day: breakfast, lunch and dinner. That’s it.',
+      ph5: 'Streaks That Stick', ps5: 'Watch good days add up. Free, with no sign-up. Start today.',
+      date: 'SUNDAY 9 AUGUST', today: 'Today', streak: '14-day streak', big: '1,240', ofline: 'of 2,300 mg', leftline: '1,060 mg left',
+      c1n: '1,060', c1l: 'mg left today', c2n: '2 of 7', c2l: 'days under budget',
+      loggedLbl: 'LOGGED TODAY', susLabel: 'USUAL SUSPECTS',
+      sus1n: 'Beans on toast', sus1m: '+710 mg', sus2n: 'Instant noodles', sus2m: '+1,580 mg', sus3n: 'Cheese toastie', sus3m: '+540 mg',
+      wontfit: 'WON’T FIT', coach3: 'Instant noodles won’t fit today. Tomorrow?',
+      swapLbl: 'TRY INSTEAD', sw1: 'Tomato & basil pasta', sw1m: '+310 mg', sw2: 'Homemade noodle soup', sw2m: '+520 mg',
+      p3scr: 'Your favourites', segAll: 'All', mealB: 'Breakfast', mealL: 'Lunch', mealD: 'Dinner', mealS: 'Snack',
+      m1: 'Porridge with banana', m1m: '120 mg', m2: 'Chicken salad', m2m: '480 mg', m3: 'Salmon & greens', m3m: '390 mg', m4: 'Apple & peanut butter', m4m: '95 mg',
+      p4scr: 'Reminders', t1: '8:00', t2: '13:00', t3: '19:30', prevLbl: 'PREVIEW',
+      n1t: 'Time to log dinner?', n1b: '620 mg left. Plenty of room.', now: 'now', p4bub: 'I’ll only ping when it helps.',
+      p5scr: 'Your streak', dayNum: '14', dayLbl: 'DAYS UNDER BUDGET',
+      wda: 'M', wdb: 'T', wdc: 'W', wdd: 'T', wde: 'F', wdf: 'S', wdg: 'S', trendLbl: 'THIS WEEK'
+    };
+    const L = [
+      Object.assign({}, en, { cc: 'en-gb', name: 'United Kingdom · Australia · Canada', ln: 'English (en-GB) — one shared listing · keyword: “sodium tracker free” · priorities 1–3' }),
+      { cc: 'ja', name: 'Japan', ln: 'Japanese (ja-JP) — fully localised listing · keyword: “sodium tracker free” · priority 4', font: jpFont, wb: 'keep-all',
+        ph1: '無料の\u200b塩分トラッカー', ps1: '1日がひとつの数字に。リングの上では、ピンチがいつも一緒です。',
+        ph2: '食べる前に、\u200bわかる', ps2: '予算に入らないものは、お皿にのる前にピンチがお知らせします。',
+        ph3: '記録は3秒で', ps3: 'いつもの食事はワンタップ。塩をふるより早く終わります。',
+        ph4: '通知は、\u200bやさしく', ps4: '朝・昼・夜の3回だけ。しつこくしません。',
+        ph5: '続くから、\u200b変わる', ps5: 'いい日が積み重なる。無料・登録不要、今日からはじめられます。',
+        date: '8月9日（日）', today: '今日', streak: '14日連続', big: '1,240', ofline: '/ 2,300 mg', leftline: '残り 1,060 mg',
+        c1n: '1,060', c1l: '今日の残り（mg）', c2n: '2/7', c2l: '予算内の日',
+        loggedLbl: '今日の記録', susLabel: 'よく食べるもの',
+        sus1n: 'みそ汁', sus1m: '+710 mg', sus2n: 'カップラーメン', sus2m: '+1,580 mg', sus3n: '梅干し', sus3m: '+230 mg',
+        wontfit: '予算オーバー', coach3: 'カップラーメンは今日の予算に入りません。明日にしませんか？',
+        swapLbl: 'かわりに、これはどう？', sw1: 'トマトとバジルのパスタ', sw1m: '+310 mg', sw2: '手作りスープ麺', sw2m: '+520 mg',
+        p3scr: 'いつもの食事', segAll: 'すべて', mealB: '朝食', mealL: '昼食', mealD: '夕食', mealS: '間食',
+        m1: 'バナナオートミール', m1m: '120 mg', m2: 'チキンサラダ', m2m: '480 mg', m3: 'サーモンと野菜', m3m: '390 mg', m4: 'りんごとピーナッツバター', m4m: '95 mg',
+        p4scr: '通知', t1: '8:00', t2: '13:00', t3: '19:30', prevLbl: 'プレビュー',
+        n1t: 'そろそろ夕食の記録を', n1b: '残り 620 mg。まだ余裕があります。', now: '今', p4bub: '役に立つときだけ、お知らせします。',
+        p5scr: '連続記録', dayNum: '14', dayLbl: '日連続 予算内',
+        wda: '月', wdb: '火', wdc: '水', wdd: '木', wde: '金', wdf: '土', wdg: '日', trendLbl: '今週' },
+      Object.assign({}, en, { cc: 'en-us', name: 'United States', ln: 'English (en-US) — American spelling, punctuation and food names · keyword: “sodium tracker free” · priority 5',
+        ps4: 'Three gentle check-ins a day: breakfast, lunch, and dinner. That’s it.',
+        date: 'SUNDAY, AUGUST 9',
+        sus1n: 'Bagel & cream cheese', sus1m: '+690 mg', sus2n: 'Instant ramen', sus3n: 'Grilled cheese', sus3m: '+720 mg',
+        coach3: 'Instant ramen won’t fit today. Tomorrow?',
+        p3scr: 'Your favorites', m1: 'Oatmeal with banana',
+        t1: '8:00 AM', t2: '1:00 PM', t3: '7:30 PM',
+        wda: 'S', wdb: 'M', wdc: 'T', wdd: 'W', wde: 'T', wdf: 'F', wdg: 'S' }),
+      { cc: 'de', name: 'Germany', ln: 'Deutsch (de-DE) — low-competition test market · keyword: “sodium tracker” · priority 6', font: latinFont, wb: 'normal',
+        ph1: 'Dein gratis Natrium-Tracker', ps1: 'Dein ganzer Tag wird eine einfache Zahl – und Pinch begleitet dich auf dem Ring.',
+        ph2: 'Wissen, bevor du beißt', ps2: 'Pinch warnt vor allem, was nicht mehr ins Tagesbudget passt – bevor es auf dem Teller liegt.',
+        ph3: 'In Sekunden geloggt', ps3: 'Deine üblichen Mahlzeiten, je ein Tipp. Schneller als der Griff zum Salzstreuer.',
+        ph4: 'Erinnern, nicht nerven', ps4: 'Drei sanfte Check-ins am Tag – morgens, mittags, abends. Mehr nicht.',
+        ph5: 'Serien, die bleiben', ps5: 'Gute Tage summieren sich. Gratis, ohne Konto – starte noch heute.',
+        date: 'SONNTAG, 9. AUGUST', today: 'Heute', streak: '14-Tage-Serie', big: '1.240', ofline: 'von 2.300 mg', leftline: 'noch 1.060 mg',
+        c1n: '1.060', c1l: 'mg übrig heute', c2n: '2 von 7', c2l: 'Tage im Budget',
+        loggedLbl: 'HEUTE GELOGGT', susLabel: 'ÜBLICHE VERDÄCHTIGE',
+        sus1n: 'Brezel', sus1m: '+710 mg', sus2n: 'Tiefkühlpizza', sus2m: '+1.580 mg', sus3n: 'Käsebrot', sus3m: '+540 mg',
+        wontfit: 'PASST NICHT', coach3: 'Die Tiefkühlpizza passt heute nicht mehr. Vielleicht morgen?',
+        swapLbl: 'STATTDESSEN', sw1: 'Tomaten-Basilikum-Pasta', sw1m: '+310 mg', sw2: 'Selbstgekochte Nudelsuppe', sw2m: '+520 mg',
+        p3scr: 'Deine Favoriten', segAll: 'Alle', mealB: 'Frühstück', mealL: 'Mittagessen', mealD: 'Abendessen', mealS: 'Snack',
+        m1: 'Porridge mit Banane', m1m: '120 mg', m2: 'Hähnchensalat', m2m: '480 mg', m3: 'Lachs mit Gemüse', m3m: '390 mg', m4: 'Apfel mit Erdnussbutter', m4m: '95 mg',
+        p4scr: 'Erinnerungen', t1: '8:00', t2: '13:00', t3: '19:30', prevLbl: 'VORSCHAU',
+        n1t: 'Abendessen schon eingetragen?', n1b: 'Noch 620 mg – genug Spielraum.', now: 'jetzt', p4bub: 'Ich melde mich nur, wenn’s hilft.',
+        p5scr: 'Deine Serie', dayNum: '14', dayLbl: 'TAGE IM BUDGET',
+        wda: 'M', wdb: 'D', wdc: 'M', wdd: 'D', wde: 'F', wdf: 'S', wdg: 'S', trendLbl: 'DIESE WOCHE' },
+      { cc: 'nl', name: 'Netherlands', ln: 'Nederlands (nl-NL) — volledig gelokaliseerde App Store-screenshots', font: latinFont, wb: 'normal',
+        ph1: 'Jouw gratis natriumtracker', ps1: 'Je hele dag wordt één duidelijk getal. Pinch volgt je vriendelijk rond de ring.',
+        ph2: 'Weet het vóór je eet', ps2: 'Pinch laat zien wat niet meer binnen je zoutbudget past, nog vóór het op je bord ligt.',
+        ph3: 'Log maaltijden in seconden', ps3: 'Je vaste keuzes voeg je met één tik toe. Sneller dan naar het zoutvaatje grijpen.',
+        ph4: 'Herinneringen zonder gedoe', ps4: 'Drie vriendelijke check-ins per dag: ontbijt, lunch en avondeten. Meer niet.',
+        ph5: 'Een reeks die blijft', ps5: 'Zie goede dagen optellen. Gratis, zonder account. Begin vandaag.',
+        date: 'ZONDAG 9 AUGUSTUS', today: 'Vandaag', streak: '14 dagen op rij', big: '1.240', ofline: 'van 2.300 mg', leftline: '1.060 mg over',
+        c1n: '1.060', c1l: 'mg over vandaag', c2n: '2 van 7', c2l: 'dagen onder budget',
+        loggedLbl: 'VANDAAG GELOGD', susLabel: 'VASTE KEUZES',
+        sus1n: 'Broodje kaas', sus1m: '+710 mg', sus2n: 'Instantnoedels', sus2m: '+1.580 mg', sus3n: 'Tosti', sus3m: '+540 mg',
+        wontfit: 'PAST NIET', coach3: 'Instantnoedels passen vandaag niet meer. Misschien morgen?',
+        swapLbl: 'PROBEER DIT', sw1: 'Pasta met tomaat en basilicum', sw1m: '+310 mg', sw2: 'Zelfgemaakte noedelsoep', sw2m: '+520 mg',
+        p3scr: 'Jouw favorieten', segAll: 'Alles', mealB: 'Ontbijt', mealL: 'Lunch', mealD: 'Avondeten', mealS: 'Tussendoor',
+        m1: 'Havermout met banaan', m1m: '120 mg', m2: 'Kipsalade', m2m: '480 mg', m3: 'Zalm met groenten', m3m: '390 mg', m4: 'Appel met pindakaas', m4m: '95 mg',
+        p4scr: 'Herinneringen', t1: '8:00', t2: '13:00', t3: '19:30', prevLbl: 'VOORBEELD',
+        n1t: 'Tijd om je avondeten te loggen?', n1b: 'Nog 620 mg over. Ruimte genoeg.', now: 'nu', p4bub: 'Ik geef alleen een seintje als het helpt.',
+        p5scr: 'Jouw reeks', dayNum: '14', dayLbl: 'DAGEN ONDER BUDGET',
+        wda: 'M', wdb: 'D', wdc: 'W', wdd: 'D', wde: 'V', wdf: 'Z', wdg: 'Z', trendLbl: 'DEZE WEEK' },
+      { cc: 'fr', name: 'France', ln: 'Français (fr-FR) — captures App Store entièrement localisées', font: latinFont, wb: 'normal',
+        ph1: 'Votre suivi sodium gratuit', ps1: 'Toute votre journée tient dans un seul chiffre, et Pinch vous accompagne sur l’anneau.',
+        ph2: 'Avant de manger, vous savez', ps2: 'Pinch signale ce qui dépasse votre budget de sel avant même que cela n’arrive dans votre assiette.',
+        ph3: 'Notez vos repas en secondes', ps3: 'Vos aliments habituels s’ajoutent en un geste. Plus rapide que de saisir la salière.',
+        ph4: 'Des rappels, sans pression', ps4: 'Trois rappels bienveillants par jour : petit-déjeuner, déjeuner et dîner. C’est tout.',
+        ph5: 'Une série qui dure', ps5: 'Voyez les bonnes journées s’accumuler. Gratuit, sans inscription. Commencez aujourd’hui.',
+        date: 'DIMANCHE 9 AOÛT', today: 'Aujourd’hui', streak: '14 jours de suite', big: '1 240', ofline: 'sur 2 300 mg', leftline: '1 060 mg restants',
+        c1n: '1 060', c1l: 'mg restants aujourd’hui', c2n: '2 sur 7', c2l: 'jours sous l’objectif',
+        loggedLbl: 'NOTÉ AUJOURD’HUI', susLabel: 'ALIMENTS HABITUELS',
+        sus1n: 'Tartines au fromage', sus1m: '+710 mg', sus2n: 'Nouilles instantanées', sus2m: '+1 580 mg', sus3n: 'Croque-monsieur', sus3m: '+540 mg',
+        wontfit: 'TROP SALÉ', coach3: 'Les nouilles instantanées dépassent le budget d’aujourd’hui. Demain ?',
+        swapLbl: 'À LA PLACE', sw1: 'Pâtes tomate-basilic', sw1m: '+310 mg', sw2: 'Soupe de nouilles maison', sw2m: '+520 mg',
+        p3scr: 'Vos favoris', segAll: 'Tous', mealB: 'Petit-déj.', mealL: 'Déjeuner', mealD: 'Dîner', mealS: 'Collation',
+        m1: 'Porridge à la banane', m1m: '120 mg', m2: 'Salade de poulet', m2m: '480 mg', m3: 'Saumon et légumes', m3m: '390 mg', m4: 'Pomme et beurre de cacahuète', m4m: '95 mg',
+        p4scr: 'Rappels', t1: '8:00', t2: '13:00', t3: '19:30', prevLbl: 'APERÇU',
+        n1t: 'C’est l’heure de noter le dîner ?', n1b: '620 mg restants. Vous avez de la marge.', now: 'maintenant', p4bub: 'Je vous préviens seulement quand c’est utile.',
+        p5scr: 'Votre série', dayNum: '14', dayLbl: 'JOURS SOUS L’OBJECTIF',
+        wda: 'L', wdb: 'M', wdc: 'M', wdd: 'J', wde: 'V', wdf: 'S', wdg: 'D', trendLbl: 'CETTE SEMAINE' },
+      { cc: 'it', name: 'Italy', ln: 'Italiano (it-IT) — screenshot App Store completamente localizzati', font: latinFont, wb: 'normal',
+        ph1: 'Il tuo tracker del sodio gratis', ps1: 'Tutta la giornata diventa un solo numero, e Pinch ti accompagna lungo l’anello.',
+        ph2: 'Lo sai prima di mangiare', ps2: 'Pinch segnala ciò che non rientra nel budget di sale, prima che arrivi nel piatto.',
+        ph3: 'Registra i pasti in pochi secondi', ps3: 'I tuoi cibi abituali si aggiungono con un tocco. Più veloce che prendere la saliera.',
+        ph4: 'Promemoria, senza assillo', ps4: 'Tre check-in gentili al giorno: colazione, pranzo e cena. Tutto qui.',
+        ph5: 'Una serie che dura', ps5: 'Guarda i giorni positivi sommarsi. Gratis, senza registrazione. Inizia oggi.',
+        date: 'DOMENICA 9 AGOSTO', today: 'Oggi', streak: '14 giorni di fila', big: '1.240', ofline: 'su 2.300 mg', leftline: '1.060 mg rimasti',
+        c1n: '1.060', c1l: 'mg rimasti oggi', c2n: '2 su 7', c2l: 'giorni sotto il budget',
+        loggedLbl: 'REGISTRATI OGGI', susLabel: 'SCELTE ABITUALI',
+        sus1n: 'Toast al formaggio', sus1m: '+710 mg', sus2n: 'Noodles istantanei', sus2m: '+1.580 mg', sus3n: 'Panino al formaggio', sus3m: '+540 mg',
+        wontfit: 'NON CI STA', coach3: 'I noodles istantanei oggi non ci stanno. Domani?',
+        swapLbl: 'PROVA INVECE', sw1: 'Pasta pomodoro e basilico', sw1m: '+310 mg', sw2: 'Zuppa di noodles fatta in casa', sw2m: '+520 mg',
+        p3scr: 'I tuoi preferiti', segAll: 'Tutti', mealB: 'Colazione', mealL: 'Pranzo', mealD: 'Cena', mealS: 'Spuntino',
+        m1: 'Porridge con banana', m1m: '120 mg', m2: 'Insalata di pollo', m2m: '480 mg', m3: 'Salmone e verdure', m3m: '390 mg', m4: 'Mela e burro di arachidi', m4m: '95 mg',
+        p4scr: 'Promemoria', t1: '8:00', t2: '13:00', t3: '19:30', prevLbl: 'ANTEPRIMA',
+        n1t: 'È ora di registrare la cena?', n1b: 'Restano 620 mg. C’è ancora spazio.', now: 'ora', p4bub: 'Ti avviso soltanto quando serve.',
+        p5scr: 'La tua serie', dayNum: '14', dayLbl: 'GIORNI SOTTO IL BUDGET',
+        wda: 'L', wdb: 'M', wdc: 'M', wdd: 'G', wde: 'V', wdf: 'S', wdg: 'D', trendLbl: 'QUESTA SETTIMANA' }
+    ];
+    const showI = this.props.showIOS ?? true, showA = this.props.showAndroid ?? false;
+    const rows = [];
+    L.forEach(l => {
+      if (showI) rows.push(Object.assign({}, l, ios, { first: true, sp: l.cc + '-ios' }));
+      if (showA) rows.push(Object.assign({}, l, and, { first: !showI, sp: l.cc + '-and' }));
+    });
+    return { rows };
+  }
+}
+</script>
+</body>
+</html>

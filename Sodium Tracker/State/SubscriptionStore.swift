@@ -11,8 +11,8 @@ import Observation
 import StoreKit
 
 enum PlusProduct {
-    static let yearlyID = "com.kabi.sodium.tracker.Sodium-Tracker.plus.yearly"
-    static let monthlyID = "com.kabi.sodium.tracker.Sodium-Tracker.plus.monthly"
+    static let yearlyID = "com.kabi.sodium.tracker.SodiumTracker.plus.yearly"
+    static let monthlyID = "com.kabi.sodium.tracker.SodiumTracker.plus.monthly"
     static let identifiers: Set<String> = [yearlyID, monthlyID]
 
     static func identifier(for plan: PlusPlan) -> String {
@@ -25,8 +25,12 @@ enum PlusProduct {
 
 enum PremiumFeature: CaseIterable {
     case monthTrends
+    case historyCalendar
     case csvExport
+    case remoteFoodLogging
+    case barcodeScanner
     case unlimitedCustomFoods
+    case widgets
 }
 
 enum PremiumAccessPolicy {
@@ -40,7 +44,7 @@ enum PremiumAccessPolicy {
     ) -> Bool {
         if isPremium { return true }
         switch feature {
-        case .monthTrends, .csvExport:
+        case .monthTrends, .historyCalendar, .csvExport, .remoteFoodLogging, .barcodeScanner, .widgets:
             return false
         case .unlimitedCustomFoods:
             return customFoodCount < freeCustomFoodLimit

@@ -2,7 +2,7 @@
 //  DockBar.swift
 //  Sodium Tracker
 //
-//  The floating dock: blurred pill 26px from the bottom, four tabs around a
+//  The floating dock: a safe-area-aware blurred pill with four tabs around a
 //  64px brand + FAB. v2 sizing: 64pt tabs, 24pt icons, 11pt/800 labels.
 //
 
@@ -55,7 +55,7 @@ struct DockBar: View {
             }
             .buttonStyle(.pressScale(0.92))
             .padding(.horizontal, 6)
-            .accessibilityLabel("Log a food")
+            .accessibilityLabel(PinchLocalization.resolve("Log a food"))
 
             tabButton(.awards, label: "Awards") { color in
                 ZStack {
@@ -111,7 +111,7 @@ struct DockBar: View {
                 icon(color)
                     .scaleEffect(active ? 1.08 : 1)
                     .animation(reduceMotion ? nil : .interpolatingSpring(stiffness: 260, damping: 18), value: active)
-                Text(label)
+                PinchText(label)
                     .pinchBody(11, .heavy, tracking: 0.01)
                     .foregroundStyle(color)
             }

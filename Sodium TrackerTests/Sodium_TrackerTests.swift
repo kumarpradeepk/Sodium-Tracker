@@ -171,6 +171,13 @@ struct GoalTests {
     }
 }
 
+struct PremiumPolicyTests {
+    @Test func widgetsArePlusOnly() {
+        #expect(!PremiumAccessPolicy.allows(.widgets, isPremium: false))
+        #expect(PremiumAccessPolicy.allows(.widgets, isPremium: true))
+    }
+}
+
 // MARK: - Label conversion
 
 struct SodiumConverterTests {
@@ -203,7 +210,10 @@ struct PremiumAccessPolicyTests {
 
     @Test func freeTierCannotUseTrendsOrExport() {
         #expect(!PremiumAccessPolicy.allows(.monthTrends, isPremium: false))
+        #expect(!PremiumAccessPolicy.allows(.historyCalendar, isPremium: false))
         #expect(!PremiumAccessPolicy.allows(.csvExport, isPremium: false))
+        #expect(!PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: false))
+        #expect(!PremiumAccessPolicy.allows(.barcodeScanner, isPremium: false))
     }
 
     @Test func freeShelfHasAnEnforcedLimit() {
@@ -598,6 +608,16 @@ struct FatSecretParserTests {
         #expect(FatSecretParser.number(12.5) == 12.5)
         #expect(FatSecretParser.number("abc") == nil)
         #expect(FatSecretParser.number(nil) == nil)
+    }
+
+    @Test func parsesTheRestrictedProxyContract() throws {
+        let search = #"{"foods":[{"id":"33691","name":"Chicken Noodle Soup","brand":"Pinch Kitchen","summary":"Per 1 cup"}]}"#
+        let hits = try FatSecretProxyParser.searchResults(from: Data(search.utf8))
+        #expect(hits == [RemoteFood(id: "33691", name: "Chicken Noodle Soup", brand: "Pinch Kitchen", summary: "Per 1 cup")])
+
+        let detail = #"{"name":"Chicken Noodle Soup","serving":"1 cup","sodiumMg":870,"calories":60}"#
+        #expect(try FatSecretProxyParser.foodDetail(from: Data(detail.utf8))
+            == RemoteFoodDetail(name: "Chicken Noodle Soup", serving: "1 cup", sodiumMg: 870, calories: 60))
     }
 }
 

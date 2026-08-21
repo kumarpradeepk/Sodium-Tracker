@@ -308,7 +308,7 @@ struct PinchMascot: View {
     }
 
     private var naLabel: some View {
-        Text("Na")
+        PinchText("Na")
             .font(PinchFonts.display(11 * s, .semibold))
             .foregroundStyle(p.ink3.opacity(0.55))
             .position(x: 60 * s, y: 104.5 * s)

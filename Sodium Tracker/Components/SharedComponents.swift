@@ -57,7 +57,7 @@ struct SectionKicker: View {
     let text: String
 
     var body: some View {
-        Text(text)
+        PinchText(text)
             .pinchKicker()
             .foregroundStyle(p.ink3)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -78,13 +78,13 @@ struct StatCard: View {
     var body: some View {
         PinchCard(padding: EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16)) {
             VStack(alignment: .leading, spacing: 2) {
-                Text(value)
+                PinchText(value)
                     .font(PinchFonts.display(valueSize, .bold))
                     .monospacedDigit()
                     .foregroundStyle(valueColor ?? p.ink)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                Text(caption)
+                PinchText(caption)
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
             }
@@ -149,7 +149,7 @@ struct PinchSegmented<Value: Hashable>: View {
                 Button {
                     withAnimation(.easeInOut(duration: 0.2)) { selection = segment.value }
                 } label: {
-                    Text(segment.label)
+                    PinchText(segment.label)
                         .pinchBody(fontSize, .semibold)
                         .foregroundStyle(active ? p.ink : p.ink3)
                         .frame(maxWidth: .infinity)
@@ -226,7 +226,7 @@ struct PinchCTA: View {
 
     var body: some View {
         Button(action: action) {
-            Text(title)
+            PinchText(title)
                 .pinchBody(height >= 54 ? 16 : 15.5, .bold)
                 .foregroundStyle(p.onBrand)
                 .frame(maxWidth: .infinity)
@@ -248,14 +248,14 @@ struct SheetCloseButton: View {
 
     var body: some View {
         Button(action: action) {
-            Text("×")
+            PinchText("×")
                 .font(.system(size: 16))
                 .foregroundStyle(p.ink2)
                 .frame(width: 30, height: 30)
                 .background(Circle().fill(p.sunk))
         }
         .buttonStyle(.pressScale)
-        .accessibilityLabel("Close")
+        .accessibilityLabel(PinchLocalization.resolve("Close"))
     }
 }
 
@@ -411,7 +411,7 @@ struct SunkField: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(label)
+            PinchText(label)
                 .pinchBody(10, .bold, tracking: 0.1)
                 .foregroundStyle(labelColor ?? p.ink3)
             Group {
@@ -452,8 +452,8 @@ struct SunkField: View {
         )
     }
 
-    private var prompt: Text {
-        Text(placeholder).foregroundStyle(p.ink.opacity(0.38))
+    private var prompt: SwiftUI.Text {
+        PinchText(placeholder).foregroundStyle(p.ink.opacity(0.38))
     }
 }
 
@@ -518,7 +518,7 @@ struct SheetHeader: View {
 
     var body: some View {
         HStack {
-            Text(title)
+            PinchText(title)
                 .font(PinchFonts.display(22, .bold))
                 .foregroundStyle(p.ink)
             Spacer()

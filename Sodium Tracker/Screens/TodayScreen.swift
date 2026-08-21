@@ -12,6 +12,7 @@ import SwiftData
 struct TodayScreen: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
+    @Environment(SubscriptionStore.self) private var subscriptions
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -162,9 +163,13 @@ struct TodayScreen: View {
                     changeDay(to: max(UIState.minOffset, ui.selOffset - 1))
                 }
                 Button {
-                    ui.calOpen = true
+                    if PremiumAccessPolicy.allows(.historyCalendar, isPremium: subscriptions.isPremium) {
+                        ui.calOpen = true
+                    } else {
+                        ui.payOpen = true
+                    }
                 } label: {
-                    Text(PinchFormat.kicker(day))
+                    PinchText(PinchFormat.kicker(day))
                         .pinchBody(13.5, .heavy, tracking: 0.14)
                         .foregroundStyle(p.ink2)
                         .padding(.vertical, 6)
@@ -208,14 +213,14 @@ struct TodayScreen: View {
                 }
             }
             .buttonStyle(.pressScale(0.92))
-            .accessibilityLabel("Open meal check-ins and nudges")
+            .accessibilityLabel(PinchLocalization.resolve("Open meal check-ins and nudges"))
         }
         .padding(.bottom, 2)
     }
 
     private var titleRow: some View {
         HStack(alignment: .top) {
-            Text(PinchFormat.dayTitle(day))
+            PinchText(PinchFormat.dayTitle(day))
                 .pinchDisplay(45, .heavy, tracking: -0.035)
                 .foregroundStyle(p.ink)
             Spacer()
@@ -226,7 +231,7 @@ struct TodayScreen: View {
                     SVGShape("M10 1.5 L12.2 7.8 L18.5 10 L12.2 12.2 L10 18.5 L7.8 12.2 L1.5 10 L7.8 7.8 Z")
                         .fill(p.amber)
                         .frame(width: 15, height: 15)
-                    Text("\(streak)-day streak")
+                    PinchText("\(streak)-day streak")
                         .pinchBody(16, .bold)
                         .foregroundStyle(p.amber)
                 }
@@ -237,7 +242,7 @@ struct TodayScreen: View {
                 .overlay { streakSparkles }
             }
             .buttonStyle(.pressScale(0.96))
-            .accessibilityLabel("\(streak) day streak")
+            .accessibilityLabel(PinchLocalization.resolve("\(streak) day streak"))
             .padding(.top, 3)
         }
     }
@@ -271,7 +276,7 @@ struct TodayScreen: View {
                         ui.selectTab(.settings)
                     }
                 } label: {
-                    Text("of \(PinchFormat.mg(goal)) mg")
+                    PinchText("of \(PinchFormat.mg(goal)) mg")
                         .pinchBody(16, .medium)
                         .foregroundStyle(p.ink2)
                         .underline(true, pattern: .dot, color: p.ink3)
@@ -279,7 +284,7 @@ struct TodayScreen: View {
                 .buttonStyle(.plain)
                 .padding(.top, 1)
 
-                Text(visualRemain >= 0
+                PinchText(visualRemain >= 0
                      ? "\(PinchFormat.mg(visualRemain)) mg left"
                      : "\(PinchFormat.mg(-visualRemain)) mg over")
                     .font(PinchFonts.body(19, .heavy))
@@ -329,7 +334,7 @@ struct TodayScreen: View {
                 .offset(y: -6)
 
             HStack(spacing: 12) {
-                Text(bubbleLine)
+                PinchText(bubbleLine)
                     .pinchBody(15.5, .medium)
                     .foregroundStyle(p.ink2)
                     .multilineTextAlignment(.center)
@@ -337,7 +342,7 @@ struct TodayScreen: View {
                     .frame(maxWidth: .infinity)
 
                 if lastAddedEntry != nil, isToday {
-                    Button("Undo") { undoLastAdd() }
+                    Button { undoLastAdd() } label: { PinchText("Undo") }
                         .pinchBody(13, .bold)
                         .foregroundStyle(p.brand)
                         .buttonStyle(.pressScale(0.94))
@@ -373,13 +378,13 @@ struct TodayScreen: View {
 
     private func todayStatCard(value: String, caption: String, valueColor: Color? = nil) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text(value)
+            PinchText(value)
                 .font(PinchFonts.display(34, .bold))
                 .monospacedDigit()
                 .foregroundStyle(valueColor ?? p.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.75)
-            Text(caption)
+            PinchText(caption)
                 .pinchBody(15)
                 .foregroundStyle(p.ink2)
                 .lineLimit(2)
@@ -403,7 +408,7 @@ struct TodayScreen: View {
         HStack(alignment: .firstTextBaseline) {
             SectionKicker(text: "USUAL SUSPECTS")
             Spacer()
-            Text("vs. \(PinchFormat.mg(max(0, remain))) mg left")
+            PinchText("vs. \(PinchFormat.mg(max(0, remain))) mg left")
                 .pinchBody(13.5, .semibold)
                 .foregroundStyle(p.ink3.opacity(0.68))
         }
@@ -419,20 +424,20 @@ struct TodayScreen: View {
                             quickAdd(food)
                         } label: {
                             HStack(spacing: 7) {
-                                Text("+")
+                                PinchText("+")
                                     .pinchBody(16, .bold)
                                     .foregroundStyle(p.brand)
                                     .frame(width: 26, height: 26)
                                     .background(Circle().fill(p.brandSoft))
-                                Text(food.name)
+                                PinchText(food.name)
                                     .pinchBody(16, .bold)
                                     .foregroundStyle(p.ink)
                                     .lineLimit(1)
-                                Text(PinchFormat.mg(food.mg))
+                                PinchText(PinchFormat.mg(food.mg))
                                     .pinchBody(15, .semibold)
                                     .monospacedDigit()
                                     .foregroundStyle(fits ? p.brand : p.amber)
-                                Text(fits ? "FITS" : "WON’T FIT")
+                                PinchText(fits ? "FITS" : "WON’T FIT")
                                         .pinchBody(10.5, .bold, tracking: 0.08)
                                         .foregroundStyle(fits ? p.brand : p.amber)
                                         .padding(.horizontal, 9)
@@ -454,7 +459,7 @@ struct TodayScreen: View {
                                 )
                             }
                         }
-                        .accessibilityLabel("\(food.name), \(PinchFormat.mg(food.mg)) milligrams. \(fits ? "Fits in today’s remaining budget" : "Does not fit in today’s remaining budget"). Add to log")
+                        .accessibilityLabel(PinchLocalization.resolve("\(food.name), \(PinchFormat.mg(food.mg)) milligrams. \(fits ? "Fits in today’s remaining budget" : "Does not fit in today’s remaining budget"). Add to log"))
                     }
                 }
             }
@@ -502,7 +507,7 @@ struct TodayScreen: View {
         flight = nil
         flightProgress = 0
         playMascotReaction(wasOver: wasOver, willBeOver: willBeOver)
-        ui.showToast("\(food.name) · \(PinchFormat.mg(food.mg)) mg", ToastCopy.line(forAdded: food.mg))
+        ui.showToast("\(food.name), \(PinchFormat.mg(food.mg)) mg", ToastCopy.line(forAdded: food.mg))
     }
 
     @MainActor private func receiveQuickAdd(_ request: QuickAddRequest) async {
@@ -547,7 +552,7 @@ struct TodayScreen: View {
         ui.quickAddRequest = nil
         playMascotReaction(wasOver: wasOver, willBeOver: willBeOver)
         ui.showToast(
-            "\(request.name) · \(PinchFormat.mg(request.milligrams)) mg",
+            "\(request.name), \(PinchFormat.mg(request.milligrams)) mg",
             ToastCopy.line(forAdded: request.milligrams)
         )
     }
@@ -574,11 +579,11 @@ struct TodayScreen: View {
         return PinchCard {
             VStack(spacing: 0) {
                 HStack(alignment: .firstTextBaseline) {
-                    Text(meal.rawValue)
+                    PinchText(meal.rawValue)
                         .pinchBody(13, .bold)
                         .foregroundStyle(p.ink)
                     Spacer()
-                    Text("\(PinchFormat.mg(total)) mg")
+                    PinchText("\(PinchFormat.mg(total)) mg")
                         .pinchBody(12, .semibold)
                         .monospacedDigit()
                         .foregroundStyle(p.ink3)
@@ -597,18 +602,18 @@ struct TodayScreen: View {
             FoodIconTile(category: resolved.category)
 
             VStack(alignment: .leading, spacing: 1) {
-                Text(resolved.name)
+                PinchText(resolved.name)
                     .pinchBody(14, .semibold)
                     .foregroundStyle(p.ink)
                     .lineLimit(1)
-                Text(entrySub(resolved))
+                PinchText(entrySub(resolved))
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
             }
 
             Spacer(minLength: 8)
 
-            Text(PinchFormat.mg(resolved.totalMg))
+            PinchText(PinchFormat.mg(resolved.totalMg))
                 .pinchBody(14, .bold)
                 .monospacedDigit()
                 .foregroundStyle(p.tone(resolved.totalMg))
@@ -630,14 +635,14 @@ struct TodayScreen: View {
                     modelContext.delete(resolved.entry)
                 }
             } label: {
-                Text("×")
+                PinchText("×")
                     .font(.system(size: 15))
                     .foregroundStyle(p.ink3)
                     .frame(width: 24, height: 24)
                     .background(Circle().fill(.clear))
             }
             .buttonStyle(.pressScale(0.85))
-            .accessibilityLabel("Remove \(resolved.name) from this day")
+            .accessibilityLabel(PinchLocalization.resolve("Remove \(resolved.name) from this day"))
         }
         .padding(EdgeInsets(top: 9, leading: 16, bottom: 9, trailing: 16))
         .overlay(alignment: .top) {
@@ -649,11 +654,16 @@ struct TodayScreen: View {
         let portion = resolved.entry.servings == 1
             ? resolved.serving
             : "\(PinchFormat.servings(resolved.entry.servings)) × \(resolved.serving)"
-        return "\(portion) · \(PinchFormat.time(resolved.entry.loggedAt))"
+        return "\(portion), \(PinchFormat.time(resolved.entry.loggedAt))"
     }
 
     private func logAgain(_ resolved: ResolvedEntry) {
         let source = resolved.entry
+        let isRemote = source.foodID?.hasPrefix(FatSecretConfig.idPrefix) == true || source.adhocServing != nil
+        guard !isRemote || PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: subscriptions.isPremium) else {
+            ui.payOpen = true
+            return
+        }
         modelContext.insert(LogEntry(
             foodID: source.foodID,
             adhocName: source.adhocName,
@@ -664,7 +674,7 @@ struct TodayScreen: View {
             loggedAt: .now
         ))
         ui.showToast(
-            "\(resolved.name) · \(PinchFormat.mg(resolved.totalMg)) mg",
+            "\(resolved.name), \(PinchFormat.mg(resolved.totalMg)) mg",
             isToday ? "Logged again." : "Logged again for today."
         )
     }
@@ -677,10 +687,10 @@ struct TodayScreen: View {
                 Circle().fill(p.grain).frame(width: 5, height: 5)
             }
             .padding(.bottom, 10)
-            Text("Nothing logged this day")
+            PinchText("Nothing logged this day")
                 .pinchBody(14, .semibold)
                 .foregroundStyle(p.ink2)
-            Text("The shaker stayed calm — or the log did.")
+            PinchText("The shaker stayed calm — or the log did.")
                 .pinchBody(12)
                 .foregroundStyle(p.ink3)
                 .padding(.top, 4)
@@ -724,7 +734,7 @@ struct TodayScreen: View {
         ForEach(0..<7, id: \.self) { index in
             let angle = Double(index) / 7 * Double.pi * 2
             let distance: CGFloat = ringBurst ? 62 : 10
-            Text("✦")
+            PinchText("✦")
                 .font(.system(size: CGFloat(9 + (index % 3) * 2), weight: .bold))
                 .foregroundStyle(index.isMultiple(of: 2) ? p.amber : p.brand)
                 .offset(
@@ -950,7 +960,7 @@ private struct FlyingSodiumPill: View, Animatable {
         let point = quadraticPoint(from: flight.source, control: control, to: flight.destination, t: progress)
         let fade = progress < 0.76 ? 1 : max(0, 1 - Double((progress - 0.76) / 0.24))
 
-        Text(flight.title)
+        PinchText(flight.title)
             .pinchBody(13, .bold)
             .monospacedDigit()
             .foregroundStyle(p.onBrand)
@@ -981,7 +991,7 @@ private struct AnimatedMilligramText: View, Animatable {
     }
 
     var body: some View {
-        Text(PinchFormat.mg(Int(value.rounded())))
+        PinchText(PinchFormat.mg(Int(value.rounded())))
     }
 }
 

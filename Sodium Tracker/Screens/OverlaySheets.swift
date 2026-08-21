@@ -56,7 +56,7 @@ struct CalendarSheet: View {
         PinchSheet(onClose: { ui.calOpen = false }) {
             VStack(alignment: .leading, spacing: 0) {
                 SheetHeader(title: "Jump to a day") { ui.calOpen = false }
-                Text("Last two weeks · dot shows how salty it ran")
+                PinchText("Last two weeks: the dot shows sodium level")
                     .pinchBody(12.5)
                     .foregroundStyle(p.ink3)
                     .padding(.top, 2)
@@ -64,7 +64,7 @@ struct CalendarSheet: View {
                 let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 7)
                 LazyVGrid(columns: columns, spacing: 4) {
                     ForEach(["S", "M", "T", "W", "T", "F", "S"].indices, id: \.self) { i in
-                        Text(["S", "M", "T", "W", "T", "F", "S"][i])
+                        PinchText(["S", "M", "T", "W", "T", "F", "S"][i])
                             .pinchBody(9.5, .bold)
                             .foregroundStyle(p.ink3)
                     }
@@ -83,7 +83,7 @@ struct CalendarSheet: View {
                         ui.selOffset = -1
                         ui.calOpen = false
                     } label: {
-                        Text("Yesterday")
+                        PinchText("Yesterday")
                             .pinchBody(14, .bold)
                             .foregroundStyle(p.ink2)
                             .frame(maxWidth: .infinity)
@@ -96,7 +96,7 @@ struct CalendarSheet: View {
                         ui.selOffset = 0
                         ui.calOpen = false
                     } label: {
-                        Text("Today")
+                        PinchText("Today")
                             .pinchBody(14, .bold)
                             .foregroundStyle(p.onBrand)
                             .frame(maxWidth: .infinity)
@@ -121,7 +121,7 @@ struct CalendarSheet: View {
                 ui.calOpen = false
             } label: {
                 VStack(spacing: 4) {
-                    Text("\(cell.number)")
+                    PinchText("\(cell.number)")
                         .pinchBody(13, .bold)
                         .monospacedDigit()
                         .foregroundStyle(selected ? p.onBrand : p.ink)
@@ -209,10 +209,10 @@ struct NudgesSheet: View {
                 size: 26, color: p.ink3
             )
             .padding(.bottom, 8)
-            Text("Nudges are off")
+            PinchText("Nudges are off")
                 .pinchBody(14, .semibold)
                 .foregroundStyle(p.ink2)
-            Text("Pinch stays quiet. Flip them on for gentle mealtime waves.")
+            PinchText("Pinch stays quiet. Flip them on for gentle mealtime waves.")
                 .pinchBody(12)
                 .foregroundStyle(p.ink3)
                 .multilineTextAlignment(.center)
@@ -221,7 +221,7 @@ struct NudgesSheet: View {
             Button {
                 withAnimation(.easeInOut(duration: 0.25)) { notif = true }
             } label: {
-                Text("Turn on nudges")
+                PinchText("Turn on nudges")
                     .pinchBody(12.5, .bold)
                     .foregroundStyle(p.brand)
                     .padding(.horizontal, 16)
@@ -242,7 +242,7 @@ struct NudgesSheet: View {
     }
 
     @ViewBuilder private var onContent: some View {
-        Text("MEAL CHECK-INS")
+        PinchText("MEAL CHECK-INS")
             .pinchBody(11, .bold, tracking: 0.13)
             .foregroundStyle(p.ink3)
             .padding(EdgeInsets(top: 16, leading: 2, bottom: 8, trailing: 2))
@@ -255,7 +255,7 @@ struct NudgesSheet: View {
             }
         }
 
-        Text("RECENT")
+        PinchText("RECENT")
             .pinchBody(11, .bold, tracking: 0.13)
             .foregroundStyle(p.ink3)
             .padding(EdgeInsets(top: 16, leading: 2, bottom: 8, trailing: 2))
@@ -279,7 +279,7 @@ struct NudgesSheet: View {
             )
         }
 
-        Text("One wave per meal, quiet hours respected. Never guilt.")
+        PinchText("One wave per meal, quiet hours respected. Never guilt.")
             .pinchBody(11.5)
             .foregroundStyle(p.ink3)
             .frame(maxWidth: .infinity)
@@ -295,16 +295,16 @@ struct NudgesSheet: View {
         let f = DateFormatter()
         f.locale = PinchFormat.locale
         f.dateFormat = "MMM d"
-        return f.string(from: DayEngine.day(offset: -1)) + " · 9:00 AM"
+        return f.string(from: DayEngine.day(offset: -1)) + ", 9:00 AM"
     }
 
     private func checkinRow(_ name: String, time: String, isOn: Binding<Bool>, first: Bool = false) -> some View {
         HStack(spacing: 10) {
-            Text(name)
+            PinchText(name)
                 .pinchBody(13.5, .semibold)
                 .foregroundStyle(p.ink)
             Spacer()
-            Text(time)
+            PinchText(time)
                 .pinchBody(12, .bold)
                 .monospacedDigit()
                 .foregroundStyle(p.ink2)
@@ -327,15 +327,15 @@ struct NudgesSheet: View {
                 .overlay(tile)
             VStack(alignment: .leading, spacing: 2) {
                 HStack {
-                    Text("PINCH")
+                    PinchText("PINCH")
                         .pinchBody(11, .bold, tracking: 0.06)
                         .foregroundStyle(p.ink2)
                     Spacer()
-                    Text(time)
+                    PinchText(time)
                         .pinchBody(10.5)
                         .foregroundStyle(p.ink3)
                 }
-                Text(body)
+                PinchText(body)
                     .pinchBody(12)
                     .foregroundStyle(p.ink2)
                     .lineSpacing(3)
@@ -370,19 +370,21 @@ struct PaywallSheet: View {
                     PinchMascot(variant: .party, width: 86)
                         .padding(.top, -8)
 
-                    Text("Pinch Plus")
+                    PinchText("Pinch Plus")
                         .pinchDisplay(26, .heavy)
                         .foregroundStyle(p.ink)
                         .padding(.top, 6)
-                    Text("Tracking is free forever. Plus adds the extras.")
+                    PinchText("Tracking is free forever. Plus adds the extras.")
                         .pinchBody(13)
                         .foregroundStyle(p.ink2)
                         .padding(.top, 4)
 
                     VStack(alignment: .leading, spacing: 8) {
                         perk("Four-week trends and the salt calendar")
-                        perk("Your shelf — unlimited custom foods")
-                        perk("CSV export — every logged entry")
+                        perk("FatSecret food search and logging")
+                        perk("Unlimited custom shelf foods")
+                        perk("CSV export for every logged entry")
+                        perk("Sodium widget for your Home Screen")
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 16)
@@ -414,7 +416,7 @@ struct PaywallSheet: View {
                     .padding(.top, 14)
 
                     if let error = subscriptions.errorMessage {
-                        Text(error)
+                        PinchText(error)
                             .pinchBody(11.5, .semibold)
                             .foregroundStyle(p.coral)
                             .multilineTextAlignment(.center)
@@ -422,10 +424,12 @@ struct PaywallSheet: View {
                     }
 
                     HStack(spacing: 7) {
-                        Button("Restore purchases") {
+                        Button {
                             Task { await subscriptions.restore() }
+                        } label: {
+                            PinchText("Restore purchases")
                         }
-                        Text("·")
+                        PinchText("·")
                         Link("Terms", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
                     }
                     .pinchBody(11, .semibold)
@@ -450,7 +454,7 @@ struct PaywallSheet: View {
                     .frame(width: 16, height: 16)
             }
             .frame(width: 16, height: 16)
-            Text(text)
+            PinchText(text)
                 .pinchBody(13.5)
                 .foregroundStyle(p.ink2)
         }
@@ -460,11 +464,11 @@ struct PaywallSheet: View {
         RadioCard(selected: ui.plan == plan, action: { ui.plan = plan }) {
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 7) {
-                    Text(title)
+                    PinchText(title)
                         .pinchBody(15, .bold)
                         .foregroundStyle(p.ink)
                     if let tag {
-                        Text(tag)
+                        PinchText(tag)
                             .pinchBody(8.5, .heavy, tracking: 0.09)
                             .foregroundStyle(p.amber)
                             .padding(.horizontal, 7)
@@ -472,7 +476,7 @@ struct PaywallSheet: View {
                             .background(Capsule().fill(p.amberSoft))
                     }
                 }
-                Text(sub)
+                PinchText(sub)
                     .pinchBody(12)
                     .foregroundStyle(p.ink3)
             }
@@ -491,7 +495,7 @@ struct PaywallSheet: View {
             return subscriptions.isLoading ? "Loading price…" : "Currently unavailable"
         }
         let cadence = plan == .yearly ? "year" : "month"
-        return "\(product.displayPrice) per \(cadence) · Cancel anytime"
+        return "\(product.displayPrice) per \(cadence). Cancel anytime."
     }
 
     private func continueTapped() {

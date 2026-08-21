@@ -66,7 +66,7 @@ struct OnboardingFlow: View {
             }
             .padding(.top, 14)
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel("Setup progress")
+            .accessibilityLabel(PinchLocalization.resolve("Setup progress"))
             .accessibilityValue("Step \(ui.obStep + 1) of 8")
 
             // Back button
@@ -82,7 +82,7 @@ struct OnboardingFlow: View {
                             .background(Circle().fill(p.sunk))
                     }
                     .buttonStyle(.pressScale(0.92))
-                    .accessibilityLabel("Back")
+                    .accessibilityLabel(PinchLocalization.resolve("Back"))
                     Spacer()
                 }
                 .padding(.horizontal, 20)
@@ -111,11 +111,11 @@ struct OnboardingFlow: View {
         VStack(spacing: 0) {
             Spacer().frame(height: 64)
             PinchMascot(variant: .welcome, width: 170)
-            Text("Meet Pinch")
+            PinchText("Meet Pinch")
                 .pinchDisplay(34, .heavy)
                 .foregroundStyle(p.ink)
                 .padding(.top, 26)
-            Text("The kindest way to watch your sodium. One number a day, a friend who keeps count with you.")
+            PinchText("The kindest way to watch your sodium. One number a day, a friend who keeps count with you.")
                 .pinchBody(15)
                 .foregroundStyle(p.ink2)
                 .multilineTextAlignment(.center)
@@ -127,7 +127,7 @@ struct OnboardingFlow: View {
             Button {
                 finish()
             } label: {
-                Text("Skip the tour")
+                PinchText("Skip the tour")
                     .pinchBody(13, .semibold)
                     .foregroundStyle(p.ink3)
             }
@@ -202,10 +202,10 @@ struct OnboardingFlow: View {
 
     private func choiceLabel(_ choice: Choice) -> some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(choice.title)
+            PinchText(choice.title)
                 .pinchBody(15, .bold)
                 .foregroundStyle(p.ink)
-            Text(choice.sub)
+            PinchText(choice.sub)
                 .pinchBody(12)
                 .foregroundStyle(p.ink3)
         }
@@ -221,9 +221,9 @@ struct OnboardingFlow: View {
         stepScaffold(
             title: "Set your salt budget",
             sub: "Milligrams of sodium per day. You can change it anytime.",
-            ctaTitle: "Set my budget · \(PinchFormat.mg(goal)) mg",
+            ctaTitle: "Set \(PinchFormat.mg(goal)) mg budget",
             ctaEnabled: true,
-            footnote: "Not medical advice — ask your doctor what’s right for you."
+            footnote: "Not medical advice. Ask your doctor what’s right for you."
         ) {
             VStack(spacing: 10) {
                 goalCard(.aha, mg: "1,500", title: "Heart & kidney care", sub: "AHA strict — a clinician-recommended limit")
@@ -241,9 +241,9 @@ struct OnboardingFlow: View {
                         )
                         .tint(p.brand)
                         HStack {
-                            Text(PinchFormat.mg(PinchDefaults.customGoalRange.lowerBound))
+                            PinchText(PinchFormat.mg(PinchDefaults.customGoalRange.lowerBound))
                             Spacer()
-                            Text(PinchFormat.mg(PinchDefaults.customGoalRange.upperBound))
+                            PinchText(PinchFormat.mg(PinchDefaults.customGoalRange.upperBound))
                         }
                         .pinchBody(11)
                         .foregroundStyle(p.ink3)
@@ -260,11 +260,11 @@ struct OnboardingFlow: View {
             HStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 7) {
-                        Text(title)
+                        PinchText(title)
                             .pinchBody(15, .bold)
                             .foregroundStyle(p.ink)
                         if ui.obWhy != nil && choice == suggested {
-                            Text("SUGGESTED")
+                            PinchText("SUGGESTED")
                                 .pinchBody(8.5, .heavy, tracking: 0.09)
                                 .foregroundStyle(p.amber)
                                 .padding(.horizontal, 7)
@@ -272,12 +272,12 @@ struct OnboardingFlow: View {
                                 .background(Capsule().fill(p.amberSoft))
                         }
                     }
-                    Text(sub)
+                    PinchText(sub)
                         .pinchBody(12)
                         .foregroundStyle(p.ink3)
                 }
                 Spacer(minLength: 4)
-                Text(mg)
+                PinchText(mg)
                     .font(PinchFonts.display(20, .heavy))
                     .monospacedDigit()
                     .foregroundStyle(p.ink)
@@ -303,7 +303,7 @@ struct OnboardingFlow: View {
                         checkinRow("Dinner", time: "6:30 PM", isOn: $remDinner)
                     }
                 }
-                Text("Quiet hours respected, always. Tune times later in Settings.")
+                PinchText("Quiet hours respected, always. Tune times later in Settings.")
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
                     .lineSpacing(3)
@@ -315,11 +315,11 @@ struct OnboardingFlow: View {
 
     private func checkinRow(_ name: String, time: String, isOn: Binding<Bool>, first: Bool = false) -> some View {
         HStack(spacing: 10) {
-            Text(name)
+            PinchText(name)
                 .pinchBody(14, .semibold)
                 .foregroundStyle(p.ink)
             Spacer()
-            Text(time)
+            PinchText(time)
                 .pinchBody(12, .bold)
                 .monospacedDigit()
                 .foregroundStyle(p.ink2)
@@ -373,7 +373,7 @@ struct OnboardingFlow: View {
                 .fill(tile)
                 .frame(width: 32, height: 32)
                 .overlay(LineIcon(d: icon, size: 16, stroke: strokeWidth, color: color))
-            Text(text)
+            PinchText(text)
                 .pinchBody(13.5, .semibold)
                 .foregroundStyle(p.ink)
             Spacer(minLength: 0)
@@ -425,11 +425,11 @@ struct OnboardingFlow: View {
         VStack(spacing: 0) {
             Spacer().frame(height: 54)
             PinchMascot(variant: .allSet, width: 140)
-            Text("You’re all set")
+            PinchText("You’re all set")
                 .pinchDisplay(32, .heavy)
                 .foregroundStyle(p.ink)
                 .padding(.top, 22)
-            Text("Pinch is ready to keep count with you.")
+            PinchText("Pinch is ready to keep count with you.")
                 .pinchBody(14)
                 .foregroundStyle(p.ink2)
                 .padding(.top, 8)
@@ -459,11 +459,11 @@ struct OnboardingFlow: View {
 
     private func summaryRow(_ label: String, value: String, first: Bool = false) -> some View {
         HStack {
-            Text(label)
+            PinchText(label)
                 .pinchBody(13)
                 .foregroundStyle(p.ink3)
             Spacer()
-            Text(value)
+            PinchText(value)
                 .pinchBody(13, .bold)
                 .monospacedDigit()
                 .foregroundStyle(p.ink)
@@ -486,10 +486,10 @@ struct OnboardingFlow: View {
     ) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Spacer().frame(height: 44)
-            Text(title)
+            PinchText(title)
                 .pinchDisplay(28, .heavy)
                 .foregroundStyle(p.ink)
-            Text(sub)
+            PinchText(sub)
                 .pinchBody(13.5)
                 .foregroundStyle(p.ink2)
                 .lineSpacing(3)
@@ -503,7 +503,7 @@ struct OnboardingFlow: View {
             .scrollBounceBehavior(.basedOnSize)
 
             if let footnote {
-                Text(footnote)
+                PinchText(footnote)
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
                     .frame(maxWidth: .infinity)
