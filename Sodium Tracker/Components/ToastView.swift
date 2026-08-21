@@ -16,11 +16,11 @@ struct ToastView: View {
         HStack(alignment: .center, spacing: 11) {
             PinchMascot(variant: .toastMini, width: 34)
             VStack(alignment: .leading, spacing: 1) {
-                Text(toast.title)
+                PinchText(toast.title)
                     .pinchBody(13.5, .bold)
                     .foregroundStyle(p.ink)
                     .lineLimit(1)
-                Text(toast.sub)
+                PinchText(toast.sub)
                     .pinchBody(12)
                     .foregroundStyle(p.ink2)
                     .lineLimit(2)

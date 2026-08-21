@@ -46,10 +46,10 @@ struct SettingsScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                Text("YOUR SETUP")
+                PinchText("YOUR SETUP")
                     .pinchBody(11, .bold, tracking: 0.14)
                     .foregroundStyle(p.ink3)
-                Text("Settings")
+                PinchText("Settings")
                     .pinchDisplay(30, .bold)
                     .foregroundStyle(p.ink)
                     .padding(.top, 2)
@@ -76,14 +76,14 @@ struct SettingsScreen: View {
                     .padding(.top, 18).padding(.bottom, 8)
                 accountCard
 
-                Text("Pinch 1.0 · made with a pinch of love")
+                PinchText("Pinch 1.0, made with a pinch of love")
                     .pinchBody(11)
                     .foregroundStyle(p.ink3)
                     .frame(maxWidth: .infinity)
                     .padding(.top, 22)
 
                 if FatSecretConfig.isEnabled {
-                    Text("Nutrition search powered by FatSecret")
+                    PinchText("Nutrition search powered by FatSecret")
                         .pinchBody(10.5)
                         .foregroundStyle(p.ink3)
                         .frame(maxWidth: .infinity)
@@ -120,11 +120,11 @@ struct SettingsScreen: View {
 
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 7) {
-                        Text("Pinch Plus")
+                        PinchText("Pinch Plus")
                             .pinchBody(14.5, .bold)
                             .foregroundStyle(p.ink)
                         if subscriptions.isPremium {
-                            Text("ON")
+                            PinchText("ON")
                                 .pinchBody(9, .heavy, tracking: 0.1)
                                 .foregroundStyle(p.onBrand)
                                 .padding(.horizontal, 7)
@@ -132,7 +132,7 @@ struct SettingsScreen: View {
                                 .background(Capsule().fill(p.brand))
                         }
                     }
-                    Text(subscriptions.isPremium
+                    PinchText(subscriptions.isPremium
                          ? "Active — thanks for keeping Pinch fed."
                          : "4-week trends, unlimited shelf foods, and export.")
                         .pinchBody(11.5)
@@ -145,7 +145,7 @@ struct SettingsScreen: View {
                 Button {
                     ui.payOpen = true
                 } label: {
-                    Text(subscriptions.isPremium ? "Manage plan" : "See what’s inside")
+                    PinchText(subscriptions.isPremium ? "Manage plan" : "See what’s inside")
                         .pinchBody(12, .bold)
                         .foregroundStyle(p.brand)
                         .padding(.horizontal, 13)
@@ -173,14 +173,14 @@ struct SettingsScreen: View {
         PinchCard(padding: EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .firstTextBaseline, spacing: 6) {
-                    Text(PinchFormat.mg(goal))
+                    PinchText(PinchFormat.mg(goal))
                         .font(PinchFonts.display(34, .heavy))
                         .tracking(34 * -0.02)
                         .monospacedDigit()
                         .foregroundStyle(p.ink)
                         .contentTransition(.numericText())
                         .animation(.snappy, value: goal)
-                    Text("mg per day")
+                    PinchText("mg per day")
                         .pinchBody(13)
                         .foregroundStyle(p.ink3)
                 }
@@ -216,7 +216,7 @@ struct SettingsScreen: View {
                     .padding(.top, 14)
                 }
 
-                Text("1,500 mg is the AHA limit for heart & kidney care. Ask your doctor what fits you — Pinch just keeps the count.")
+                PinchText("1,500 mg is the AHA limit for heart & kidney care. Ask your doctor what fits you — Pinch just keeps the count.")
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
                     .lineSpacing(3)
@@ -227,7 +227,7 @@ struct SettingsScreen: View {
 
     private func stepButton(_ symbol: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(symbol)
+            PinchText(symbol)
                 .pinchBody(19, .bold)
                 .foregroundStyle(p.ink2)
                 .frame(width: 38, height: 38)
@@ -244,7 +244,7 @@ struct SettingsScreen: View {
                 HStack {
                     HStack(spacing: 11) {
                         SettingsIconTile(color: SettingsTileColors.theme, glyph: .moon)
-                        Text("Theme")
+                        PinchText("Theme")
                             .pinchBody(14, .semibold)
                             .foregroundStyle(p.ink)
                     }
@@ -263,7 +263,7 @@ struct SettingsScreen: View {
 
                 // The design's Ocean/Sage/Iris palettes, surfaced in-app.
                 HStack {
-                    Text("Palette")
+                    PinchText("Palette")
                         .pinchBody(14, .semibold)
                         .foregroundStyle(p.ink)
                     Spacer()
@@ -325,10 +325,10 @@ struct SettingsScreen: View {
         HStack(spacing: 11) {
             if let tile { tile }
             VStack(alignment: .leading, spacing: 2) {
-                Text(title)
+                PinchText(title)
                     .pinchBody(14, .semibold)
                     .foregroundStyle(p.ink)
-                Text(sub)
+                PinchText(sub)
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
             }
@@ -343,11 +343,11 @@ struct SettingsScreen: View {
 
     private func mealRow(_ name: String, time: String, isOn: Binding<Bool>) -> some View {
         HStack(spacing: 10) {
-            Text(name)
+            PinchText(name)
                 .pinchBody(13.5, .semibold)
                 .foregroundStyle(p.ink)
             Spacer()
-            Text(time)
+            PinchText(time)
                 .pinchBody(12, .bold)
                 .monospacedDigit()
                 .foregroundStyle(p.ink2)
@@ -371,15 +371,15 @@ struct SettingsScreen: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 HStack {
-                    Text("PINCH")
+                    PinchText("PINCH")
                         .pinchBody(11, .bold, tracking: 0.06)
                         .foregroundStyle(p.ink2)
                     Spacer()
-                    Text("6:30 PM")
+                    PinchText("6:30 PM")
                         .pinchBody(10.5)
                         .foregroundStyle(p.ink3)
                 }
-                Text("Dinner check-in — \(PinchFormat.mg(max(0, todayRemain))) mg still in the budget. You’ve got this.")
+                PinchText("Dinner check-in — \(PinchFormat.mg(max(0, todayRemain))) mg still in the budget. You’ve got this.")
                     .pinchBody(12)
                     .foregroundStyle(p.ink2)
                     .lineSpacing(3)
@@ -400,16 +400,16 @@ struct SettingsScreen: View {
                     HStack(spacing: 11) {
                         SettingsIconTile(color: SettingsTileColors.export, glyph: .exportArrow)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Export my data")
+                            PinchText("Export my data")
                                 .pinchBody(14, .semibold)
                                 .foregroundStyle(p.ink)
-                            Text("Every entry, as a CSV")
+                            PinchText("Every entry, as a CSV")
                                 .pinchBody(11.5)
                                 .foregroundStyle(p.ink3)
                         }
                         Spacer()
                         if !subscriptions.isPremium {
-                            Text("PLUS")
+                            PinchText("PLUS")
                                 .pinchBody(9, .heavy, tracking: 0.09)
                                 .foregroundStyle(p.brand)
                                 .padding(.horizontal, 7)
@@ -428,11 +428,48 @@ struct SettingsScreen: View {
                 .overlay(alignment: .top) { Rectangle().fill(p.line).frame(height: 1) }
 
                 Button {
+                    if PremiumAccessPolicy.allows(.widgets, isPremium: subscriptions.isPremium) {
+                        ui.showToast("Widget ready", "Add Pinch from the Home Screen widget gallery.")
+                    } else {
+                        ui.payOpen = true
+                    }
+                } label: {
+                    HStack(spacing: 11) {
+                        SettingsIconTile(color: SettingsTileColors.export, glyph: .exportArrow)
+                        VStack(alignment: .leading, spacing: 2) {
+                            PinchText("Home-screen widget")
+                                .pinchBody(14, .semibold)
+                                .foregroundStyle(p.ink)
+                            PinchText("A calm glance at today")
+                                .pinchBody(11.5)
+                                .foregroundStyle(p.ink3)
+                        }
+                        Spacer()
+                        if !subscriptions.isPremium {
+                            PinchText("PLUS")
+                                .pinchBody(9, .heavy, tracking: 0.09)
+                                .foregroundStyle(p.brand)
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 3)
+                                .background(Capsule().fill(p.brandSoft))
+                        }
+                        LineIcon(
+                            d: "M1 1 L7 7 L1 13",
+                            size: 12, stroke: 2, color: p.ink3
+                        )
+                    }
+                    .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .overlay(alignment: .top) { Rectangle().fill(p.line).frame(height: 1) }
+
+                Button {
                     ui.beginOnboarding()
                 } label: {
                     HStack(spacing: 11) {
                         SettingsIconTile(color: SettingsTileColors.replay, glyph: .play)
-                        Text("Replay welcome")
+                        PinchText("Replay welcome")
                             .pinchBody(14, .semibold)
                             .foregroundStyle(p.ink)
                         Spacer()
@@ -459,10 +496,10 @@ struct SettingsScreen: View {
             HStack(spacing: 11) {
                 if let tile { tile }
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
+                    PinchText(title)
                         .pinchBody(14, .semibold)
                         .foregroundStyle(p.ink)
-                    Text(sub)
+                    PinchText(sub)
                         .pinchBody(11.5)
                         .foregroundStyle(p.ink3)
                 }
@@ -499,10 +536,10 @@ struct SettingsScreen: View {
             HStack(spacing: 11) {
                 SettingsIconTile(color: SettingsTileColors.user, glyph: .person)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("User ID")
+                    PinchText("User ID")
                         .pinchBody(14, .semibold)
                         .foregroundStyle(p.ink)
-                    Text(id)
+                    PinchText(id)
                         .pinchBody(11.5)
                         .monospacedDigit()
                         .foregroundStyle(p.ink3)
@@ -512,7 +549,7 @@ struct SettingsScreen: View {
                     UIPasteboard.general.string = id
                     ui.showToast("User ID copied", "\(id) — handy for support chats.")
                 } label: {
-                    Text("Copy")
+                    PinchText("Copy")
                         .pinchBody(12, .bold)
                         .foregroundStyle(p.ink2)
                         .padding(.horizontal, 13)

@@ -13,6 +13,7 @@ import SwiftData
 struct RootView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(SubscriptionStore.self) private var subscriptions
 
     @AppStorage(PinchDefaults.theme) private var theme = "light"
     @AppStorage(PinchDefaults.palette) private var palettePick = PalettePick.ocean.rawValue
@@ -81,6 +82,15 @@ struct RootView: View {
                 ui.beginOnboarding()
             }
             refreshNotifications()
+            publishWidgetSnapshot()
+        }
+        .onChange(of: entries.count) { _, _ in publishWidgetSnapshot() }
+        .onChange(of: customFoods.count) { _, _ in publishWidgetSnapshot() }
+        .onChange(of: goal) { _, _ in publishWidgetSnapshot() }
+        .onChange(of: subscriptions.isPremium) { _, _ in publishWidgetSnapshot() }
+        .onOpenURL { url in
+            guard url.scheme == "sodiumtracker" else { return }
+            if url.host == "paywall" { ui.payOpen = true }
         }
     }
 
@@ -116,9 +126,9 @@ struct RootView: View {
                     ui.quickAddOpen.toggle()
                 }
             }
-            .padding(.bottom, 26)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 10)
         }
-        .ignoresSafeArea(edges: .bottom)
         .opacity(ui.showOnboarding ? 0 : 1)
     }
 
@@ -138,7 +148,16 @@ struct RootView: View {
         }
         // z46 — jump to a day
         if ui.calOpen {
-            CalendarSheet().zIndex(46)
+            if PremiumAccessPolicy.allows(.historyCalendar, isPremium: subscriptions.isPremium) {
+                CalendarSheet().zIndex(46)
+            } else {
+                Color.clear
+                    .onAppear {
+                        ui.calOpen = false
+                        ui.payOpen = true
+                    }
+                    .zIndex(46)
+            }
         }
         // z50 — portion / quick log / create food
         if ui.picked != nil {
@@ -173,6 +192,15 @@ struct RootView: View {
     private func refreshNotifications() {
         let todayTotal = DayEngine.total(entries, on: .now, customFoods: customFoods)
         NotificationManager.refresh(remaining: goal - todayTotal)
+    }
+
+    private func publishWidgetSnapshot() {
+        PinchWidgetSnapshotStore.update(
+            entries: entries,
+            customFoods: customFoods,
+            goal: goal,
+            isPremium: subscriptions.isPremium
+        )
     }
 }
 

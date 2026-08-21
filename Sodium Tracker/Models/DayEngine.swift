@@ -184,9 +184,9 @@ enum DayEngine {
             builtIn.filter { $0.mg >= lo && $0.mg < hi }.sorted { $0.mg > $1.mg }
         }
         return [
-            ("SALT BOMBS · 800 MG AND UP", band(800, .max)),
-            ("MIDDLE SHELF · 300–799 MG", band(300, 800)),
-            ("LIGHT TOUCH · UNDER 300 MG", band(0, 300)),
+            ("SALT BOMBS: 800 MG AND UP", band(800, .max)),
+            ("MIDDLE SHELF: 300 TO 799 MG", band(300, 800)),
+            ("LIGHT TOUCH: UNDER 300 MG", band(0, 300)),
         ]
     }
 }

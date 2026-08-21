@@ -9,7 +9,9 @@
 import Foundation
 
 enum PinchFormat {
-    static let locale = Locale(identifier: "en_US")
+    /// Use the device/app locale so dates and grouping follow the selected
+    /// storefront (en-GB, en-AU, en-CA, ja-JP, de-DE, or en-US).
+    static let locale = Locale.current
 
     private static let grouping: NumberFormatter = {
         let f = NumberFormatter()
@@ -55,12 +57,12 @@ enum PinchFormat {
         return f.string(from: date).uppercased()
     }
 
-    /// "Sat · Aug 1" — history rows.
+    /// "Sat, Aug 1" — history rows.
     static func shortDay(_ date: Date, calendar: Calendar = .current) -> String {
         let f = DateFormatter()
         f.locale = locale
         f.calendar = calendar
-        f.dateFormat = "EEE · MMM d"
+        f.dateFormat = "EEE, MMM d"
         return f.string(from: date)
     }
 
