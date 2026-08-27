@@ -24,6 +24,7 @@ struct OnboardingFlow: View {
     @AppStorage(PinchDefaults.mealRemDinner) private var remDinner = true
     @AppStorage(PinchDefaults.obWhy) private var storedWhy = ""
     @AppStorage(PinchDefaults.obDiet) private var storedDiet = ""
+    @State private var showHealthSources = false
 
     @Query(sort: \LogEntry.loggedAt) private var entries: [LogEntry]
     @Query private var customFoods: [CustomFood]
@@ -96,6 +97,10 @@ struct OnboardingFlow: View {
             }
         }
         .transition(.opacity)
+        .sheet(isPresented: $showHealthSources) {
+            HealthSourcesSheet()
+                .presentationDetents([.large])
+        }
     }
 
     // MARK: - Steps
@@ -287,8 +292,8 @@ struct OnboardingFlow: View {
             footnote: "Not medical advice — ask your doctor what's right for you."
         ) {
             VStack(spacing: 10) {
-                goalCard(.aha, mg: "1,500", title: "Heart & kidney care", sub: "AHA strict — doctor-ordered limits")
-                goalCard(.fda, mg: "2,300", title: "Standard budget", sub: "FDA guideline for most adults")
+                goalCard(.aha, mg: "1,500", title: "Lower target", sub: "General AHA guidance")
+                goalCard(.fda, mg: "2,300", title: "Standard target", sub: "General FDA guidance")
                 goalCard(.custom, mg: PinchFormat.mg(customGoal), title: "Custom", sub: "Slide to your prescribed number")
 
                 if goalChoice == .custom {
@@ -312,6 +317,20 @@ struct OnboardingFlow: View {
                     .padding(.top, 6)
                     .padding(.horizontal, 6)
                 }
+
+                Button {
+                    showHealthSources = true
+                } label: {
+                    HStack(spacing: 6) {
+                        PinchText("Sources & health information")
+                            .pinchBody(12, .bold)
+                        Image(systemName: "arrow.up.right")
+                            .font(.system(size: 11, weight: .semibold))
+                    }
+                    .foregroundStyle(p.brand)
+                    .padding(.top, 4)
+                }
+                .buttonStyle(.plain)
             }
         }
     }

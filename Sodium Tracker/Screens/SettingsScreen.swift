@@ -32,6 +32,7 @@ struct SettingsScreen: View {
 
     @State private var exportURL: URL?
     @State private var showShare = false
+    @State private var showHealthSources = false
 
     private var goalChoice: GoalChoice {
         get { GoalChoice(rawValue: goalChoiceRaw) ?? .fda }
@@ -100,6 +101,10 @@ struct SettingsScreen: View {
                 ActivityShareSheet(items: [exportURL])
                     .presentationDetents([.medium])
             }
+        }
+        .sheet(isPresented: $showHealthSources) {
+            HealthSourcesSheet()
+                .presentationDetents([.large])
         }
         .onChange(of: notif) { refreshNotifications() }
         .onChange(of: remBreakfast) { refreshNotifications() }
@@ -216,11 +221,28 @@ struct SettingsScreen: View {
                     .padding(.top, 14)
                 }
 
-                PinchText("1,500 mg is the AHA limit for heart & kidney care. Ask your doctor what fits you — Pinch just keeps the count.")
+                PinchText(goalChoice == .aha
+                    ? "The 1,500 mg option reflects general AHA guidance. Individual needs vary—ask your clinician what is right for you."
+                    : "The 2,300 mg option reflects FDA general guidance. Individual needs vary—ask your clinician what is right for you.")
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
                     .lineSpacing(3)
                     .padding(.top, 12)
+
+                Button {
+                    showHealthSources = true
+                } label: {
+                    HStack(spacing: 6) {
+                        PinchText("Sources & health information")
+                            .pinchBody(12, .bold)
+                        SVGShape("M1 1 L7 7 L1 13", viewBox: CGSize(width: 8, height: 14))
+                            .stroke(p.brand, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+                            .frame(width: 7, height: 12)
+                    }
+                    .foregroundStyle(p.brand)
+                    .padding(.top, 12)
+                }
+                .buttonStyle(.plain)
             }
         }
     }
@@ -454,6 +476,15 @@ struct SettingsScreen: View {
                 }
                 .buttonStyle(.plain)
                 .overlay(alignment: .top) { Rectangle().fill(p.line).frame(height: 1) }
+
+                navRow(
+                    title: "Health information & sources",
+                    sub: "Guidance, limitations, and citations",
+                    tile: SettingsIconTile(color: SettingsTileColors.chatter, glyph: .heart),
+                    divider: true
+                ) {
+                    showHealthSources = true
+                }
             }
         }
     }
