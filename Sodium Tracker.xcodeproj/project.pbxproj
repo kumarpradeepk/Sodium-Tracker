@@ -48,6 +48,9 @@
 		};
 		405C0924301DF8030072B1F5 /* Sodium Tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A1000015301DF8050072B1F5 /* Info.plist */,
+			);
 			path = "Sodium Tracker";
 			sourceTree = "<group>";
 		};
@@ -70,6 +73,13 @@
 				"Info.plist",
 			);
 			target = A1000001301DF8050072B1F5 /* Sodium Tracker Widgets */;
+		};
+		A1000015301DF8050072B1F5 /* Info.plist */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Info.plist",
+			);
+			target = 405C0921301DF8030072B1F5 /* Sodium Tracker */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -499,8 +509,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				FATSECRET_PROXY_URL = "https://sodium-tracker-api.vercel.app/v1";
+				INFOPLIST_FILE = "Sodium Tracker/Info.plist";
 				INFOPLIST_KEY_FatSecretProxyURL = "$(FATSECRET_PROXY_URL)";
 				INFOPLIST_KEY_PinchProxyAPIKey = "$(PINCH_PROXY_API_KEY)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -535,8 +546,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				FATSECRET_PROXY_URL = "https://sodium-tracker-api.vercel.app/v1";
+				INFOPLIST_FILE = "Sodium Tracker/Info.plist";
 				INFOPLIST_KEY_FatSecretProxyURL = "$(FATSECRET_PROXY_URL)";
 				INFOPLIST_KEY_PinchProxyAPIKey = "$(PINCH_PROXY_API_KEY)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
