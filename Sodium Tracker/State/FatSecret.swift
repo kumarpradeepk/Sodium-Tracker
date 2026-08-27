@@ -3,12 +3,9 @@
 //  Sodium Tracker
 //
 //  FatSecret Platform API integration: live food search and per-serving
-//  sodium for the salt shelf. Uses OAuth 2 client credentials.
-//
-//  Setup: paste your credentials from platform.fatsecret.com below (or ship
-//  them via the FATSECRET_CLIENT_ID / FATSECRET_CLIENT_SECRET scheme
-//  environment variables while developing). With no credentials the app
-//  quietly falls back to local-only search.
+//  sodium for the salt shelf. Requests go only to an app-owned HTTPS proxy.
+//  The proxy, not this app, owns the FatSecret OAuth 2 credentials and token.
+//  With no proxy configured, Pinch quietly falls back to local-only search.
 //
 
 import Foundation
@@ -19,41 +16,40 @@ import os
 let fatSecretLog = Logger(subsystem: "com.kabi.sodium.tracker", category: "FatSecret")
 
 enum FatSecretConfig {
-    /// Your OAuth 2 client credentials from platform.fatsecret.com.
-    /// Resolution order:
-    ///   1. FATSECRET_CLIENT_ID / FATSECRET_CLIENT_SECRET scheme env vars
-    ///   2. FatSecretSecrets.plist bundled with the app (git-ignored — copy
-    ///      FatSecretSecrets.sample.plist into "Sodium Tracker/Resources/",
-    ///      rename it, and fill in the two values)
-    static let clientID = resolve("FATSECRET_CLIENT_ID", plistKey: "ClientID")
-    static let clientSecret = resolve("FATSECRET_CLIENT_SECRET", plistKey: "ClientSecret")
+    /// The public base URL of the narrowly scoped, app-owned API proxy.
+    /// This is not a credential and may be provided by a development scheme
+    /// environment variable or the `FatSecretProxyURL` app Info setting.
+    static let proxyBaseURL = resolveProxyBaseURL()
+    static let proxyAPIKey = resolveProxyAPIKey()
 
     static var isEnabled: Bool {
-        !clientID.isEmpty && !clientSecret.isEmpty
+        URL(string: proxyBaseURL)?.scheme?.lowercased() == "https"
+            && !proxyAPIKey.isEmpty
     }
 
-    /// Logs the credential situation exactly once per launch.
+    /// Logs the public proxy configuration exactly once per launch. Never log
+    /// OAuth credentials, access tokens, or complete food-search terms.
     static let logConfigurationOnce: Void = {
         if isEnabled {
-            let masked = clientID.prefix(4) + "…(\(clientID.count) chars)"
-            fatSecretLog.info("✅ credentials loaded (client id: \(masked, privacy: .public)) — remote search ENABLED")
+            let host = URL(string: proxyBaseURL)?.host ?? "configured host"
+            fatSecretLog.info("✅ secure proxy configured (\(host, privacy: .public)) — remote search ENABLED")
         } else {
-            fatSecretLog.warning("⚠️ no credentials found (env vars or FatSecretSecrets.plist) — remote search DISABLED, local catalog only")
+            fatSecretLog.warning("⚠️ FatSecret proxy URL or app API key missing — remote search DISABLED, local catalog only")
         }
     }()
 
-    private static func resolve(_ envKey: String, plistKey: String) -> String {
-        if let env = ProcessInfo.processInfo.environment[envKey], !env.isEmpty {
-            return env
-        }
-        if let url = Bundle.main.url(forResource: "FatSecretSecrets", withExtension: "plist"),
-           let data = try? Data(contentsOf: url),
-           let plist = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any],
-           let value = plist[plistKey] as? String,
-           !value.hasPrefix("YOUR-") {
-            return value
-        }
-        return ""
+    private static func resolveProxyBaseURL() -> String {
+        let value = ProcessInfo.processInfo.environment["FATSECRET_PROXY_URL"]
+            ?? Bundle.main.object(forInfoDictionaryKey: "FatSecretProxyURL") as? String
+            ?? ""
+        return value.trimmingCharacters(in: CharacterSet(charactersIn: "/ "))
+    }
+
+    private static func resolveProxyAPIKey() -> String {
+        let value = ProcessInfo.processInfo.environment["PINCH_PROXY_API_KEY"]
+            ?? Bundle.main.object(forInfoDictionaryKey: "PinchProxyAPIKey") as? String
+            ?? ""
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// Prefix for FatSecret-sourced food ids, so entries and favorites can
@@ -98,7 +94,6 @@ enum FatSecretError: Error {
 actor FatSecretService {
     static let shared = FatSecretService()
 
-    private var token: (value: String, expiry: Date)?
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = 12
@@ -109,25 +104,20 @@ actor FatSecretService {
 
     func search(_ query: String, maxResults: Int = 20) async throws -> [RemoteFood] {
         _ = FatSecretConfig.logConfigurationOnce
-        let data = try await call(params: [
-            "method": "foods.search",
-            "search_expression": query,
-            "max_results": String(maxResults),
-            "format": "json",
+        let data = try await get(path: "search", queryItems: [
+            URLQueryItem(name: "q", value: String(query.prefix(120))),
+            URLQueryItem(name: "limit", value: String(min(max(maxResults, 1), 20))),
         ])
-        let hits = try FatSecretParser.searchResults(from: data)
-        fatSecretLog.info("🔎 \"\(query, privacy: .public)\" → \(hits.count) result(s)")
+        let hits = try FatSecretProxyParser.searchResults(from: data)
+        fatSecretLog.info("🔎 remote search → \(hits.count) result(s)")
         return hits
     }
 
     func details(id: String) async throws -> RemoteFoodDetail {
-        let data = try await call(params: [
-            "method": "food.get.v2",
-            "food_id": id,
-            "format": "json",
-        ])
+        guard id.allSatisfy({ $0.isNumber }) else { throw FatSecretError.badResponse }
+        let data = try await get(path: "food/\(id)")
         do {
-            let detail = try FatSecretParser.foodDetail(from: data)
+            let detail = try FatSecretProxyParser.foodDetail(from: data)
             fatSecretLog.info("🧂 \(detail.name, privacy: .public): \(detail.sodiumMg) mg per \(detail.serving, privacy: .public)")
             return detail
         } catch {
@@ -143,84 +133,73 @@ actor FatSecretService {
 
     // MARK: Transport
 
-    private func call(params: [String: String]) async throws -> Data {
+    private func get(path: String, queryItems: [URLQueryItem] = []) async throws -> Data {
         guard FatSecretConfig.isEnabled else { throw FatSecretError.notConfigured }
-        let bearer = try await validToken()
+        guard var components = URLComponents(string: FatSecretConfig.proxyBaseURL) else {
+            throw FatSecretError.notConfigured
+        }
+        let basePath = components.path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        components.path = "/" + [basePath, path]
+            .filter { !$0.isEmpty }
+            .joined(separator: "/")
+        components.queryItems = queryItems.isEmpty ? nil : queryItems
+        guard let url = components.url else { throw FatSecretError.badResponse }
 
-        var request = URLRequest(url: URL(string: "https://platform.fatsecret.com/rest/server.api")!)
-        request.httpMethod = "POST"
-        request.setValue("Bearer \(bearer)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = formEncode(params).data(using: .utf8)
-
-        let method = params["method"] ?? "?"
-        fatSecretLog.debug("→ \(method, privacy: .public) \(params["search_expression"] ?? params["food_id"] ?? "", privacy: .public)")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("no-store", forHTTPHeaderField: "Cache-Control")
+        request.setValue("ios", forHTTPHeaderField: "X-Pinch-Platform")
+        request.setValue("Bearer \(FatSecretConfig.proxyAPIKey)", forHTTPHeaderField: "Authorization")
+        fatSecretLog.debug("→ proxy \(path, privacy: .public)")
         let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse else {
-            fatSecretLog.error("✗ \(method, privacy: .public): no HTTP response")
+            fatSecretLog.error("✗ proxy \(path, privacy: .public): no HTTP response")
             throw FatSecretError.badResponse
         }
-        fatSecretLog.debug("← \(method, privacy: .public) HTTP \(http.statusCode) (\(data.count) bytes)")
-        if http.statusCode == 401 {
-            fatSecretLog.notice("token rejected (401) — refreshing and retrying once")
-            // Token expired server-side: refresh once and retry.
-            token = nil
-            let fresh = try await validToken()
-            request.setValue("Bearer \(fresh)", forHTTPHeaderField: "Authorization")
-            let (data2, response2) = try await session.data(for: request)
-            guard (response2 as? HTTPURLResponse)?.statusCode == 200 else {
-                fatSecretLog.error("✗ \(method, privacy: .public) failed after token refresh: \(Self.snippet(data2), privacy: .public)")
-                throw FatSecretError.badResponse
-            }
-            return data2
-        }
+        fatSecretLog.debug("← proxy \(path, privacy: .public) HTTP \(http.statusCode) (\(data.count) bytes)")
         guard http.statusCode == 200 else {
-            fatSecretLog.error("✗ \(method, privacy: .public) HTTP \(http.statusCode): \(Self.snippet(data), privacy: .public)")
+            fatSecretLog.error("✗ proxy \(path, privacy: .public) HTTP \(http.statusCode): \(Self.snippet(data), privacy: .public)")
             throw FatSecretError.badResponse
-        }
-        if let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-           let apiError = root["error"] as? [String: Any] {
-            fatSecretLog.error("✗ \(method, privacy: .public) API error: \(String(describing: apiError), privacy: .public)")
         }
         return data
     }
+}
 
-    private func validToken() async throws -> String {
-        if let token, token.expiry > Date.now.addingTimeInterval(60) {
-            return token.value
-        }
-        var request = URLRequest(url: URL(string: "https://oauth.fatsecret.com/connect/token")!)
-        request.httpMethod = "POST"
-        let basic = Data("\(FatSecretConfig.clientID):\(FatSecretConfig.clientSecret)".utf8)
-            .base64EncodedString()
-        request.setValue("Basic \(basic)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "grant_type=client_credentials&scope=basic".data(using: .utf8)
+// MARK: - Proxy response parsing
 
-        fatSecretLog.debug("→ requesting OAuth token")
-        let (data, response) = try await session.data(for: request)
-        let status = (response as? HTTPURLResponse)?.statusCode ?? -1
-        guard status == 200,
-              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-              let value = json["access_token"] as? String else {
-            fatSecretLog.error("✗ token request failed (HTTP \(status)): \(Self.snippet(data), privacy: .public) — check Client ID/Secret and that OAuth 2.0 is enabled for your FatSecret app")
+/// The proxy returns an intentionally small, stable JSON contract. FatSecret's
+/// upstream response is never passed through wholesale to a mobile device.
+enum FatSecretProxyParser {
+    static func searchResults(from data: Data) throws -> [RemoteFood] {
+        guard let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let foods = root["foods"] as? [[String: Any]] else {
             throw FatSecretError.badResponse
         }
-        let lifetime = (json["expires_in"] as? Double) ?? 3600
-        token = (value, Date.now.addingTimeInterval(lifetime))
-        fatSecretLog.info("✅ OAuth token obtained (expires in \(Int(lifetime)) s)")
-        return value
+        return foods.compactMap { entry in
+            guard let id = FatSecretParser.string(entry["id"]),
+                  let name = FatSecretParser.string(entry["name"]) else { return nil }
+            return RemoteFood(
+                id: id,
+                name: name,
+                brand: FatSecretParser.string(entry["brand"]),
+                summary: FatSecretParser.string(entry["summary"]) ?? ""
+            )
+        }
     }
 
-    private func formEncode(_ params: [String: String]) -> String {
-        var allowed = CharacterSet.alphanumerics
-        allowed.insert(charactersIn: "-._~")
-        return params
-            .map { key, value in
-                let v = value.addingPercentEncoding(withAllowedCharacters: allowed) ?? value
-                return "\(key)=\(v)"
-            }
-            .joined(separator: "&")
+    static func foodDetail(from data: Data) throws -> RemoteFoodDetail {
+        guard let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let name = FatSecretParser.string(root["name"]),
+              let sodium = FatSecretParser.number(root["sodiumMg"]) else {
+            throw FatSecretError.badResponse
+        }
+        return RemoteFoodDetail(
+            name: name,
+            serving: FatSecretParser.string(root["serving"]) ?? "1 serving",
+            sodiumMg: Int(sodium.rounded()),
+            calories: FatSecretParser.number(root["calories"]).map { Int($0.rounded()) }
+        )
     }
 }
 
@@ -287,7 +266,7 @@ enum FatSecretParser {
         return nil
     }
 
-    private static func string(_ value: Any?) -> String? {
+    static func string(_ value: Any?) -> String? {
         if let s = value as? String { return s.isEmpty ? nil : s }
         if let n = value as? NSNumber { return n.stringValue }
         return nil

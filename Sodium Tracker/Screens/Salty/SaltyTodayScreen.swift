@@ -15,6 +15,7 @@ import SwiftData
 struct SaltyTodayScreen: View {
     @Environment(\.salty) private var s
     @Environment(UIState.self) private var ui
+    @Environment(SubscriptionStore.self) private var subscriptions
     @Environment(\.modelContext) private var modelContext
 
     let engine: SaltyEngine
@@ -23,7 +24,6 @@ struct SaltyTodayScreen: View {
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
     @AppStorage(PinchDefaults.chatty) private var chatty = true
     @AppStorage(PinchDefaults.notif) private var notif = true
-    @AppStorage(PinchDefaults.plus) private var plus = false
 
     @Query(sort: \LogEntry.loggedAt) private var entries: [LogEntry]
     @Query private var customFoods: [CustomFood]
@@ -143,7 +143,7 @@ struct SaltyTodayScreen: View {
             .padding(.leading, -12)
 
             Button {
-                if PremiumAccessPolicy.allows(.historyCalendar, isPremium: plus) {
+                if PremiumAccessPolicy.allows(.historyCalendar, isPremium: subscriptions.isPremium) {
                     ui.calOpen = true
                 } else {
                     ui.payOpen = true

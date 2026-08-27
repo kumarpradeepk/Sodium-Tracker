@@ -23,26 +23,36 @@ enum GoalChoice: String, CaseIterable {
     }
 }
 
-/// Units accepted by manual sodium entry on both platforms.
-enum SodiumInputUnit: Hashable {
+enum SodiumInputUnit: String, CaseIterable {
     case sodiumMilligrams
     case saltGrams
+
+    var fieldLabel: String {
+        switch self {
+        case .sodiumMilligrams: "SODIUM MG"
+        case .saltGrams: "SALT G"
+        }
+    }
 }
 
 enum SodiumConverter {
-    /// One gram of table salt contains approximately 393.4 mg sodium.
+    /// Sodium chloride is about 39.34% sodium by mass.
     static let sodiumMilligramsPerSaltGram = 393.4
 
-    static func sodiumMilligrams(_ text: String, unit: SodiumInputUnit) -> Int? {
+    static func sodiumMilligrams(from text: String, unit: SodiumInputUnit) -> Int? {
         let normalized = text.trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: ",", with: ".")
         guard let value = Double(normalized), value.isFinite, value > 0 else { return nil }
-        let milligrams = unit == .saltGrams ? value * sodiumMilligramsPerSaltGram : value
+        let milligrams: Double
+        switch unit {
+        case .sodiumMilligrams: milligrams = value
+        case .saltGrams: milligrams = value * sodiumMilligramsPerSaltGram
+        }
         guard milligrams <= Double(Int.max) else { return nil }
         return Int(milligrams.rounded())
     }
 
-    static func saltGrams(milligrams: Int) -> Double {
+    static func saltGrams(fromSodiumMilligrams milligrams: Int) -> Double {
         Double(milligrams) / sodiumMilligramsPerSaltGram
     }
 }
@@ -54,8 +64,6 @@ enum PinchDefaults {
     static let customGoal = "customGoal"             // 500...4000 step 50
     static let chatty = "chatty"                     // Pinch's chatter
     static let notif = "notif"                       // meal check-ins master
-    static let health = "health"                     // Apple Health sync pref
-    static let plus = "plus"                         // Pinch Plus active
     static let mealRemBreakfast = "mealRemBreakfast"
     static let mealRemLunch = "mealRemLunch"
     static let mealRemDinner = "mealRemDinner"
@@ -69,8 +77,8 @@ enum PinchDefaults {
     static let obDiet = "obDiet"
 
     static let customGoalDefault = 2000
-    static let customGoalRange = 500...4000
-    static let customGoalStep = 50
+    static let customGoalRange = 800...3000
+    static let customGoalStep = 100
 }
 
 /// Aggregations for one calendar day.
@@ -176,9 +184,9 @@ enum DayEngine {
             builtIn.filter { $0.mg >= lo && $0.mg < hi }.sorted { $0.mg > $1.mg }
         }
         return [
-            ("SALT BOMBS · 800 MG AND UP", band(800, .max)),
-            ("MIDDLE SHELF · 300–799 MG", band(300, 800)),
-            ("LIGHT TOUCH · UNDER 300 MG", band(0, 300)),
+            ("SALT BOMBS: 800 MG AND UP", band(800, .max)),
+            ("MIDDLE SHELF: 300 TO 799 MG", band(300, 800)),
+            ("LIGHT TOUCH: UNDER 300 MG", band(0, 300)),
         ]
     }
 }

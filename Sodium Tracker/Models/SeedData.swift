@@ -2,22 +2,22 @@
 //  SeedData.swift
 //  Sodium Tracker
 //
-//  First-launch metadata. Production installs start with an empty log; preview
-//  and test fixtures own any sample history.
+//  First-launch bootstrap. Production health logs must start empty; design
+//  previews and tests provide their own sample data.
 //
 
 import Foundation
 import SwiftData
 
 enum SeedData {
-    /// Stamps the first tracked day once. It deliberately does not create
-    /// health data, favorites, foods, achievements, or a streak for the user.
+    /// Marks first launch and starts the tracked window without inventing
+    /// dietary history or achievement progress.
     static func seedIfNeeded(context: ModelContext, defaults: UserDefaults = .standard, today: Date = .now, calendar: Calendar = .current) {
         guard !defaults.bool(forKey: PinchDefaults.hasSeeded) else { return }
         defaults.set(true, forKey: PinchDefaults.hasSeeded)
         let start = calendar.startOfDay(for: today)
         defaults.set(start.timeIntervalSinceReferenceDate, forKey: PinchDefaults.seedStart)
-        try? context.save()
+        _ = context
     }
 
     /// First day of tracked data ("before Pinch" days are dashed in the calendar).

@@ -10,7 +10,7 @@ import SwiftData
 
 @main
 struct Sodium_TrackerApp: App {
-    @State private var purchases = PurchaseManager()
+    @State private var subscriptions = SubscriptionStore()
 
     init() {
         // Defaults for keys read outside @AppStorage (NotificationManager
@@ -18,7 +18,6 @@ struct Sodium_TrackerApp: App {
         UserDefaults.standard.register(defaults: [
             PinchDefaults.chatty: true,
             PinchDefaults.notif: true,
-            PinchDefaults.health: true,
             PinchDefaults.mealRemBreakfast: true,
             PinchDefaults.mealRemLunch: false,
             PinchDefaults.mealRemDinner: true,
@@ -29,8 +28,8 @@ struct Sodium_TrackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(purchases)
-                .task { await purchases.start() }
+                .environment(subscriptions)
+                .task { await subscriptions.prepare() }
         }
         .modelContainer(for: [LogEntry.self, CustomFood.self, Favorite.self])
     }

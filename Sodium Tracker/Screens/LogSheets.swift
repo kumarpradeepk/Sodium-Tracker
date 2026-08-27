@@ -15,10 +15,10 @@ import os
 struct LogSheet: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
+    @Environment(SubscriptionStore.self) private var subscriptions
 
     @Query(sort: \CustomFood.createdAt) private var customFoods: [CustomFood]
     @Query private var favorites: [Favorite]
-    @AppStorage(PinchDefaults.plus) private var plus = false
 
     @FocusState private var searchFocused: Bool
 
@@ -75,11 +75,19 @@ struct LogSheet: View {
     /// Debounced FatSecret lookup; quietly does nothing without credentials.
     private func runRemoteSearch() async {
         _ = FatSecretConfig.logConfigurationOnce
-        guard FatSecretConfig.isEnabled, query.count >= 2 else {
+        guard query.count >= 2 else {
+            fatSecretLog.debug("search skipped: query too short (\(query.count) character(s))")
             remoteResults = []
             remoteSearching = false
             return
         }
+        guard FatSecretConfig.isEnabled else {
+            fatSecretLog.warning("search skipped for \"\(query, privacy: .public)\": remote search is not configured")
+            remoteResults = []
+            remoteSearching = false
+            return
+        }
+        fatSecretLog.debug("search start for \"\(query, privacy: .public)\"")
         remoteSearching = true
         defer { remoteSearching = false }
         try? await Task.sleep(for: .milliseconds(350))
@@ -128,47 +136,58 @@ struct LogSheet: View {
     // MARK: Actions grid
 
     private var actionGrid: some View {
-        let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 2)
-        return LazyVGrid(columns: columns, spacing: 8) {
-            actionButton(
-                title: "Quick log",
-                subtitle: "Enter sodium",
-                icon: "M11.5 2.5 L4 11.5 H9 L8.5 17.5 L16 8.5 H11 Z",
-                stroke: 1.7
-            ) {
-                ui.openQuickLog()
-            }
-            actionButton(
-                title: "New food",
-                subtitle: plus ? "Unlimited shelf" : "\(max(0, PremiumAccessPolicy.freeCustomFoodLimit - customFoods.count)) free slots left",
-                icon: "M6.5 7.5 H13.5 V15.5 C13.5 16.6 12.6 17.5 11.5 17.5 H8.5 C7.4 17.5 6.5 16.6 6.5 15.5 Z M7.5 7.5 V5.5 H12.5 V7.5 M10 10.5 V14.5 M8 12.5 H12",
-                stroke: 1.6
-            ) {
-                if PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: plus, customFoodCount: customFoods.count) {
-                    ui.openCreateFood()
-                } else {
-                    ui.payOpen = true
+        let columns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 2)
+        return VStack(alignment: .leading, spacing: 8) {
+            LazyVGrid(columns: columns, spacing: 8) {
+                actionButton(
+                    lines: "Quick\nlog",
+                    icon: "M11.5 2.5 L4 11.5 H9 L8.5 17.5 L16 8.5 H11 Z",
+                    stroke: 1.7
+                ) {
+                    ui.openQuickLog()
                 }
+                actionButton(
+                    lines: "New\nfood",
+                    icon: "M6.5 7.5 H13.5 V15.5 C13.5 16.6 12.6 17.5 11.5 17.5 H8.5 C7.4 17.5 6.5 16.6 6.5 15.5 Z M7.5 7.5 V5.5 H12.5 V7.5 M10 10.5 V14.5 M8 12.5 H12",
+                    stroke: 1.6
+                ) {
+                    if canAddCustomFood {
+                        ui.openCreateFood()
+                    } else {
+                        ui.payOpen = true
+                    }
+                }
+            }
+
+            if !subscriptions.isPremium {
+                PinchText("\(max(0, PremiumAccessPolicy.freeCustomFoodLimit - customFoods.count)) of \(PremiumAccessPolicy.freeCustomFoodLimit) free shelf spots left. Pinch Plus is unlimited.")
+                    .pinchBody(10.5, .semibold)
+                    .foregroundStyle(p.ink3)
+                    .padding(.horizontal, 4)
             }
         }
     }
 
-    private func actionButton(title: String, subtitle: String, icon: String, stroke: CGFloat, action: @escaping () -> Void) -> some View {
+    private var canAddCustomFood: Bool {
+        PremiumAccessPolicy.allows(
+            .unlimitedCustomFoods,
+            isPremium: subscriptions.isPremium,
+            customFoodCount: customFoods.count
+        )
+    }
+
+    private func actionButton(lines: String, icon: String, stroke: CGFloat, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            HStack(spacing: 10) {
+            VStack(spacing: 7) {
                 LineIcon(d: icon, size: 20, stroke: stroke, color: p.brand)
-                VStack(alignment: .leading, spacing: 2) {
-                    PinchText(title)
-                        .pinchBody(12.5, .bold)
-                        .foregroundStyle(p.ink2)
-                    PinchText(subtitle)
-                        .pinchBody(10.5)
-                        .foregroundStyle(p.ink3)
-                }
-                Spacer(minLength: 0)
+                PinchText(lines)
+                    .pinchBody(10, .bold)
+                    .foregroundStyle(p.ink2)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(2)
             }
             .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 10))
+            .padding(EdgeInsets(top: 12, leading: 4, bottom: 10, trailing: 4))
             .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(p.card))
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -321,6 +340,10 @@ struct LogSheet: View {
                 if loadingRemoteID == food.id {
                     ProgressView()
                         .controlSize(.small)
+                } else if !subscriptions.isPremium {
+                    PinchText("PLUS")
+                        .pinchBody(10, .bold, tracking: 0.08)
+                        .foregroundStyle(p.brand)
                 } else {
                     SVGShape("M1 1 L7 7 L1 13", viewBox: CGSize(width: 8, height: 14))
                         .stroke(p.ink3, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
@@ -340,7 +363,7 @@ struct LogSheet: View {
     /// Fetches the food's sodium, then opens the portion sheet exactly like a
     /// local pick. Foods without sodium data fall back to Quick log.
     private func pickRemote(_ food: RemoteFood) {
-        guard PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: plus) else {
+        guard PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: subscriptions.isPremium) else {
             ui.payOpen = true
             return
         }
@@ -369,7 +392,7 @@ struct LogSheet: View {
             PinchText("Nothing salty by that name")
                 .pinchBody(14.5, .semibold)
                 .foregroundStyle(p.ink2)
-            PinchText("Try \"soup\", \"pizza\" or \"ramen\" — or quick-log the mg yourself.")
+            PinchText("Try \"soup,\" \"pizza,\" or \"ramen\" — or use Quick log to enter the milligrams yourself.")
                 .pinchBody(12.5)
                 .foregroundStyle(p.ink3)
                 .multilineTextAlignment(.center)
@@ -392,16 +415,95 @@ struct LogSheet: View {
     }
 }
 
+// MARK: - Quick add (z40)
+
+/// The FAB's lightweight first stop. The three one-tap choices come from the
+/// motion prototype; full catalog search and manual entry remain one tap away.
+struct QuickAddSheet: View {
+    @Environment(\.pinch) private var p
+    @Environment(UIState.self) private var ui
+
+    private struct Option: Identifiable {
+        let id: String
+        let title: String
+        let milligrams: Int
+    }
+
+    private let options = [
+        Option(id: "fresh-dinner", title: "Fresh dinner", milligrams: 380),
+        Option(id: "soup-cup", title: "Soup cup", milligrams: 290),
+        Option(id: "light-snack", title: "Light snack", milligrams: 150),
+    ]
+
+    var body: some View {
+        VStack {
+            Spacer()
+            VStack(spacing: 8) {
+                PinchText("QUICK ADD")
+                    .pinchBody(11.5, .heavy, tracking: 0.13)
+                    .foregroundStyle(p.ink3)
+
+                ForEach(options) { option in
+                    optionButton(option)
+                }
+            }
+            .padding(.bottom, 122)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .ignoresSafeArea()
+        .transition(
+            .asymmetric(
+                insertion: .opacity
+                    .combined(with: .scale(scale: 0.90, anchor: .bottom))
+                    .combined(with: .offset(y: 16)),
+                removal: .opacity
+                    .combined(with: .scale(scale: 0.94, anchor: .bottom))
+                    .combined(with: .offset(y: 10))
+            )
+        )
+    }
+
+    private func optionButton(_ option: Option) -> some View {
+        Button {
+            add(option)
+        } label: {
+            HStack(spacing: 18) {
+                PinchText(option.title)
+                    .pinchBody(16, .heavy)
+                    .foregroundStyle(p.ink)
+                Spacer()
+                PinchText("+\(PinchFormat.mg(option.milligrams)) mg")
+                    .pinchBody(15, .heavy)
+                    .monospacedDigit()
+                    .foregroundStyle(p.brand)
+            }
+            .padding(.horizontal, 18)
+            .frame(width: 230, height: 48)
+            .background(RoundedRectangle(cornerRadius: 18, style: .continuous).fill(p.card))
+            .shadow(color: p.shadowTint.opacity(p.isDark ? 0.26 : 0.14), radius: 11, y: 6)
+        }
+        .buttonStyle(.pressScale(0.95))
+        .accessibilityLabel(PinchLocalization.resolve("Add \(option.title), \(option.milligrams) milligrams"))
+    }
+
+    private func add(_ option: Option) {
+        withAnimation(.pinchMenu) { ui.quickAddOpen = false }
+        ui.selOffset = 0
+        ui.selectTab(.today)
+        ui.quickAddRequest = QuickAddRequest(name: option.title, milligrams: option.milligrams)
+    }
+}
+
 // MARK: - Portion sheet (z50)
 
 struct PortionSheet: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
     @Environment(\.modelContext) private var modelContext
+    @Environment(SubscriptionStore.self) private var subscriptions
 
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
-    @AppStorage(PinchDefaults.plus) private var plus = false
 
     @Query private var favorites: [Favorite]
     @Query private var customFoods: [CustomFood]
@@ -429,7 +531,7 @@ struct PortionSheet: View {
                             PinchText(food.name)
                                 .font(PinchFonts.display(22, .bold))
                                 .foregroundStyle(p.ink)
-                            PinchText("per \(food.serving) · \(PinchFormat.mg(food.mg)) mg")
+                            PinchText("Per \(food.serving), \(PinchFormat.mg(food.mg)) mg sodium")
                                 .pinchBody(12.5)
                                 .foregroundStyle(p.ink3)
                         }
@@ -442,17 +544,24 @@ struct PortionSheet: View {
                         .padding(.top, 18)
                         .padding(.bottom, 6)
 
-                    (PinchText("\(PinchFormat.mg(totalMg)) mg")
-                        .font(PinchFonts.display(19, .bold))
-                        .foregroundStyle(p.tone(totalMg))
-                     + PinchText(" · \(goal > 0 ? Int((Double(totalMg) / Double(goal) * 100).rounded()) : 0)% of your day")
-                        .font(PinchFonts.body(12))
-                        .foregroundStyle(p.ink3))
+                    VStack(spacing: 2) {
+                        PinchText("\(PinchFormat.mg(totalMg)) mg")
+                            .font(PinchFonts.display(19, .bold))
+                            .foregroundStyle(p.tone(totalMg))
+                        PinchText("\(goal > 0 ? Int((Double(totalMg) / Double(goal) * 100).rounded()) : 0)% of daily budget")
+                            .font(PinchFonts.body(12))
+                            .foregroundStyle(p.ink3)
+                    }
                         .monospacedDigit()
                         .padding(.bottom, 18)
 
                     mealPicker
-                    PinchCTA(title: "Add · \(PinchFormat.mg(totalMg)) mg", height: 52) {
+                    PinchCTA(
+                        title: food.id.hasPrefix(FatSecretConfig.idPrefix) && !subscriptions.isPremium
+                            ? "Unlock FatSecret logging"
+                            : "Add \(PinchFormat.mg(totalMg)) mg",
+                        height: 52
+                    ) {
                         add(food)
                     }
                     .padding(.top, 16)
@@ -489,9 +598,13 @@ struct PortionSheet: View {
         // Favoriting a FatSecret food saves it to the shelf first, so the
         // favorite resolves offline from then on.
         if food.id.hasPrefix(FatSecretConfig.idPrefix) {
+            guard PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: subscriptions.isPremium) else {
+                ui.payOpen = true
+                return
+            }
             guard PremiumAccessPolicy.allows(
                 .unlimitedCustomFoods,
-                isPremium: plus,
+                isPremium: subscriptions.isPremium,
                 customFoodCount: customFoods.count
             ) else {
                 ui.payOpen = true
@@ -553,6 +666,11 @@ struct PortionSheet: View {
     }
 
     private func add(_ food: FoodItem) {
+        if food.id.hasPrefix(FatSecretConfig.idPrefix),
+           !PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: subscriptions.isPremium) {
+            ui.payOpen = true
+            return
+        }
         let day = ui.selectedDay()
         let stamp = timestamp(for: day)
 
@@ -561,6 +679,7 @@ struct PortionSheet: View {
             // FatSecret foods that aren't on the shelf log as self-contained
             // entries carrying their own name, portion and sodium.
             modelContext.insert(LogEntry(
+                foodID: food.id,
                 adhocName: food.name,
                 adhocMg: food.mg,
                 adhocServing: food.serving,
@@ -578,7 +697,7 @@ struct PortionSheet: View {
         }
         let mg = totalMg
         ui.closeAllSheets()
-        ui.showToast("\(food.name) · \(PinchFormat.mg(mg)) mg", ToastCopy.line(forAdded: mg))
+        ui.showToast("\(food.name), \(PinchFormat.mg(mg)) mg", ToastCopy.line(forAdded: mg))
     }
 
     private func customFoodExists(_ id: String) -> Bool {
@@ -593,12 +712,15 @@ struct QuickLogSheet: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
     @Environment(\.modelContext) private var modelContext
-    @AppStorage(PinchDefaults.plus) private var plus = false
+    @Environment(SubscriptionStore.self) private var subscriptions
+
     @Query private var customFoods: [CustomFood]
 
     @FocusState private var nameFocused: Bool
 
-    private var mgValue: Int { SodiumConverter.sodiumMilligrams(ui.qlMg, unit: ui.qlUnit) ?? 0 }
+    private var mgValue: Int {
+        SodiumConverter.sodiumMilligrams(from: ui.qlMg, unit: ui.qlUnit) ?? 0
+    }
     private var valid: Bool {
         !ui.qlName.trimmingCharacters(in: .whitespaces).isEmpty && mgValue > 0
     }
@@ -618,7 +740,8 @@ struct QuickLogSheet: View {
                         PinchSegment(value: SodiumInputUnit.sodiumMilligrams, label: "Sodium mg"),
                         PinchSegment(value: SodiumInputUnit.saltGrams, label: "Salt g"),
                     ],
-                    selection: $ui.qlUnit
+                    selection: $ui.qlUnit,
+                    bordered: false
                 )
                 .padding(.top, 14)
 
@@ -630,15 +753,15 @@ struct QuickLogSheet: View {
                         focused: $nameFocused
                     )
                     SunkField(
-                        label: ui.qlUnit == .saltGrams ? "SALT G" : "SODIUM MG",
+                        label: ui.qlUnit.fieldLabel,
                         placeholder: "0",
                         text: $ui.qlMg,
                         numeric: true,
-                        decimal: ui.qlUnit == .saltGrams
+                        allowsDecimal: ui.qlUnit == .saltGrams
                     )
                     .frame(width: 135)
                 }
-                .padding(.top, 14)
+                .padding(.top, 16)
 
                 if ui.qlUnit == .saltGrams, mgValue > 0 {
                     PinchText("That is about \(PinchFormat.mg(mgValue)) mg sodium.")
@@ -666,12 +789,16 @@ struct QuickLogSheet: View {
                     Spacer()
                     PinchSwitch(isOn: Binding(
                         get: { ui.qlFav },
-                        set: { desired in
-                            if desired && !PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: plus, customFoodCount: customFoods.count) {
-                                ui.qlFav = false
+                        set: { newValue in
+                            if newValue,
+                               !PremiumAccessPolicy.allows(
+                                    .unlimitedCustomFoods,
+                                    isPremium: subscriptions.isPremium,
+                                    customFoodCount: customFoods.count
+                               ) {
                                 ui.payOpen = true
                             } else {
-                                ui.qlFav = desired
+                                ui.qlFav = newValue
                             }
                         }
                     ))
@@ -701,16 +828,24 @@ struct QuickLogSheet: View {
         let stamp = timestamp(for: day)
 
         if ui.qlFav {
+            guard PremiumAccessPolicy.allows(
+                .unlimitedCustomFoods,
+                isPremium: subscriptions.isPremium,
+                customFoodCount: customFoods.count
+            ) else {
+                ui.payOpen = true
+                return
+            }
             let food = CustomFood(name: name, serving: "1 serving", mg: mg)
             modelContext.insert(food)
             modelContext.insert(Favorite(foodID: food.id))
             modelContext.insert(LogEntry(foodID: food.id, servings: 1, meal: ui.qlMeal, loggedAt: stamp))
             ui.closeAllSheets()
-            ui.showToast("\(name) · \(PinchFormat.mg(mg)) mg", "Logged and pinned to favorites.")
+            ui.showToast("\(name), \(PinchFormat.mg(mg)) mg", "Logged and pinned to favorites.")
         } else {
             modelContext.insert(LogEntry(adhocName: name, adhocMg: mg, servings: 1, meal: ui.qlMeal, loggedAt: stamp))
             ui.closeAllSheets()
-            ui.showToast("\(name) · \(PinchFormat.mg(mg)) mg", ToastCopy.line(forAdded: mg))
+            ui.showToast("\(name), \(PinchFormat.mg(mg)) mg", ToastCopy.line(forAdded: mg))
         }
     }
 }
@@ -721,10 +856,15 @@ struct CreateFoodSheet: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
     @Environment(\.modelContext) private var modelContext
+    @Environment(SubscriptionStore.self) private var subscriptions
+
+    @Query private var customFoods: [CustomFood]
 
     @FocusState private var nameFocused: Bool
 
-    private var mgValue: Int { SodiumConverter.sodiumMilligrams(ui.cfMg, unit: ui.cfUnit) ?? 0 }
+    private var mgValue: Int {
+        SodiumConverter.sodiumMilligrams(from: ui.cfMg, unit: ui.cfUnit) ?? 0
+    }
     private var valid: Bool {
         !ui.cfName.trimmingCharacters(in: .whitespaces).isEmpty && mgValue > 0
     }
@@ -752,18 +892,19 @@ struct CreateFoodSheet: View {
                         PinchSegment(value: SodiumInputUnit.sodiumMilligrams, label: "Sodium mg"),
                         PinchSegment(value: SodiumInputUnit.saltGrams, label: "Salt g"),
                     ],
-                    selection: $ui.cfUnit
+                    selection: $ui.cfUnit,
+                    bordered: false
                 )
                 .padding(.top, 12)
 
                 HStack(spacing: 10) {
                     SunkField(label: "SERVING", placeholder: "1 cup", text: $ui.cfServe)
                     SunkField(
-                        label: ui.cfUnit == .saltGrams ? "SALT G" : "SODIUM MG",
+                        label: ui.cfUnit.fieldLabel,
                         placeholder: "0",
                         text: $ui.cfMg,
                         numeric: true,
-                        decimal: ui.cfUnit == .saltGrams,
+                        allowsDecimal: ui.cfUnit == .saltGrams,
                         labelColor: p.brand,
                         highlighted: true
                     )
@@ -835,6 +976,14 @@ struct CreateFoodSheet: View {
 
     private func submit() {
         guard valid else { return }
+        guard PremiumAccessPolicy.allows(
+            .unlimitedCustomFoods,
+            isPremium: subscriptions.isPremium,
+            customFoodCount: customFoods.count
+        ) else {
+            ui.payOpen = true
+            return
+        }
         let name = ui.cfName.trimmingCharacters(in: .whitespaces)
         let serving = ui.cfServe.trimmingCharacters(in: .whitespaces)
         let food = CustomFood(

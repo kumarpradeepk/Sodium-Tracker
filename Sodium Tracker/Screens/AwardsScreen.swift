@@ -31,22 +31,18 @@ struct AwardsScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                PinchText("SMALL WINS")
+                PinchText("KEEP SHAKING")
                     .pinchBody(11, .bold, tracking: 0.14)
                     .foregroundStyle(p.ink3)
                 PinchText("Awards")
                     .pinchDisplay(30, .bold)
                     .foregroundStyle(p.ink)
                     .padding(.top, 2)
-                PinchText("Quiet proof that showing up counts.")
-                    .pinchBody(12.5)
-                    .foregroundStyle(p.ink3)
-                    .padding(.top, 3)
 
                 streakCard
                     .padding(.top, 16)
 
-                SectionKicker(text: "YOUR BADGES")
+                SectionKicker(text: "BADGES")
                     .padding(.top, 20)
                     .padding(.bottom, 10)
                 badgeGrid

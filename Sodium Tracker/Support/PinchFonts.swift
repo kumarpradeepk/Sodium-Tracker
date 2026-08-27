@@ -2,9 +2,9 @@
 //  PinchFonts.swift
 //  Sodium Tracker
 //
-//  Bricolage Grotesque (display) and Instrument Sans (body), registered from
-//  bundled variable-font files at launch. Falls back to system fonts if the
-//  files fail to register.
+//  The current Salty design uses the native Apple system stack (SF Pro on
+//  iOS), which keeps text crisp, Dynamic Type friendly, and consistent with
+//  system sheets and controls.
 //
 
 import SwiftUI
@@ -36,20 +36,12 @@ enum PinchFonts {
 
     /// Display face — screen titles, big numbers.
     static func display(_ size: CGFloat, _ weight: Font.Weight = .bold) -> Font {
-        register()
-        guard displayAvailable else {
-            return .system(size: size, weight: weight, design: .rounded)
-        }
-        return .custom(displayFamily, size: size).weight(weight)
+        .system(size: size, weight: weight, design: .default)
     }
 
     /// Body face — everything else.
     static func body(_ size: CGFloat, _ weight: Font.Weight = .regular) -> Font {
-        register()
-        guard bodyAvailable else {
-            return .system(size: size, weight: weight)
-        }
-        return .custom(bodyFamily, size: size).weight(weight)
+        .system(size: size, weight: weight, design: .default)
     }
 }
 

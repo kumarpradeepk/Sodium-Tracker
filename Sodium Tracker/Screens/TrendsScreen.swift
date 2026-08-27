@@ -12,10 +12,10 @@ import SwiftData
 struct TrendsScreen: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
+    @Environment(SubscriptionStore.self) private var subscriptions
 
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
-    @AppStorage(PinchDefaults.plus) private var plus = false
 
     @Query(sort: \LogEntry.loggedAt) private var entries: [LogEntry]
     @Query private var customFoods: [CustomFood]
@@ -29,7 +29,7 @@ struct TrendsScreen: View {
             VStack(alignment: .leading, spacing: 0) {
                 header
 
-                if ui.trMode == .week {
+                if shownMode == .week {
                     weekNav
                         .frame(maxWidth: .infinity)
                         .padding(.top, 14)
@@ -37,7 +37,7 @@ struct TrendsScreen: View {
                         .padding(.top, 12)
                     statQuad
                         .padding(.top, 12)
-                    SectionKicker(text: "DAY BY DAY · TAP TO REVISIT")
+                    SectionKicker(text: "DAY BY DAY: TAP TO REVISIT")
                         .padding(.top, 20)
                         .padding(.bottom, 10)
                     historyCard
@@ -62,37 +62,43 @@ struct TrendsScreen: View {
 
     // MARK: - Header
 
+    private var shownMode: TrendsMode {
+        PremiumAccessPolicy.allows(.monthTrends, isPremium: subscriptions.isPremium)
+            ? ui.trMode
+            : .week
+    }
+
     private var header: some View {
-        return VStack(alignment: .leading, spacing: 0) {
-            PinchText("YOUR PATTERN")
-                .pinchBody(11, .bold, tracking: 0.14)
-                .foregroundStyle(p.ink3)
-            PinchText("Trends")
-                .pinchDisplay(30, .bold)
-                .foregroundStyle(p.ink)
-                .padding(.top, 2)
-            PinchText("The numbers, with the edges softened.")
-                .pinchBody(12.5)
-                .foregroundStyle(p.ink3)
-                .padding(.top, 3)
+        @Bindable var ui = ui
+        return HStack(alignment: .bottom) {
+            VStack(alignment: .leading, spacing: 2) {
+                PinchText("THE LONG GAME")
+                    .pinchBody(11, .bold, tracking: 0.14)
+                    .foregroundStyle(p.ink3)
+                PinchText("Trends")
+                    .pinchDisplay(30, .bold)
+                    .foregroundStyle(p.ink)
+            }
+            Spacer()
             PinchSegmented(
                 segments: [
                     PinchSegment(value: TrendsMode.week, label: "Week"),
-                    PinchSegment(value: TrendsMode.month, label: plus ? "Month" : "Month · Plus"),
+                    PinchSegment(value: TrendsMode.month, label: "Month"),
                 ],
                 selection: Binding(
-                    get: { ui.trMode },
-                    set: { mode in
-                        if mode == .month && !PremiumAccessPolicy.allows(.monthTrends, isPremium: plus) {
+                    get: { shownMode },
+                    set: { newMode in
+                        if newMode == .month,
+                           !PremiumAccessPolicy.allows(.monthTrends, isPremium: subscriptions.isPremium) {
                             ui.payOpen = true
-                            ui.trMode = .week
                         } else {
-                            ui.trMode = mode
+                            ui.trMode = newMode
                         }
                     }
                 )
             )
-            .padding(.top, 16)
+            .frame(width: 150)
+            .padding(.bottom, 4)
         }
     }
 
@@ -249,7 +255,7 @@ struct TrendsScreen: View {
 
         return VStack(spacing: 10) {
             HStack(spacing: 10) {
-                StatCard(value: PinchFormat.mg(week.average), caption: "avg mg / day")
+                StatCard(value: PinchFormat.mg(week.average), caption: "average mg per day")
                 StatCard(
                     value: deltaLabel,
                     caption: "this week vs last",
@@ -497,7 +503,7 @@ struct TrendsScreen: View {
         let over = totals.filter { $0 > goal }.count
 
         return HStack(spacing: 10) {
-            StatCard(value: PinchFormat.mg(avg), caption: "avg mg / day", valueSize: 20)
+            StatCard(value: PinchFormat.mg(avg), caption: "average mg per day", valueSize: 20)
             StatCard(value: "\(under) of \(totals.count)", caption: "days under", valueSize: 20)
             StatCard(value: "\(over)", caption: "salty days", valueColor: p.coral, valueSize: 20)
         }

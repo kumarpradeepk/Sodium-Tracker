@@ -66,7 +66,7 @@ struct PaletteTests {
     }
 
     @Test func brandTokensMatchDesign() {
-        #expect(PinchPalette.resolve(.ocean, dark: false).brand == Color(hex: 0x1668A8))
+        #expect(PinchPalette.resolve(.ocean, dark: false).brand == Color(hex: 0x2E6FBD))
         #expect(PinchPalette.resolve(.ocean, dark: true).brand == Color(hex: 0x5CB3E8))
         #expect(PinchPalette.resolve(.sage, dark: false).brand == Color(hex: 0x35705A))
         #expect(PinchPalette.resolve(.sage, dark: true).brand == Color(hex: 0x8CC3A6))
@@ -205,6 +205,63 @@ struct GoalTests {
         #expect(GoalChoice.aha.milligrams(custom: 9999) == 1500)
         #expect(GoalChoice.fda.milligrams(custom: 9999) == 2300)
         #expect(GoalChoice.custom.milligrams(custom: 2000) == 2000)
+    }
+
+    @Test func customGoalUsesPrototypeBoundsAndStep() {
+        #expect(PinchDefaults.customGoalRange == 800...3000)
+        #expect(PinchDefaults.customGoalStep == 100)
+    }
+}
+
+struct PremiumPolicyTests {
+    @Test func widgetsArePlusOnly() {
+        #expect(!PremiumAccessPolicy.allows(.widgets, isPremium: false))
+        #expect(PremiumAccessPolicy.allows(.widgets, isPremium: true))
+    }
+}
+
+// MARK: - Label conversion
+
+struct SodiumConverterTests {
+    @Test func keepsSodiumMilligramsAsEntered() {
+        #expect(SodiumConverter.sodiumMilligrams(from: "470", unit: .sodiumMilligrams) == 470)
+        #expect(SodiumConverter.sodiumMilligrams(from: "470.4", unit: .sodiumMilligrams) == 470)
+    }
+
+    @Test func convertsSaltGramsToSodiumMilligrams() {
+        #expect(SodiumConverter.sodiumMilligrams(from: "1", unit: .saltGrams) == 393)
+        #expect(SodiumConverter.sodiumMilligrams(from: "1.5", unit: .saltGrams) == 590)
+        #expect(SodiumConverter.sodiumMilligrams(from: "1,5", unit: .saltGrams) == 590)
+    }
+
+    @Test func rejectsInvalidOrNonPositiveInput() {
+        #expect(SodiumConverter.sodiumMilligrams(from: "", unit: .saltGrams) == nil)
+        #expect(SodiumConverter.sodiumMilligrams(from: "0", unit: .saltGrams) == nil)
+        #expect(SodiumConverter.sodiumMilligrams(from: "nope", unit: .sodiumMilligrams) == nil)
+    }
+}
+
+// MARK: - Premium access
+
+struct PremiumAccessPolicyTests {
+    @Test func paidEntitlementUnlocksEveryPremiumFeature() {
+        for feature in PremiumFeature.allCases {
+            #expect(PremiumAccessPolicy.allows(feature, isPremium: true, customFoodCount: 999))
+        }
+    }
+
+    @Test func freeTierCannotUseTrendsOrExport() {
+        #expect(!PremiumAccessPolicy.allows(.monthTrends, isPremium: false))
+        #expect(!PremiumAccessPolicy.allows(.historyCalendar, isPremium: false))
+        #expect(!PremiumAccessPolicy.allows(.csvExport, isPremium: false))
+        #expect(!PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: false))
+        #expect(!PremiumAccessPolicy.allows(.barcodeScanner, isPremium: false))
+    }
+
+    @Test func freeShelfHasAnEnforcedLimit() {
+        let limit = PremiumAccessPolicy.freeCustomFoodLimit
+        #expect(PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: false, customFoodCount: limit - 1))
+        #expect(!PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: false, customFoodCount: limit))
     }
 }
 
@@ -593,6 +650,16 @@ struct FatSecretParserTests {
         #expect(FatSecretParser.number(12.5) == 12.5)
         #expect(FatSecretParser.number("abc") == nil)
         #expect(FatSecretParser.number(nil) == nil)
+    }
+
+    @Test func parsesTheRestrictedProxyContract() throws {
+        let search = #"{"foods":[{"id":"33691","name":"Chicken Noodle Soup","brand":"Pinch Kitchen","summary":"Per 1 cup"}]}"#
+        let hits = try FatSecretProxyParser.searchResults(from: Data(search.utf8))
+        #expect(hits == [RemoteFood(id: "33691", name: "Chicken Noodle Soup", brand: "Pinch Kitchen", summary: "Per 1 cup")])
+
+        let detail = #"{"name":"Chicken Noodle Soup","serving":"1 cup","sodiumMg":870,"calories":60}"#
+        #expect(try FatSecretProxyParser.foodDetail(from: Data(detail.utf8))
+            == RemoteFoodDetail(name: "Chicken Noodle Soup", serving: "1 cup", sodiumMg: 870, calories: 60))
     }
 }
 

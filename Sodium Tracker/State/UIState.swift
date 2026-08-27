@@ -12,11 +12,11 @@ import Observation
 
 enum PinchTab: String, CaseIterable {
     case today, trends, awards, settings
+
+    var order: Int { Self.allCases.firstIndex(of: self) ?? 0 }
 }
 
 enum TrendsMode { case week, month }
-enum ScanMode { case barcode, label }
-enum ScanPhase { case scanning, found }
 enum PlusPlan { case yearly, monthly }
 
 struct PinchToast: Identifiable, Equatable {
@@ -25,10 +25,20 @@ struct PinchToast: Identifiable, Equatable {
     let sub: String
 }
 
+/// A one-tap add launched from the floating FAB menu. TodayScreen consumes the
+/// request only after its amount pill has completed the showcase flight into
+/// the progress ring.
+struct QuickAddRequest: Identifiable, Equatable {
+    let id = UUID()
+    let name: String
+    let milligrams: Int
+}
+
 @Observable
 final class UIState {
     // MARK: Navigation
     var tab: PinchTab = .today
+    var tabDirection: CGFloat = 1
     var selOffset = 0                 // 0 = today, negative = days back (≥ -13)
     var trMode: TrendsMode = .week
     var weekSel = 0                   // 0 = this week, 1 = last week
@@ -37,6 +47,8 @@ final class UIState {
 
     // MARK: Log sheet
     var logOpen = false
+    var quickAddOpen = false
+    var quickAddRequest: QuickAddRequest?
     var search = ""
 
     // MARK: Portion sheet
@@ -64,18 +76,11 @@ final class UIState {
     var cfProt = ""
     var cfFat = ""
 
-    // MARK: Scanner
-    var scanOpen = false
-    var scanMode: ScanMode = .barcode
-    var scanPhase: ScanPhase = .scanning
-    var scanToken = 0                 // restarts the fake-scan timer
-
     // MARK: Other overlays
     var calOpen = false
     var notifCenterOpen = false
     var payOpen = false
     var plan: PlusPlan = .yearly
-    var widgetOpen = false
 
     // MARK: Toast
     var toast: PinchToast?
@@ -85,8 +90,6 @@ final class UIState {
     /// shell, not read from the engine — a per-frame read here would invalidate
     /// the whole screen 60 times a second.
     var revealed: Set<SaltyReveal> = []
-    /// The FAB's QUICK ADD sheet.
-    var quickAddOpen = false
     /// Entries added this session, newest last — the bubble's Undo link.
     /// Deliberately not persisted: Undo is a same-session affordance.
     var undoStack: [PersistentIdentifier] = []
@@ -114,6 +117,12 @@ final class UIState {
         toast = PinchToast(title: title, sub: sub)
     }
 
+    func selectTab(_ target: PinchTab) {
+        guard target != tab else { return }
+        tabDirection = target.order >= tab.order ? 1 : -1
+        tab = target
+    }
+
     /// Opens the portion sheet for a food and counts the lookup (Label Sleuth).
     func pick(_ food: FoodItem) {
         picked = food
@@ -131,9 +140,9 @@ final class UIState {
     func closeAllSheets() {
         picked = nil
         logOpen = false
+        quickAddOpen = false
         qlOpen = false
         cfOpen = false
-        scanOpen = false
         calOpen = false
         search = ""
     }
@@ -158,14 +167,6 @@ final class UIState {
         cfProt = ""
         cfFat = ""
         cfOpen = true
-    }
-
-    func startScan(_ mode: ScanMode) {
-        scanMode = mode
-        scanPhase = .scanning
-        scanOpen = true
-        logOpen = false
-        scanToken += 1
     }
 
     func beginOnboarding() {

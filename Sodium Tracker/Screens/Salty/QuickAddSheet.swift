@@ -15,7 +15,7 @@
 
 import SwiftUI
 
-struct QuickAddSheet: View {
+struct SaltyQuickAddSheet: View {
     @Environment(\.salty) private var s
     let items: [QuickAddItem]
     let onPick: (QuickAddItem, CGPoint) -> Void

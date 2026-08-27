@@ -13,15 +13,15 @@ import UIKit
 struct SettingsScreen: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
+    @Environment(SubscriptionStore.self) private var subscriptions
     @Environment(\.modelContext) private var modelContext
 
     @AppStorage(PinchDefaults.theme) private var theme = "light"
-    @AppStorage(PinchDefaults.palette) private var palettePick = PalettePick.salty.rawValue
+    @AppStorage(PinchDefaults.palette) private var palettePick = PalettePick.ocean.rawValue
     @AppStorage(PinchDefaults.goalChoice) private var goalChoiceRaw = GoalChoice.fda.rawValue
     @AppStorage(PinchDefaults.customGoal) private var customGoal = PinchDefaults.customGoalDefault
     @AppStorage(PinchDefaults.chatty) private var chatty = true
     @AppStorage(PinchDefaults.notif) private var notif = true
-    @AppStorage(PinchDefaults.plus) private var plus = false
     @AppStorage(PinchDefaults.mealRemBreakfast) private var remBreakfast = true
     @AppStorage(PinchDefaults.mealRemLunch) private var remLunch = false
     @AppStorage(PinchDefaults.mealRemDinner) private var remDinner = true
@@ -77,7 +77,7 @@ struct SettingsScreen: View {
                     .padding(.top, 18).padding(.bottom, 8)
                 accountCard
 
-                PinchText("Pinch 1.0 · made with a pinch of love")
+                PinchText("Pinch 1.0, made with a pinch of love")
                     .pinchBody(11)
                     .foregroundStyle(p.ink3)
                     .frame(maxWidth: .infinity)
@@ -128,7 +128,7 @@ struct SettingsScreen: View {
                         PinchText("Pinch Plus")
                             .pinchBody(14.5, .bold)
                             .foregroundStyle(p.ink)
-                        if plus {
+                        if subscriptions.isPremium {
                             PinchText("ON")
                                 .pinchBody(9, .heavy, tracking: 0.1)
                                 .foregroundStyle(p.onBrand)
@@ -137,9 +137,9 @@ struct SettingsScreen: View {
                                 .background(Capsule().fill(p.brand))
                         }
                     }
-                    PinchText(plus
+                    PinchText(subscriptions.isPremium
                          ? "Active — thanks for keeping Pinch fed."
-                         : "The extras: month view, widget, your shelf, export.")
+                         : "4-week trends, unlimited shelf foods, and export.")
                         .pinchBody(11.5)
                         .foregroundStyle(p.ink3)
                         .lineSpacing(2)
@@ -150,7 +150,7 @@ struct SettingsScreen: View {
                 Button {
                     ui.payOpen = true
                 } label: {
-                    PinchText(plus ? "Manage plan" : "See what's inside")
+                    PinchText(subscriptions.isPremium ? "Manage plan" : "See what’s inside")
                         .pinchBody(12, .bold)
                         .foregroundStyle(p.brand)
                         .padding(.horizontal, 13)
@@ -185,7 +185,7 @@ struct SettingsScreen: View {
                         .foregroundStyle(p.ink)
                         .contentTransition(.numericText())
                         .animation(.snappy, value: goal)
-                    PinchText("mg / day")
+                    PinchText("mg per day")
                         .pinchBody(13)
                         .foregroundStyle(p.ink3)
                 }
@@ -209,7 +209,7 @@ struct SettingsScreen: View {
                         Slider(
                             value: Binding(
                                 get: { Double(customGoal) },
-                                set: { customGoal = Int($0 / 50) * 50 }
+                                set: { customGoal = Int($0 / Double(PinchDefaults.customGoalStep)) * PinchDefaults.customGoalStep }
                             ),
                             in: Double(PinchDefaults.customGoalRange.lowerBound)...Double(PinchDefaults.customGoalRange.upperBound)
                         )
@@ -312,7 +312,7 @@ struct SettingsScreen: View {
         PinchCard {
             VStack(spacing: 0) {
                 toggleRow(
-                    title: "Pinch's chatter",
+                    title: "Pinch’s chatter",
                     sub: "Little encouragements under the ring",
                     isOn: $chatty,
                     tile: SettingsIconTile(color: SettingsTileColors.chatter, glyph: .bubble),
@@ -401,7 +401,7 @@ struct SettingsScreen: View {
                         .pinchBody(10.5)
                         .foregroundStyle(p.ink3)
                 }
-                PinchText("Dinner check-in — \(PinchFormat.mg(max(0, todayRemain))) mg still in the budget. You've got this.")
+                PinchText("Dinner check-in — \(PinchFormat.mg(max(0, todayRemain))) mg still in the budget. You’ve got this.")
                     .pinchBody(12)
                     .foregroundStyle(p.ink2)
                     .lineSpacing(3)
@@ -416,25 +416,8 @@ struct SettingsScreen: View {
     private var dataCard: some View {
         PinchCard {
             VStack(spacing: 0) {
-                navRow(
-                    title: "Home-screen widget",
-                    sub: "The ring, at a glance",
-                    tile: SettingsIconTile(color: SettingsTileColors.widget, glyph: .widgetGrid),
-                    divider: false
-                ) {
-                    if PremiumAccessPolicy.allows(.widgets, isPremium: plus) {
-                        ui.widgetOpen = true
-                    } else {
-                        ui.payOpen = true
-                    }
-                }
-
                 Button {
-                    if PremiumAccessPolicy.allows(.csvExport, isPremium: plus) {
-                        exportCSV()
-                    } else {
-                        ui.payOpen = true
-                    }
+                    exportCSV()
                 } label: {
                     HStack(spacing: 11) {
                         SettingsIconTile(color: SettingsTileColors.export, glyph: .exportArrow)
@@ -447,9 +430,54 @@ struct SettingsScreen: View {
                                 .foregroundStyle(p.ink3)
                         }
                         Spacer()
+                        if !subscriptions.isPremium {
+                            PinchText("PLUS")
+                                .pinchBody(9, .heavy, tracking: 0.09)
+                                .foregroundStyle(p.brand)
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 3)
+                                .background(Capsule().fill(p.brandSoft))
+                        }
                         LineIcon(
                             d: "M10 3 V13 M6 9.5 L10 13.5 L14 9.5 M4 16.5 H16",
                             size: 15, stroke: 1.8, color: p.ink3
+                        )
+                    }
+                    .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .overlay(alignment: .top) { Rectangle().fill(p.line).frame(height: 1) }
+
+                Button {
+                    if PremiumAccessPolicy.allows(.widgets, isPremium: subscriptions.isPremium) {
+                        ui.showToast("Widget ready", "Add Pinch from the Home Screen widget gallery.")
+                    } else {
+                        ui.payOpen = true
+                    }
+                } label: {
+                    HStack(spacing: 11) {
+                        SettingsIconTile(color: SettingsTileColors.export, glyph: .exportArrow)
+                        VStack(alignment: .leading, spacing: 2) {
+                            PinchText("Home-screen widget")
+                                .pinchBody(14, .semibold)
+                                .foregroundStyle(p.ink)
+                            PinchText("A calm glance at today")
+                                .pinchBody(11.5)
+                                .foregroundStyle(p.ink3)
+                        }
+                        Spacer()
+                        if !subscriptions.isPremium {
+                            PinchText("PLUS")
+                                .pinchBody(9, .heavy, tracking: 0.09)
+                                .foregroundStyle(p.brand)
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 3)
+                                .background(Capsule().fill(p.brandSoft))
+                        }
+                        LineIcon(
+                            d: "M1 1 L7 7 L1 13",
+                            size: 12, stroke: 2, color: p.ink3
                         )
                     }
                     .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
@@ -480,8 +508,7 @@ struct SettingsScreen: View {
                 navRow(
                     title: "Health information & sources",
                     sub: "Guidance, limitations, and citations",
-                    tile: SettingsIconTile(color: SettingsTileColors.chatter, glyph: .heart),
-                    divider: true
+                    tile: SettingsIconTile(color: SettingsTileColors.chatter, glyph: .heart)
                 ) {
                     showHealthSources = true
                 }
@@ -493,7 +520,6 @@ struct SettingsScreen: View {
         title: String,
         sub: String,
         tile: SettingsIconTile? = nil,
-        divider: Bool = true,
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
@@ -516,12 +542,14 @@ struct SettingsScreen: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .overlay(alignment: .top) {
-            if divider { Rectangle().fill(p.line).frame(height: 1) }
-        }
+        .overlay(alignment: .top) { Rectangle().fill(p.line).frame(height: 1) }
     }
 
     private func exportCSV() {
+        guard PremiumAccessPolicy.allows(.csvExport, isPremium: subscriptions.isPremium) else {
+            ui.payOpen = true
+            return
+        }
         if let url = CSVExporter.writeTempFile(entries: entries, customFoods: customFoods) {
             exportURL = url
             showShare = true
