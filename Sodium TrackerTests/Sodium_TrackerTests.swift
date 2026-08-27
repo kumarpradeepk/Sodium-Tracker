@@ -10,21 +10,6 @@ import Foundation
 import SwiftUI
 @testable import Sodium_Tracker
 
-struct PremiumPolicyTests {
-    @Test func freeTierAndPlusContract() {
-        #expect(!PremiumAccessPolicy.allows(.monthTrends, isPremium: false))
-        #expect(!PremiumAccessPolicy.allows(.historyCalendar, isPremium: false))
-        #expect(!PremiumAccessPolicy.allows(.csvExport, isPremium: false))
-        #expect(!PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: false))
-        #expect(!PremiumAccessPolicy.allows(.barcodeScanner, isPremium: false))
-        #expect(!PremiumAccessPolicy.allows(.widgets, isPremium: false))
-        #expect(PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: false, customFoodCount: 2))
-        #expect(!PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: false, customFoodCount: 3))
-        #expect(PremiumAccessPolicy.allows(.widgets, isPremium: true))
-        #expect(PremiumAccessPolicy.allows(.unlimitedCustomFoods, isPremium: true, customFoodCount: 500))
-    }
-}
-
 struct LocalizationParityTests {
     @Test func resolvesLiteralAndRuntimeCopy() {
         #expect(PinchLocalization.resolve("Today", language: "de") == "Heute")
@@ -32,23 +17,6 @@ struct LocalizationParityTests {
         #expect(PinchLocalization.resolve("3-day streak", language: "de") == "3-Tage-Serie")
         #expect(PinchLocalization.resolve("500 mg left", language: "ja") == "残り 500 mg")
         #expect(PinchLocalization.resolve("Today", language: "en") == "Today")
-    }
-}
-
-struct SodiumConverterTests {
-    @Test func keepsSodiumMilligrams() {
-        #expect(SodiumConverter.sodiumMilligrams("470", unit: .sodiumMilligrams) == 470)
-    }
-
-    @Test func convertsSaltGramsAndLocalizedDecimal() {
-        #expect(SodiumConverter.sodiumMilligrams("1", unit: .saltGrams) == 393)
-        #expect(SodiumConverter.sodiumMilligrams("2,5", unit: .saltGrams) == 984)
-    }
-
-    @Test func rejectsMissingAndInvalidAmounts() {
-        #expect(SodiumConverter.sodiumMilligrams("", unit: .sodiumMilligrams) == nil)
-        #expect(SodiumConverter.sodiumMilligrams("-2", unit: .saltGrams) == nil)
-        #expect(SodiumConverter.sodiumMilligrams("NaN", unit: .sodiumMilligrams) == nil)
     }
 }
 

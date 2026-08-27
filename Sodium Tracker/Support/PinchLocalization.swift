@@ -16,7 +16,10 @@ enum PinchLocalization {
     }
 
     static func resolve(_ value: String) -> String {
-        let lang = language
+        resolve(value, language: language)
+    }
+
+    static func resolve(_ value: String, language lang: String) -> String {
         guard lang != "en" else { return value }
         if let translated = catalog[lang]?[value] { return translated }
         return dynamic(value, language: lang)
