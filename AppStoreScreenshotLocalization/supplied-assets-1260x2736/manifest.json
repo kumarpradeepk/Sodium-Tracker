@@ -1,0 +1,1609 @@
+{
+  "outputRoot": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736",
+  "total": 80,
+  "storeCandidates": 65,
+  "referenceOnly": 15,
+  "scope": "Dimensions/opaque PNG export only; text and artwork unchanged. Upscaling does not add source detail. API locale IDs and live metadata remain unverified.",
+  "results": [
+    {
+      "locale": "de-DE",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/de-DE/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/de-DE/01_today.png",
+      "sourceSHA256": "81bac4a3d5101b00cd605e2a89d7a44700585991950a86fa838a6a045a78c5c8",
+      "outputSHA256": "71046486f9ae0dc66f2bb35f7d4689b73190b598314d2ca1e07c89403c95ccb0",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "de-DE",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/de-DE/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/de-DE/02_fits.png",
+      "sourceSHA256": "53e259a05b9c44bd2f941dc48cfdba069937952d41172a33707e2fd4a9be071b",
+      "outputSHA256": "e71767407c9c6582900d7735ecd221e3393fc4224731be72719716f2ab0024d5",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "de-DE",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/de-DE/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/de-DE/03_reminders.png",
+      "sourceSHA256": "92728c23dc2f7e19d4a966ec9a9f487b483a37fc70bb0bfae56991e15435cd41",
+      "outputSHA256": "cecd83e2d2d430ef99af16a240a0976c1efcd8cf02a059905c7ab0ff24e2c802",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "de-DE",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/de-DE/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/de-DE/04_favorites.png",
+      "sourceSHA256": "80cb237fb126cff3156938f3d286bf1fbfdf8e90f54f4bcb0fdb5606cca59d6e",
+      "outputSHA256": "278245307a20d2f50bfbb16519fea30c5074a44802f87d2ed7f5dac2ff2327b6",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "de-DE",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/de-DE/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/de-DE/05_streaks.png",
+      "sourceSHA256": "3d9f804bb1de7f1f9d51171fdd874229a37f8b768a82d0025ad779516563b1bb",
+      "outputSHA256": "97c3367e8831da232b3a8bd054e1beeeb1d02d6ad91a108046e1400e0264a79b",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "en-US",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/en-US/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/en-US/01_today.png",
+      "sourceSHA256": "0b0b179426e6f33a8804e064d07f62473a93284c2757adbc3aab5d165f18a78e",
+      "outputSHA256": "6bf118f1f4651ed5f224b318f71ff4b6958a67a0dd1d189a84e069e869ea6292",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "en-US",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/en-US/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/en-US/02_fits.png",
+      "sourceSHA256": "5332c4215f7ad0a269401f0d535e7db875d78abbea242a21eb5115c3babff168",
+      "outputSHA256": "214770b9fc4c9c78880d138ad6dcadfdbd5f4b72af234d0da0101ffe6ae9d780",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "en-US",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/en-US/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/en-US/03_reminders.png",
+      "sourceSHA256": "fd5891975994fe7ab1afbfa2198ece6acbf336650b73f241b3705b85e69cea54",
+      "outputSHA256": "2fbcf003d44fe7ca3c839061eb56074a870f9c4f1abb9ecbf122264c2f89b200",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "en-US",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/en-US/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/en-US/04_favorites.png",
+      "sourceSHA256": "05c3d1f0acdecd4baca7774131f067e3e8ca54fa969c268d8cdddb414f007a9b",
+      "outputSHA256": "bd394740afa1ca78fb7f05fc8cde615dd41950cb68c41bf4df0a200550e0d5f5",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "en-US",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/en-US/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/en-US/05_streaks.png",
+      "sourceSHA256": "03767547d212e5e0bb039f9d1300ec2ceefb69282da323ce95ebba198407d31e",
+      "outputSHA256": "f84f22ede39f2a5e82eeb984db25486295f4959135e8ba1fd49a507629d9f1dc",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "es-ES",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/es-ES/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/es-ES/01_today.png",
+      "sourceSHA256": "38f384db3a3fb478087c1bb4dfd8aa1b7f33a13da78b3dd7b3a5e25c2df7b317",
+      "outputSHA256": "10861bde60a9c8014677266ad2508154b24a9e631c5073cf9a10be3f1eb07feb",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "es-ES",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/es-ES/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/es-ES/02_fits.png",
+      "sourceSHA256": "aa846be795c6ad4c124b42e7f69170a4774dc42cda67492f246e7eb56f1fdfa4",
+      "outputSHA256": "8d612184c1c661efcb9c59103564c3197b79f29822a7808d85716ebe0389b355",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "es-ES",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/es-ES/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/es-ES/03_reminders.png",
+      "sourceSHA256": "228b57df8c9df9f2feb06739a9008b6f71473fc859206cab36a6efb72cd95113",
+      "outputSHA256": "e6be04d00f052db22911fd75e12acd85f84e4a1985efeae74ed77a66fb52c1a7",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "es-ES",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/es-ES/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/es-ES/04_favorites.png",
+      "sourceSHA256": "cbc3b75737e1ecdc8e4aee2eb6a4b08cab5c1ae9ed5db893016482cd636e910d",
+      "outputSHA256": "a91653975e13ee1d96f00892c137152ad1f3f9485ea0067a2b757e703235a960",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "es-ES",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/es-ES/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/es-ES/05_streaks.png",
+      "sourceSHA256": "0cff7c33faeb37bc9ab21f9cdae5a7f8b357095727b5e539051e55edcf90ce24",
+      "outputSHA256": "635d88761108df68d4ccf1a23920ba03743f8c1dfe50c11ee32a56dbfb96aa6e",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "fr-FR",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/fr-FR/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/fr-FR/01_today.png",
+      "sourceSHA256": "295585cf1217eb83346ba033732fb68fcc93e6ae853c86dff09691fe91902eb2",
+      "outputSHA256": "327d00d1f26adcf1865eb4db8e208d213aec22b26537b75e572e9d6d3b01bc4e",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "fr-FR",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/fr-FR/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/fr-FR/02_fits.png",
+      "sourceSHA256": "a5e13a1a255a367a6dc68b798c298ddbf04b75f863b51ce5026b84f4bc352e5d",
+      "outputSHA256": "68302ed252d0e21055a5da3e32d16c66c6fcddf4837c3627b5fec33c7a3d2ebf",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "fr-FR",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/fr-FR/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/fr-FR/03_reminders.png",
+      "sourceSHA256": "b736f8e419baefff42f3deb4a197236e9a0f0ed3f33bf3c7a6b3ea1cd5bb3d1c",
+      "outputSHA256": "52e8482f210d9083c3a2c102d950c424b99b218327e321eea05c3728c04ce20e",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "fr-FR",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/fr-FR/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/fr-FR/04_favorites.png",
+      "sourceSHA256": "e6819c6261c9e3cac3ce9906629c3ceb46c7a51470fd9c4dc5fd3e04a4812a7d",
+      "outputSHA256": "e77e027effdeed604e80f65803652746f22b064e462b02f5219d0ace392a2369",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "fr-FR",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/fr-FR/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/fr-FR/05_streaks.png",
+      "sourceSHA256": "f4f68a560d5563cdbf7571a59b84027678bc6a87456fb3142a916346802a1952",
+      "outputSHA256": "f42cdda0ff0178de9db2967340c60783a214a9a1e7e4d90c6dcae9837e23586b",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ga-IE",
+      "group": "reference-only",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ga-IE/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/ga-IE/01_today.png",
+      "sourceSHA256": "5e8284b30d4ff18bad0a29d9e05804b288330cd098202081cf51280fd56b9044",
+      "outputSHA256": "b06ecdf634be8664d5d894af8f0b8402befa1147f5fab7484649c408cbc03c4b",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "ga-IE",
+      "group": "reference-only",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ga-IE/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/ga-IE/02_fits.png",
+      "sourceSHA256": "d15cf90a223419708666d8a3443d0379ba7d2f43a459dda28d888dbf6555b926",
+      "outputSHA256": "9a261aeae7c0b0e5f71d7d1c24904e336e8a68c53d1618bc5e37b5c395898db0",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "ga-IE",
+      "group": "reference-only",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ga-IE/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/ga-IE/03_reminders.png",
+      "sourceSHA256": "71c49751c3ec1ed7d16494eb5fe2597711693b14b80031ba091cb436233e31a8",
+      "outputSHA256": "7b37e2dcaa560222c6ca054d6e25babbf7450eac56481f5c0b9a19119607a88e",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ga-IE",
+      "group": "reference-only",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ga-IE/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/ga-IE/04_favorites.png",
+      "sourceSHA256": "1549bb9d1127c72974be2fdb197c11062c5d0b2dbb1efd5301e7a9ee4330d66f",
+      "outputSHA256": "d47e8c8b2e703c14c5cbf754c9d44644f63ebbd26d21630a422563b6b243d31c",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ga-IE",
+      "group": "reference-only",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ga-IE/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/ga-IE/05_streaks.png",
+      "sourceSHA256": "c13c29c55af40648b4598ab8b4beb38e0e0f7d7fa11ac0552960673736966690",
+      "outputSHA256": "50fa9768d4d9d03877fdb9d44e80b55c5d4c654d960b30eaeb0dc7ea4c16d8de",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "hi-IN",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/hi-IN/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/hi-IN/01_today.png",
+      "sourceSHA256": "9b65835ff4028ddb3fc531f9c8086d8e0ffd0088f7efd1100794f696afb0d2f0",
+      "outputSHA256": "c220cf2e6ef852deea18a3c21160f153a26b290924a5143161bee4e9ccb8c369",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "hi-IN",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/hi-IN/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/hi-IN/02_fits.png",
+      "sourceSHA256": "0d1ebdc495ac420033cec0c9932776b7a999feec4b2d23fc3d6c7bdcb8d314dc",
+      "outputSHA256": "96fc1361a6b89dd268ac89a7b2435e71b203defdb4ac9adcb79e17523bf20507",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "hi-IN",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/hi-IN/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/hi-IN/03_reminders.png",
+      "sourceSHA256": "5b9a85e1fbb720fa95c0baee28d4132540516122199957b22bd54e2a46558ab9",
+      "outputSHA256": "bd215877e733c4e6ce55e00e8e29897f2b1be4800ea9676cae9c2ad7c170a27c",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "hi-IN",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/hi-IN/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/hi-IN/04_favorites.png",
+      "sourceSHA256": "31fc09d2cc7d57a2dcaa0c0b2ad8dae43996e1f59dd0e93d723c5e4526f3f2c9",
+      "outputSHA256": "4a431ab863e7bae1eb1f00117c76cd9ae76164bfde4bf332b41787286bc7b21b",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "hi-IN",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/hi-IN/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/hi-IN/05_streaks.png",
+      "sourceSHA256": "696f4b939fa76ddedaee6ab7c478dc36da391de391ad02df0ded3eaaf52ea0ae",
+      "outputSHA256": "ee483ba53d1f594e27edc250dfcbc1640938153b238f52da9dcfa928adb4cdc1",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "it-IT",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/it-IT/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/it-IT/01_today.png",
+      "sourceSHA256": "bfa6d486e94203cedfeaac040337f15523a3e163a0afb1b118872399c0ab6a3b",
+      "outputSHA256": "b6b62282a157ac69997d118b7d0798c53bc56a0235559546a3406982b923bd46",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "it-IT",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/it-IT/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/it-IT/02_fits.png",
+      "sourceSHA256": "743faaba71b3babacc4de00ddc1a8ea8fe74fc87c2c00f8582b24fd4c7870cdc",
+      "outputSHA256": "97a0e283d1deb86b4466b35f13da6021c1b151b662d368abbff20c305b18db34",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "it-IT",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/it-IT/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/it-IT/03_reminders.png",
+      "sourceSHA256": "3624f91ae4c9dde0b50d4da0e2128f752abb99491a8d81565700f11e5d7994bb",
+      "outputSHA256": "1e247c7d29fd688d5bd7df418841189618c0015980223e1056a6d9abdf4aaa0c",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "it-IT",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/it-IT/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/it-IT/04_favorites.png",
+      "sourceSHA256": "bc9b9bce6d0d549fb893d9354b99ff0eb007ac807faa1db28666b89c57274572",
+      "outputSHA256": "207d1f427a7f2c6a99f73234c092fedad14d45d4298495f536ec6cabbe2ddd76",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "it-IT",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/it-IT/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/it-IT/05_streaks.png",
+      "sourceSHA256": "fcd81c7d4126bf287ffe3b17a8e109a1672fcf232ede49a4998efe7c0e0a9450",
+      "outputSHA256": "5ad5f4f289dfba5094ace7ba9a432f667814d8281ef9d79831f17ecb03b9153c",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ja-JP",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ja-JP/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ja-JP/01_today.png",
+      "sourceSHA256": "6e7d974d9f627065486c1928decebae4fb9b931ad9369a8b4d67ee54f54981b3",
+      "outputSHA256": "fa73d6499d8c5647a6bfac757768533af7b3122e1c7166043161800ce7d92b9d",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "ja-JP",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ja-JP/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ja-JP/02_fits.png",
+      "sourceSHA256": "609a1bacfc674e8ff30165c5e930cec605a8bb0673260789c88ace5b190f3846",
+      "outputSHA256": "5f219bd85b853a458ffc4ce800a80367a9be51effba5ec42ca9c48ced376c859",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "ja-JP",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ja-JP/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ja-JP/03_reminders.png",
+      "sourceSHA256": "1aa6eebd0cd6611c4fc9ac597e97528fc4779285e2e14adc31838eec51e67ba4",
+      "outputSHA256": "ae949534e15897876ca26cbed36135a86abe039f41aa3ed9aa28a594f43db3f9",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ja-JP",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ja-JP/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ja-JP/04_favorites.png",
+      "sourceSHA256": "abf6fabdb899318e937cd2a467695f3f74fefb023d14e1050de9fd3cb0ce0cfc",
+      "outputSHA256": "73c076dc4fc5cd4f7026c74ed7dd33850a3e391358976a9a8c1674b535d7c0f8",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ja-JP",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ja-JP/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ja-JP/05_streaks.png",
+      "sourceSHA256": "bf8d4ddcea5674dbd5a7aef69771e685adc7a91f161e7c359ce274870ba36633",
+      "outputSHA256": "192523f3fb787206b0c24b984eae59c4d253498a54b3256948a1b3e9c6aba942",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "mi-NZ",
+      "group": "reference-only",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/mi-NZ/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/mi-NZ/01_today.png",
+      "sourceSHA256": "8a4d84a80af4600f0f573aab37dade547100a3bd498c8848fb3ca1cd05007c85",
+      "outputSHA256": "17b4a99f449beec62aa99e7302885185703bee777beb351b6e8223a77f666826",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "mi-NZ",
+      "group": "reference-only",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/mi-NZ/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/mi-NZ/02_fits.png",
+      "sourceSHA256": "f4da39819de270e62bb423629e681978bff4aec15b3799fb661ca01aa5a14c70",
+      "outputSHA256": "d83052f58fe9bfc58a0f2ccfea77bac89a462b69ba93ff04dd180db0134bd283",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "mi-NZ",
+      "group": "reference-only",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/mi-NZ/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/mi-NZ/03_reminders.png",
+      "sourceSHA256": "57190fab690eb71ad8d16c7ac1a2527c2dcdbc8db0aeb32d01d5e4fb68ac7688",
+      "outputSHA256": "c0052e2d5bcd6943f87414a88c7dc49fd753d43d1029d3fdafab4f304187a368",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "mi-NZ",
+      "group": "reference-only",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/mi-NZ/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/mi-NZ/04_favorites.png",
+      "sourceSHA256": "cee3251e13315126b493d93cc771a51252f088dd63fd78fd76b24c54605e74ba",
+      "outputSHA256": "8c9c408d42b279ada5b889f1e77a25e6cbe46272c4b1ec6c1fd5e43a2e12eab8",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "mi-NZ",
+      "group": "reference-only",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/mi-NZ/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/mi-NZ/05_streaks.png",
+      "sourceSHA256": "2c4c3e141bffeb1da92c275aef5b7424ce390e47f1fe09ba07b65a929f2ea712",
+      "outputSHA256": "36e6a6cbdda1d66f2514d0c40f0b98aa165a75b64b8db9eb20764bd26ba06b5f",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ms-MY",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ms-MY/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ms-MY/01_today.png",
+      "sourceSHA256": "fc84e9b75c5f231a903c6c9eb016843369c1005aa1e49e8fbbd11757a045f794",
+      "outputSHA256": "2152f3d46f5fcc5648055a57bda8a076bbd847bad6df5c923e206ef3a1491466",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "ms-MY",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ms-MY/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ms-MY/02_fits.png",
+      "sourceSHA256": "ef1bdfd8ff0d3d18d07fe5d95c20bf554a54174040fc4c31333b840e782da178",
+      "outputSHA256": "93dec6f40f281bef0c21a079969f4f28b3d8d936a14f4a17ae734892da5ee12c",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "ms-MY",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ms-MY/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ms-MY/03_reminders.png",
+      "sourceSHA256": "08cb713f8461fdf5e8cba9270c719e8ebbb7e26e22dfae9b9639a8c1b5b21ece",
+      "outputSHA256": "2250c6d76c25c9cb65fefe11dcb913dab2b0f05c427ffbd4505b9b8d787074ab",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ms-MY",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ms-MY/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ms-MY/04_favorites.png",
+      "sourceSHA256": "844ec512dfc1ff213fc98b1c42b61c1c31fc4306a953971bff64472a4fdedf17",
+      "outputSHA256": "d54149446eaf7fb1d4bc3c629397091b795690754a2adeb34365ed8093503295",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ms-MY",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ms-MY/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ms-MY/05_streaks.png",
+      "sourceSHA256": "81a6a55791b8713eab7d54262f0f68656280f6ac5fe4a4ce9833a9dc5f8eb78f",
+      "outputSHA256": "6487a5eb0062aba8605b3b469ffc96d2f51efdbd516002319e6a1cbfe3f96091",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "nl-NL",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/nl-NL/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/nl-NL/01_today.png",
+      "sourceSHA256": "69b7edcaa2c498329b60bd19a5486299529e55c4932506fbcc45480575afcc25",
+      "outputSHA256": "10bfe44188548f32aae4a453fe7c2986431539394c673b5d31a052a77702b46a",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "nl-NL",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/nl-NL/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/nl-NL/02_fits.png",
+      "sourceSHA256": "f80fc9f9eb4b1cb4bb80a100b0619da60187370aa01b70aea900a7032ac736fb",
+      "outputSHA256": "e0dd34944810372010a4d325a1631a73c6fd6b042e5997fc24a231f7be1c35c0",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "nl-NL",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/nl-NL/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/nl-NL/03_reminders.png",
+      "sourceSHA256": "87a75f051939d2a7003e796925d26bb0c5eaad2a08e7632f29c735207e72a9d4",
+      "outputSHA256": "e747248b2a833f64abb38479d4b66a7d6088921266160f34dbfd1aba61b58cc3",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "nl-NL",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/nl-NL/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/nl-NL/04_favorites.png",
+      "sourceSHA256": "ff77516fa33510caba72a9bf3a1656ead519697231f3b75473004612ea1cd973",
+      "outputSHA256": "c23eb94f4fc123f595c35b68617a5d993dc7178515e921a48c16578b51a8ea07",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "nl-NL",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/nl-NL/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/nl-NL/05_streaks.png",
+      "sourceSHA256": "597008ddb3b95726cb77c97712f0e89f22977184d6594eb824c489ae910b1b0f",
+      "outputSHA256": "05a31e24d140c7522e0a698cdf17fade6350d06506e8cdfd45883e5ae9c14c51",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "rm-CH",
+      "group": "reference-only",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/rm-CH/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/rm-CH/01_today.png",
+      "sourceSHA256": "698506be1a02f120d283c4869e9c83972b0faef0f837a607869dbd53f8db027b",
+      "outputSHA256": "83da4011c7173d99f5a8411f852d60366486a58f8511280d3d26982c637502a1",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "rm-CH",
+      "group": "reference-only",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/rm-CH/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/rm-CH/02_fits.png",
+      "sourceSHA256": "a32e461b5075492d6cc17f3a8d739bab876db16619b11647ed8a1972a6bd95b5",
+      "outputSHA256": "9127c31355742dd28da6b5adeefa22242114e852923226c5615e8132759f82b2",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "rm-CH",
+      "group": "reference-only",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/rm-CH/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/rm-CH/03_reminders.png",
+      "sourceSHA256": "35183db9a15539f0da420929a0e177dca10cfd790dca200b31832dbd7a410ae7",
+      "outputSHA256": "d1a0f5a26615592d674dbb31c0c7ee3a3c6238d7ede934565e7fa15309a2757b",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "rm-CH",
+      "group": "reference-only",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/rm-CH/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/rm-CH/04_favorites.png",
+      "sourceSHA256": "92bdc7acb6c540497d01de7dd0b518b4ed1708f09ed7ddce3cf9df15c640b47b",
+      "outputSHA256": "f71881c75c8dd1091abc9d057fee09cd65d9d2729f1d8685e9e685af27726a7a",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "rm-CH",
+      "group": "reference-only",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/rm-CH/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/reference-only/rm-CH/05_streaks.png",
+      "sourceSHA256": "e5f7f4bb8ea59475001cba17c7eb2882fa2d682bdd1f84fbc03c3a6bd1f6516a",
+      "outputSHA256": "89cec9312ac0c963bf35b7874f7b98a36b5faa7d8814f7a24455207ec323fe15",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "sv-SE",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/sv-SE/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/sv-SE/01_today.png",
+      "sourceSHA256": "9be27358cbaf6647b19d13663fe97ccc75e55c161282d778b90a9db2faa063dd",
+      "outputSHA256": "6c5fbfbe182b0c5f21d311e3f9de16303df3d4ff909b5a2a38bb0f34c36e224e",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "sv-SE",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/sv-SE/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/sv-SE/02_fits.png",
+      "sourceSHA256": "445e34d89e2c4b30e8011f97d484adc28bafee51475354edc4b2affe6cde1b92",
+      "outputSHA256": "ded96535a18b84c31f546878a9490714640284f41fd0e5c4ddfed8b12a219149",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "sv-SE",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/sv-SE/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/sv-SE/03_reminders.png",
+      "sourceSHA256": "156d0ad33b537f4ee70df9b57e797e12c2e70a6642ebd1b14de115b181f6fd52",
+      "outputSHA256": "e7ccfa53bbd36e03fe6aed59534c72a1c65417ae1ea11f23ea39a226e36ac125",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "sv-SE",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/sv-SE/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/sv-SE/04_favorites.png",
+      "sourceSHA256": "c15b67be05fd14841694316b9224b2b72e4f755396e9c104f7596ab7dd0c8921",
+      "outputSHA256": "a975c5f180a2cdf296d43085cae674d5c1b5627ef91c2cbc6a7c88f54626e41c",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "sv-SE",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/sv-SE/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/sv-SE/05_streaks.png",
+      "sourceSHA256": "c6c5bd14291096207844e60991a60de294e1fa82bcab04f042610ff56c24b9fd",
+      "outputSHA256": "70515a9d50bffb8cee22ffa230ba188349eda2582f08bf677fdb091c0c360b60",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ta-IN",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ta-IN/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ta-IN/01_today.png",
+      "sourceSHA256": "0849efadebaed74167aec8b537fed122a05cf32ec29ae62a3cbcd89de64be112",
+      "outputSHA256": "e1133fcbf18e98d04335e924db8f93815f4995d46d684a139c8f3d5605e16272",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "ta-IN",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ta-IN/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ta-IN/02_fits.png",
+      "sourceSHA256": "aaeb2a152ac129fcd6e75afb4729f5f429fde2f7593c0fec8a7188a29eed24e1",
+      "outputSHA256": "ebf5459f51cc5b584a0608a7205ea35e5bb77f1fe5280a8e9a5a35d684b41636",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "ta-IN",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ta-IN/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ta-IN/03_reminders.png",
+      "sourceSHA256": "8a512b18a2de53cd4041a66306e90bae526c3e5173ca85542752e1266968cd91",
+      "outputSHA256": "94be80e95c5e7eca741c432bb933afa48db403be499488d524a88555e2cb9b21",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ta-IN",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ta-IN/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ta-IN/04_favorites.png",
+      "sourceSHA256": "a56ca0d9df29e3fd47f1fa1b6caa345c9cd909ff5411daa6c5938ba556005795",
+      "outputSHA256": "92989693b0bc6d12230850719967b1f4d6ab96e91ab92fed00274169f947a8ab",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "ta-IN",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/ta-IN/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/ta-IN/05_streaks.png",
+      "sourceSHA256": "df92dadf1cac417e884bcbf49492355c7ec89ae8303e465d66909ce7fc14be3f",
+      "outputSHA256": "b6c67d7a78fea5a28d3e8d56f85ba38669bc63da92762929cd32bb11a8524619",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "te-IN",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/te-IN/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/te-IN/01_today.png",
+      "sourceSHA256": "eee939e31bb400c30f32a7e1eee695b3113d625778e8a2c85564a6640c4f0d32",
+      "outputSHA256": "9a77ddb5ebcd5809ad9fce04306044e224b0e167ae1287420b9707a97054c0f3",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "te-IN",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/te-IN/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/te-IN/02_fits.png",
+      "sourceSHA256": "a7dbad0685f2bb7354a0d7f60871b02fec9256301786f39487a8c1198f1d8509",
+      "outputSHA256": "880ea16fca601fcc576e44a69b15fbcfb4556fe6ee023140a40dc2a2fa78fcca",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "te-IN",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/te-IN/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/te-IN/03_reminders.png",
+      "sourceSHA256": "728804fcd97c94961963552d97914290950cb9677117544d68317baecc56204f",
+      "outputSHA256": "27610c874f0256e36dd63c8e101db59934d10bc615d67943b536e34abaa9be2e",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "te-IN",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/te-IN/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/te-IN/04_favorites.png",
+      "sourceSHA256": "71d275a6c94f029cdbfa3dba5befde35ffbf903567107ca8a1bc3de643747eea",
+      "outputSHA256": "b9efc248892a8083f0e6b2c8e72b73dd2c7201cfe81c1d99d7c1cc580bec5e2d",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "te-IN",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/te-IN/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/te-IN/05_streaks.png",
+      "sourceSHA256": "0615df845fc55badaf9c2156e2238035334dfbef86877b9576c69c3d3e0807c5",
+      "outputSHA256": "cf86297db7d86e8f096911fb532414d4333c8114aab4010db8aafeabab273569",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "zh-Hans",
+      "group": "store-candidates",
+      "filename": "01_today.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/zh-Hans/01_today.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/zh-Hans/01_today.png",
+      "sourceSHA256": "d7c3687a4c0df7e508d9945620f2ffc7c2e496aa31abc1f564314608d426d45b",
+      "outputSHA256": "60a6657ef7859b9695121b9bd80178864fa4200d9a48d5a93e87d76289401d4b",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "zh-Hans",
+      "group": "store-candidates",
+      "filename": "02_fits.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/zh-Hans/02_fits.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/zh-Hans/02_fits.png",
+      "sourceSHA256": "572581deac65e05569f0ed8282469c0ba58498a0790c5033e82a744086ecbfdc",
+      "outputSHA256": "003796a27c33468d355129a50476749b776ced4e22bb4372084ecbfd01713643",
+      "sourceSize": [
+        851,
+        1847
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.048
+    },
+    {
+      "locale": "zh-Hans",
+      "group": "store-candidates",
+      "filename": "03_reminders.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/zh-Hans/03_reminders.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/zh-Hans/03_reminders.png",
+      "sourceSHA256": "d12a06834e009a369683dd109d38c83b773d0aecab1a9cebc981fe633402a1a9",
+      "outputSHA256": "706f5bc1e9804c44cdc10c4ce85ed74ec1c0f6aba322fb29263621fd2dc5504b",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "zh-Hans",
+      "group": "store-candidates",
+      "filename": "04_favorites.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/zh-Hans/04_favorites.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/zh-Hans/04_favorites.png",
+      "sourceSHA256": "8b639c13cc9ff336ef62b7b48cdfcbf76c690bd3e9acc19fe713e8d5834a8904",
+      "outputSHA256": "1878c6eb07d05600b93d1a50738a7700f9ee8d6773e4f20abeb6fcf3c75004ce",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    },
+    {
+      "locale": "zh-Hans",
+      "group": "store-candidates",
+      "filename": "05_streaks.png",
+      "source": "/Users/pradeep.kumar1/Downloads/pinch-screenshots-localized/zh-Hans/05_streaks.png",
+      "output": "/Users/pradeep.kumar1/Indie/iOS/Sodium Tracker/Sodium Tracker/AppStoreScreenshotLocalization/supplied-assets-1260x2736/store-candidates/zh-Hans/05_streaks.png",
+      "sourceSHA256": "e71d1d04bc25f3c2433e69592188925217054fac0307560b3a0b7db00ea90aea",
+      "outputSHA256": "e0c86b06ac3123b8898a638f3d853bfd193129441caaec66500f27e6741c4bc3",
+      "sourceSize": [
+        852,
+        1846
+      ],
+      "outputSize": [
+        1260,
+        2736
+      ],
+      "hasAlpha": false,
+      "space": "srgb",
+      "aspectRatioAdjustmentPercent": 0.2198
+    }
+  ]
+}

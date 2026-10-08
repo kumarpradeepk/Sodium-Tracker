@@ -45,6 +45,17 @@ struct FoodItem: Identifiable, Hashable {
     let serving: String
     let mg: Int
     let category: FoodCategory
+    var usesDefaultServing = false
+
+    var displayName: String {
+        guard let builtIn = Self.builtIn(id), builtIn.name == name else { return name }
+        return PinchLocalization.resolve(name)
+    }
+    var displayServing: String {
+        if usesDefaultServing { return PinchLocalization.resolve("1 serving") }
+        guard let builtIn = Self.builtIn(id), builtIn.serving == serving else { return serving }
+        return PinchLocalization.resolve(serving)
+    }
 }
 
 extension FoodItem {
@@ -92,4 +103,77 @@ extension FoodItem {
 /// The Today screen's quick-add chips, in design order.
 enum UsualSuspects {
     static let ids = ["wrap", "ram", "pick", "yog"]
+}
+
+/// A single ranking for the catalog, Today shortcuts, and the FAB menu.
+/// Favorites lead, then log frequency; recent use breaks frequency ties.
+enum FoodRecommendations {
+    static func foods(entries: [LogEntry], favorites: [Favorite], customFoods: [CustomFood], limit: Int = 4, includeCatalogSuggestions: Bool = true) -> [FoodItem] {
+        guard limit > 0 else { return [] }
+        var foods: [String: FoodItem] = [:]
+        var counts: [String: Int] = [:]
+        var latest: [String: Date] = [:]
+        var pinned: [String: Date] = [:]
+        func resolve(_ id: String) -> FoodItem? {
+            FoodItem.builtIn(id) ?? customFoods.first { $0.id == id }?.asFoodItem
+        }
+        for favorite in favorites {
+            if let food = resolve(favorite.foodID) {
+                foods[food.id] = food
+                pinned[food.id] = favorite.addedAt
+            }
+        }
+        for entry in entries {
+            let food: FoodItem
+            if let id = entry.foodID, let resolved = resolve(id) {
+                food = resolved
+            } else if let name = entry.adhocName, let mg = entry.adhocMg, mg >= 0 {
+                let serving = entry.adhocServing ?? "1 serving"
+                // Preserve remote IDs and merge repeated manual logs without
+                // conflating different sodium amounts or portion labels.
+                let key = [name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(), serving, String(mg)]
+                    .map { Data($0.utf8).base64EncodedString() }.joined(separator: ":")
+                if entry.foodID == nil, let saved = customFoods.first(where: {
+                    $0.name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+                        == name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+                        && $0.mg == mg && $0.serving == serving
+                }) {
+                    food = saved.asFoodItem
+                } else {
+                    food = FoodItem(id: entry.foodID ?? "adhoc:\(key)", name: name, serving: serving, mg: mg, category: .custom,
+                                    usesDefaultServing: entry.adhocServing == nil || entry.usesDefaultServing == true)
+                }
+            } else {
+                continue
+            }
+            if foods[food.id] == nil || (pinned[food.id] == nil && entry.loggedAt > (latest[food.id] ?? .distantPast)) {
+                foods[food.id] = food
+            }
+            counts[food.id, default: 0] += 1
+            latest[food.id] = max(latest[food.id] ?? .distantPast, entry.loggedAt)
+        }
+        var result = foods.values.sorted { left, right in
+            let leftPinned = pinned[left.id] != nil
+            let rightPinned = pinned[right.id] != nil
+            if leftPinned != rightPinned { return leftPinned }
+            let leftCount = counts[left.id, default: 0]
+            let rightCount = counts[right.id, default: 0]
+            if leftCount != rightCount { return leftCount > rightCount }
+            let leftDate = latest[left.id] ?? pinned[left.id] ?? .distantPast
+            let rightDate = latest[right.id] ?? pinned[right.id] ?? .distantPast
+            if leftDate != rightDate { return leftDate > rightDate }
+            return left.id < right.id
+        }
+        // Fresh accounts still have useful, real catalog foods to choose from.
+        for id in UsualSuspects.ids where includeCatalogSuggestions && !result.contains(where: { $0.id == id }) {
+            if let food = FoodItem.builtIn(id) { result.append(food) }
+        }
+        return Array(result.prefix(limit))
+    }
+
+    static func entry(for food: FoodItem, loggedAt: Date, servings: Double = 1, meal: Meal? = nil) -> LogEntry {
+        LogEntry(foodID: food.id.hasPrefix("adhoc:") ? nil : food.id,
+                 adhocName: food.name, adhocMg: food.mg, adhocServing: food.serving,
+                 servings: servings, meal: meal ?? Meal.auto(), loggedAt: loggedAt, usesDefaultServing: food.usesDefaultServing)
+    }
 }

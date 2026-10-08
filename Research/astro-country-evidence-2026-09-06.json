@@ -1,0 +1,1663 @@
+{
+  "researchedAt": "2026-09-06",
+  "app": {
+    "id": "6800595930",
+    "name": "Sodium Tracker: Pinch Daily",
+    "platform": "iphone"
+  },
+  "scope": "20 candidate App Store storefronts; 3 research keywords per storefront; not a scan of all 175 countries.",
+  "changes": {
+    "newKeywordCountryEntries": 59,
+    "existingPreserved": 3,
+    "totalTracked": 62,
+    "failed": 0
+  },
+  "usExistingMetrics": [
+    {
+      "keyword": "sodium tracker",
+      "popularity": 11,
+      "difficulty": 35,
+      "currentRanking": 30,
+      "lastUpdate": "2026-09-06T10:51:04Z"
+    },
+    {
+      "keyword": "my dash diet sodium tracker",
+      "popularity": 13,
+      "difficulty": 17,
+      "currentRanking": 1000,
+      "lastUpdate": "2026-09-06T10:51:02Z",
+      "note": "Competitor-branded term; not recommended for metadata. 1000 not interpreted as literal confirmed rank."
+    },
+    {
+      "keyword": "sodium tracker free",
+      "popularity": 22,
+      "difficulty": 38,
+      "currentRanking": 1000,
+      "lastUpdate": "2026-09-06T10:51:03Z",
+      "note": "Free intent; does not establish subscription demand."
+    }
+  ],
+  "keywordAdditionResponses": [
+    {
+      "market": [
+        "us",
+        "United States",
+        [
+          "sodium tracker",
+          "salt tracker",
+          "sodium intake"
+        ]
+      ],
+      "data": {
+        "added": 2,
+        "failed": 0,
+        "skipped": 1,
+        "store": "us",
+        "results": [
+          {
+            "keyword": "sodium tracker",
+            "skipped": true
+          },
+          {
+            "keyword": "salt tracker",
+            "popularity": 5,
+            "difficulty": 15,
+            "success": true
+          },
+          {
+            "keyword": "sodium intake",
+            "popularity": 5,
+            "difficulty": 11,
+            "success": true
+          }
+        ]
+      }
+    },
+    {
+      "market": [
+        "ca",
+        "Canada",
+        [
+          "sodium tracker",
+          "salt tracker",
+          "sodium intake"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 13,
+            "keyword": "sodium tracker",
+            "popularity": 9,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "salt tracker",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "sodium intake",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "ca",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "gb",
+        "United Kingdom",
+        [
+          "sodium tracker",
+          "salt tracker",
+          "salt intake"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 13,
+            "keyword": "sodium tracker",
+            "popularity": 6,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "salt tracker",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 7,
+            "keyword": "salt intake",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "gb",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "au",
+        "Australia",
+        [
+          "sodium tracker",
+          "salt tracker",
+          "sodium intake"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 13,
+            "keyword": "sodium tracker",
+            "popularity": 6,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "salt tracker",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "sodium intake",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "au",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "nz",
+        "New Zealand",
+        [
+          "sodium tracker",
+          "salt tracker",
+          "salt intake"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 5,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "salt tracker",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "salt intake",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "nz",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "ie",
+        "Ireland",
+        [
+          "sodium tracker",
+          "salt tracker",
+          "salt intake"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 11,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 15,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 11,
+            "keyword": "salt tracker",
+            "popularity": 5,
+            "ranking": 163,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "salt intake",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "ie",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "de",
+        "Germany",
+        [
+          "sodium tracker",
+          "salz tracker",
+          "natrium tracker"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 13,
+            "keyword": "sodium tracker",
+            "popularity": 9,
+            "ranking": 7,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 9,
+            "keyword": "salz tracker",
+            "popularity": 5,
+            "ranking": 41,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "natrium tracker",
+            "popularity": 5,
+            "ranking": 2,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "de",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "fr",
+        "France",
+        [
+          "sodium tracker",
+          "suivi sodium",
+          "régime sans sel"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 11,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 7,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 11,
+            "keyword": "suivi sodium",
+            "popularity": 5,
+            "ranking": 1,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "régime sans sel",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "fr",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "jp",
+        "Japan",
+        [
+          "sodium tracker",
+          "減塩",
+          "塩分 記録"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 5,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 24,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 21,
+            "keyword": "減塩",
+            "popularity": 5,
+            "ranking": 46,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 13,
+            "keyword": "塩分 記録",
+            "popularity": 5,
+            "ranking": 64,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "jp",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "kr",
+        "South Korea",
+        [
+          "sodium tracker",
+          "저염식",
+          "나트륨"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 9,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 19,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 8,
+            "keyword": "저염식",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "나트륨",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "kr",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "nl",
+        "Netherlands",
+        [
+          "sodium tracker",
+          "zout tracker",
+          "natrium tracker"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 11,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 2,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "zout tracker",
+            "popularity": 5,
+            "ranking": 3,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "natrium tracker",
+            "popularity": 5,
+            "ranking": 1,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "nl",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "se",
+        "Sweden",
+        [
+          "sodium tracker",
+          "saltintag",
+          "natrium"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 11,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 4,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "saltintag",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "natrium",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "se",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "ch",
+        "Switzerland",
+        [
+          "sodium tracker",
+          "salz tracker",
+          "suivi sodium"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 11,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 25,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 9,
+            "keyword": "salz tracker",
+            "popularity": 5,
+            "ranking": 53,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 11,
+            "keyword": "suivi sodium",
+            "popularity": 5,
+            "ranking": 10,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "ch",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "es",
+        "Spain",
+        [
+          "sodium tracker",
+          "control de sodio",
+          "dieta baja en sodio"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 11,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 19,
+            "keyword": "control de sodio",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "dieta baja en sodio",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "es",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "it",
+        "Italy",
+        [
+          "sodium tracker",
+          "sodio",
+          "dieta iposodica"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 11,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 12,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 13,
+            "keyword": "sodio",
+            "popularity": 5,
+            "ranking": 28,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "dieta iposodica",
+            "popularity": 5,
+            "ranking": 3,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "it",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "sg",
+        "Singapore",
+        [
+          "sodium tracker",
+          "salt tracker",
+          "sodium intake"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 9,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 117,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 9,
+            "keyword": "salt tracker",
+            "popularity": 5,
+            "ranking": 64,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 9,
+            "keyword": "sodium intake",
+            "popularity": 5,
+            "ranking": 31,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "sg",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "no",
+        "Norway",
+        [
+          "sodium tracker",
+          "saltinntak",
+          "natrium"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 5,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 20,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "saltinntak",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "natrium",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "no",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "dk",
+        "Denmark",
+        [
+          "sodium tracker",
+          "saltindtag",
+          "natrium"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 11,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 6,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "saltindtag",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "natrium",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "dk",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "br",
+        "Brazil",
+        [
+          "sodium tracker",
+          "sódio",
+          "dieta hipossódica"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 5,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 22,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "sódio",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 5,
+            "keyword": "dieta hipossódica",
+            "popularity": 5,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "br",
+        "total": 3
+      }
+    },
+    {
+      "market": [
+        "in",
+        "India",
+        [
+          "sodium tracker",
+          "salt tracker",
+          "sodium intake"
+        ]
+      ],
+      "data": {
+        "added": 3,
+        "app": "Sodium Tracker: Pinch Daily",
+        "failed": 0,
+        "results": [
+          {
+            "difficulty": 5,
+            "keyword": "sodium tracker",
+            "popularity": 5,
+            "ranking": 29,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 11,
+            "keyword": "salt tracker",
+            "popularity": 5,
+            "ranking": 71,
+            "skipped": false,
+            "success": true
+          },
+          {
+            "difficulty": 11,
+            "keyword": "sodium intake",
+            "popularity": 5,
+            "ranking": 39,
+            "skipped": false,
+            "success": true
+          }
+        ],
+        "skipped": 0,
+        "store": "in",
+        "total": 3
+      }
+    }
+  ],
+  "baselineSearchResponses": [
+    {
+      "market": [
+        "gb",
+        "United Kingdom",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "6446709946",
+            "averageRating": 4.8,
+            "bundleId": "com.kyubid.apps.sodiumtracker",
+            "developer": "KyuBid Ltd",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cf/89/ee/cf89ee27-082c-8955-d034-5ecd68794c43/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker for Dash diet",
+            "ranking": 1,
+            "ratingCount": 6,
+            "subtitle": "Track Salt Intake and Counter"
+          },
+          {
+            "appStoreId": "6446066256",
+            "averageRating": 1,
+            "bundleId": "com.abhi.sodium.tracker",
+            "developer": "Abhinav Khanger",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/db/9d/5ddb9dcb-56e3-2672-329a-9df274f8c5bf/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker°",
+            "ranking": 2,
+            "ratingCount": 1,
+            "subtitle": "Salt Counter & Track Intake"
+          },
+          {
+            "appStoreId": "6738404193",
+            "averageRating": 0,
+            "bundleId": "com.sodium.tracker.counter.stx.app",
+            "developer": "ZipoApps",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ce/7f/56/ce7f5682-56bc-118d-3875-ad9543b6a147/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker & Salt Intake",
+            "ranking": 3,
+            "ratingCount": 0,
+            "subtitle": "Daily Counter & AI Food Scan"
+          },
+          {
+            "appStoreId": "468522474",
+            "averageRating": 4,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 4,
+            "ratingCount": 2,
+            "subtitle": "Track your daily sodium intake"
+          },
+          {
+            "appStoreId": "1590169479",
+            "averageRating": 5,
+            "bundleId": "io.tenlabs.SodiumTracker",
+            "developer": "Ten Labs Ltd",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/15/3b/bd153b6c-64a3-4d82-75c3-19b77f3d6bf7/AppIcon-0-1x_U007ephone-0-1-sRGB-85-220-0.png/80x0w.webp",
+            "name": "Salt Tracker: Sodio",
+            "ranking": 5,
+            "ratingCount": 1,
+            "subtitle": "Daily Sodium Counter"
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "gb",
+        "totalResults": 50
+      }
+    },
+    {
+      "market": [
+        "ca",
+        "Canada",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "1590169479",
+            "averageRating": 4.5,
+            "bundleId": "io.tenlabs.SodiumTracker",
+            "developer": "Ten Labs Ltd",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/15/3b/bd153b6c-64a3-4d82-75c3-19b77f3d6bf7/AppIcon-0-1x_U007ephone-0-1-sRGB-85-220-0.png/80x0w.webp",
+            "name": "Sodium Tracker: Sodio",
+            "ranking": 1,
+            "ratingCount": 58,
+            "subtitle": "Daily Salt Counter"
+          },
+          {
+            "appStoreId": "341232718",
+            "averageRating": 4.6,
+            "bundleId": "com.myfitnesspal.mfp",
+            "developer": "MyFitnessPal, Inc.",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1b/0c/ce/1b0cce67-0cb0-2bb3-1bdc-d9a653367ae4/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "MyFitnessPal: Calorie Counter",
+            "ranking": 2,
+            "ratingCount": 236685,
+            "subtitle": "Food, Fitness & Weight Tracker"
+          },
+          {
+            "appStoreId": "6446066256",
+            "averageRating": 4,
+            "bundleId": "com.abhi.sodium.tracker",
+            "developer": "Abhinav Khanger",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/db/9d/5ddb9dcb-56e3-2672-329a-9df274f8c5bf/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker°",
+            "ranking": 3,
+            "ratingCount": 4,
+            "subtitle": "Salt Counter & Track Intake"
+          },
+          {
+            "appStoreId": "1032110739",
+            "averageRating": 4.5,
+            "bundleId": "com.prestigeworldwide.dashdiet",
+            "developer": "Product Growth LLC",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b2/44/e2/b244e2dc-a990-fdcb-1065-01c3472089a2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "My Dash Diet: #1 Fiber Tracker",
+            "ranking": 4,
+            "ratingCount": 69,
+            "subtitle": "Monitor Food & Track Fiber"
+          },
+          {
+            "appStoreId": "468522474",
+            "averageRating": 4.3,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 5,
+            "ratingCount": 3,
+            "subtitle": "Track your daily sodium intake"
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "ca",
+        "totalResults": 50
+      }
+    },
+    {
+      "market": [
+        "au",
+        "Australia",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "1590169479",
+            "averageRating": 4.7,
+            "bundleId": "io.tenlabs.SodiumTracker",
+            "developer": "Ten Labs Ltd",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/15/3b/bd153b6c-64a3-4d82-75c3-19b77f3d6bf7/AppIcon-0-1x_U007ephone-0-1-sRGB-85-220-0.png/80x0w.webp",
+            "name": "Salt Tracker: Sodio",
+            "ranking": 1,
+            "ratingCount": 7,
+            "subtitle": "Daily Sodium Counter"
+          },
+          {
+            "appStoreId": "468522474",
+            "averageRating": 0,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 2,
+            "ratingCount": 0,
+            "subtitle": "Track your daily sodium intake"
+          },
+          {
+            "appStoreId": "6446066256",
+            "averageRating": 3,
+            "bundleId": "com.abhi.sodium.tracker",
+            "developer": "Abhinav Khanger",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/db/9d/5ddb9dcb-56e3-2672-329a-9df274f8c5bf/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker°",
+            "ranking": 3,
+            "ratingCount": 2,
+            "subtitle": "Salt Counter & Track Intake"
+          },
+          {
+            "appStoreId": "6714483738",
+            "averageRating": 4.5,
+            "bundleId": "com.sodiumtracker.ios",
+            "developer": "Arpit Roy",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0a/8f/f9/0a8ff9d4-a033-f32e-af03-8b73fef95bff/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker: Salt & BP Log",
+            "ranking": 4,
+            "ratingCount": 2,
+            "subtitle": "Blood Pressure & Heart Health"
+          },
+          {
+            "appStoreId": "341232718",
+            "averageRating": 4.7,
+            "bundleId": "com.myfitnesspal.mfp",
+            "developer": "MyFitnessPal, Inc.",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1b/0c/ce/1b0cce67-0cb0-2bb3-1bdc-d9a653367ae4/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "MyFitnessPal: Calorie Counter",
+            "ranking": 5,
+            "ratingCount": 158259,
+            "subtitle": "Macro, Diet & Food Tracker"
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "au",
+        "totalResults": 50
+      }
+    },
+    {
+      "market": [
+        "nz",
+        "New Zealand",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "1590169479",
+            "averageRating": 5,
+            "bundleId": "io.tenlabs.SodiumTracker",
+            "developer": "Ten Labs Ltd",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/15/3b/bd153b6c-64a3-4d82-75c3-19b77f3d6bf7/AppIcon-0-1x_U007ephone-0-1-sRGB-85-220-0.png/80x0w.webp",
+            "name": "Salt Tracker: Sodio",
+            "ranking": 1,
+            "ratingCount": 3,
+            "subtitle": "Daily Sodium Counter"
+          },
+          {
+            "appStoreId": "468522474",
+            "averageRating": 0,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 2,
+            "ratingCount": 0,
+            "subtitle": "Track your daily sodium intake"
+          },
+          {
+            "appStoreId": "6446709946",
+            "averageRating": 0,
+            "bundleId": "com.kyubid.apps.sodiumtracker",
+            "developer": "KyuBid Ltd",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cf/89/ee/cf89ee27-082c-8955-d034-5ecd68794c43/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker for Dash diet",
+            "ranking": 3,
+            "ratingCount": 0,
+            "subtitle": "Track Salt Intake and Counter"
+          },
+          {
+            "appStoreId": "6747937033",
+            "averageRating": 0,
+            "bundleId": "com.invictus.sodiumtracker",
+            "developer": "Ajay Singh",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/53/e1/7e/53e17e10-6a37-6ce6-76c5-c6a82ba6ed90/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker - My Salt Log",
+            "ranking": 4,
+            "ratingCount": 0,
+            "subtitle": "Sodium & Blood Pressure Track"
+          },
+          {
+            "appStoreId": "6446066256",
+            "averageRating": 0,
+            "bundleId": "com.abhi.sodium.tracker",
+            "developer": "Abhinav Khanger",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/db/9d/5ddb9dcb-56e3-2672-329a-9df274f8c5bf/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker°",
+            "ranking": 5,
+            "ratingCount": 0,
+            "subtitle": "Salt Counter & Track Intake"
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "nz",
+        "totalResults": 50
+      }
+    },
+    {
+      "market": [
+        "ie",
+        "Ireland",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "468522474",
+            "averageRating": 0,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 1,
+            "ratingCount": 0,
+            "subtitle": "Track your daily sodium intake"
+          },
+          {
+            "appStoreId": "1590169479",
+            "averageRating": 0,
+            "bundleId": "io.tenlabs.SodiumTracker",
+            "developer": "Ten Labs Ltd",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/15/3b/bd153b6c-64a3-4d82-75c3-19b77f3d6bf7/AppIcon-0-1x_U007ephone-0-1-sRGB-85-220-0.png/80x0w.webp",
+            "name": "Salt Tracker: Sodio",
+            "ranking": 2,
+            "ratingCount": 0,
+            "subtitle": "Daily Sodium Counter"
+          },
+          {
+            "appStoreId": "1032110739",
+            "averageRating": 5,
+            "bundleId": "com.prestigeworldwide.dashdiet",
+            "developer": "Product Growth LLC",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b2/44/e2/b244e2dc-a990-fdcb-1065-01c3472089a2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "My Dash Diet: #1 Fiber Tracker",
+            "ranking": 3,
+            "ratingCount": 3,
+            "subtitle": "Monitor Food & Track Fiber"
+          },
+          {
+            "appStoreId": "341232718",
+            "averageRating": 4.7,
+            "bundleId": "com.myfitnesspal.mfp",
+            "developer": "MyFitnessPal, Inc.",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1b/0c/ce/1b0cce67-0cb0-2bb3-1bdc-d9a653367ae4/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "MyFitnessPal: Calorie Counter",
+            "ranking": 4,
+            "ratingCount": 40685,
+            "subtitle": "Food, Fitness & Weight Tracker"
+          },
+          {
+            "appStoreId": "6446709946",
+            "averageRating": 0,
+            "bundleId": "com.kyubid.apps.sodiumtracker",
+            "developer": "KyuBid Ltd",
+            "genre": "Health & Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cf/89/ee/cf89ee27-082c-8955-d034-5ecd68794c43/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker for Dash diet",
+            "ranking": 5,
+            "ratingCount": 0,
+            "subtitle": "Track Salt Intake and Counter"
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "ie",
+        "totalResults": 50,
+        "yourAppRanking": 15
+      }
+    },
+    {
+      "market": [
+        "de",
+        "Germany",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "468522474",
+            "averageRating": 0,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "Gesundheit und Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 1,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "6446709946",
+            "averageRating": 0,
+            "bundleId": "com.kyubid.apps.sodiumtracker",
+            "developer": "KyuBid Ltd",
+            "genre": "Gesundheit und Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cf/89/ee/cf89ee27-082c-8955-d034-5ecd68794c43/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "Natrium Tracker : Track Sodium",
+            "ranking": 2,
+            "ratingCount": 0,
+            "subtitle": "Salt log . Salz Zähler"
+          },
+          {
+            "appStoreId": "341232718",
+            "averageRating": 4.5,
+            "bundleId": "com.myfitnesspal.mfp",
+            "developer": "MyFitnessPal, Inc.",
+            "genre": "Gesundheit und Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1b/0c/ce/1b0cce67-0cb0-2bb3-1bdc-d9a653367ae4/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "MyFitnessPal: Kalorien Tracker",
+            "ranking": 3,
+            "ratingCount": 79464,
+            "subtitle": "Makros, Ernährung & Fitness"
+          },
+          {
+            "appStoreId": "6446066256",
+            "averageRating": 3.7,
+            "bundleId": "com.abhi.sodium.tracker",
+            "developer": "Abhinav Khanger",
+            "genre": "Gesundheit und Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/db/9d/5ddb9dcb-56e3-2672-329a-9df274f8c5bf/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker°",
+            "ranking": 4,
+            "ratingCount": 3
+          },
+          {
+            "appStoreId": "1032110739",
+            "averageRating": 0,
+            "bundleId": "com.prestigeworldwide.dashdiet",
+            "developer": "Product Growth LLC",
+            "genre": "Gesundheit und Fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b2/44/e2/b244e2dc-a990-fdcb-1065-01c3472089a2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "DASH-Diät-Tracker Salz-Tracker",
+            "ranking": 5,
+            "ratingCount": 0,
+            "subtitle": "Macros to Reduce Hypertension"
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "de",
+        "totalResults": 50,
+        "yourAppRanking": 7
+      }
+    },
+    {
+      "market": [
+        "fr",
+        "France",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "468522474",
+            "averageRating": 0,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "Forme et santé",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 1,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "6446709946",
+            "averageRating": 0,
+            "bundleId": "com.kyubid.apps.sodiumtracker",
+            "developer": "KyuBid Ltd",
+            "genre": "Forme et santé",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cf/89/ee/cf89ee27-082c-8955-d034-5ecd68794c43/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker : Suivi Sodium",
+            "ranking": 2,
+            "ratingCount": 0,
+            "subtitle": "Compteur et calculateur de sel"
+          },
+          {
+            "appStoreId": "6446066256",
+            "averageRating": 0,
+            "bundleId": "com.abhi.sodium.tracker",
+            "developer": "Abhinav Khanger",
+            "genre": "Forme et santé",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/db/9d/5ddb9dcb-56e3-2672-329a-9df274f8c5bf/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/80x0w.webp",
+            "name": "Sodium°",
+            "ranking": 3,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "6738404193",
+            "averageRating": 0,
+            "bundleId": "com.sodium.tracker.counter.stx.app",
+            "developer": "ZipoApps",
+            "genre": "Forme et santé",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ce/7f/56/ce7f5682-56bc-118d-3875-ad9543b6a147/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/80x0w.webp",
+            "name": "Tracker Sodium & Sel Quotidien",
+            "ranking": 4,
+            "ratingCount": 0,
+            "subtitle": "Compteur & Scan Food IA"
+          },
+          {
+            "appStoreId": "341232718",
+            "averageRating": 4.6,
+            "bundleId": "com.myfitnesspal.mfp",
+            "developer": "MyFitnessPal, Inc.",
+            "genre": "Forme et santé",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1b/0c/ce/1b0cce67-0cb0-2bb3-1bdc-d9a653367ae4/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "MyFitnessPal: compte-calories",
+            "ranking": 5,
+            "ratingCount": 51582,
+            "subtitle": "Macros, fitness & diététique"
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "fr",
+        "totalResults": 50,
+        "yourAppRanking": 7
+      }
+    },
+    {
+      "market": [
+        "jp",
+        "Japan",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "1590169479",
+            "averageRating": 0,
+            "bundleId": "io.tenlabs.SodiumTracker",
+            "developer": "Ten Labs Ltd",
+            "genre": "ヘルスケア／フィットネス",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/15/3b/bd153b6c-64a3-4d82-75c3-19b77f3d6bf7/AppIcon-0-1x_U007ephone-0-1-sRGB-85-220-0.png/80x0w.webp",
+            "name": "Sodium Tracker: Sodio",
+            "ranking": 1,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "468522474",
+            "averageRating": 0,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "ヘルスケア／フィットネス",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 2,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "6446709946",
+            "averageRating": 0,
+            "bundleId": "com.kyubid.apps.sodiumtracker",
+            "developer": "KyuBid Ltd",
+            "genre": "ヘルスケア／フィットネス",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cf/89/ee/cf89ee27-082c-8955-d034-5ecd68794c43/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "ナトリウムトラッカー :  塩分記録",
+            "ranking": 3,
+            "ratingCount": 0,
+            "subtitle": "血圧管理のための、塩分・ナトリウムの食事記録"
+          },
+          {
+            "appStoreId": "1032110739",
+            "averageRating": 5,
+            "bundleId": "com.prestigeworldwide.dashdiet",
+            "developer": "Product Growth LLC",
+            "genre": "ヘルスケア／フィットネス",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b2/44/e2/b244e2dc-a990-fdcb-1065-01c3472089a2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "My Dash Diet: Sodium Tracker",
+            "ranking": 4,
+            "ratingCount": 2
+          },
+          {
+            "appStoreId": "6714483738",
+            "averageRating": 0,
+            "bundleId": "com.sodiumtracker.ios",
+            "developer": "Arpit Roy",
+            "genre": "ヘルスケア／フィットネス",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0a/8f/f9/0a8ff9d4-a033-f32e-af03-8b73fef95bff/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/80x0w.webp",
+            "name": "塩分計算・減塩トラッカー",
+            "ranking": 5,
+            "ratingCount": 0,
+            "subtitle": "塩分記録と血圧手帳・高血圧対策"
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "jp",
+        "totalResults": 50,
+        "yourAppRanking": 24
+      }
+    },
+    {
+      "market": [
+        "kr",
+        "South Korea",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "1590169479",
+            "averageRating": 0,
+            "bundleId": "io.tenlabs.SodiumTracker",
+            "developer": "Ten Labs Ltd",
+            "genre": "건강 및 피트니스",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bd/15/3b/bd153b6c-64a3-4d82-75c3-19b77f3d6bf7/AppIcon-0-1x_U007ephone-0-1-sRGB-85-220-0.png/80x0w.webp",
+            "name": "Sodium Tracker: Sodio",
+            "ranking": 1,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "468522474",
+            "averageRating": 0,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "건강 및 피트니스",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 2,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "1032110739",
+            "averageRating": 0,
+            "bundleId": "com.prestigeworldwide.dashdiet",
+            "developer": "Product Growth LLC",
+            "genre": "건강 및 피트니스",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b2/44/e2/b244e2dc-a990-fdcb-1065-01c3472089a2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "My Dash Diet: Sodium Tracker",
+            "ranking": 3,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "6446709946",
+            "averageRating": 0,
+            "bundleId": "com.kyubid.apps.sodiumtracker",
+            "developer": "KyuBid Ltd",
+            "genre": "건강 및 피트니스",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cf/89/ee/cf89ee27-082c-8955-d034-5ecd68794c43/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker : Daily Log",
+            "ranking": 4,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "6446066256",
+            "averageRating": 0,
+            "bundleId": "com.abhi.sodium.tracker",
+            "developer": "Abhinav Khanger",
+            "genre": "건강 및 피트니스",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5d/db/9d/5ddb9dcb-56e3-2672-329a-9df274f8c5bf/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/80x0w.webp",
+            "name": "Sodium Tracker°",
+            "ranking": 5,
+            "ratingCount": 0
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "kr",
+        "totalResults": 50,
+        "yourAppRanking": 19
+      }
+    },
+    {
+      "market": [
+        "nl",
+        "Netherlands",
+        "sodium tracker"
+      ],
+      "data": {
+        "apps": [
+          {
+            "appStoreId": "468522474",
+            "averageRating": 0,
+            "bundleId": "com.us.billjones.sodiumtracker",
+            "developer": "Three Labs Technology Solutions LLC",
+            "genre": "Gezondheid en fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple114/v4/3d/24/cf/3d24cf6a-b81f-6df9-27d2-0a9200b99acd/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/80x0w.webp",
+            "name": "Sodium Tracker",
+            "ranking": 1,
+            "ratingCount": 0
+          },
+          {
+            "appStoreId": "6800595930",
+            "averageRating": 0,
+            "bundleId": "com.kabi.sodium.tracker.Sodium-Tracker",
+            "developer": "Tinker Smith Studio",
+            "genre": "Gezondheid en fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5b/cc/9f/5bcc9ff4-00a0-c3e8-94f1-532afcfc4182/AppIcon-0-0-1x_U007epad-0-1-85-220.png/80x0w.webp",
+            "name": "Natrium Tracker: Pinch",
+            "ranking": 2,
+            "ratingCount": 0,
+            "subtitle": "Zout Teller & Voedingslog"
+          },
+          {
+            "appStoreId": "341232718",
+            "averageRating": 4.5,
+            "bundleId": "com.myfitnesspal.mfp",
+            "developer": "MyFitnessPal, Inc.",
+            "genre": "Gezondheid en fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1b/0c/ce/1b0cce67-0cb0-2bb3-1bdc-d9a653367ae4/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "MyFitnessPal: Calorieënteller",
+            "ranking": 3,
+            "ratingCount": 40988,
+            "subtitle": "Voeding, calorie, macrotracker"
+          },
+          {
+            "appStoreId": "6466628665",
+            "averageRating": 0,
+            "bundleId": "com.ardasen.Sodium-Tracker",
+            "developer": "Arda Sen",
+            "genre": "Geneeskunde",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7e/26/fd/7e26fd75-c66b-0cf5-83b6-d68f61efde4e/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/80x0w.webp",
+            "name": "Zout Tracker",
+            "ranking": 4,
+            "ratingCount": 0,
+            "subtitle": "Zoutteller & Inname-Log"
+          },
+          {
+            "appStoreId": "1032110739",
+            "averageRating": 4.5,
+            "bundleId": "com.prestigeworldwide.dashdiet",
+            "developer": "Product Growth LLC",
+            "genre": "Gezondheid en fitness",
+            "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b2/44/e2/b244e2dc-a990-fdcb-1065-01c3472089a2/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/80x0w.webp",
+            "name": "My Dash Diet: Sodium Tracker",
+            "ranking": 5,
+            "ratingCount": 2
+          }
+        ],
+        "keyword": "sodium tracker",
+        "store": "nl",
+        "totalResults": 50,
+        "yourAppRanking": 2
+      }
+    }
+  ],
+  "sourceNotes": [
+    "Astro MCP localhost:8089; exact recorded tool results except US add response reconstructed from returned values.",
+    "Storefront metrics are not monthly searches, revenue forecasts, or country market sizes.",
+    "Omitted ranking is unavailable in the response, not a confirmed rank.",
+    "Popularity comparisons provide directional signals; country size is not estimated by ratios of these scores."
+  ],
+  "recommendedOrder": [
+    "us",
+    "ca",
+    "gb",
+    "au",
+    "de",
+    "jp",
+    "fr",
+    "nl",
+    "nz",
+    "ie",
+    "ch",
+    "it",
+    "es",
+    "se",
+    "sg"
+  ]
+}

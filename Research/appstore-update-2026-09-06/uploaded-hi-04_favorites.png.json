@@ -1,0 +1,21 @@
+{
+  "data": {
+    "type": "appScreenshots",
+    "id": "b049c94f-ec4e-48de-9f91-d598ea0c66fb",
+    "attributes": {
+      "fileSize": 1825857,
+      "fileName": "04_favorites.png",
+      "sourceFileChecksum": null,
+      "imageAsset": null,
+      "assetType": "SCREENSHOT",
+      "assetDeliveryState": {
+        "errors": [],
+        "warnings": null,
+        "state": "UPLOAD_COMPLETE"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/b049c94f-ec4e-48de-9f91-d598ea0c66fb"
+    }
+  }
+}

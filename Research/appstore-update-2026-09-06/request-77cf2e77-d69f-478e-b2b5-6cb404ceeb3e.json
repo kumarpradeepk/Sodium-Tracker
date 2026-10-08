@@ -1,0 +1,19 @@
+{
+  "data": {
+    "type": "appInfoLocalizations",
+    "attributes": {
+      "locale": "es-ES",
+      "name": "Control de sodio: Pinch",
+      "subtitle": "Registro diario de sal",
+      "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html"
+    },
+    "relationships": {
+      "appInfo": {
+        "data": {
+          "type": "appInfos",
+          "id": "9b0615c4-0585-4a1a-9129-26cd135f4604"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "data": {
+    "type": "appStoreVersionLocalizations",
+    "id": "46babe91-b842-4dcf-81ec-1faf55a27caa",
+    "attributes": {
+      "keywords": "sodium,salzarm,ernährung,lebensmittel,tagebuch,mahlzeit,salzaufnahme,rechner,umrechner",
+      "description": "Erfasse deine tägliche Natriumzufuhr mit Pinch. Gib Natrium in Milligramm oder Salz in Gramm ein, protokolliere deine Lebensmittel und sieh, wie viel bis zu deinem selbst gewählten Tagesziel noch übrig ist.\n\nDEIN TAG AUF EINEN BLICK\n• Tagesziel festlegen und Mengen in Milligramm eintragen.\n• Favoriten und häufig erfasste Lebensmittel wiederfinden.\n• Lebensmittel mit dem verbleibenden Budget vergleichen.\n• Freiwillige Mahlzeitenerinnerungen auswählen.\n• Wochentrends und Serien erfasster Tage ansehen.\n• Salz und Natrium umrechnen.\n\nPINCH PLUS\nEin Abonnement bietet die FatSecret-Lebensmittelsuche und Erfassung, Vier-Wochen-Trends und Kalender, unbegrenzte eigene Lebensmittel, CSV-Export und das Widget. Preise und verfügbare Einführungsangebote werden vor dem Kauf angezeigt. Das Abonnement verlängert sich automatisch, sofern du es nicht in den Einstellungen deines Apple Accounts kündigst.\n\nDie Auswertung basiert auf deinen Einträgen; nicht erfasste Mahlzeiten fehlen. Lebensmitteldaten von FatSecret, soweit verfügbar. Pinch ersetzt keine medizinische Beratung. Besprich ein passendes Natriumziel mit medizinischem Fachpersonal.\n\nNutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nDatenschutz: https://tinkersmithstudio.com/pinch/privacy.html",
+      "whatsNew": "Aktualisierte App-Store-Informationen und klarere Beschreibungen zu Natriumprotokoll, Tageszielen und Pinch Plus."
+    }
+  }
+}

@@ -45,15 +45,19 @@ export function normalizeSearch(root) {
 export function normalizeFood(root) {
   const food = root?.food ?? {};
   for (const serving of asList(food?.servings?.serving)) {
+    if (serving?.sodium == null || String(serving.sodium).trim() === "") continue;
     const sodium = Number(serving?.sodium);
-    if (!Number.isFinite(sodium)) continue;
+    if (!Number.isFinite(sodium) || sodium < 0 || !Number.isSafeInteger(Math.round(sodium))) continue;
     const detail = {
       name: String(food?.food_name ?? "Food").trim() || "Food",
       serving: String(serving?.serving_description ?? "1 serving").trim() || "1 serving",
       sodiumMg: Math.round(sodium),
     };
     const calories = Number(serving?.calories);
-    if (Number.isFinite(calories)) detail.calories = Math.round(calories);
+    if (serving?.calories != null && String(serving.calories).trim() !== "" &&
+        Number.isFinite(calories) && calories >= 0 && Number.isSafeInteger(Math.round(calories))) {
+      detail.calories = Math.round(calories);
+    }
     return detail;
   }
   return null;

@@ -1,0 +1,41 @@
+{
+  "data": {
+    "type": "appStoreVersionLocalizations",
+    "id": "728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a",
+    "attributes": {
+      "description": "உங்கள் தினசரி சோடியம் அளவை அறியுங்கள். Pinch-இல் உணவைப் பதிவு செய்து, உங்கள் தினசரி இலக்கில் எத்தனை மில்லிகிராம் மீதம் உள்ளது என்பதைப் பாருங்கள்.\n\nஎளிய தினசரிப் பதிவு\n• தினசரி இலக்கை அமைத்து, அளவுகளை மில்லிகிராமில் உள்ளிடுங்கள்.\n• பிடித்த மற்றும் அடிக்கடி பதிவு செய்யும் உணவுகளைக் கண்டறியுங்கள்.\n• உணவின் அளவை இன்றைய மீதமுள்ள வரம்புடன் ஒப்பிடுங்கள்.\n• விரும்பினால் உணவு நேர நினைவூட்டல்களைத் தேர்ந்தெடுங்கள்.\n• வாராந்திரப் போக்குகளையும் தொடர்ந்து பதிவு செய்த நாட்களையும் பாருங்கள்.\n• உப்பு மற்றும் சோடியம் அளவுகளை மாற்றிக் கணக்கிடுங்கள்.\n\nPINCH PLUS\nசந்தாவில் FatSecret உணவுத் தேடல் மற்றும் பதிவு, நான்கு வாரப் போக்குகள் மற்றும் நாள்காட்டி, வரம்பற்ற தனிப்பயன் உணவுகள், CSV ஏற்றுமதி மற்றும் விட்ஜெட் கிடைக்கும். வாங்குவதற்கு முன் விலையும் தகுதியான அறிமுகச் சலுகையும் காட்டப்படும். Apple கணக்கு அமைப்புகளில் ரத்து செய்யாவிட்டால் சந்தா தானாகப் புதுப்பிக்கப்படும்.\n\nகணக்குகள் நீங்கள் பதிவு செய்த உணவுகளை மட்டுமே அடிப்படையாகக் கொண்டவை. கிடைக்கக்கூடிய உணவுத் தரவை FatSecret வழங்குகிறது. Pinch மருத்துவ ஆலோசனையோ சிகிச்சையோ வழங்காது. உங்களுக்கான சோடியம் இலக்கைப் பற்றி தகுதியான சுகாதார நிபுணரிடம் கேளுங்கள்.\n\nபயன்பாட்டு விதிமுறைகள்: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nதனியுரிமைக் கொள்கை: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "ta-IN",
+      "keywords": "உணவு,ஊட்டச்சத்து,பழக்கம்",
+      "marketingUrl": null,
+      "promotionalText": "ஒவ்வொரு உணவிலிருந்தும் தொடங்குங்கள். சோடியத்தைப் பதிவு செய்யுங்கள், பிடித்த உணவுகளைச் சேமியுங்கள். உங்கள் நாளைத் தெளிவாகப் பாருங்கள்.",
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": "சிறு தருணங்கள். உங்கள் நாளைப் பற்றிய தெளிவான பார்வை.\n\nஒவ்வொரு உணவிலும் உள்ள சோடியத்தைப் பதிவு செய்ய Pinch உதவுகிறது. இந்தப் பதிப்பில் செயலியின் இடைமுகம் 14 மொழிகளில் கிடைக்கிறது. அன்றாடப் பதிவுகளை உங்களுக்கு நெருக்கமான மொழியில் செய்யலாம்.\n\n• உணவுகளைப் பதிவு செய்து, தினசரி சோடியம் மொத்தத்தை நீங்கள் தேர்ந்தெடுத்த இலக்குடன் ஒப்பிடுங்கள்.\n• பிடித்த உணவுகளைச் சேமித்து, வழக்கமான உணவுகளை விரைவாக மீண்டும் சேருங்கள்.\n• உணவுப் பொதியின் தகவல்படி சோடியத்தை மில்லிகிராமில் அல்லது உப்பைக் கிராமில் உள்ளிடுங்கள்.\n• உங்கள் வழக்கத்திற்கு ஏற்ற உணவு நினைவூட்டல்களை விருப்பப்பட்டால் தேர்ந்தெடுங்கள்.\n\nநீண்ட காலப் போக்குகளைப் பார்க்க வேண்டுமா? Pinch Plus நான்கு வாரப் போக்குகள், உப்பு நாள்காட்டி, FatSecret உணவுத் தேடல், CSV ஏற்றுமதி மற்றும் முகப்புத் திரை விட்ஜெட்டை வழங்குகிறது.\n\nஉங்கள் உணவு நாட்குறிப்பு முழுமையாக இருக்க வேண்டியதில்லை. அடுத்த உணவிலிருந்து தொடங்குங்கள்."
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a"
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a"
+  }
+}

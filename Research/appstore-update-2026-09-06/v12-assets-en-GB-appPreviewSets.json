@@ -1,0 +1,28 @@
+{
+  "original": {
+    "data": [],
+    "included": [],
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/96367a0d-1ecb-4574-9e5c-6a6ae592bb06/appPreviewSets?include=appPreviews&limit=200"
+    },
+    "meta": {
+      "paging": {
+        "total": 0,
+        "limit": 200
+      }
+    }
+  },
+  "current": {
+    "data": [],
+    "included": [],
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/7f6bbfdc-7768-4080-a58f-1dc268ebf94e/appPreviewSets?include=appPreviews&limit=200"
+    },
+    "meta": {
+      "paging": {
+        "total": 0,
+        "limit": 200
+      }
+    }
+  }
+}

@@ -1,0 +1,212 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "us",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n  {\n    \"appsCount\" : 249,\n    \"difficulty\" : 13,\n    \"popularity\" : 9,\n    \"store\" : \"us\",\n    \"text\" : \"pots tracker\"\n  },\n  {\n    \"appsCount\" : 170,\n    \"difficulty\" : 9,\n    \"popularity\" : 17,\n    \"store\" : \"us\",\n    \"text\" : \"pinch\"\n  },\n  {\n    \"appsCount\" : 250,\n    \"difficulty\" : 15,\n    \"popularity\" : 11,\n    \"store\" : \"us\",\n    \"text\" : \"sodium tracker\"\n  },\n  {\n    \"appsCount\" : 171,\n    \"difficulty\" : 44,\n    \"popularity\" : 41,\n    \"store\" : \"us\",\n    \"text\" : \"tinker\"\n  },\n  {\n    \"appsCount\" : 24,\n    \"difficulty\" : 11,\n    \"popularity\" : 10,\n    \"store\" : \"us\",\n    \"text\" : \"milligram\"\n  }\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "gb",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n  {\n    \"appsCount\" : 13,\n    \"difficulty\" : 7,\n    \"popularity\" : 9,\n    \"store\" : \"gb\",\n    \"text\" : \"milligram\"\n  }\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "ca",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "au",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n  {\n    \"appsCount\" : 122,\n    \"difficulty\" : 7,\n    \"popularity\" : 49,\n    \"store\" : \"au\",\n    \"text\" : \"pinch\"\n  }\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "de",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n  {\n    \"appsCount\" : 120,\n    \"difficulty\" : 11,\n    \"popularity\" : 9,\n    \"store\" : \"de\",\n    \"text\" : \"sodium tracker\"\n  }\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "fr",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "es",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n  {\n    \"appsCount\" : 131,\n    \"difficulty\" : 38,\n    \"popularity\" : 6,\n    \"store\" : \"es\",\n    \"text\" : \"pinchos\"\n  },\n  {\n    \"appsCount\" : 122,\n    \"difficulty\" : 30,\n    \"popularity\" : 14,\n    \"store\" : \"es\",\n    \"text\" : \"pincho\"\n  }\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "it",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "nl",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "se",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "jp",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n  {\n    \"appsCount\" : 106,\n    \"difficulty\" : 11,\n    \"popularity\" : 23,\n    \"store\" : \"jp\",\n    \"text\" : \"sodium tracker free\"\n  }\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "cn",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "my",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "store": "in",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[\n\n]"
+          }
+        ],
+        "isError": false
+      }
+    }
+  }
+]

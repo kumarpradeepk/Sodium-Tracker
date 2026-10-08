@@ -1,0 +1,21 @@
+{
+  "data": {
+    "type": "appScreenshots",
+    "id": "e9cbe0d7-d48a-42fb-8997-1db63a6b1905",
+    "attributes": {
+      "fileSize": 1893169,
+      "fileName": "01_today.png",
+      "sourceFileChecksum": null,
+      "imageAsset": null,
+      "assetType": "SCREENSHOT",
+      "assetDeliveryState": {
+        "errors": [],
+        "warnings": null,
+        "state": "UPLOAD_COMPLETE"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/e9cbe0d7-d48a-42fb-8997-1db63a6b1905"
+    }
+  }
+}

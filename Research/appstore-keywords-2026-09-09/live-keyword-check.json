@@ -1,0 +1,127 @@
+{
+  "checked_at": "2026-09-09T10:28:10.040773+00:00",
+  "app_id": "6800595930",
+  "version": "1.2",
+  "version_state": "READY_FOR_DISTRIBUTION",
+  "editable_version_found": false,
+  "authentication": "successful",
+  "total_locales": 17,
+  "requested_locales": [
+    {
+      "locale": "de-DE",
+      "localization_id": "b2a61d86-26ef-47cf-8954-041af79808ac",
+      "current_keywords": "sodium,salzarm,ernährung,lebensmittel,tagebuch,mahlzeit,budget,erinnerung,dash",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "sodium,salzarm,ernährung,lebensmittel,tagebuch,mahlzeit,budget,erinnerung",
+      "utf8_bytes": 74,
+      "unicode_characters": 73
+    },
+    {
+      "locale": "en-AU",
+      "localization_id": "03d8c863-ab59-4710-b74d-ecf7d7ab91f7",
+      "current_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,habits",
+      "utf8_bytes": 72,
+      "unicode_characters": 72
+    },
+    {
+      "locale": "en-CA",
+      "localization_id": "a76a6b4d-c268-4745-9de7-230b848fd7f6",
+      "current_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,habits",
+      "utf8_bytes": 72,
+      "unicode_characters": 72
+    },
+    {
+      "locale": "en-GB",
+      "localization_id": "7f6bbfdc-7768-4080-a58f-1dc268ebf94e",
+      "current_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,habits",
+      "utf8_bytes": 72,
+      "unicode_characters": 72
+    },
+    {
+      "locale": "en-US",
+      "localization_id": "07a8907f-15c8-4b11-99e8-c2ed957d414f",
+      "current_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,habits",
+      "utf8_bytes": 72,
+      "unicode_characters": 72
+    },
+    {
+      "locale": "es-ES",
+      "localization_id": "d93842c5-65f3-4703-987c-aac1058b47ff",
+      "current_keywords": "dieta,baja,alimentos,comidas,nutrición,ingesta,recordatorio,hábitos,dash",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "dieta,baja,alimentos,comidas,nutrición,ingesta,recordatorio,hábitos",
+      "utf8_bytes": 69,
+      "unicode_characters": 67
+    },
+    {
+      "locale": "fr-CA",
+      "localization_id": "d7e8c320-5efe-4a35-9bf3-758516ca9f75",
+      "current_keywords": "journal,alimentaire,repas,apport,nutrition,régime,pauvre,dash,habitudes,rappel",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "journal,alimentaire,repas,apport,nutrition,régime,pauvre,habitudes,rappel",
+      "utf8_bytes": 74,
+      "unicode_characters": 73
+    },
+    {
+      "locale": "fr-FR",
+      "localization_id": "f7db1822-a8d8-4fcd-a7eb-780ce1d993ce",
+      "current_keywords": "journal,alimentaire,repas,apport,nutrition,régime,pauvre,dash,habitudes,rappel",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "journal,alimentaire,repas,apport,nutrition,régime,pauvre,habitudes,rappel",
+      "utf8_bytes": 74,
+      "unicode_characters": 73
+    },
+    {
+      "locale": "it",
+      "localization_id": "2c44c07b-a513-49b3-8b11-171d98e21d07",
+      "current_keywords": "sale,alimentare,pasti,apporto,nutrizione,registro,promemoria,abitudini,dash",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "sale,alimentare,pasti,apporto,nutrizione,registro,promemoria,abitudini",
+      "utf8_bytes": 70,
+      "unicode_characters": 70
+    },
+    {
+      "locale": "nl-NL",
+      "localization_id": "adc60e66-993f-46a6-bfa8-c34b3534fbdd",
+      "current_keywords": "zoutarm,dieet,zoutinname,dagboek,maaltijd,voeding,budget,herinnering,dash",
+      "expected_before_matches": true,
+      "change_needed": true,
+      "after_keywords": "zoutarm,dieet,zoutinname,dagboek,maaltijd,voeding,budget,herinnering",
+      "utf8_bytes": 68,
+      "unicode_characters": 68
+    }
+  ],
+  "changes_saved": 0,
+  "submissions_created": 0,
+  "version_inventory": [
+    {
+      "version": "1.2",
+      "state": "READY_FOR_DISTRIBUTION"
+    },
+    {
+      "version": "1.1",
+      "state": "READY_FOR_DISTRIBUTION"
+    },
+    {
+      "version": "1.0",
+      "state": "READY_FOR_DISTRIBUTION"
+    }
+  ]
+}

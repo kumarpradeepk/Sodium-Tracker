@@ -1,0 +1,17 @@
+{
+  "data": {
+    "type": "appScreenshots",
+    "attributes": {
+      "fileName": "05_streaks.png",
+      "fileSize": 1641924
+    },
+    "relationships": {
+      "appScreenshotSet": {
+        "data": {
+          "type": "appScreenshotSets",
+          "id": "8a12d0d9-8316-4359-b5ee-8dafbd89a070"
+        }
+      }
+    }
+  }
+}

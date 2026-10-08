@@ -11,15 +11,15 @@ import Foundation
 enum PinchFormat {
     /// Use the device/app locale so dates and grouping follow the selected
     /// storefront (en-GB, en-AU, en-CA, ja-JP, de-DE, or en-US).
-    static let locale = Locale.current
+    static var locale: Locale { PinchLocalization.locale }
 
-    private static let grouping: NumberFormatter = {
+    private static var grouping: NumberFormatter {
         let f = NumberFormatter()
         f.locale = locale
         f.numberStyle = .decimal
         f.maximumFractionDigits = 0
         return f
-    }()
+    }
 
     /// "2,300" — rounded, comma-grouped.
     static func mg(_ value: Double) -> String {
@@ -39,13 +39,13 @@ enum PinchFormat {
         case 3.5: return "3½"
         default:
             if value == value.rounded() { return String(Int(value)) }
-            return String(value)
+            return value.formatted(.number.locale(locale))
         }
     }
 
     /// "2.0k" for chart bar labels.
     static func thousands(_ value: Double) -> String {
-        String(format: "%.1fk", (value / 100).rounded() / 10)
+        ((value / 100).rounded() / 10).formatted(.number.precision(.fractionLength(1)).locale(locale)) + "k"
     }
 
     /// "SATURDAY, AUGUST 1" — the Today kicker.
@@ -53,7 +53,7 @@ enum PinchFormat {
         let f = DateFormatter()
         f.locale = locale
         f.calendar = calendar
-        f.dateFormat = "EEEE, MMMM d"
+        f.setLocalizedDateFormatFromTemplate("EEEEMMMMd")
         return f.string(from: date).uppercased()
     }
 
@@ -62,7 +62,7 @@ enum PinchFormat {
         let f = DateFormatter()
         f.locale = locale
         f.calendar = calendar
-        f.dateFormat = "EEE, MMM d"
+        f.setLocalizedDateFormatFromTemplate("EEEMMMd")
         return f.string(from: date)
     }
 
@@ -71,21 +71,10 @@ enum PinchFormat {
         let f = DateFormatter()
         f.locale = locale
         f.calendar = calendar
-        f.dateFormat = "MMM d"
+        f.setLocalizedDateFormatFromTemplate("MMMd")
         let a = f.string(from: start)
         let b = f.string(from: end)
-        // Same month collapses to "Jul 19 – 25".
-        let m = DateFormatter()
-        m.locale = locale
-        m.calendar = calendar
-        m.dateFormat = "MMM"
-        if m.string(from: start) == m.string(from: end) {
-            let d = DateFormatter()
-            d.locale = locale
-            d.calendar = calendar
-            d.dateFormat = "d"
-            return "\(a) – \(d.string(from: end))"
-        }
+        // Keep both localized endpoints; month/day order differs by language.
         return "\(a) – \(b)"
     }
 
@@ -94,7 +83,7 @@ enum PinchFormat {
         let f = DateFormatter()
         f.locale = locale
         f.calendar = calendar
-        f.dateFormat = "h:mm a"
+        f.setLocalizedDateFormatFromTemplate("jm")
         return f.string(from: date)
     }
 
@@ -103,7 +92,7 @@ enum PinchFormat {
         let f = DateFormatter()
         f.locale = locale
         f.calendar = calendar
-        f.dateFormat = "MMM d"
+        f.setLocalizedDateFormatFromTemplate("MMMd")
         return f.string(from: date).uppercased()
     }
 
@@ -116,5 +105,28 @@ enum PinchFormat {
         f.calendar = calendar
         f.dateFormat = "EEEE"
         return f.string(from: date)
+    }
+
+    static var weekdaySymbols: [String] {
+        weekdaySymbols(calendar: .current)
+    }
+
+    static func weekdaySymbols(calendar: Calendar) -> [String] {
+        let formatter = DateFormatter()
+        formatter.locale = locale
+        formatter.calendar = calendar
+        let symbols = formatter.veryShortStandaloneWeekdaySymbols ?? []
+        guard symbols.count == 7 else { return symbols }
+        let start = (calendar.firstWeekday - 1 + 7) % 7
+        return Array(symbols[start...] + symbols[..<start])
+    }
+
+    static func weekdayColumn(for date: Date, calendar: Calendar = .current) -> Int {
+        (calendar.component(.weekday, from: date) - calendar.firstWeekday + 7) % 7
+    }
+
+    static func clock(hour: Int, minute: Int) -> String {
+        let date = Calendar.current.date(from: DateComponents(year: 2026, month: 1, day: 1, hour: hour, minute: minute)) ?? .now
+        return time(date)
     }
 }

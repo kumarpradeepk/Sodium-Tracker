@@ -1,0 +1,21 @@
+{
+  "data": {
+    "type": "appScreenshots",
+    "id": "b4ab19b9-894c-4510-bfa2-70b6d82a9701",
+    "attributes": {
+      "fileSize": 1649286,
+      "fileName": "05_streaks.png",
+      "sourceFileChecksum": null,
+      "imageAsset": null,
+      "assetType": "SCREENSHOT",
+      "assetDeliveryState": {
+        "errors": [],
+        "warnings": null,
+        "state": "UPLOAD_COMPLETE"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/b4ab19b9-894c-4510-bfa2-70b6d82a9701"
+    }
+  }
+}

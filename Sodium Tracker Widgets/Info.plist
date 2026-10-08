@@ -14,7 +14,14 @@
     <key>CFBundleShortVersionString</key>
     <string>$(MARKETING_VERSION)</string>
     <key>NSExtension</key>
-    <dict>
+<dict>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string><string>de</string><string>ja</string><string>fr</string>
+		<string>nl</string><string>it</string><string>es</string><string>sv</string>
+		<string>zh-Hans</string><string>ms</string><string>ta</string>
+		<string>ga</string><string>mi</string><string>rm</string>
+	</array>
         <key>NSExtensionPointIdentifier</key>
         <string>com.apple.widgetkit-extension</string>
     </dict>

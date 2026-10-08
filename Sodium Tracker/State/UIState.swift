@@ -30,8 +30,10 @@ struct PinchToast: Identifiable, Equatable {
 /// the progress ring.
 struct QuickAddRequest: Identifiable, Equatable {
     let id = UUID()
-    let name: String
-    let milligrams: Int
+    let food: FoodItem
+    let loggedAt: Date
+    var name: String { food.name }
+    var milligrams: Int { food.mg }
 }
 
 @Observable
@@ -43,7 +45,7 @@ final class UIState {
     var trMode: TrendsMode = .week
     var weekSel = 0                   // 0 = this week, 1 = last week
 
-    static let minOffset = -13
+    static let minOffset = -27
 
     // MARK: Log sheet
     var logOpen = false
@@ -79,6 +81,7 @@ final class UIState {
     // MARK: Other overlays
     var calOpen = false
     var notifCenterOpen = false
+    var notificationPrompt: NotificationPrompt?
     var payOpen = false
     var plan: PlusPlan = .yearly
 
@@ -136,15 +139,31 @@ final class UIState {
         }
     }
 
-    /// Closes every sheet layer (after a successful add).
-    func closeAllSheets() {
+    /// Each new food-log session starts empty. Revisiting the shelf from a
+    /// portion sheet within the same session should preserve the current query.
+    func openFoodLog() {
+        guard !logOpen else { return }
+        search = ""
+        picked = nil
+        qlOpen = false
+        cfOpen = false
+        quickAddOpen = false
+        logOpen = true
+    }
+
+    func closeFoodLog() {
         picked = nil
         logOpen = false
         quickAddOpen = false
         qlOpen = false
         cfOpen = false
-        calOpen = false
         search = ""
+    }
+
+    /// Closes every sheet layer (after a successful add).
+    func closeAllSheets() {
+        closeFoodLog()
+        calOpen = false
     }
 
     func openQuickLog(prefillName: String = "", prefillMg: String = "") {

@@ -3,6 +3,14 @@ import assert from "node:assert/strict";
 import { isAuthorized, normalizeFood, normalizedPath, normalizeSearch } from "../lib/proxy.js";
 import { requestPath } from "../api/v1/[...path].js";
 
+test("missing or invalid sodium is not converted into zero", () => {
+  for (const sodium of [null, undefined, "", " ", -1, "NaN", "Infinity", 1e30]) {
+    assert.equal(normalizeFood({ food: { servings: { serving: { sodium } } } }), null);
+  }
+  assert.deepEqual(normalizeFood({ food: { servings: { serving: { sodium: "0" } } } }),
+    { name: "Food", serving: "1 serving", sodiumMg: 0 });
+});
+
 test("checks bearer authorization without accepting malformed headers", () => {
   assert.equal(isAuthorized("Bearer test-key", "test-key"), true);
   assert.equal(isAuthorized("test-key", "test-key"), false);

@@ -1,0 +1,16 @@
+{
+  "data": {
+    "type": "appScreenshotSets",
+    "attributes": {
+      "screenshotDisplayType": "APP_IPHONE_67"
+    },
+    "relationships": {
+      "appStoreVersionLocalization": {
+        "data": {
+          "type": "appStoreVersionLocalizations",
+          "id": "728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a"
+        }
+      }
+    }
+  }
+}

@@ -14,6 +14,8 @@ enum PlusProduct {
     static let yearlyID = "com.kabi.sodium.tracker.SodiumTracker.plus.yearly"
     static let monthlyID = "com.kabi.sodium.tracker.SodiumTracker.plus.monthly"
     static let identifiers: Set<String> = [yearlyID, monthlyID]
+    // Stop offering weekly without revoking access already paid for.
+    static let entitlementIdentifiers = identifiers.union(["com.kabi.sodium.tracker.SodiumTracker.plus.weekly"])
 
     static func identifier(for plan: PlusPlan) -> String {
         switch plan {
@@ -59,6 +61,7 @@ final class SubscriptionStore {
     private(set) var isPremium = false
     private(set) var isLoading = false
     private(set) var isPurchasing = false
+    private(set) var isEligibleForYearlyTrial = false
     var errorMessage: String?
 
     @ObservationIgnored private var updatesTask: Task<Void, Never>?
@@ -70,12 +73,13 @@ final class SubscriptionStore {
 
     func prepare() async {
         guard !hasPrepared else {
-            if products.isEmpty {
+            if !isLoading {
                 isLoading = true
                 await refreshProducts()
                 isLoading = false
             }
             await refreshEntitlements()
+            await refreshTrialEligibility()
             return
         }
         hasPrepared = true
@@ -105,6 +109,12 @@ final class SubscriptionStore {
             switch try await product.purchase() {
             case .success(let verification):
                 let transaction = try verified(verification)
+                if transaction.productID == PlusProduct.yearlyID,
+                   transaction.offer?.type == .introductory,
+                   product.subscription?.introductoryOffer?.paymentMode == .freeTrial,
+                   let expiry = transaction.expirationDate {
+                    await NotificationManager.scheduleTrialReminder(expiresAt: expiry)
+                }
                 await transaction.finish()
                 await refreshEntitlements()
                 return isPremium
@@ -141,16 +151,18 @@ final class SubscriptionStore {
         let now = Date.now
         for await result in Transaction.currentEntitlements {
             guard let transaction = try? verified(result),
-                  PlusProduct.identifiers.contains(transaction.productID),
+                  PlusProduct.entitlementIdentifiers.contains(transaction.productID),
                   transaction.revocationDate == nil,
                   transaction.expirationDate.map({ $0 > now }) ?? true else { continue }
             entitled = true
             break
         }
         isPremium = entitled
+        if entitled { isEligibleForYearlyTrial = false }
     }
 
     private func refreshProducts() async {
+        isEligibleForYearlyTrial = false
         do {
             let loaded = try await Product.products(for: PlusProduct.identifiers)
             products = loaded.sorted { lhs, rhs in
@@ -159,10 +171,19 @@ final class SubscriptionStore {
                 return lhs.price < rhs.price
             }
             if !products.isEmpty { errorMessage = nil }
+            await refreshTrialEligibility()
         } catch {
             products = []
             errorMessage = "Plans could not be loaded. Check your connection and try again."
         }
+    }
+
+    private func refreshTrialEligibility() async {
+        isEligibleForYearlyTrial = false
+        guard !isPremium, let info = product(for: .yearly)?.subscription,
+              let offer = info.introductoryOffer, offer.paymentMode == .freeTrial,
+              offer.period.unit == .day, offer.period.value == 3 else { return }
+        isEligibleForYearlyTrial = await info.isEligibleForIntroOffer
     }
 
     private func listenForTransactions() {

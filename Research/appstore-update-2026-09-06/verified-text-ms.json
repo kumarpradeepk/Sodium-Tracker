@@ -1,0 +1,53 @@
+{
+  "appInfo": {
+    "type": "appInfoLocalizations",
+    "id": "9c5929f1-6d76-44af-abbf-20172769e629",
+    "attributes": {
+      "locale": "ms",
+      "name": "Jejak Natrium: Pinch",
+      "subtitle": "Catatan garam harian",
+      "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/9c5929f1-6d76-44af-abbf-20172769e629"
+    }
+  },
+  "versionLocalization": {
+    "type": "appStoreVersionLocalizations",
+    "id": "2681024d-a289-479c-966a-3ed6524cf25d",
+    "attributes": {
+      "description": "Natrium anda, hari demi hari. Pinch membantu anda merekod hidangan dan melihat baki dalam had natrium harian anda.\n\nHARI ANDA SEPINTAS LALU\n• Tetapkan sasaran dan masukkan jumlah dalam miligram.\n• Cari makanan kegemaran dan yang kerap direkod.\n• Bandingkan makanan dengan baki had harian.\n• Pilih peringatan waktu makan jika anda mahu.\n• Semak trend mingguan dan rentetan hari yang direkod.\n• Tukar antara jumlah garam dan natrium.\n\nPINCH PLUS\nLangganan membuka carian dan rekod makanan FatSecret, trend dan kalendar empat minggu, makanan tersuai tanpa had, eksport CSV dan widget. Harga serta tawaran pengenalan yang layak dipaparkan sebelum pembelian. Langganan diperbaharui secara automatik melainkan dibatalkan dalam tetapan Akaun Apple anda.\n\nKeputusan berdasarkan makanan yang anda rekod sahaja. Data makanan disediakan oleh FatSecret jika tersedia. Pinch bukan nasihat, diagnosis atau rawatan perubatan. Tanya profesional kesihatan tentang sasaran natrium yang sesuai untuk anda.\n\nTerma Penggunaan: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nDasar Privasi: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "ms",
+      "keywords": "makanan,pemakanan,diari,hidangan,pengambilan,peringatan,tabiat,diet",
+      "marketingUrl": null,
+      "promotionalText": null,
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": null
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/2681024d-a289-479c-966a-3ed6524cf25d/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/2681024d-a289-479c-966a-3ed6524cf25d/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/2681024d-a289-479c-966a-3ed6524cf25d/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/2681024d-a289-479c-966a-3ed6524cf25d/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/2681024d-a289-479c-966a-3ed6524cf25d/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/2681024d-a289-479c-966a-3ed6524cf25d/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/2681024d-a289-479c-966a-3ed6524cf25d"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "before": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "74a48a52-c46f-4521-a290-9ecbb790cfc2",
+      "attributes": {
+        "description": "See your sodium, one day at a time. Pinch helps you log meals and see how much remains in your daily sodium budget.\n\nYOUR DAY AT A GLANCE\n• Set a daily target and log amounts in milligrams.\n• Find favorite foods and frequently logged meals.\n• Compare foods with your remaining budget.\n• Choose optional meal reminders.\n• Review weekly trends and streaks of logged days.\n• Convert between salt and sodium.\n\nPINCH PLUS\nA subscription unlocks FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export and the Home Screen widget. Prices and any eligible introductory offer appear before purchase. Subscriptions renew automatically unless cancelled in your Apple Account settings.\n\nYour totals reflect what you log; unlogged meals are not included. Food data is provided by FatSecret where available. Pinch supports personal tracking, not medical diagnosis or treatment. Ask a qualified healthcare professional which sodium target is right for you.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "en-US",
+        "keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,counter,calculator,converter",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "One meal at a time, make sense of your sodium. Log foods, keep favorites close and see your daily total—with gentle reminders when you want them.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "Small moments. A clearer picture of your day.\n\nPinch helps you keep track of sodium, one meal at a time. This release brings the app interface to 14 languages, so your daily routine can feel a little more familiar.\n\n• Log foods and see your daily sodium total against a goal you choose.\n• Keep favorites close and add familiar foods again with quick add.\n• Enter sodium in milligrams or salt in grams from your food labels.\n• Choose optional meal reminders that fit your routine.\n\nWant a wider view? Pinch Plus adds four-week trends, a salt calendar, FatSecret food search, CSV export and a Home Screen widget.\n\nYour diary doesn't have to be perfect. Start with your next meal."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2"
+    }
+  },
+  "patch_response": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "74a48a52-c46f-4521-a290-9ecbb790cfc2",
+      "attributes": {
+        "description": "Track daily sodium intake with Pinch. Enter sodium in milligrams or salt in grams, log your foods, and see how much remains against a goal you choose.\n\nYOUR DAY AT A GLANCE\n• Set a daily target and log amounts in milligrams.\n• Find favorite foods and frequently logged meals.\n• Compare foods with your remaining budget.\n• Choose optional meal reminders.\n• Review weekly trends and streaks of logged days.\n• Convert between salt and sodium.\n\nPINCH PLUS\nA subscription unlocks FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export and the Home Screen widget. Prices and any eligible introductory offer appear before purchase. Subscriptions renew automatically unless cancelled in your Apple Account settings.\n\nYour totals reflect what you log; unlogged meals are not included. Food data is provided by FatSecret where available. Pinch supports personal tracking, not medical diagnosis or treatment. Ask a qualified healthcare professional which sodium target is right for you.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "en-US",
+        "keywords": "food,diary,nutrition,meal,log,milligram,gram,goal,reminder,low,diet,journal,calculator,converter",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "One meal at a time, make sense of your sodium. Log foods, keep favorites close and see your daily total—with gentle reminders when you want them.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "Updated App Store information and clearer descriptions of sodium logging, daily goals and Pinch Plus."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2"
+    }
+  },
+  "after": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "74a48a52-c46f-4521-a290-9ecbb790cfc2",
+      "attributes": {
+        "description": "Track daily sodium intake with Pinch. Enter sodium in milligrams or salt in grams, log your foods, and see how much remains against a goal you choose.\n\nYOUR DAY AT A GLANCE\n• Set a daily target and log amounts in milligrams.\n• Find favorite foods and frequently logged meals.\n• Compare foods with your remaining budget.\n• Choose optional meal reminders.\n• Review weekly trends and streaks of logged days.\n• Convert between salt and sodium.\n\nPINCH PLUS\nA subscription unlocks FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export and the Home Screen widget. Prices and any eligible introductory offer appear before purchase. Subscriptions renew automatically unless cancelled in your Apple Account settings.\n\nYour totals reflect what you log; unlogged meals are not included. Food data is provided by FatSecret where available. Pinch supports personal tracking, not medical diagnosis or treatment. Ask a qualified healthcare professional which sodium target is right for you.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "en-US",
+        "keywords": "food,diary,nutrition,meal,log,milligram,gram,goal,reminder,low,diet,journal,calculator,converter",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "One meal at a time, make sense of your sodium. Log foods, keep favorites close and see your daily total—with gentle reminders when you want them.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "Updated App Store information and clearer descriptions of sodium logging, daily goals and Pinch Plus."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/74a48a52-c46f-4521-a290-9ecbb790cfc2"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "before": {
+    "data": {
+      "type": "appInfoLocalizations",
+      "id": "85c2aaab-02ff-40f4-ba5d-a6987d667a74",
+      "attributes": {
+        "locale": "en-CA",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Daily Salt Tracker & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/85c2aaab-02ff-40f4-ba5d-a6987d667a74"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/85c2aaab-02ff-40f4-ba5d-a6987d667a74"
+    }
+  },
+  "patch_response": {
+    "data": {
+      "type": "appInfoLocalizations",
+      "id": "85c2aaab-02ff-40f4-ba5d-a6987d667a74",
+      "attributes": {
+        "locale": "en-CA",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/85c2aaab-02ff-40f4-ba5d-a6987d667a74"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/85c2aaab-02ff-40f4-ba5d-a6987d667a74"
+    }
+  },
+  "after": {
+    "data": {
+      "type": "appInfoLocalizations",
+      "id": "85c2aaab-02ff-40f4-ba5d-a6987d667a74",
+      "attributes": {
+        "locale": "en-CA",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/85c2aaab-02ff-40f4-ba5d-a6987d667a74"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/85c2aaab-02ff-40f4-ba5d-a6987d667a74"
+    }
+  }
+}

@@ -28,22 +28,22 @@ enum SaltyModel {
     /// Today's line. `fits` is how many usual-suspect chips still fit.
     static func todayBubble(remaining: Int, fits: Int) -> String {
         if remaining < 0 {
-            return "\(PinchFormat.mg(-remaining)) mg over budget. Ease up tonight — tomorrow resets."
+            return PinchLocalization.format("{0} mg over budget. Ease up tonight — tomorrow resets.", [String(describing: PinchFormat.mg(-remaining))])
         }
         if fits == 0 {
-            return "\(PinchFormat.mg(remaining)) mg left — under every usual pick. Go fresh for dinner."
+            return PinchLocalization.format("{0} mg left — under every usual pick. Go fresh for dinner.", [String(describing: PinchFormat.mg(remaining))])
         }
         if remaining < 300 {
-            return "\(PinchFormat.mg(remaining)) mg left — a light bite still fits."
+            return PinchLocalization.format("{0} mg left — a light bite still fits.", [String(describing: PinchFormat.mg(remaining))])
         }
-        return "\(PinchFormat.mg(remaining)) mg left — \(fits) of your usual picks fit."
+        return PinchLocalization.format("{0} mg left — {1} of your usual picks fit.", [String(describing: PinchFormat.mg(remaining)), String(describing: fits)])
     }
 
     /// A past day's line. Generic templates in the design's voice (spec §15.5).
     static func pastBubble(total: Int, remaining: Int, isEmpty: Bool) -> String {
         if isEmpty { return "A quiet page in the log book." }
-        if remaining < 0 { return "Finished \(PinchFormat.mg(-remaining)) mg over budget." }
-        return "Closed at \(PinchFormat.mg(total)) — \(PinchFormat.mg(remaining)) mg under budget. Nice save."
+        if remaining < 0 { return PinchLocalization.format("Finished {0} mg over budget.", [String(describing: PinchFormat.mg(-remaining))]) }
+        return PinchLocalization.format("Closed at {0} — {1} mg under budget. Nice save.", [String(describing: PinchFormat.mg(total)), String(describing: PinchFormat.mg(remaining))])
     }
 
     /// The bubble for whichever day is showing.

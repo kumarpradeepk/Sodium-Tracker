@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme LastUpgradeVersion="2630" version="1.3">
+  <BuildAction parallelizeBuildables="YES" buildImplicitDependencies="YES">
+    <BuildActionEntries><BuildActionEntry buildForTesting="YES" buildForRunning="YES" buildForProfiling="YES" buildForArchiving="YES" buildForAnalyzing="YES"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="405C0921301DF8030072B1F5" BuildableName="Sodium Tracker.app" BlueprintName="Sodium Tracker" ReferencedContainer="container:Sodium Tracker.xcodeproj"/></BuildActionEntry></BuildActionEntries>
+  </BuildAction>
+  <TestAction buildConfiguration="Debug" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier="Xcode.IDEFoundation.Launcher.LLDB" shouldUseLaunchSchemeArgsEnv="YES">
+    <Testables>
+      <TestableReference skipped="NO"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="405C092E301DF8050072B1F5" BuildableName="Sodium TrackerTests.xctest" BlueprintName="Sodium TrackerTests" ReferencedContainer="container:Sodium Tracker.xcodeproj"/></TestableReference>
+      <TestableReference skipped="NO"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="405C0938301DF8050072B1F5" BuildableName="Sodium TrackerUITests.xctest" BlueprintName="Sodium TrackerUITests" ReferencedContainer="container:Sodium Tracker.xcodeproj"/></TestableReference>
+    </Testables>
+    <MacroExpansion><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="405C0921301DF8030072B1F5" BuildableName="Sodium Tracker.app" BlueprintName="Sodium Tracker" ReferencedContainer="container:Sodium Tracker.xcodeproj"/></MacroExpansion>
+  </TestAction>
+  <LaunchAction buildConfiguration="Debug" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier="Xcode.IDEFoundation.Launcher.LLDB" launchStyle="0" useCustomWorkingDirectory="NO" ignoresPersistentStateOnLaunch="NO" debugDocumentVersioning="YES" debugServiceExtension="internal" allowLocationSimulation="YES">
+    <BuildableProductRunnable runnableDebuggingMode="0"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="405C0921301DF8030072B1F5" BuildableName="Sodium Tracker.app" BlueprintName="Sodium Tracker" ReferencedContainer="container:Sodium Tracker.xcodeproj"/></BuildableProductRunnable>
+  </LaunchAction>
+  <ProfileAction buildConfiguration="Release" shouldUseLaunchSchemeArgsEnv="YES" savedToolIdentifier="" useCustomWorkingDirectory="NO" debugDocumentVersioning="YES">
+    <BuildableProductRunnable runnableDebuggingMode="0"><BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="405C0921301DF8030072B1F5" BuildableName="Sodium Tracker.app" BlueprintName="Sodium Tracker" ReferencedContainer="container:Sodium Tracker.xcodeproj"/></BuildableProductRunnable>
+  </ProfileAction>
+  <AnalyzeAction buildConfiguration="Debug"/>
+  <ArchiveAction buildConfiguration="Release" revealArchiveInOrganizer="YES"/>
+</Scheme>

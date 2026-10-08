@@ -9,12 +9,15 @@
 import SwiftUI
 import SwiftData
 import UIKit
+import WidgetKit
 
 struct SettingsScreen: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
     @Environment(SubscriptionStore.self) private var subscriptions
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var notificationAuthorized = false
 
     @AppStorage(PinchDefaults.theme) private var theme = "light"
     @AppStorage(PinchDefaults.palette) private var palettePick = PalettePick.ocean.rawValue
@@ -26,6 +29,7 @@ struct SettingsScreen: View {
     @AppStorage(PinchDefaults.mealRemLunch) private var remLunch = false
     @AppStorage(PinchDefaults.mealRemDinner) private var remDinner = true
     @AppStorage(PinchDefaults.hasOnboarded) private var hasOnboarded = false
+    @AppStorage(PinchLocalization.preferenceKey) private var language = "system"
 
     @Query(sort: \LogEntry.loggedAt) private var entries: [LogEntry]
     @Query private var customFoods: [CustomFood]
@@ -65,6 +69,23 @@ struct SettingsScreen: View {
                     .padding(.top, 18).padding(.bottom, 8)
                 appearanceCard
 
+                Picker(selection: $language) {
+                    PinchText("Follow device language").tag("system")
+                    ForEach(PinchLocalization.availableLanguages, id: \.self) { code in
+                        Text(verbatim: PinchLocalization.languageNames[code] ?? code).tag(code)
+                    }
+                } label: {
+                    PinchText("App language")
+                }
+                .pickerStyle(.menu)
+                .padding(.vertical, 12)
+                .accessibilityIdentifier("settings.language")
+                .onChange(of: language) { _, value in
+                    UserDefaults(suiteName: PinchLocalization.appGroup)?.set(value, forKey: PinchLocalization.preferenceKey)
+                    NotificationManager.refresh(remaining: todayRemain)
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
+
                 SectionKicker(text: "PINCH & NUDGES")
                     .padding(.top, 18).padding(.bottom, 8)
                 nudgesCard
@@ -77,7 +98,7 @@ struct SettingsScreen: View {
                     .padding(.top, 18).padding(.bottom, 8)
                 accountCard
 
-                PinchText("Pinch 1.0, made with a pinch of love")
+                PinchText(PinchLocalization.format("Pinch {0}, made with a pinch of love", [String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")]))
                     .pinchBody(11)
                     .foregroundStyle(p.ink3)
                     .frame(maxWidth: .infinity)
@@ -96,6 +117,7 @@ struct SettingsScreen: View {
             .padding(.bottom, 150)
         }
         .scrollIndicators(.hidden)
+        .clipped()
         .sheet(isPresented: $showShare) {
             if let exportURL {
                 ActivityShareSheet(items: [exportURL])
@@ -110,6 +132,13 @@ struct SettingsScreen: View {
         .onChange(of: remBreakfast) { refreshNotifications() }
         .onChange(of: remLunch) { refreshNotifications() }
         .onChange(of: remDinner) { refreshNotifications() }
+        .task { notificationAuthorized = await NotificationManager.isAuthorized() }
+        .onChange(of: ui.notificationPrompt?.id) { _, _ in
+            Task { notificationAuthorized = await NotificationManager.isAuthorized() }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { Task { notificationAuthorized = await NotificationManager.isAuthorized() } }
+        }
     }
 
     private func refreshNotifications() {
@@ -157,6 +186,7 @@ struct SettingsScreen: View {
                         .padding(.vertical, 8)
                         .background(Capsule().fill(p.brandSoft))
                 }
+                .accessibilityIdentifier("settings.paywall")
                 .buttonStyle(.pressScale)
             }
             .padding(EdgeInsets(top: 15, leading: 16, bottom: 15, trailing: 16))
@@ -203,7 +233,7 @@ struct SettingsScreen: View {
 
                 if goalChoice == .custom {
                     HStack(spacing: 14) {
-                        stepButton("−") {
+                        stepButton(PinchLocalization.resolve("−")) {
                             customGoal = max(PinchDefaults.customGoalRange.lowerBound, customGoal - PinchDefaults.customGoalStep)
                         }
                         Slider(
@@ -214,14 +244,16 @@ struct SettingsScreen: View {
                             in: Double(PinchDefaults.customGoalRange.lowerBound)...Double(PinchDefaults.customGoalRange.upperBound)
                         )
                         .tint(p.brand)
-                        stepButton("+") {
+                        stepButton(PinchLocalization.resolve("+")) {
                             customGoal = min(PinchDefaults.customGoalRange.upperBound, customGoal + PinchDefaults.customGoalStep)
                         }
                     }
                     .padding(.top, 14)
                 }
 
-                PinchText(goalChoice == .aha
+                PinchText(goalChoice == .custom
+                    ? "Your personal daily sodium budget. Ask your clinician what is right for you."
+                    : goalChoice == .aha
                     ? "The 1,500 mg option reflects general AHA guidance. Individual needs vary—ask your clinician what is right for you."
                     : "The 2,300 mg option reflects FDA general guidance. Individual needs vary—ask your clinician what is right for you.")
                     .pinchBody(11.5)
@@ -263,14 +295,13 @@ struct SettingsScreen: View {
     private var appearanceCard: some View {
         PinchCard {
             VStack(spacing: 0) {
-                HStack {
+                VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 11) {
                         SettingsIconTile(color: SettingsTileColors.theme, glyph: .moon)
                         PinchText("Theme")
                             .pinchBody(14, .semibold)
                             .foregroundStyle(p.ink)
                     }
-                    Spacer()
                     PinchSegmented(
                         segments: [
                             PinchSegment(value: "light", label: "Light"),
@@ -279,16 +310,15 @@ struct SettingsScreen: View {
                         selection: $theme,
                         bordered: false
                     )
-                    .frame(width: 150)
+                    .frame(maxWidth: .infinity)
                 }
                 .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
 
                 // The design's Ocean/Sage/Iris palettes, surfaced in-app.
-                HStack {
+                VStack(alignment: .leading, spacing: 12) {
                     PinchText("Palette")
                         .pinchBody(14, .semibold)
                         .foregroundStyle(p.ink)
-                    Spacer()
                     PinchSegmented(
                         segments: PalettePick.allCases.map {
                             PinchSegment(value: $0.rawValue, label: $0.label)
@@ -296,7 +326,7 @@ struct SettingsScreen: View {
                         selection: $palettePick,
                         bordered: false
                     )
-                    .frame(width: 210)
+                    .frame(maxWidth: .infinity)
                 }
                 .padding(EdgeInsets(top: 14, leading: 16, bottom: 14, trailing: 16))
                 .overlay(alignment: .top) {
@@ -321,14 +351,20 @@ struct SettingsScreen: View {
                 toggleRow(
                     title: "Meal check-ins",
                     sub: "Gentle waves at mealtimes. Never guilt.",
-                    isOn: $notif,
+                    isOn: Binding(get: { notif && notificationAuthorized }, set: { enabled in
+                        if enabled { ui.notificationPrompt = NotificationPrompt(context: .settings) }
+                        else {
+                            notif = false
+                            UserDefaults.standard.set(true, forKey: NotificationPromptPolicy.optOutKey)
+                        }
+                    }),
                     tile: SettingsIconTile(color: SettingsTileColors.checkins, glyph: .bell)
                 )
 
-                if notif {
-                    mealRow("Breakfast", time: "8:00 AM", isOn: $remBreakfast)
-                    mealRow("Lunch", time: "12:30 PM", isOn: $remLunch)
-                    mealRow("Dinner", time: "6:30 PM", isOn: $remDinner)
+                if notif && notificationAuthorized {
+                    mealRow("Breakfast", time: PinchFormat.clock(hour: 8, minute: 0), isOn: $remBreakfast)
+                    mealRow("Lunch", time: PinchFormat.clock(hour: 12, minute: 30), isOn: $remLunch)
+                    mealRow("Dinner", time: PinchFormat.clock(hour: 18, minute: 30), isOn: $remDinner)
 
                     notificationPreview
                         .padding(EdgeInsets(top: 4, leading: 16, bottom: 14, trailing: 16))
@@ -397,11 +433,11 @@ struct SettingsScreen: View {
                         .pinchBody(11, .bold, tracking: 0.06)
                         .foregroundStyle(p.ink2)
                     Spacer()
-                    PinchText("6:30 PM")
+                    PinchText(PinchFormat.clock(hour: 18, minute: 30))
                         .pinchBody(10.5)
                         .foregroundStyle(p.ink3)
                 }
-                PinchText("Dinner check-in — \(PinchFormat.mg(max(0, todayRemain))) mg still in the budget. You’ve got this.")
+                PinchText("Dinner check-in — a moment to log your meal and review your day.")
                     .pinchBody(12)
                     .foregroundStyle(p.ink2)
                     .lineSpacing(3)
@@ -577,7 +613,7 @@ struct SettingsScreen: View {
                 Spacer()
                 Button {
                     UIPasteboard.general.string = id
-                    ui.showToast("User ID copied", "\(id) — handy for support chats.")
+                    ui.showToast("User ID copied", PinchLocalization.format("{0} — handy for support chats.", [String(describing: id)]))
                 } label: {
                     PinchText("Copy")
                         .pinchBody(12, .bold)

@@ -1,0 +1,53 @@
+{
+  "appInfo": {
+    "type": "appInfoLocalizations",
+    "id": "42c5a80f-e70d-4b7a-8401-b33021394bec",
+    "attributes": {
+      "locale": "en-CA",
+      "name": "Sodium Tracker: Pinch Daily",
+      "subtitle": "Daily Salt Counter & Intake",
+      "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/42c5a80f-e70d-4b7a-8401-b33021394bec"
+    }
+  },
+  "versionLocalization": {
+    "type": "appStoreVersionLocalizations",
+    "id": "4b49a984-f83f-4d3e-b3f7-c769c4ee22a6",
+    "attributes": {
+      "description": "See your sodium, one day at a time. Pinch helps you log meals and see how much remains in your daily sodium budget.\n\nYOUR DAY AT A GLANCE\n• Set a daily target and log amounts in milligrams.\n• Find favourite foods and frequently logged meals.\n• Compare foods with your remaining budget.\n• Choose optional meal reminders.\n• Review weekly trends and streaks of logged days.\n• Convert between salt and sodium.\n\nPINCH PLUS\nA subscription unlocks FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export and the Home Screen widget. Prices and any eligible introductory offer appear before purchase. Subscriptions renew automatically unless cancelled in your Apple Account settings.\n\nYour totals reflect what you log; unlogged meals are not included. Food data is provided by FatSecret where available. Pinch supports personal tracking, not medical diagnosis or treatment. Ask a qualified healthcare professional which sodium target is right for you.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "en-CA",
+      "keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+      "promotionalText": null,
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": null
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6"
+    }
+  }
+}

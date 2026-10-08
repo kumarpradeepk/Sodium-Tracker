@@ -1,0 +1,143 @@
+{
+  "before": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "bc94147c-3c7d-4a81-b468-c99acc6e2c04",
+      "attributes": {
+        "description": "毎日のナトリウム摂取量を、ひと目で。Pinchで食事を記録すると、設定した1日の目標量まであと何mgかを確認できます。\n\n毎日の記録をシンプルに\n• 目標量を設定し、ミリグラム単位で入力。\n• お気に入りや、よく記録する食品をすぐに表示。\n• 食品のナトリウム量と、今日の残りの目標量を比較。\n• 希望する食事のリマインダーを設定。\n• 週ごとの傾向や連続記録を確認。\n• 食塩相当量とナトリウム量を換算。\n\nPINCH PLUS\nサブスクリプションで、FatSecretの食品検索と記録、4週間の傾向とカレンダー、カスタム食品の無制限登録、CSV書き出し、ウィジェットをご利用いただけます。価格および対象となる初回限定オファーは購入前にアプリ内で表示されます。Apple Accountの設定で解約しない限り、自動更新されます。\n\n集計は記録した食品に基づき、未記録の食事は含みません。食品データは利用可能な範囲でFatSecretが提供します。Pinchは医療上の診断や治療を行いません。適切な目標量は医療の専門家にご相談ください。\n\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nプライバシーポリシー: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "ja",
+        "keywords": "食事,日記,栄養,食塩,摂取量,食品,リマインダー,習慣,計算,換算",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "一食ずつ記録して、今日のナトリウムを見えるように。食べたものやお気に入りを残し、一日の合計を確認。リマインダーは必要なときだけ。自分のペースで始めましょう。",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "日々の小さな記録から、一日の食事が見えてくる。\n\nPinchは、一食ずつナトリウムを記録するためのアプリです。このバージョンでは、アプリの画面表示が14言語に対応。毎日の記録を、よりなじみのある言葉で続けられます。\n\n• 食べたものを記録し、一日のナトリウム合計を自分で選んだ目標と比較。\n• お気に入りを保存して、いつもの食品をクイック追加で再び記録。\n• 食品表示に合わせて、ナトリウムはmg、食塩はgで入力。\n• 生活のリズムに合う食事リマインダーを、必要に応じて設定。\n\nもう少し長い期間を振り返りたい方へ。Pinch Plusでは、4週間の傾向、塩分カレンダー、FatSecret食品検索、CSV書き出し、ホーム画面ウィジェットを利用できます。\n\n完璧な日記でなくても大丈夫。次の一食から始めましょう。"
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04"
+    }
+  },
+  "patch_response": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "bc94147c-3c7d-4a81-b468-c99acc6e2c04",
+      "attributes": {
+        "description": "Pinchで毎日のナトリウム摂取量を記録。ナトリウムはミリグラム、塩分はグラムで入力できます。食べたものを記録し、自分で決めた1日の目標量まであとどれだけかを確認しましょう。\n\n毎日の記録をシンプルに\n• 目標量を設定し、ミリグラム単位で入力。\n• お気に入りや、よく記録する食品をすぐに表示。\n• 食品のナトリウム量と、今日の残りの目標量を比較。\n• 希望する食事のリマインダーを設定。\n• 週ごとの傾向や連続記録を確認。\n• 食塩相当量とナトリウム量を換算。\n\nPINCH PLUS\nサブスクリプションで、FatSecretの食品検索と記録、4週間の傾向とカレンダー、カスタム食品の無制限登録、CSV書き出し、ウィジェットをご利用いただけます。価格および対象となる初回限定オファーは購入前にアプリ内で表示されます。Apple Accountの設定で解約しない限り、自動更新されます。\n\n集計は記録した食品に基づき、未記録の食事は含みません。食品データは利用可能な範囲でFatSecretが提供します。Pinchは医療上の診断や治療を行いません。適切な目標量は医療の専門家にご相談ください。\n\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nプライバシーポリシー: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "ja",
+        "keywords": "食事,日記,栄養,食塩,摂取量,食品,計算,換算,sodium,tracker",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "一食ずつ記録して、今日のナトリウムを見えるように。食べたものやお気に入りを残し、一日の合計を確認。リマインダーは必要なときだけ。自分のペースで始めましょう。",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "App Storeの情報を更新し、ナトリウムの記録、1日の目標量、Pinch Plusの説明をわかりやすくしました。"
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04"
+    }
+  },
+  "after": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "bc94147c-3c7d-4a81-b468-c99acc6e2c04",
+      "attributes": {
+        "description": "Pinchで毎日のナトリウム摂取量を記録。ナトリウムはミリグラム、塩分はグラムで入力できます。食べたものを記録し、自分で決めた1日の目標量まであとどれだけかを確認しましょう。\n\n毎日の記録をシンプルに\n• 目標量を設定し、ミリグラム単位で入力。\n• お気に入りや、よく記録する食品をすぐに表示。\n• 食品のナトリウム量と、今日の残りの目標量を比較。\n• 希望する食事のリマインダーを設定。\n• 週ごとの傾向や連続記録を確認。\n• 食塩相当量とナトリウム量を換算。\n\nPINCH PLUS\nサブスクリプションで、FatSecretの食品検索と記録、4週間の傾向とカレンダー、カスタム食品の無制限登録、CSV書き出し、ウィジェットをご利用いただけます。価格および対象となる初回限定オファーは購入前にアプリ内で表示されます。Apple Accountの設定で解約しない限り、自動更新されます。\n\n集計は記録した食品に基づき、未記録の食事は含みません。食品データは利用可能な範囲でFatSecretが提供します。Pinchは医療上の診断や治療を行いません。適切な目標量は医療の専門家にご相談ください。\n\n利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nプライバシーポリシー: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "ja",
+        "keywords": "食事,日記,栄養,食塩,摂取量,食品,計算,換算,sodium,tracker",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "一食ずつ記録して、今日のナトリウムを見えるように。食べたものやお気に入りを残し、一日の合計を確認。リマインダーは必要なときだけ。自分のペースで始めましょう。",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "App Storeの情報を更新し、ナトリウムの記録、1日の目標量、Pinch Plusの説明をわかりやすくしました。"
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/bc94147c-3c7d-4a81-b468-c99acc6e2c04"
+    }
+  }
+}

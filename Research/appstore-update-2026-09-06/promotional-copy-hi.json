@@ -1,0 +1,41 @@
+{
+  "data": {
+    "type": "appStoreVersionLocalizations",
+    "id": "49f2c0cf-7774-49f6-b595-1a5ba70ee134",
+    "attributes": {
+      "description": "हर दिन के सोडियम पर नज़र रखें। Pinch में भोजन दर्ज करें और देखें कि आपके रोज़ के लक्ष्य में कितने मिलीग्राम बाकी हैं।\n\nरोज़ का हिसाब आसान बनाएं\n• दैनिक लक्ष्य तय करें और मात्रा मिलीग्राम में दर्ज करें।\n• पसंदीदा और बार-बार दर्ज किए गए खाद्य पदार्थ खोजें।\n• भोजन की मात्रा की तुलना आज की बची हुई सीमा से करें।\n• चाहें तो भोजन के समय याद दिलाने वाले संदेश चुनें।\n• साप्ताहिक रुझान और लगातार दर्ज किए गए दिन देखें।\n• नमक और सोडियम की मात्रा का रूपांतरण करें।\n\nPINCH PLUS\nसदस्यता में FatSecret से भोजन खोजना और दर्ज करना, चार सप्ताह के रुझान और कैलेंडर, असीमित कस्टम खाद्य पदार्थ, CSV एक्सपोर्ट और विजेट शामिल हैं। खरीदने से पहले कीमत और पात्र परिचयात्मक ऑफ़र दिखाए जाते हैं। Apple खाते की सेटिंग में रद्द न करने पर सदस्यता अपने आप नवीनीकृत होती है।\n\nआंकड़े केवल दर्ज किए गए भोजन पर आधारित हैं। उपलब्ध खाद्य डेटा FatSecret से मिलता है। Pinch चिकित्सा सलाह, निदान या उपचार नहीं देता। अपने लिए सही सोडियम लक्ष्य के बारे में योग्य स्वास्थ्य विशेषज्ञ से पूछें।\n\nउपयोग की शर्तें: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nगोपनीयता नीति: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "hi",
+      "keywords": "भोजन,पोषण,आहार,याद,मिलीग्राम",
+      "marketingUrl": null,
+      "promotionalText": "एक भोजन से शुरुआत करें। सोडियम दर्ज करें, पसंदीदा भोजन सहेजें और दिन का कुल हिसाब देखें। हल्के रिमाइंडर, जब आप चाहें। अपनी गति से आगे बढ़ें।",
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": "छोटे-छोटे पल। अपने दिन की एक साफ़ तस्वीर।\n\nPinch हर भोजन के साथ सोडियम का हिसाब रखने में मदद करता है। इस संस्करण में ऐप का इंटरफ़ेस 14 भाषाओं में उपलब्ध है, ताकि रोज़ की दिनचर्या कुछ और सहज लगे।\n\n• भोजन दर्ज करें और दिन भर के कुल सोडियम की तुलना अपने चुने हुए लक्ष्य से करें।\n• पसंदीदा खाद्य पदार्थ सहेजें और अक्सर खाई जाने वाली चीज़ें जल्दी दोबारा जोड़ें।\n• खाद्य लेबल से सोडियम मिलीग्राम में या नमक ग्राम में दर्ज करें।\n• अपनी दिनचर्या के अनुसार भोजन के वैकल्पिक रिमाइंडर चुनें।\n\nलंबी अवधि की तस्वीर देखना चाहते हैं? Pinch Plus में चार सप्ताह के रुझान, नमक कैलेंडर, FatSecret भोजन खोज, CSV एक्सपोर्ट और होम स्क्रीन विजेट मिलता है।\n\nआपकी डायरी का एकदम सही होना ज़रूरी नहीं। अगले भोजन से शुरुआत करें।"
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/49f2c0cf-7774-49f6-b595-1a5ba70ee134/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/49f2c0cf-7774-49f6-b595-1a5ba70ee134/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/49f2c0cf-7774-49f6-b595-1a5ba70ee134/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/49f2c0cf-7774-49f6-b595-1a5ba70ee134/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/49f2c0cf-7774-49f6-b595-1a5ba70ee134/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/49f2c0cf-7774-49f6-b595-1a5ba70ee134/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/49f2c0cf-7774-49f6-b595-1a5ba70ee134"
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/49f2c0cf-7774-49f6-b595-1a5ba70ee134"
+  }
+}

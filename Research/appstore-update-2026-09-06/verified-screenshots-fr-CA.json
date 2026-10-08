@@ -1,0 +1,130 @@
+{
+  "setId": "9705d6e1-dd5d-4509-930d-d1641991507b",
+  "locale": "fr-CA",
+  "data": [
+    {
+      "type": "appScreenshots",
+      "id": "b81c0bab-f950-4429-9f27-ebccc5932f08",
+      "attributes": {
+        "fileSize": 1915523,
+        "fileName": "01_today.png",
+        "sourceFileChecksum": "656c604ff39c023612771feb9f1f8508",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/10/26/21/10262193-41ea-c7df-1a70-e8c3a514d765/01_today.png/{w}x{h}bb.{f}",
+          "width": 1260,
+          "height": 2736
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/b81c0bab-f950-4429-9f27-ebccc5932f08"
+      }
+    },
+    {
+      "type": "appScreenshots",
+      "id": "360015dd-4271-4315-82ba-cd1836131445",
+      "attributes": {
+        "fileSize": 1907919,
+        "fileName": "02_fits.png",
+        "sourceFileChecksum": "5ae73850d7430fb744e4451e3965d8b3",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/50/ce/b1/50ceb1b5-c330-d648-1ada-0db3a58d248c/02_fits.png/{w}x{h}bb.{f}",
+          "width": 1260,
+          "height": 2736
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/360015dd-4271-4315-82ba-cd1836131445"
+      }
+    },
+    {
+      "type": "appScreenshots",
+      "id": "913dc858-a30e-4d84-a7b6-bfd6b8b0799c",
+      "attributes": {
+        "fileSize": 1675955,
+        "fileName": "03_reminders.png",
+        "sourceFileChecksum": "82bba1a227c65032ba4b1fa87571965c",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bd/b4/12/bdb412df-f77c-73e3-9ece-cf69a80abb9d/03_reminders.png/{w}x{h}bb.{f}",
+          "width": 1260,
+          "height": 2736
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/913dc858-a30e-4d84-a7b6-bfd6b8b0799c"
+      }
+    },
+    {
+      "type": "appScreenshots",
+      "id": "9cf66490-8faa-4adc-aea3-7722bedb2749",
+      "attributes": {
+        "fileSize": 1859250,
+        "fileName": "04_favorites.png",
+        "sourceFileChecksum": "4116553d20935a3b11447e5f460db6b1",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/b1/cb/ab/b1cbab4a-bcd3-1773-dfd5-62b0db45a0ce/04_favorites.png/{w}x{h}bb.{f}",
+          "width": 1260,
+          "height": 2736
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/9cf66490-8faa-4adc-aea3-7722bedb2749"
+      }
+    },
+    {
+      "type": "appScreenshots",
+      "id": "48c7ac7c-7c84-4f0e-b4fd-17fa7be2c265",
+      "attributes": {
+        "fileSize": 1671040,
+        "fileName": "05_streaks.png",
+        "sourceFileChecksum": "3c861f608e51cdfaf7d1d89771c978ad",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d0/ca/c0/d0cac07d-5203-8eb0-73e7-790049872339/05_streaks.png/{w}x{h}bb.{f}",
+          "width": 1260,
+          "height": 2736
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/48c7ac7c-7c84-4f0e-b4fd-17fa7be2c265"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/9705d6e1-dd5d-4509-930d-d1641991507b/appScreenshots?limit=200"
+  },
+  "meta": {
+    "paging": {
+      "total": 5,
+      "limit": 200
+    }
+  }
+}

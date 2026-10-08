@@ -1,0 +1,62 @@
+[
+  {
+    "store": "in",
+    "keyword": "salt tracker",
+    "checked_at": "2026-10-08T10:51:42.359Z",
+    "tool": "mcp__astro__search_app_store",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"apps\" : [\n    {\n      \"appStoreId\" : \"1590169479\",\n      \"averageRating\" : 0,\n      \"bundleId\" : \"io.tenlabs.SodiumTracker\",\n      \"developer\" : \"Ten Labs Ltd\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/bd\\/15\\/3b\\/bd153b6c-64a3-4d82-75c3-19b77f3d6bf7\\/AppIcon-0-1x_U007ephone-0-1-sRGB-85-220-0.png\\/80x0w.webp\",\n      \"name\" : \"Salt Tracker: Sodio\",\n      \"ranking\" : 1,\n      \"ratingCount\" : 0,\n      \"subtitle\" : \"Daily Sodium Counter\"\n    },\n    {\n      \"appStoreId\" : \"1032110739\",\n      \"averageRating\" : 5,\n      \"bundleId\" : \"com.prestigeworldwide.dashdiet\",\n      \"developer\" : \"Product Growth LLC\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/29\\/b8\\/af\\/29b8afed-80b3-4c83-b08d-72992350fcc0\\/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png\\/80x0w.webp\",\n      \"name\" : \"My Dash Diet: #1 Fiber Tracker\",\n      \"ranking\" : 2,\n      \"ratingCount\" : 2,\n      \"subtitle\" : \"Monitor Food & Track Fiber\"\n    },\n    {\n      \"appStoreId\" : \"6783266087\",\n      \"averageRating\" : 0,\n      \"bundleId\" : \"com.wonkru.sodium-tracker\",\n      \"developer\" : \"Monarca L.L.C -FZ\",\n      \"genre\" : \"Food & Drink\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/c8\\/9e\\/8d\\/c89e8d9c-96bc-474c-0071-8e9893029e90\\/AppIcon-0-0-1x_U007epad-0-1-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Sodium Tracker App\",\n      \"ranking\" : 3,\n      \"ratingCount\" : 0,\n      \"subtitle\" : \"Log Your Salt Intake\"\n    },\n    {\n      \"appStoreId\" : \"468522474\",\n      \"averageRating\" : 0,\n      \"bundleId\" : \"com.us.billjones.sodiumtracker\",\n      \"developer\" : \"Three Labs Technology Solutions LLC\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple114\\/v4\\/3d\\/24\\/cf\\/3d24cf6a-b81f-6df9-27d2-0a9200b99acd\\/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png\\/80x0w.webp\",\n      \"name\" : \"Sodium Tracker\",\n      \"ranking\" : 4,\n      \"ratingCount\" : 0,\n      \"subtitle\" : \"Track your daily sodium intake\"\n    },\n    {\n      \"appStoreId\" : \"6446066256\",\n      \"averageRating\" : 4.5,\n      \"bundleId\" : \"com.abhi.sodium.tracker\",\n      \"developer\" : \"Abhinav Khanger\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/5d\\/db\\/9d\\/5ddb9dcb-56e3-2672-329a-9df274f8c5bf\\/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Sodium Tracker°\",\n      \"ranking\" : 5,\n      \"ratingCount\" : 2,\n      \"subtitle\" : \"Salt Counter & Track Intake\"\n    },\n    {\n      \"appStoreId\" : \"6747937033\",\n      \"averageRating\" : 0,\n      \"bundleId\" : \"com.invictus.sodiumtracker\",\n      \"developer\" : \"Ajay Singh\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/53\\/e1\\/7e\\/53e17e10-6a37-6ce6-76c5-c6a82ba6ed90\\/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Sodium Tracker - My Salt Log\",\n      \"ranking\" : 6,\n      \"ratingCount\" : 0,\n      \"subtitle\" : \"Sodium & Blood Pressure Track\"\n    },\n    {\n      \"appStoreId\" : \"1479461686\",\n      \"averageRating\" : 4.8,\n      \"bundleId\" : \"com.algebraiclabs.foodnoms\",\n      \"developer\" : \"Algebraic Labs, LLC\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/60\\/30\\/51\\/603051bb-111e-c391-dd5f-fc7165876912\\/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Foodnoms Macro Protein Tracker\",\n      \"ranking\" : 7,\n      \"ratingCount\" : 43,\n      \"subtitle\" : \"Nutrition & Calorie Counter\"\n    },\n    {\n      \"appStoreId\" : \"6446709946\",\n      \"averageRating\" : 0,\n      \"bundleId\" : \"com.kyubid.apps.sodiumtracker\",\n      \"developer\" : \"KyuBid Ltd\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/cf\\/89\\/ee\\/cf89ee27-082c-8955-d034-5ecd68794c43\\/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Sodium Tracker for Dash diet\",\n      \"ranking\" : 8,\n      \"ratingCount\" : 0,\n      \"subtitle\" : \"Track Salt Intake and Counter\"\n    },\n    {\n      \"appStoreId\" : \"6740041173\",\n      \"averageRating\" : 0,\n      \"bundleId\" : \"com.tadevv.SaltScan\",\n      \"developer\" : \"Achraf Trabelsi\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/da\\/b0\\/30\\/dab030e0-7bd3-6b93-7532-1558044b2146\\/AppIcon-0-0-1x_U007epad-0-1-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Salt Scan: Salt Intake Tracker\",\n      \"ranking\" : 9,\n      \"ratingCount\" : 0,\n      \"subtitle\" : \"Food scanner & traffic lights\"\n    },\n    {\n      \"appStoreId\" : \"341232718\",\n      \"averageRating\" : 4.7,\n      \"bundleId\" : \"com.myfitnesspal.mfp\",\n      \"developer\" : \"MyFitnessPal, Inc.\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/3b\\/61\\/d2\\/3b61d26f-219e-5e25-429e-b44d38b63c68\\/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png\\/80x0w.webp\",\n      \"name\" : \"MyFitnessPal: Calorie Counter\",\n      \"ranking\" : 10,\n      \"ratingCount\" : 32773,\n      \"subtitle\" : \"AI Nutrition & Macros Tracker\"\n    }\n  ],\n  \"keyword\" : \"salt tracker\",\n  \"platform\" : \"iphone\",\n  \"store\" : \"in\",\n  \"totalResults\" : 50,\n  \"yourAppRanking\" : 17\n}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "store": "in",
+    "keyword": "नमक ट्रैकर",
+    "checked_at": "2026-10-08T10:51:42.363Z",
+    "tool": "mcp__astro__search_app_store",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"apps\" : [\n    {\n      \"appStoreId\" : \"6800595930\",\n      \"averageRating\" : 0,\n      \"bundleId\" : \"com.kabi.sodium.tracker.Sodium-Tracker\",\n      \"developer\" : \"Tinker Smith Studio\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple221\\/v4\\/c7\\/ec\\/06\\/c7ec06b2-afbc-1dae-47de-76d8e1fc2f86\\/AppIcon-0-0-1x_U007epad-0-1-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Sodium Tracker: Pinch Daily\",\n      \"ranking\" : 1,\n      \"ratingCount\" : 0,\n      \"subtitle\" : \"Salt Counter & Intake\"\n    },\n    {\n      \"appStoreId\" : \"6765759167\",\n      \"averageRating\" : 5,\n      \"bundleId\" : \"app.rork.4udc0dx8li49jhz0q5ien\",\n      \"developer\" : \"Remy Noel\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple221\\/v4\\/59\\/18\\/eb\\/5918ebb7-fb21-c635-b57e-10a0c2c6aba3\\/AppIcon-0-0-1x_U007epad-0-1-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Sodium Tracker & Label Scanner\",\n      \"ranking\" : 2,\n      \"ratingCount\" : 1,\n      \"subtitle\" : \"AI meal planner with POTS mode\"\n    },\n    {\n      \"appStoreId\" : \"6800439916\",\n      \"averageRating\" : 0,\n      \"bundleId\" : \"com.syanac.halite\",\n      \"developer\" : \"Anthony Chui\",\n      \"genre\" : \"Health & Fitness\",\n      \"iconUrl\" : \"https:\\/\\/is1-ssl.mzstatic.com\\/image\\/thumb\\/Purple211\\/v4\\/97\\/c4\\/af\\/97c4afd8-41c5-0778-8ffc-1dccb3f33959\\/AppIcon-0-0-1x_U007epad-0-1-85-220.png\\/80x0w.webp\",\n      \"name\" : \"Sodium Tracker: Salt Counter\",\n      \"ranking\" : 3,\n      \"ratingCount\" : 0,\n      \"subtitle\" : \"Daily Food Log & Diet Goals\"\n    }\n  ],\n  \"keyword\" : \"नमक ट्रैकर\",\n  \"platform\" : \"iphone\",\n  \"store\" : \"in\",\n  \"totalResults\" : 3,\n  \"yourAppRanking\" : 1\n}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "store": "in",
+    "keyword": "உப்பு",
+    "checked_at": "2026-10-08T10:51:42.363Z",
+    "tool": "mcp__astro__search_app_store",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"apps\" : [\n\n  ],\n  \"keyword\" : \"உப்பு\",\n  \"platform\" : \"iphone\",\n  \"store\" : \"in\",\n  \"totalResults\" : 0\n}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "store": "in",
+    "keyword": "సోడియం",
+    "checked_at": "2026-10-08T10:51:42.363Z",
+    "tool": "mcp__astro__search_app_store",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"apps\" : [\n\n  ],\n  \"keyword\" : \"సోడియం\",\n  \"platform\" : \"iphone\",\n  \"store\" : \"in\",\n  \"totalResults\" : 0\n}"
+        }
+      ],
+      "isError": false
+    }
+  }
+]

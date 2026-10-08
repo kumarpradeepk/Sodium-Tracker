@@ -205,12 +205,12 @@ enum NudgeEngine {
         let left = c.consumed > 0 ? max(c.remaining, 0) : c.goal
         return [
             Preview(
-                text: "\"\(PinchFormat.mg(left)) mg left — plenty for dinner.\"",
+                text: PinchLocalization.format("\"{0} mg left — plenty for dinner.\"", [String(describing: PinchFormat.mg(left))]),
                 time: c.dinnerTime,
                 isStreak: false
             ),
             Preview(
-                text: "\"Day \(c.streak + 1) under budget — streak safe.\"",
+                text: PinchLocalization.format("\"Day {0} under budget — streak safe.\"", [String(describing: c.streak + 1)]),
                 time: c.lunchTime,
                 isStreak: true
             ),
@@ -228,10 +228,9 @@ enum NudgeEngine {
             return Nudge(
                 segment: segment,
                 title: "Today resets at breakfast",
-                body: "A fresh \(goal) mg just landed. Pinch can tell you before the first "
-                    + "bite — so the day gets planned, not patched at 9 PM.",
+                body: PinchLocalization.format("A fresh {0} mg just landed. Pinch can tell you before the first bite — so the day gets planned, not patched at 9 PM.", [goal]),
                 previewTime: c.breakfastTime,
-                previewBody: "Morning! Full jar — \(goal) mg. Plan the day before the first bite.",
+                previewBody: PinchLocalization.format("Morning! Full jar — {0} mg. Plan the day before the first bite.", [String(describing: goal)]),
                 primary: "Brief me each morning",
                 caption: "One line with breakfast. That's the whole deal.",
                 dismiss: "Not now"
@@ -241,39 +240,33 @@ enum NudgeEngine {
             return Nudge(
                 segment: segment,
                 title: "Half the day's salt lands at lunch",
-                body: "A nudge at noon catches it while the order's still open — "
-                    + "not after the fries.",
+                body: "A nudge at noon catches it while the order's still open — not after the fries.",
                 previewTime: c.lunchTime,
-                previewBody: "\(left) mg left. Still room for a decent lunch.",
+                previewBody: PinchLocalization.format("{0} mg left. Still room for a decent lunch.", [String(describing: left)]),
                 primary: "Nudge me at noon",
                 caption: "One check-in at lunch. Off anytime.",
                 dismiss: "Dismiss"
             )
 
         case .dinner:
-            let streakLine = c.streak > 0
-                ? " — the difference between day \(c.streak + 1) and starting over"
-                : ""
             return Nudge(
                 segment: segment,
                 title: "Dinner decides the day",
-                body: "You're walking into it with \(left) mg. A check-in right now — "
-                    + "while you're choosing what to cook\(streakLine).",
+                body: PinchLocalization.format("You have {0} mg left. A check-in can help you log dinner while choosing what to cook.", [left]),
                 previewTime: c.dinnerTime,
-                previewBody: "Dinner soon — \(left) mg in the jar. Want a low-salt idea?",
+                previewBody: PinchLocalization.format("Dinner soon — {0} mg in the jar. Want a low-salt idea?", [String(describing: left)]),
                 primary: "Remind me at dinnertime",
-                caption: "One check-in at \(c.dinnerTime). Silent a minute later.",
+                caption: PinchLocalization.format("One check-in at {0}. Silent a minute later.", [String(describing: c.dinnerTime)]),
                 dismiss: "Tonight I've got it"
             )
 
         case .streak:
             return Nudge(
                 segment: segment,
-                title: "Day \(c.streak + 1) starts tomorrow",
-                body: "Streaks don't die of craving — they die of forgetting. Pinch "
-                    + "remembers at \(c.dinnerTime), so every day closes logged.",
+                title: PinchLocalization.format("Day {0} starts tomorrow", [String(describing: c.streak + 1)]),
+                body: PinchLocalization.format("Pinch can remind you at {0} to log your meals. Keep a record at your own pace.", [c.dinnerTime]),
                 previewTime: c.dinnerTime,
-                previewBody: "\(c.streak) days under budget — longest run yet. Log today to keep it.",
+                previewBody: PinchLocalization.format("{0} days under budget — longest run yet. Log today to keep it.", [String(describing: c.streak)]),
                 primary: "Protect the streak",
                 caption: "A whisper only on days you haven't logged.",
                 dismiss: "I'll remember"

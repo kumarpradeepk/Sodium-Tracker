@@ -41,8 +41,7 @@ struct NotificationsOnboardingScreen: View {
                 .foregroundStyle(s.ink)
                 .padding(.top, 16)
 
-            PinchText("Pinch checks in around meals so dinner doesn't spend what breakfast "
-                 + "forgot. You stay under budget; he stays quiet the rest of the day.")
+            PinchText("Pinch checks in around meals so dinner doesn't spend what breakfast forgot. You stay under budget; he stays quiet the rest of the day.")
                 .salty(17, .regular)
                 .foregroundStyle(s.ink2)
                 .lineSpacing(17 * 0.5)
@@ -99,7 +98,7 @@ struct NotificationsOnboardingScreen: View {
                     .saltyBellShadow(s)
             }
             .buttonStyle(.saltyPress(scale: 0.9))
-            .accessibilityLabel("Back")
+            .accessibilityLabel(PinchLocalization.resolve("Back"))
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
@@ -110,7 +109,7 @@ struct NotificationsOnboardingScreen: View {
             }
             .frame(height: 6)
 
-            PinchText("\(step) OF \(totalSteps)")
+            PinchText(PinchLocalization.format("{0} OF {1}", [String(describing: step), String(describing: totalSteps)]))
                 .salty(12, .bold, tracking: 0.1)
                 .foregroundStyle(s.ink3)
                 .fixedSize()

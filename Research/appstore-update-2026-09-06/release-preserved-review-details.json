@@ -1,0 +1,30 @@
+{
+  "data": {
+    "type": "appStoreReviewDetails",
+    "id": "1b356265-244a-4313-aec7-367b6d916be1",
+    "attributes": {
+      "contactFirstName": "Pradeep",
+      "contactLastName": "Kumar",
+      "contactPhone": "+918682007137",
+      "contactEmail": "tinkersmithstudio@gmail.com",
+      "demoAccountName": null,
+      "demoAccountPassword": null,
+      "demoAccountRequired": false,
+      "notes": "Hello App Review Team,\n\nThank you for the feedback. Both issues are addressed in build 4.\n\nGUIDELINE 2.3.7\nWe replaced every screenshot set in all nine configured localizations: English (U.S.), English (Australia), English (Canada), English (U.K.), Dutch, French, German, Italian, and Japanese. Each localization now contains five feature-only screenshots with no app/service price, “free,” discount, or equivalent localized claims.\n\nGUIDELINE 3.1.2(c)\nThe Pinch Plus purchase screen now displays functional Privacy Policy and Terms of Use links directly beneath the purchase button, together with Restore Purchases and the automatic-renewal disclosure. The subscription plans show their title, duration, and localized App Store price.\n\nReview path:\n1. Launch Sodium Tracker and complete or skip onboarding.\n2. Open Settings.\n3. Tap “See what’s inside” in the Pinch Plus card.\n4. The Privacy Policy and Terms of Use links are visible at the bottom of the paywall.\n\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html\nTerms of Use: https://tinkersmithstudio.com/pinch/terms.html\n\nThe attached recording was captured from a freshly erased iPad Air 11-inch (M3) simulator and shows the corrected build 4 flow and legal links. No account or sign-in is required."
+    },
+    "relationships": {
+      "appStoreReviewAttachments": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/1b356265-244a-4313-aec7-367b6d916be1/relationships/appStoreReviewAttachments",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/1b356265-244a-4313-aec7-367b6d916be1/appStoreReviewAttachments"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/1b356265-244a-4313-aec7-367b6d916be1"
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersions/1f016dcd-1be3-451c-b89a-9c08a242288f/appStoreReviewDetail"
+  }
+}

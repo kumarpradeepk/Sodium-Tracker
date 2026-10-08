@@ -16,12 +16,22 @@ private enum PinchWidgetStore {
         let remaining: Int
         let streak: Int
         let isPremium: Bool
+        var capturedAt: Date? = nil
+        var lastLoggedDay: Date? = nil
     }
 
     static var current: Snapshot {
         guard let data = UserDefaults(suiteName: appGroup)?.data(forKey: key),
               let snapshot = try? JSONDecoder().decode(Snapshot.self, from: data) else {
             return Snapshot(consumed: 0, goal: 0, remaining: 0, streak: 0, isPremium: false)
+        }
+        let calendar = Calendar.current
+        guard let captured = snapshot.capturedAt, calendar.isDateInToday(captured) else {
+            let loggedYesterday = snapshot.lastLoggedDay.map { calendar.isDateInYesterday($0) } ?? false
+            return Snapshot(consumed: 0, goal: snapshot.goal, remaining: snapshot.goal,
+                            streak: loggedYesterday ? snapshot.streak : 0,
+                            isPremium: snapshot.isPremium, capturedAt: .now,
+                            lastLoggedDay: snapshot.lastLoggedDay)
         }
         return snapshot
     }
@@ -51,24 +61,14 @@ private struct PinchWidgetProvider: TimelineProvider {
 }
 
 private enum PinchWidgetCopy {
-    static var language: String { Locale.current.language.languageCode?.identifier ?? "en" }
-    static func localized(_ english: String, de: String, ja: String) -> String {
-        switch language {
-        case "de": return de
-        case "ja": return ja
-        default: return english
-        }
-    }
-    static var plus: String { localized("Pinch Plus", de: "Pinch Plus", ja: "Pinch Plus") }
-    static var unlock: String { localized("Unlock widgets", de: "Widgets freischalten", ja: "ウィジェットを解除") }
-    static var today: String { localized("Today", de: "Heute", ja: "今日") }
-    static var left: String { localized("left", de: "übrig", ja: "残り") }
-    static var over: String { localized("over", de: "über", ja: "超過") }
+    static var plus: String { PinchLocalization.resolve("Pinch Plus") }
+    static var unlock: String { PinchLocalization.resolve("Unlock widgets") }
+    static var today: String { PinchLocalization.resolve("Today") }
     static func of(_ goal: Int) -> String {
-        localized("of \(goal) mg", de: "von \(goal) mg", ja: "\(goal) mg中")
+        PinchLocalization.format("of {0} mg", [PinchLocalization.number(goal)])
     }
     static func streak(_ value: Int) -> String {
-        localized("✦ \(value)-day streak", de: "✦ \(value)-Tage-Serie", ja: "✦ \(value)日連続")
+        "✦ " + PinchLocalization.format("{0}-day streak", [PinchLocalization.number(value)])
     }
 }
 
@@ -83,7 +83,7 @@ private struct PinchWidgetView: View {
     }
     private var remainingText: String {
         let value = abs(snapshot.remaining)
-        return "\(value.formatted()) mg \(snapshot.remaining >= 0 ? PinchWidgetCopy.left : PinchWidgetCopy.over)"
+        return PinchLocalization.format(snapshot.remaining >= 0 ? "{0} mg left" : "{0} mg over", [PinchLocalization.number(value)])
     }
 
     var body: some View {
@@ -106,7 +106,7 @@ private struct PinchWidgetView: View {
             VStack(alignment: .leading, spacing: 6) {
                 header
                 Spacer(minLength: 2)
-                Text(snapshot.consumed.formatted())
+                Text(PinchLocalization.number(snapshot.consumed))
                     .font(.system(size: 32, weight: .heavy, design: .rounded))
                     .foregroundStyle(Color(red: 0.08, green: 0.16, blue: 0.24))
                     .minimumScaleFactor(0.7)
@@ -123,7 +123,7 @@ private struct PinchWidgetView: View {
                     .frame(width: 82, height: 82)
                 VStack(alignment: .leading, spacing: 5) {
                     header
-                    Text(snapshot.consumed.formatted())
+                    Text(PinchLocalization.number(snapshot.consumed))
                         .font(.system(size: 30, weight: .heavy, design: .rounded))
                         .foregroundStyle(Color(red: 0.08, green: 0.16, blue: 0.24))
                     Text(PinchWidgetCopy.of(snapshot.goal))
@@ -140,7 +140,7 @@ private struct PinchWidgetView: View {
                 HStack(spacing: 16) {
                     ring.frame(width: 118, height: 118)
                     VStack(alignment: .leading, spacing: 5) {
-                        Text(snapshot.consumed.formatted())
+                        Text(PinchLocalization.number(snapshot.consumed))
                             .font(.system(size: 42, weight: .heavy, design: .rounded))
                             .foregroundStyle(Color(red: 0.08, green: 0.16, blue: 0.24))
                         Text(PinchWidgetCopy.of(snapshot.goal))
@@ -151,7 +151,7 @@ private struct PinchWidgetView: View {
                             .foregroundStyle(Color(red: 0.13, green: 0.47, blue: 0.73))
                     }
                 }
-                Text("Pinch keeps your sodium count close.")
+                Text(verbatim: PinchLocalization.resolve("Pinch keeps your sodium count close."))
                     .font(.system(size: 13, weight: .medium, design: .rounded))
                     .foregroundStyle(.secondary)
             }
@@ -210,8 +210,8 @@ struct PinchWidgets: Widget {
         StaticConfiguration(kind: kind, provider: PinchWidgetProvider()) { entry in
             PinchWidgetView(entry: entry)
         }
-        .configurationDisplayName("Pinch sodium widget")
-        .description("A calm glance at your daily sodium budget. Pinch Plus required.")
+        .configurationDisplayName(PinchLocalization.resolve("Pinch sodium widget"))
+        .description(PinchLocalization.resolve("A calm glance at your daily sodium budget. Pinch Plus required."))
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

@@ -1,0 +1,53 @@
+{
+  "appInfo": {
+    "type": "appInfoLocalizations",
+    "id": "2b87bd57-e581-4e39-b8b4-4b8e24e3c624",
+    "attributes": {
+      "locale": "it",
+      "name": "Monitor Sodio: Pinch",
+      "subtitle": "Dieta iposodica e diario",
+      "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/2b87bd57-e581-4e39-b8b4-4b8e24e3c624"
+    }
+  },
+  "versionLocalization": {
+    "type": "appStoreVersionLocalizations",
+    "id": "65014269-bcf1-4db5-abd4-eefd8b0cd6ab",
+    "attributes": {
+      "description": "Il tuo sodio, un giorno alla volta. Pinch ti aiuta a registrare i pasti e a vedere quanto resta del tuo limite giornaliero di sodio.\n\nLA TUA GIORNATA A COLPO D’OCCHIO\n• Imposta un obiettivo e registra le quantità in milligrammi.\n• Ritrova i preferiti e gli alimenti registrati più spesso.\n• Confronta gli alimenti con il limite residuo.\n• Scegli promemoria facoltativi per i pasti.\n• Consulta tendenze settimanali e serie di giorni registrati.\n• Converti sale e sodio.\n\nPINCH PLUS\nL’abbonamento include ricerca e registrazione degli alimenti FatSecret, tendenze e calendario su quattro settimane, alimenti personalizzati illimitati, esportazione CSV e widget. Prezzi ed eventuali offerte introduttive idonee sono indicati prima dell’acquisto. L’abbonamento si rinnova automaticamente salvo disdetta nelle impostazioni dell’Apple Account.\n\nI risultati riflettono ciò che registri; i pasti non registrati sono esclusi. Dati alimentari di FatSecret, dove disponibili. Pinch non offre consulenza medica. Chiedi a un professionista sanitario quale obiettivo di sodio è adatto a te.\n\nCondizioni d’uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "it",
+      "keywords": "sale,alimentare,pasti,apporto,nutrizione,registro,promemoria,abitudini,dash",
+      "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+      "promotionalText": null,
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": null
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab"
+    }
+  }
+}

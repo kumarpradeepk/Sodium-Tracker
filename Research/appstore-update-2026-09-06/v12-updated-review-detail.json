@@ -1,0 +1,30 @@
+{
+  "data": {
+    "type": "appStoreReviewDetails",
+    "id": "a845881a-62ba-4e38-b407-f93b4b73aada",
+    "attributes": {
+      "contactFirstName": "Pradeep",
+      "contactLastName": "Kumar",
+      "contactPhone": "+918682007137",
+      "contactEmail": "tinkersmithstudio@gmail.com",
+      "demoAccountName": null,
+      "demoAccountPassword": null,
+      "demoAccountRequired": false,
+      "notes": "Version 1.2, build 8.\n\nNo account or sign-in is required. Complete onboarding to access the app.\n\nTo review Pinch Plus, open Settings and select the Pinch Plus card. The paywall includes subscription options, Restore Purchases, Privacy Policy and Terms of Use links.\n\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html\nTerms of Use: https://tinkersmithstudio.com/pinch/terms.html"
+    },
+    "relationships": {
+      "appStoreReviewAttachments": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/a845881a-62ba-4e38-b407-f93b4b73aada/relationships/appStoreReviewAttachments",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/a845881a-62ba-4e38-b407-f93b4b73aada/appStoreReviewAttachments"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/a845881a-62ba-4e38-b407-f93b4b73aada"
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreReviewDetails/a845881a-62ba-4e38-b407-f93b4b73aada"
+  }
+}

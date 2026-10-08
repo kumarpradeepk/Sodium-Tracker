@@ -10,12 +10,91 @@ import Foundation
 import SwiftUI
 @testable import Sodium_Tracker
 
+@MainActor
+struct FoodRecommendationTests {
+    @Test func earnedStreakSurvivesALaterGap() {
+        let today = Calendar.current.startOfDay(for: .now)
+        let logs = (-12 ... -10).map { offset in
+            LogEntry(foodID: "egg", meal: .breakfast, loggedAt: DayEngine.day(offset: offset, from: today))
+        }
+        let badges = BadgeEngine.badges(entries: logs, customFoods: [], lookupCount: 0,
+                                       sleuthEarnedAt: nil, streak: 0, today: today)
+        #expect(badges.first { $0.id == "hat" }?.earned == true)
+        #expect(badges.first { $0.id == "week" }?.earned == false)
+    }
+    @Test func emptyAndSparseWeeksDoNotInventSuccess() {
+        let today = Date.now
+        let empty = DayEngine.week([], customFoods: [], goal: 2300, today: today)
+        #expect(empty.loggedDayCount == 0)
+        #expect(empty.underCount == 0)
+        #expect(empty.lightestDate == nil)
+        let logs = [LogEntry(adhocName: "Lunch", adhocMg: 400, meal: .lunch, loggedAt: today)]
+        let sparse = DayEngine.week(logs, customFoods: [], goal: 2300, today: today)
+        #expect(sparse.loggedDayCount == 1)
+        #expect(sparse.underCount == 1)
+        #expect(sparse.average == 400)
+        #expect(sparse.lightestDate == nil)
+    }
+
+    @Test func unsafeNutritionNumbersAreRejected() throws {
+        #expect(SodiumConverter.sodiumMilligrams(from: String(Double(Int.max)), unit: .sodiumMilligrams) == nil)
+        for value: Any in ["NaN", "Infinity", -1, 1e30, NSNull(), ""] {
+            #expect(FatSecretParser.nonnegativeInt(value) == nil)
+        }
+        #expect(FatSecretParser.nonnegativeInt("0") == 0)
+        #expect(FatSecretParser.nonnegativeInt("12.6") == 13)
+        let data = Data(#"{"name":"Water","sodiumMg":0}"#.utf8)
+        #expect(try FatSecretProxyParser.foodDetail(from: data).sodiumMg == 0)
+    }
+    @Test func favoritesLeadFrequencyAndDeduplicate() {
+        let food = CustomFood(id: "my-soup", name: "My soup", serving: "1 bowl", mg: 420)
+        let logs = (0..<5).map { _ in LogEntry(foodID: "ram", meal: .lunch) }
+        let favorites = [Favorite(foodID: food.id), Favorite(foodID: "yog")]
+        let result = FoodRecommendations.foods(entries: logs, favorites: favorites, customFoods: [food])
+        #expect(Set(result.prefix(2).map(\.id)) == Set(["my-soup", "yog"]))
+        #expect(result[2].id == "ram")
+        #expect(Set(result.map(\.id)).count == result.count)
+        #expect(result.first(where: { $0.id == food.id })?.mg == 420)
+    }
+
+    @Test func frequentFoodsBeatOneRecentLogAndUnpinRecalculates() {
+        let logs = [LogEntry(foodID: "ram", meal: .lunch, loggedAt: .distantPast),
+                    LogEntry(foodID: "ram", meal: .lunch, loggedAt: .distantPast),
+                    LogEntry(foodID: "egg", meal: .lunch)]
+        let favorite = Favorite(foodID: "egg")
+        #expect(FoodRecommendations.foods(entries: logs, favorites: [favorite], customFoods: []).first?.id == "egg")
+        #expect(FoodRecommendations.foods(entries: logs, favorites: [], customFoods: []).first?.id == "ram")
+    }
+
+    @Test func quickLoggingPreservesFoodIdentityAndServing() {
+        let food = FoodItem.builtIn("yog")!
+        let stamp = Date(timeIntervalSince1970: 1000)
+        let entry = FoodRecommendations.entry(for: food, loggedAt: stamp)
+        #expect(entry.foodID == food.id)
+        #expect(entry.adhocServing == food.serving)
+        #expect(entry.loggedAt == stamp)
+        #expect(EntryResolver.resolve(entry, customFoods: []).totalMg == food.mg)
+    }
+
+    @Test func repeatedManualLogsMergeWithLaterFavorite() {
+        let logs = [LogEntry(adhocName: "My lunch", adhocMg: 210, meal: .lunch),
+                    LogEntry(adhocName: " my lunch ", adhocMg: 210, meal: .lunch)]
+        let food = CustomFood(id: "lunch", name: "My lunch", serving: "1 serving", mg: 210)
+        let result = FoodRecommendations.foods(entries: logs, favorites: [Favorite(foodID: food.id)], customFoods: [food])
+        #expect(result.first?.id == "lunch")
+        #expect(result.filter { $0.mg == 210 }.count == 1)
+        let manualOnly = FoodRecommendations.foods(entries: logs, favorites: [], customFoods: [])
+        #expect(manualOnly.filter { $0.mg == 210 }.count == 1)
+        #expect(FoodRecommendations.entry(for: manualOnly[0], loggedAt: .now).foodID == nil)
+    }
+}
+
 struct LocalizationParityTests {
     @Test func resolvesLiteralAndRuntimeCopy() {
         #expect(PinchLocalization.resolve("Today", language: "de") == "Heute")
         #expect(PinchLocalization.resolve("Today", language: "ja") == "今日")
-        #expect(PinchLocalization.resolve("3-day streak", language: "de") == "3-Tage-Serie")
-        #expect(PinchLocalization.resolve("500 mg left", language: "ja") == "残り 500 mg")
+        #expect(PinchLocalization.format("{0}-day streak", ["3"], language: "de") == "Serie: 3 Tage")
+        #expect(PinchLocalization.format("{0} mg left", ["500"], language: "ja") == "残り500 mg")
         #expect(PinchLocalization.resolve("Today", language: "en") == "Today")
     }
 }
@@ -486,7 +565,7 @@ struct BadgeTests {
         #expect(hat?.earnedDate.map { Calendar.current.isDate($0, inSameDayAs: expected) } == true)
     }
 
-    @Test func coolCucumberCountsLightDays() {
+    @Test func coolCucumberCountsLoggingDaysRegardlessOfSodium() {
         // 3 light days (yog 65), 2 heavy (ram 1560 → still under 1500? no: 1560 > 1500)
         var entries: [LogEntry] = []
         for offset in [0, -1, -2] {
@@ -502,8 +581,8 @@ struct BadgeTests {
             lookupCount: 0, sleuthEarnedAt: nil, streak: 5
         )
         let cool = badges.first { $0.id == "cool" }
-        #expect(cool?.earned == false)
-        #expect(cool?.progressNote == "3 of 5 so far")
+        #expect(cool?.earned == true)
+        #expect(cool?.progressNote == nil)
     }
 
     @Test func sleuthProgressCapsAt25() {

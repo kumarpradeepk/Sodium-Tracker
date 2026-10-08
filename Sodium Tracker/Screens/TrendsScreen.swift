@@ -35,6 +35,10 @@ struct TrendsScreen: View {
                         .padding(.top, 14)
                     chartCard
                         .padding(.top, 12)
+                    PinchText("Based on logged foods. Unlogged meals aren’t included.")
+                        .pinchBody(11.5)
+                        .foregroundStyle(p.ink3)
+                        .padding(.top, 10)
                     statQuad
                         .padding(.top, 12)
                     SectionKicker(text: "DAY BY DAY: TAP TO REVISIT")
@@ -58,6 +62,7 @@ struct TrendsScreen: View {
             .padding(.bottom, 150)
         }
         .scrollIndicators(.hidden)
+        .clipped()
     }
 
     // MARK: - Header
@@ -142,8 +147,10 @@ struct TrendsScreen: View {
                 // Legend — above the plot, never inside it
                 HStack(spacing: 14) {
                     Spacer()
-                    legendSwatch(dash: [4, 3], label: "GOAL \(PinchFormat.mg(goal))")
-                    legendSwatch(dash: [1.5, 2.5], label: "AVG \(PinchFormat.mg(week.average))", dotted: true)
+                    legendSwatch(dash: [4, 3], label: PinchLocalization.format("GOAL {0}", [String(describing: PinchFormat.mg(goal))]))
+                    if week.loggedDayCount > 0 {
+                        legendSwatch(dash: [1.5, 2.5], label: PinchLocalization.format("AVG {0}", [String(describing: PinchFormat.mg(week.average))]), dotted: true)
+                    }
                 }
                 .padding(.bottom, 10)
 
@@ -153,13 +160,16 @@ struct TrendsScreen: View {
                     ZStack(alignment: .bottomLeading) {
                         line(dash: [4, 3], color: p.grain)
                             .offset(y: -h * CGFloat(Double(goal) / maxBar))
-                        line(dash: [1.5, 2.5], color: p.ink3.opacity(0.5))
-                            .offset(y: -h * CGFloat(week.average / maxBar))
+                        if week.loggedDayCount > 0 {
+                            line(dash: [1.5, 2.5], color: p.ink3.opacity(0.5))
+                                .offset(y: -h * CGFloat(week.average / maxBar))
+                        }
 
                         HStack(alignment: .bottom, spacing: 9) {
                             ForEach(week.dayTotals.indices, id: \.self) { i in
                                 bar(
                                     mg: week.dayTotals[i],
+                                    logged: week.loggedDays[i],
                                     maxBar: maxBar,
                                     plotHeight: h,
                                     isLive: ui.weekSel == 0 && i == week.dayTotals.count - 1
@@ -207,20 +217,21 @@ struct TrendsScreen: View {
             .frame(maxWidth: .infinity)
     }
 
-    private func bar(mg: Int, maxBar: Double, plotHeight: CGFloat, isLive: Bool) -> some View {
+    private func bar(mg: Int, logged: Bool, maxBar: Double, plotHeight: CGFloat, isLive: Bool) -> some View {
         let over = mg > goal
         let height = max(3, plotHeight * CGFloat(Double(mg) / maxBar))
         return VStack(spacing: 5) {
-            PinchText(isLive ? "now" : PinchFormat.thousands(Double(mg)))
+            PinchText(!logged ? "—" : isLive ? "now" : PinchFormat.thousands(Double(mg)))
                 .pinchBody(9, .semibold)
                 .monospacedDigit()
                 .foregroundStyle(isLive ? p.brand : p.ink3)
             RoundedRectangle(cornerRadius: 7, style: .continuous)
-                .fill(p.barFill(over: over, live: isLive).gradient)
+                .fill(logged ? p.barFill(over: over, live: isLive).gradient : p.barFill(over: false, live: false).gradient)
+                .opacity(logged ? 1 : 0)
                 .frame(maxWidth: 30)
                 .frame(height: height)
                 .overlay {
-                    if isLive {
+                    if isLive && logged {
                         RoundedRectangle(cornerRadius: 7, style: .continuous)
                             .strokeBorder(p.bg, lineWidth: 2.5)
                             .padding(-2.5)
@@ -237,14 +248,17 @@ struct TrendsScreen: View {
     }
 
     private func dayLetter(_ date: Date) -> String {
-        let weekday = Calendar.current.component(.weekday, from: date)
-        return ["S", "M", "T", "W", "T", "F", "S"][weekday - 1]
+        let formatter = DateFormatter()
+        formatter.locale = PinchFormat.locale
+        formatter.dateFormat = "EEEEE"
+        return formatter.string(from: date)
     }
 
     private var statQuad: some View {
         let this = thisWeek
         let last = lastWeek
-        let delta = DayEngine.weekDelta(thisAvg: this.average, lastAvg: last.average)
+        let delta = this.loggedDayCount > 0 && last.loggedDayCount > 0
+            ? DayEngine.weekDelta(thisAvg: this.average, lastAvg: last.average) : nil
         let deltaLabel: String = {
             guard let delta else { return "—" }
             if delta > 0 { return "+\(delta)%" }
@@ -255,7 +269,7 @@ struct TrendsScreen: View {
 
         return VStack(spacing: 10) {
             HStack(spacing: 10) {
-                StatCard(value: PinchFormat.mg(week.average), caption: "average mg per day")
+                StatCard(value: week.loggedDayCount == 0 ? "—" : PinchFormat.mg(week.average), caption: "average per logged day")
                 StatCard(
                     value: deltaLabel,
                     caption: "this week vs last",
@@ -263,7 +277,7 @@ struct TrendsScreen: View {
                 )
             }
             HStack(spacing: 10) {
-                StatCard(value: "\(week.underCount) of 7", caption: "days under budget")
+                StatCard(value: PinchLocalization.format("{0} of {1}", [String(describing: week.underCount), String(describing: week.loggedDayCount)]), caption: "logged days under budget")
                 StatCard(
                     value: week.lightestDate.map { shortWeekday($0) } ?? "—",
                     caption: "lightest day"
@@ -308,7 +322,7 @@ struct TrendsScreen: View {
                             }
                             .frame(height: 5)
 
-                            PinchText(PinchFormat.mg(mg))
+                            PinchText(entries.contains { Calendar.current.isDate($0.loggedAt, inSameDayAs: date) } ? PinchFormat.mg(mg) : "—")
                                 .pinchBody(12.5, .bold)
                                 .monospacedDigit()
                                 .foregroundStyle(over ? p.coral : p.ink2)
@@ -342,20 +356,17 @@ struct TrendsScreen: View {
 
     // MARK: - Month mode
 
-    /// Grid ends on the Saturday closing this week so columns line up S–S;
-    /// spans 4 rows of 7.
+    /// Four rows ending on the region's last weekday.
     private var monthCells: [MonthCell] {
         let calendar = Calendar.current
         let todayStart = calendar.startOfDay(for: .now)
-        let weekday = calendar.component(.weekday, from: todayStart)  // 1 = Sunday
-        let daysToSaturday = 7 - weekday
-        let end = calendar.date(byAdding: .day, value: daysToSaturday, to: todayStart) ?? todayStart
-        let trackedStart = SeedData.trackedStart()
+        let weekday = PinchFormat.weekdayColumn(for: todayStart, calendar: calendar)
+        let end = calendar.date(byAdding: .day, value: 6 - weekday, to: todayStart) ?? todayStart
 
         return (0..<28).map { i in
             let date = calendar.date(byAdding: .day, value: i - 27, to: end) ?? end
             let future = date > todayStart
-            let tracked = !future && date >= calendar.startOfDay(for: trackedStart)
+            let tracked = !future && entries.contains { calendar.isDate($0.loggedAt, inSameDayAs: date) }
             let mg = tracked ? DayEngine.total(entries, on: date, customFoods: customFoods) : 0
             return MonthCell(
                 date: date,
@@ -398,8 +409,8 @@ struct TrendsScreen: View {
                 .padding(.bottom, 12)
 
                 LazyVGrid(columns: columns, spacing: 4) {
-                    ForEach(["S", "M", "T", "W", "T", "F", "S"].indices, id: \.self) { i in
-                        PinchText(["S", "M", "T", "W", "T", "F", "S"][i])
+                    ForEach(PinchFormat.weekdaySymbols.indices, id: \.self) { i in
+                        PinchText(dayLetter(cells[i].date))
                             .pinchBody(9.5, .bold)
                             .foregroundStyle(p.ink3)
                     }
@@ -421,7 +432,7 @@ struct TrendsScreen: View {
                         Circle()
                             .strokeBorder(p.grain, style: StrokeStyle(lineWidth: 1.5, dash: [2, 2]))
                             .frame(width: 8, height: 8)
-                        PinchText("before Pinch")
+                        PinchText("No logs")
                             .pinchBody(10.5)
                             .foregroundStyle(p.ink3)
                     }
@@ -488,23 +499,15 @@ struct TrendsScreen: View {
     }
 
     private var monthStats: some View {
-        let calendar = Calendar.current
-        let trackedStart = calendar.startOfDay(for: SeedData.trackedStart())
-        let todayStart = calendar.startOfDay(for: .now)
-        var totals: [Int] = []
-        var cursor = trackedStart
-        while cursor <= todayStart {
-            totals.append(DayEngine.total(entries, on: cursor, customFoods: customFoods))
-            cursor = calendar.date(byAdding: .day, value: 1, to: cursor) ?? todayStart.addingTimeInterval(1)
-        }
+        let totals = monthCells.filter(\.tracked).map(\.mg)
         let count = max(totals.count, 1)
         let avg = Double(totals.reduce(0, +)) / Double(count)
         let under = totals.filter { $0 <= goal }.count
         let over = totals.filter { $0 > goal }.count
 
         return HStack(spacing: 10) {
-            StatCard(value: PinchFormat.mg(avg), caption: "average mg per day", valueSize: 20)
-            StatCard(value: "\(under) of \(totals.count)", caption: "days under", valueSize: 20)
+            StatCard(value: totals.isEmpty ? "—" : PinchFormat.mg(avg), caption: "average per logged day", valueSize: 20)
+            StatCard(value: PinchLocalization.format("{0} of {1}", [String(describing: under), String(describing: totals.count)]), caption: "days under", valueSize: 20)
             StatCard(value: "\(over)", caption: "salty days", valueColor: p.coral, valueSize: 20)
         }
     }

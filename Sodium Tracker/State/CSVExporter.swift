@@ -26,7 +26,7 @@ enum CSVExporter {
                 entry.meal.rawValue,
                 escape(resolved.name),
                 escape(resolved.serving),
-                PinchFormat.servings(entry.servings),
+                escape(PinchFormat.servings(entry.servings)),
                 String(resolved.totalMg),
             ]
             lines.append(fields.joined(separator: ","))

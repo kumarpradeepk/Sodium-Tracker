@@ -1,0 +1,11 @@
+{
+  "data": {
+    "type": "appStoreVersionLocalizations",
+    "id": "d766588c-5ab7-4d4d-bb28-af7fcfb82bbb",
+    "attributes": {
+      "description": "Votre sodium, un jour à la fois. Pinch vous aide à noter vos repas et à voir ce qu’il reste dans votre budget quotidien de sodium.\n\nVOTRE JOURNÉE EN UN COUP D’ŒIL\n• Définissez votre objectif et saisissez les quantités en milligrammes.\n• Retrouvez vos favoris et les aliments souvent enregistrés.\n• Comparez les aliments à votre budget restant.\n• Choisissez des rappels de repas facultatifs.\n• Consultez les tendances hebdomadaires et les séries de jours enregistrés.\n• Convertissez le sel en sodium et inversement.\n\nPINCH PLUS\nUn abonnement débloque la recherche et l’enregistrement d’aliments FatSecret, les tendances et le calendrier sur quatre semaines, les aliments personnalisés illimités, l’export CSV et le widget. Les prix et toute offre de bienvenue applicable sont affichés avant l’achat. L’abonnement se renouvelle automatiquement, sauf résiliation dans les réglages de votre compte Apple.\n\nLes résultats reposent sur vos saisies : les repas non enregistrés sont exclus. Données alimentaires de FatSecret selon disponibilité. Pinch ne remplace pas un avis médical. Demandez à un professionnel de santé quel objectif vous convient.\n\nConditions d’utilisation: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nConfidentialité: https://tinkersmithstudio.com/pinch/privacy.html",
+      "keywords": "journal,alimentaire,repas,apport,nutrition,régime,pauvre,dash,habitudes,rappel",
+      "supportUrl": "https://tinkersmithstudio.com/pinch/"
+    }
+  }
+}

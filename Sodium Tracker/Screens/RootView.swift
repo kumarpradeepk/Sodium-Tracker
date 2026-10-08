@@ -14,6 +14,7 @@ struct RootView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(SubscriptionStore.self) private var subscriptions
+    @Environment(\.scenePhase) private var scenePhase
 
     @AppStorage(PinchDefaults.theme) private var theme = "light"
     @AppStorage(PinchDefaults.palette) private var palettePick = PalettePick.ocean.rawValue
@@ -25,6 +26,9 @@ struct RootView: View {
     @Query private var customFoods: [CustomFood]
 
     @State private var ui = UIState()
+    @State private var displayedDay = Calendar.current.startOfDay(for: Date.now)
+    @State private var pendingNotificationInvitation = false
+    @State private var checkingNotificationInvitation = false
 
     private var palette: PinchPalette {
         PinchPalette.resolve(PalettePick(rawValue: palettePick) ?? .ocean, dark: theme == "dark")
@@ -35,6 +39,31 @@ struct RootView: View {
     }
 
     var body: some View {
+        appLifecycle
+            .task(id: notificationInvitationReady) {
+                guard notificationInvitationReady else { return }
+                try? await Task.sleep(for: .seconds(1))
+                guard !Task.isCancelled else { return }
+                await offerNotificationInvitation()
+            }
+            .sheet(item: Binding(get: { ui.notificationPrompt }, set: { ui.notificationPrompt = $0 })) { prompt in
+                NotificationPrimerSheet(prompt: prompt)
+                    .environment(\.pinch, palette)
+                    .presentationDetents([.height(460), .large])
+                    .presentationDragIndicator(.visible)
+                    .presentationCornerRadius(28)
+                    .onAppear {
+                        NotificationPromptPolicy.recordShown(isAutomatic: prompt.isAutomatic, presentationID: prompt.id)
+                    }
+            }
+    }
+
+    private var notificationInvitationReady: Bool {
+        pendingNotificationInvitation && hasOnboarded && scenePhase == .active
+            && !isDockHidden && !ui.quickAddOpen && ui.toast == nil
+    }
+
+    private var rootLayout: some View {
         ZStack {
             palette.bg.ignoresSafeArea()
 
@@ -49,11 +78,20 @@ struct RootView: View {
                     }
                     .transition(.opacity)
                     .zIndex(24)
+
+                // Keep the actionable menu above its dismissal scrim. When it
+                // lived inside the lower overlay container, the scrim received
+                // every row tap and simply closed the menu without adding.
+                QuickAddSheet()
+                    .zIndex(25)
             }
 
             dock
                 .zIndex(26)
             ZStack { overlays }
+                // Child z-indices only order this container's children. The
+                // container itself must also sit above the dock and quick add.
+                .zIndex(40)
                 .animation(reduceMotion ? nil : .pinchSheet, value: ui.logOpen)
                 .animation(reduceMotion ? nil : .pinchSheet, value: ui.quickAddOpen)
                 .animation(reduceMotion ? nil : .pinchSheet, value: ui.notifCenterOpen)
@@ -67,7 +105,11 @@ struct RootView: View {
         }
         .environment(\.pinch, palette)
         .environment(ui)
-        .preferredColorScheme(theme == "dark" ? .dark : .light)
+    }
+
+    private var appLifecycle: some View {
+        rootLayout
+        .preferredColorScheme(!ui.payOpen && theme == "dark" ? .dark : .light)
         .animation(.easeInOut(duration: 0.4), value: theme)
         .animation(.easeInOut(duration: 0.4), value: palettePick)
         .task(id: ui.toast?.id) {
@@ -83,11 +125,37 @@ struct RootView: View {
             }
             refreshNotifications()
             publishWidgetSnapshot()
+            // Explain reminders on the first eligible launch, even with no logs.
+            // Onboarding/modal and permission/cooldown gates are checked separately.
+            pendingNotificationInvitation = true
+            #if DEBUG
+            if let index = ProcessInfo.processInfo.arguments.firstIndex(of: "-notificationPrimerPreview"),
+               ProcessInfo.processInfo.arguments.indices.contains(index + 1),
+               let context = NotificationPrompt.Context(rawValue: ProcessInfo.processInfo.arguments[index + 1]) {
+                ui.notificationPrompt = NotificationPrompt(context: context)
+            }
+            #endif
         }
-        .onChange(of: entries.count) { _, _ in publishWidgetSnapshot() }
+        .onChange(of: entries.count) { previous, current in
+            publishWidgetSnapshot()
+            if current > previous { pendingNotificationInvitation = true }
+        }
+        .onChange(of: hasOnboarded) { _, completed in
+            if completed { pendingNotificationInvitation = true }
+        }
         .onChange(of: customFoods.count) { _, _ in publishWidgetSnapshot() }
         .onChange(of: goal) { _, _ in publishWidgetSnapshot() }
         .onChange(of: subscriptions.isPremium) { _, _ in publishWidgetSnapshot() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                refreshDay()
+                refreshNotifications()
+                pendingNotificationInvitation = true
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged)) { _ in
+            refreshDay()
+        }
         .onOpenURL { url in
             guard url.scheme == "sodiumtracker" else { return }
             if url.host == "paywall" { ui.payOpen = true }
@@ -105,7 +173,7 @@ struct RootView: View {
             case .settings: SettingsScreen()
             }
         }
-        .id(ui.tab)
+        .id("\(ui.tab)-\(displayedDay.timeIntervalSinceReferenceDate)")
         .transition(.asymmetric(
             insertion: .opacity.combined(with: .offset(x: ui.tabDirection * 36)),
             removal: .opacity.combined(with: .offset(x: ui.tabDirection * -18))
@@ -115,13 +183,20 @@ struct RootView: View {
 
     // MARK: - Dock
 
+    private var isDockHidden: Bool {
+        ui.logOpen || ui.picked != nil || ui.qlOpen || ui.cfOpen
+            || ui.calOpen || ui.notifCenterOpen || ui.showOnboarding || ui.payOpen
+            || ui.notificationPrompt != nil
+    }
+
     private var dock: some View {
         VStack {
             Spacer()
             DockBar(
                 tab: Binding(get: { ui.tab }, set: { ui.selectTab($0) }),
-                isAddOpen: ui.quickAddOpen || ui.logOpen
+                isAddOpen: ui.quickAddOpen
             ) {
+                guard !isDockHidden else { return }
                 withAnimation(.pinchMenu) {
                     ui.quickAddOpen.toggle()
                 }
@@ -129,16 +204,15 @@ struct RootView: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 10)
         }
-        .opacity(ui.showOnboarding ? 0 : 1)
+        .opacity(isDockHidden ? 0 : 1)
+        .allowsHitTesting(!isDockHidden)
+        .accessibilityHidden(isDockHidden)
     }
 
     // MARK: - Overlays (design z-order)
 
     @ViewBuilder private var overlays: some View {
         // z40 — log a food
-        if ui.quickAddOpen {
-            QuickAddSheet().zIndex(40)
-        }
         if ui.logOpen {
             LogSheet().zIndex(42)
         }
@@ -194,6 +268,26 @@ struct RootView: View {
         NotificationManager.refresh(remaining: goal - todayTotal)
     }
 
+    @MainActor private func offerNotificationInvitation() async {
+        guard !checkingNotificationInvitation, notificationInvitationReady else { return }
+        checkingNotificationInvitation = true
+        defer { checkingNotificationInvitation = false }
+        let authorized = await NotificationManager.isAuthorized()
+        guard !Task.isCancelled, notificationInvitationReady else { return }
+        let defaults = UserDefaults.standard
+        guard NotificationManager.mealTimes.contains(where: { defaults.bool(forKey: $0.defaultsKey) }) else {
+            pendingNotificationInvitation = false
+            return
+        }
+        let last = defaults.object(forKey: NotificationPromptPolicy.lastShownKey) as? Double
+        let count = defaults.integer(forKey: NotificationPromptPolicy.countKey)
+        pendingNotificationInvitation = false
+        guard NotificationPromptPolicy.shouldShow(now: .now, lastShown: last.map(Date.init(timeIntervalSince1970:)),
+            count: count, optedOut: defaults.bool(forKey: NotificationPromptPolicy.optOutKey),
+            hasCompletedOnboarding: hasOnboarded, authorized: authorized) else { return }
+        ui.notificationPrompt = NotificationPrompt(context: NotificationPromptPolicy.context(for: count), isAutomatic: true)
+    }
+
     private func publishWidgetSnapshot() {
         PinchWidgetSnapshotStore.update(
             entries: entries,
@@ -201,6 +295,11 @@ struct RootView: View {
             goal: goal,
             isPremium: subscriptions.isPremium
         )
+    }
+
+    private func refreshDay() {
+        displayedDay = Calendar.current.startOfDay(for: .now)
+        publishWidgetSnapshot()
     }
 }
 

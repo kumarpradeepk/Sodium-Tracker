@@ -1,0 +1,148 @@
+{
+  "data": [
+    {
+      "type": "appInfoLocalizations",
+      "id": "d9e51640-f13b-4106-8d4c-1815c5d963e5",
+      "attributes": {
+        "locale": "en-US",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d9e51640-f13b-4106-8d4c-1815c5d963e5"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "2b87bd57-e581-4e39-b8b4-4b8e24e3c624",
+      "attributes": {
+        "locale": "it",
+        "name": "Monitor Sodio: Pinch",
+        "subtitle": "Dieta iposodica e diario",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/2b87bd57-e581-4e39-b8b4-4b8e24e3c624"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "1d951537-aa39-49db-82b3-36521028238f",
+      "attributes": {
+        "locale": "nl-NL",
+        "name": "Natrium Tracker: Pinch",
+        "subtitle": "Zout Teller & Voedingslog",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/1d951537-aa39-49db-82b3-36521028238f"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "86d0e241-8e02-4796-af3e-96d6ae6f06ea",
+      "attributes": {
+        "locale": "ja",
+        "name": "塩分・ナトリウム管理 Pinch",
+        "subtitle": "毎日の塩分記録と減塩サポート",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/86d0e241-8e02-4796-af3e-96d6ae6f06ea"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "0cc44022-ac69-4d7b-875e-a6fabc0e99e3",
+      "attributes": {
+        "locale": "en-GB",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/0cc44022-ac69-4d7b-875e-a6fabc0e99e3"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "42c5a80f-e70d-4b7a-8401-b33021394bec",
+      "attributes": {
+        "locale": "en-CA",
+        "name": "Pinch Sodium Milligram Log CA",
+        "subtitle": "Daily Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/42c5a80f-e70d-4b7a-8401-b33021394bec"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "4c1fae00-fd66-4d5f-bd34-b1a05560f56d",
+      "attributes": {
+        "locale": "de-DE",
+        "name": "Natrium Tracker: Pinch",
+        "subtitle": "Salz Zähler & Tagesprotokoll",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/4c1fae00-fd66-4d5f-bd34-b1a05560f56d"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "9991a089-670c-4ad4-aaa9-4d5f40779a27",
+      "attributes": {
+        "locale": "en-AU",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/9991a089-670c-4ad4-aaa9-4d5f40779a27"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "93309b03-2799-4433-9f88-4cb75f4f4b57",
+      "attributes": {
+        "locale": "fr-FR",
+        "name": "Suivi Sodium : Pinch",
+        "subtitle": "Compteur de sel quotidien",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/93309b03-2799-4433-9f88-4cb75f4f4b57"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appInfos/9b0615c4-0585-4a1a-9129-26cd135f4604/appInfoLocalizations?limit=200"
+  },
+  "meta": {
+    "paging": {
+      "total": 9,
+      "limit": 200
+    }
+  }
+}

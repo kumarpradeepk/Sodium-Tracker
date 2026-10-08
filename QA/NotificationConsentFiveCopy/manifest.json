@@ -1,0 +1,80 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "EF9B23C9-1A57-476D-93C6-D4B0D59B68E3",
+        "deviceName" : "Pinch Notification Copy QA",
+        "exportedFileName" : "348D8161-3832-4436-BAB5-78C667D20FC7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "08-denied-permission-offers-settings_0_102142CF-938F-43E2-8A17-6552C9DFAE50.png",
+        "timestamp" : 1788713424.387
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "EF9B23C9-1A57-476D-93C6-D4B0D59B68E3",
+        "deviceName" : "Pinch Notification Copy QA",
+        "exportedFileName" : "FE446B5B-B8E3-44EB-91FF-015C3E708EB5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "07-apple-permission-only-after-continue_0_AC6291C3-D3C5-47DC-AC14-78B70EFDD5A2.png",
+        "timestamp" : 1788713418.801
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "EF9B23C9-1A57-476D-93C6-D4B0D59B68E3",
+        "deviceName" : "Pinch Notification Copy QA",
+        "exportedFileName" : "3900E00A-E55A-444D-A02E-81E871FE1DE1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "06-same-design-copy-5_0_821E9317-FA15-456F-8F1B-C2138AC36C1F.png",
+        "timestamp" : 1788713394.977
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "EF9B23C9-1A57-476D-93C6-D4B0D59B68E3",
+        "deviceName" : "Pinch Notification Copy QA",
+        "exportedFileName" : "17839BA1-F041-4CDA-BA74-EE2A46A324A3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "05-same-design-copy-4_0_58B96345-B014-4C0A-9D08-D755FF802B55.png",
+        "timestamp" : 1788713389.031
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "EF9B23C9-1A57-476D-93C6-D4B0D59B68E3",
+        "deviceName" : "Pinch Notification Copy QA",
+        "exportedFileName" : "65AF6059-18E4-4713-8823-359C674F948C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "04-same-design-copy-3_0_895E2C06-DCC6-41D8-BE01-300106A9CFF9.png",
+        "timestamp" : 1788713382.178
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "EF9B23C9-1A57-476D-93C6-D4B0D59B68E3",
+        "deviceName" : "Pinch Notification Copy QA",
+        "exportedFileName" : "35D4ADD5-3706-4C51-9A6A-4020356359BD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "03-same-design-copy-2_0_92BD2674-A8EF-46DB-AF04-68658D441056.png",
+        "timestamp" : 1788713376.424
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "EF9B23C9-1A57-476D-93C6-D4B0D59B68E3",
+        "deviceName" : "Pinch Notification Copy QA",
+        "exportedFileName" : "97D49212-E7B6-4FD2-AF09-F93F5E8ABAC7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "02-relaunch-respects-24-hour-cooldown_0_1972F8F2-8199-462C-85D9-4C97FB5693DE.png",
+        "timestamp" : 1788713371.241
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "EF9B23C9-1A57-476D-93C6-D4B0D59B68E3",
+        "deviceName" : "Pinch Notification Copy QA",
+        "exportedFileName" : "B5380B99-3168-46C8-ADAB-7B514A3FC6E0.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "01-first-launch-explanation-before-permission_0_12AEB2D0-638E-4ED0-9B16-0EB89D97EE09.png",
+        "timestamp" : 1788713361.139
+      }
+    ],
+    "testIdentifier" : "NotificationConsentUITests/testFreshLaunchFiveCopyVariantsDailyCooldownAndSystemPermissionOrder()",
+    "testIdentifierURL" : "test://com.apple.xcode/Sodium%20Tracker/Sodium%20TrackerUITests/NotificationConsentUITests/testFreshLaunchFiveCopyVariantsDailyCooldownAndSystemPermissionOrder"
+  }
+]

@@ -23,6 +23,7 @@ struct TodayScreen: View {
 
     @Query(sort: \LogEntry.loggedAt) private var entries: [LogEntry]
     @Query private var customFoods: [CustomFood]
+    @Query private var favorites: [Favorite]
 
     @State private var displayedConsumed = 0.0
     @State private var revealBubble = false
@@ -74,22 +75,22 @@ struct TodayScreen: View {
                 return "Fresh page — plenty of room today."
             }
             if remain < 0 {
-                return "\(PinchFormat.mg(-remain)) mg over budget. Ease up tonight — tomorrow resets."
+                return PinchLocalization.format("{0} mg over budget. Ease up tonight — tomorrow resets.", [String(describing: PinchFormat.mg(-remain))])
             }
             if remain < 150 {
-                return "\(PinchFormat.mg(remain)) mg left — a light bite still fits."
+                return PinchLocalization.format("{0} mg left — a light bite still fits.", [String(describing: PinchFormat.mg(remain))])
             }
             let fits = usualFoods.filter { $0.mg <= remain }.count
             if fits == 0 {
-                return "\(PinchFormat.mg(remain)) mg left — under every usual pick. Go fresh for dinner."
+                return PinchLocalization.format("{0} mg left — under every usual pick. Go fresh for dinner.", [String(describing: PinchFormat.mg(remain))])
             }
-            return "\(PinchFormat.mg(remain)) mg left — \(fits) of your usual picks fit."
+            return PinchLocalization.format("{0} mg left — {1} of your usual picks fit.", [String(describing: PinchFormat.mg(remain)), String(describing: fits)])
         }
         return Mood.pastLine(empty: dayEntries.isEmpty, over: remain < 0)
     }
 
     private var usualFoods: [FoodItem] {
-        UsualSuspects.ids.compactMap { FoodItem.builtIn($0) }
+        FoodRecommendations.foods(entries: entries, favorites: favorites, customFoods: customFoods)
     }
 
     var body: some View {
@@ -126,6 +127,8 @@ struct TodayScreen: View {
                     .opacity(revealChips ? 1 : 0)
                     .offset(y: revealChips ? 0 : 12)
                     .scaleEffect(revealChips ? 1 : 0.97)
+                loggedList
+                    .padding(.top, 24)
             }
             .padding(.horizontal, 20)
             .padding(.top, 8)
@@ -134,6 +137,7 @@ struct TodayScreen: View {
             .opacity(dayTransitionOpacity)
         }
         .scrollIndicators(.hidden)
+        .clipped()
         .coordinateSpace(name: "todayStage")
         .onPreferenceChange(RingCenterPreferenceKey.self) { ringCenter = $0 }
         .onPreferenceChange(ChipCentersPreferenceKey.self) { chipCenters = $0 }
@@ -231,7 +235,7 @@ struct TodayScreen: View {
                     SVGShape("M10 1.5 L12.2 7.8 L18.5 10 L12.2 12.2 L10 18.5 L7.8 12.2 L1.5 10 L7.8 7.8 Z")
                         .fill(p.amber)
                         .frame(width: 15, height: 15)
-                    PinchText("\(streak)-day streak")
+                    PinchText(PinchLocalization.format("{0}-day streak", [String(describing: streak)]))
                         .pinchBody(16, .bold)
                         .foregroundStyle(p.amber)
                 }
@@ -242,7 +246,7 @@ struct TodayScreen: View {
                 .overlay { streakSparkles }
             }
             .buttonStyle(.pressScale(0.96))
-            .accessibilityLabel(PinchLocalization.resolve("\(streak) day streak"))
+            .accessibilityLabel(PinchLocalization.resolve(PinchLocalization.format("{0} day streak", [String(describing: streak)])))
             .padding(.top, 3)
         }
     }
@@ -276,7 +280,7 @@ struct TodayScreen: View {
                         ui.selectTab(.settings)
                     }
                 } label: {
-                    PinchText("of \(PinchFormat.mg(goal)) mg")
+                    PinchText(PinchLocalization.format("of {0} mg", [String(describing: PinchFormat.mg(goal))]))
                         .pinchBody(16, .medium)
                         .foregroundStyle(p.ink2)
                         .underline(true, pattern: .dot, color: p.ink3)
@@ -285,8 +289,8 @@ struct TodayScreen: View {
                 .padding(.top, 1)
 
                 PinchText(visualRemain >= 0
-                     ? "\(PinchFormat.mg(visualRemain)) mg left"
-                     : "\(PinchFormat.mg(-visualRemain)) mg over")
+                     ? PinchLocalization.format("{0} mg left", [String(describing: PinchFormat.mg(visualRemain))])
+                     : PinchLocalization.format("{0} mg over", [String(describing: PinchFormat.mg(-visualRemain))]))
                     .font(PinchFonts.body(19, .heavy))
                     .foregroundStyle(visualRemain < 0 ? p.amber : p.remainColor(remain: visualRemain, pct: rawFraction * 100))
                     .padding(.top, 9)
@@ -363,15 +367,15 @@ struct TodayScreen: View {
     private var statDuo: some View {
         HStack(spacing: 12) {
             todayStatCard(
-                value: remain >= 0 ? PinchFormat.mg(remain) : "−\(PinchFormat.mg(-remain))",
+                value: PinchFormat.mg(abs(remain)),
                 caption: remain >= 0
                     ? (isToday ? "mg left today" : "mg was left over")
                     : "mg over budget",
                 valueColor: remain < 0 ? p.amber : p.remainColor(remain: remain, pct: pct)
             )
             todayStatCard(
-                value: "\(underCountThisWeek) of 7",
-                caption: "days under budget this week"
+                value: PinchLocalization.format("{0} of {1}", [String(describing: underCountThisWeek), String(describing: DayEngine.week(entries, customFoods: customFoods, goal: goal).loggedDayCount)]),
+                caption: "logged days under budget"
             )
         }
     }
@@ -406,9 +410,9 @@ struct TodayScreen: View {
 
     private var quickHeader: some View {
         HStack(alignment: .firstTextBaseline) {
-            SectionKicker(text: "USUAL SUSPECTS")
+            SectionKicker(text: "RECOMMENDED")
             Spacer()
-            PinchText("vs. \(PinchFormat.mg(max(0, remain))) mg left")
+            PinchText(PinchLocalization.format("vs. {0} mg left", [String(describing: PinchFormat.mg(max(0, remain)))]))
                 .pinchBody(13.5, .semibold)
                 .foregroundStyle(p.ink3.opacity(0.68))
         }
@@ -417,19 +421,18 @@ struct TodayScreen: View {
     private var quickChips: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 8) {
-                ForEach(UsualSuspects.ids, id: \.self) { id in
-                    if let food = FoodItem.builtIn(id) {
+                ForEach(usualFoods) { food in
                         let fits = remain >= food.mg
                         Button {
                             quickAdd(food)
                         } label: {
                             HStack(spacing: 7) {
-                                PinchText("+")
-                                    .pinchBody(16, .bold)
+                                Image(systemName: favorites.contains(where: { $0.foodID == food.id }) ? "heart.fill" : "plus")
+                                    .font(.system(size: 14, weight: .bold))
                                     .foregroundStyle(p.brand)
                                     .frame(width: 26, height: 26)
                                     .background(Circle().fill(p.brandSoft))
-                                PinchText(food.name)
+                                Text(verbatim: food.displayName)
                                     .pinchBody(16, .bold)
                                     .foregroundStyle(p.ink)
                                     .lineLimit(1)
@@ -449,7 +452,7 @@ struct TodayScreen: View {
                             .shadow(color: p.shadowTint.opacity(p.isDark ? 0.24 : 0.06), radius: 8, y: 4)
                         }
                         .buttonStyle(.pressScale)
-                        .disabled(flight != nil)
+                        .disabled(flight != nil || ui.quickAddRequest != nil)
                         .background {
                             GeometryReader { proxy in
                                 let frame = proxy.frame(in: .named("todayStage"))
@@ -459,8 +462,9 @@ struct TodayScreen: View {
                                 )
                             }
                         }
-                        .accessibilityLabel(PinchLocalization.resolve("\(food.name), \(PinchFormat.mg(food.mg)) milligrams. \(fits ? "Fits in today’s remaining budget" : "Does not fit in today’s remaining budget"). Add to log"))
-                    }
+                        .accessibilityLabel(PinchLocalization.resolve(PinchLocalization.format("{0}, {1} milligrams. {2}. Add to log", [food.displayName, String(describing: PinchFormat.mg(food.mg)), PinchLocalization.resolve(fits ? "Fits in today’s remaining budget" : "Does not fit in today’s remaining budget")])))
+                        .accessibilityIdentifier("today-recommendation-\(food.id)")
+                        .accessibilityValue(PinchLocalization.resolve(favorites.contains(where: { $0.foodID == food.id }) ? "Favorite" : "Recommended"))
                 }
             }
             .padding(.horizontal, 20)
@@ -472,45 +476,50 @@ struct TodayScreen: View {
     }
 
     private func quickAdd(_ food: FoodItem) {
-        guard flight == nil else { return }
+        guard flight == nil, ui.quickAddRequest == nil else { return }
+        if food.id.hasPrefix(FatSecretConfig.idPrefix), !subscriptions.isPremium {
+            ui.payOpen = true
+            return
+        }
+        let loggedAt = timestamp(for: day)
 
         let source = chipCenters[food.id] ?? CGPoint(x: ringCenter.x, y: ringCenter.y + 170)
         flight = SodiumFlight(
-            title: "+\(PinchFormat.mg(food.mg)) mg",
+            title: PinchLocalization.format("+{0} mg", [String(describing: PinchFormat.mg(food.mg))]),
             source: source,
             destination: ringCenter
         )
         flightProgress = 0
 
         if reduceMotion {
-            completeQuickAdd(food)
+            completeQuickAdd(food, loggedAt: loggedAt)
         } else {
             withAnimation(.easeInOut(duration: 0.62)) { flightProgress = 1 }
             Task { @MainActor in
                 try? await Task.sleep(for: .milliseconds(620))
-                completeQuickAdd(food)
+                completeQuickAdd(food, loggedAt: loggedAt)
             }
         }
     }
 
-    @MainActor private func completeQuickAdd(_ food: FoodItem) {
+    @MainActor private func completeQuickAdd(_ food: FoodItem, loggedAt: Date) {
         let wasOver = consumed > goal
         let willBeOver = consumed + food.mg > goal
-        let entry = LogEntry(
-            foodID: food.id,
-            servings: 1,
-            meal: Meal.auto(),
-            loggedAt: timestamp(for: day)
-        )
+        let entry = FoodRecommendations.entry(for: food, loggedAt: loggedAt)
         modelContext.insert(entry)
         lastAddedEntry = entry
         flight = nil
         flightProgress = 0
         playMascotReaction(wasOver: wasOver, willBeOver: willBeOver)
-        ui.showToast("\(food.name), \(PinchFormat.mg(food.mg)) mg", ToastCopy.line(forAdded: food.mg))
+        ui.showToast(PinchLocalization.format("{0}, {1} mg", [food.displayName, String(describing: PinchFormat.mg(food.mg))]), ToastCopy.line(forAdded: food.mg))
     }
 
     @MainActor private func receiveQuickAdd(_ request: QuickAddRequest) async {
+        defer {
+            flight = nil
+            flightProgress = 0
+            if ui.quickAddRequest?.id == request.id { ui.quickAddRequest = nil }
+        }
         // The menu closes and the Today tab settles before the pill launches,
         // matching the 340 ms tab handoff in the showcase prototype.
         if !reduceMotion {
@@ -523,7 +532,7 @@ struct TodayScreen: View {
             y: ringCenter.y + 305
         )
         flight = SodiumFlight(
-            title: "+\(PinchFormat.mg(request.milligrams)) mg",
+            title: PinchLocalization.format("+{0} mg", [String(describing: PinchFormat.mg(request.milligrams))]),
             source: source,
             destination: ringCenter
         )
@@ -537,22 +546,14 @@ struct TodayScreen: View {
 
         let wasOver = consumed > goal
         let willBeOver = consumed + request.milligrams > goal
-        let entry = LogEntry(
-            adhocName: request.name,
-            adhocMg: request.milligrams,
-            adhocServing: "1 serving",
-            servings: 1,
-            meal: Meal.auto(),
-            loggedAt: .now
-        )
+        let entry = FoodRecommendations.entry(for: request.food, loggedAt: request.loggedAt)
         modelContext.insert(entry)
         lastAddedEntry = entry
         flight = nil
         flightProgress = 0
-        ui.quickAddRequest = nil
         playMascotReaction(wasOver: wasOver, willBeOver: willBeOver)
         ui.showToast(
-            "\(request.name), \(PinchFormat.mg(request.milligrams)) mg",
+            PinchLocalization.format("{0}, {1} mg", [String(describing: request.name), String(describing: PinchFormat.mg(request.milligrams))]),
             ToastCopy.line(forAdded: request.milligrams)
         )
     }
@@ -583,7 +584,7 @@ struct TodayScreen: View {
                         .pinchBody(13, .bold)
                         .foregroundStyle(p.ink)
                     Spacer()
-                    PinchText("\(PinchFormat.mg(total)) mg")
+                    PinchText(PinchLocalization.format("{0} mg", [String(describing: PinchFormat.mg(total))]))
                         .pinchBody(12, .semibold)
                         .monospacedDigit()
                         .foregroundStyle(p.ink3)
@@ -602,7 +603,7 @@ struct TodayScreen: View {
             FoodIconTile(category: resolved.category)
 
             VStack(alignment: .leading, spacing: 1) {
-                PinchText(resolved.name)
+                Text(verbatim: resolved.displayName)
                     .pinchBody(14, .semibold)
                     .foregroundStyle(p.ink)
                     .lineLimit(1)
@@ -628,7 +629,7 @@ struct TodayScreen: View {
                     .background(Circle().fill(p.brandSoft))
             }
             .buttonStyle(.pressScale(0.85))
-            .accessibilityLabel(isToday ? "Log \(resolved.name) again today" : "Log \(resolved.name) again on this day")
+            .accessibilityLabel(isToday ? PinchLocalization.format("Log {0} again today", [resolved.displayName]) : PinchLocalization.format("Log {0} again on this day", [resolved.displayName]))
 
             Button {
                 withAnimation(.easeOut(duration: 0.25)) {
@@ -642,7 +643,7 @@ struct TodayScreen: View {
                     .background(Circle().fill(.clear))
             }
             .buttonStyle(.pressScale(0.85))
-            .accessibilityLabel(PinchLocalization.resolve("Remove \(resolved.name) from this day"))
+            .accessibilityLabel(PinchLocalization.resolve(PinchLocalization.format("Remove {0} from this day", [resolved.displayName])))
         }
         .padding(EdgeInsets(top: 9, leading: 16, bottom: 9, trailing: 16))
         .overlay(alignment: .top) {
@@ -652,14 +653,14 @@ struct TodayScreen: View {
 
     private func entrySub(_ resolved: ResolvedEntry) -> String {
         let portion = resolved.entry.servings == 1
-            ? resolved.serving
-            : "\(PinchFormat.servings(resolved.entry.servings)) × \(resolved.serving)"
+            ? resolved.displayServing
+            : "\(PinchFormat.servings(resolved.entry.servings)) × \(resolved.displayServing)"
         return "\(portion), \(PinchFormat.time(resolved.entry.loggedAt))"
     }
 
     private func logAgain(_ resolved: ResolvedEntry) {
         let source = resolved.entry
-        let isRemote = source.foodID?.hasPrefix(FatSecretConfig.idPrefix) == true || source.adhocServing != nil
+        let isRemote = source.foodID?.hasPrefix(FatSecretConfig.idPrefix) == true
         guard !isRemote || PremiumAccessPolicy.allows(.remoteFoodLogging, isPremium: subscriptions.isPremium) else {
             ui.payOpen = true
             return
@@ -671,11 +672,12 @@ struct TodayScreen: View {
             adhocServing: source.adhocServing,
             servings: source.servings,
             meal: Meal.auto(),
-            loggedAt: .now
+            loggedAt: timestamp(for: day),
+            usesDefaultServing: source.usesDefaultServing
         ))
         ui.showToast(
-            "\(resolved.name), \(PinchFormat.mg(resolved.totalMg)) mg",
-            isToday ? "Logged again." : "Logged again for today."
+            PinchLocalization.format("{0}, {1} mg", [resolved.displayName, String(describing: PinchFormat.mg(resolved.totalMg))]),
+            isToday ? "Logged again." : "Logged again on this day."
         )
     }
 

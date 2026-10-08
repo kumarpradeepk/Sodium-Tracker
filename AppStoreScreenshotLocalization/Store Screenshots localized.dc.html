@@ -25,7 +25,7 @@
       <div>· Every panel: bold rounded headline, two-line benefit subtitle, then the phone fills all remaining space and bleeds off the bottom — no empty fields.</div>
       <div>· Five benefits in order: <b>one-number ring · know before you bite · 3-second log · kind reminders · streaks</b>; Pinch appears in every panel.</div>
       <div>· Display font Baloo 2 (M PLUS Rounded for Japanese); in-phone UI stays in the app’s real system style.</div>
-      <div>· Keyword “sodium tracker free” carried by panel 1’s headline; closing subtitle is the install push.</div>
+      <div>· Panel 1 introduces the everyday sodium tracker; closing subtitle is the install push.</div>
       <div>· Snapshot ×3 → exact 1290 × 2796 (App Store) and 1080 × 1920 (Google Play) PNGs.</div>
     </div>
   </div>
@@ -369,11 +369,11 @@ class Component extends DCLogic {
     const and = { plat: 'Google Play (Android)', platU: 'GOOGLE PLAY (ANDROID)', pw: 360, ph: 640, fs: 8.4, exp: '1080 × 1920', isIos: false, isAnd: true };
     const en = {
       font: latinFont, wb: 'normal',
-      ph1: 'Your Free Sodium Tracker', ps1: 'Your whole day becomes one simple number, and Pinch rides the ring with you.',
+      ph1: 'Your Everyday Sodium Tracker', ps1: 'Your whole day becomes one simple number, and Pinch rides the ring with you.',
       ph2: 'Know Before You Bite', ps2: 'Pinch flags anything that won’t fit today’s salt budget, before it reaches your plate.',
       ph3: 'Log Meals In Seconds', ps3: 'Your usual foods are one tap each. Faster than reaching for the shaker.',
       ph4: 'Reminders, Not Nagging', ps4: 'Three gentle check-ins a day: breakfast, lunch and dinner. That’s it.',
-      ph5: 'Streaks That Stick', ps5: 'Watch good days add up. Free, with no sign-up. Start today.',
+      ph5: 'Streaks That Stick', ps5: 'Watch good days add up. No sign-up needed. Start today.',
       date: 'SUNDAY 9 AUGUST', today: 'Today', streak: '14-day streak', big: '1,240', ofline: 'of 2,300 mg', leftline: '1,060 mg left',
       c1n: '1,060', c1l: 'mg left today', c2n: '2 of 7', c2l: 'days under budget',
       loggedLbl: 'LOGGED TODAY', susLabel: 'USUAL SUSPECTS',
@@ -388,13 +388,13 @@ class Component extends DCLogic {
       wda: 'M', wdb: 'T', wdc: 'W', wdd: 'T', wde: 'F', wdf: 'S', wdg: 'S', trendLbl: 'THIS WEEK'
     };
     const L = [
-      Object.assign({}, en, { cc: 'en-gb', name: 'United Kingdom · Australia · Canada', ln: 'English (en-GB) — one shared listing · keyword: “sodium tracker free” · priorities 1–3' }),
-      { cc: 'ja', name: 'Japan', ln: 'Japanese (ja-JP) — fully localised listing · keyword: “sodium tracker free” · priority 4', font: jpFont, wb: 'keep-all',
-        ph1: '無料の\u200b塩分トラッカー', ps1: '1日がひとつの数字に。リングの上では、ピンチがいつも一緒です。',
+      Object.assign({}, en, { cc: 'en-gb', name: 'United Kingdom · Australia · Canada', ln: 'English (en-GB) — one shared listing · priorities 1–3' }),
+      { cc: 'ja', name: 'Japan', ln: 'Japanese (ja-JP) — fully localised listing · priority 4', font: jpFont, wb: 'keep-all',
+        ph1: '毎日の\u200b塩分トラッカー', ps1: '1日がひとつの数字に。リングの上では、ピンチがいつも一緒です。',
         ph2: '食べる前に、\u200bわかる', ps2: '予算に入らないものは、お皿にのる前にピンチがお知らせします。',
         ph3: '記録は3秒で', ps3: 'いつもの食事はワンタップ。塩をふるより早く終わります。',
         ph4: '通知は、\u200bやさしく', ps4: '朝・昼・夜の3回だけ。しつこくしません。',
-        ph5: '続くから、\u200b変わる', ps5: 'いい日が積み重なる。無料・登録不要、今日からはじめられます。',
+        ph5: '続くから、\u200b変わる', ps5: 'いい日が積み重なる。登録不要で、今日からはじめられます。',
         date: '8月9日（日）', today: '今日', streak: '14日連続', big: '1,240', ofline: '/ 2,300 mg', leftline: '残り 1,060 mg',
         c1n: '1,060', c1l: '今日の残り（mg）', c2n: '2/7', c2l: '予算内の日',
         loggedLbl: '今日の記録', susLabel: 'よく食べるもの',
@@ -407,7 +407,7 @@ class Component extends DCLogic {
         n1t: 'そろそろ夕食の記録を', n1b: '残り 620 mg。まだ余裕があります。', now: '今', p4bub: '役に立つときだけ、お知らせします。',
         p5scr: '連続記録', dayNum: '14', dayLbl: '日連続 予算内',
         wda: '月', wdb: '火', wdc: '水', wdd: '木', wde: '金', wdf: '土', wdg: '日', trendLbl: '今週' },
-      Object.assign({}, en, { cc: 'en-us', name: 'United States', ln: 'English (en-US) — American spelling, punctuation and food names · keyword: “sodium tracker free” · priority 5',
+      Object.assign({}, en, { cc: 'en-us', name: 'United States', ln: 'English (en-US) — American spelling, punctuation and food names · priority 5',
         ps4: 'Three gentle check-ins a day: breakfast, lunch, and dinner. That’s it.',
         date: 'SUNDAY, AUGUST 9',
         sus1n: 'Bagel & cream cheese', sus1m: '+690 mg', sus2n: 'Instant ramen', sus3n: 'Grilled cheese', sus3m: '+720 mg',
@@ -416,11 +416,11 @@ class Component extends DCLogic {
         t1: '8:00 AM', t2: '1:00 PM', t3: '7:30 PM',
         wda: 'S', wdb: 'M', wdc: 'T', wdd: 'W', wde: 'T', wdf: 'F', wdg: 'S' }),
       { cc: 'de', name: 'Germany', ln: 'Deutsch (de-DE) — low-competition test market · keyword: “sodium tracker” · priority 6', font: latinFont, wb: 'normal',
-        ph1: 'Dein gratis Natrium-Tracker', ps1: 'Dein ganzer Tag wird eine einfache Zahl – und Pinch begleitet dich auf dem Ring.',
+        ph1: 'Dein Natrium-Tracker für jeden Tag', ps1: 'Dein ganzer Tag wird eine einfache Zahl – und Pinch begleitet dich auf dem Ring.',
         ph2: 'Wissen, bevor du beißt', ps2: 'Pinch warnt vor allem, was nicht mehr ins Tagesbudget passt – bevor es auf dem Teller liegt.',
         ph3: 'In Sekunden geloggt', ps3: 'Deine üblichen Mahlzeiten, je ein Tipp. Schneller als der Griff zum Salzstreuer.',
         ph4: 'Erinnern, nicht nerven', ps4: 'Drei sanfte Check-ins am Tag – morgens, mittags, abends. Mehr nicht.',
-        ph5: 'Serien, die bleiben', ps5: 'Gute Tage summieren sich. Gratis, ohne Konto – starte noch heute.',
+        ph5: 'Serien, die bleiben', ps5: 'Gute Tage summieren sich. Ohne Konto – starte noch heute.',
         date: 'SONNTAG, 9. AUGUST', today: 'Heute', streak: '14-Tage-Serie', big: '1.240', ofline: 'von 2.300 mg', leftline: 'noch 1.060 mg',
         c1n: '1.060', c1l: 'mg übrig heute', c2n: '2 von 7', c2l: 'Tage im Budget',
         loggedLbl: 'HEUTE GELOGGT', susLabel: 'ÜBLICHE VERDÄCHTIGE',
@@ -434,11 +434,11 @@ class Component extends DCLogic {
         p5scr: 'Deine Serie', dayNum: '14', dayLbl: 'TAGE IM BUDGET',
         wda: 'M', wdb: 'D', wdc: 'M', wdd: 'D', wde: 'F', wdf: 'S', wdg: 'S', trendLbl: 'DIESE WOCHE' },
       { cc: 'nl', name: 'Netherlands', ln: 'Nederlands (nl-NL) — volledig gelokaliseerde App Store-screenshots', font: latinFont, wb: 'normal',
-        ph1: 'Jouw gratis natriumtracker', ps1: 'Je hele dag wordt één duidelijk getal. Pinch volgt je vriendelijk rond de ring.',
+        ph1: 'Jouw dagelijkse natriumtracker', ps1: 'Je hele dag wordt één duidelijk getal. Pinch volgt je vriendelijk rond de ring.',
         ph2: 'Weet het vóór je eet', ps2: 'Pinch laat zien wat niet meer binnen je zoutbudget past, nog vóór het op je bord ligt.',
         ph3: 'Log maaltijden in seconden', ps3: 'Je vaste keuzes voeg je met één tik toe. Sneller dan naar het zoutvaatje grijpen.',
         ph4: 'Herinneringen zonder gedoe', ps4: 'Drie vriendelijke check-ins per dag: ontbijt, lunch en avondeten. Meer niet.',
-        ph5: 'Een reeks die blijft', ps5: 'Zie goede dagen optellen. Gratis, zonder account. Begin vandaag.',
+        ph5: 'Een reeks die blijft', ps5: 'Zie goede dagen optellen. Zonder account. Begin vandaag.',
         date: 'ZONDAG 9 AUGUSTUS', today: 'Vandaag', streak: '14 dagen op rij', big: '1.240', ofline: 'van 2.300 mg', leftline: '1.060 mg over',
         c1n: '1.060', c1l: 'mg over vandaag', c2n: '2 van 7', c2l: 'dagen onder budget',
         loggedLbl: 'VANDAAG GELOGD', susLabel: 'VASTE KEUZES',
@@ -452,11 +452,11 @@ class Component extends DCLogic {
         p5scr: 'Jouw reeks', dayNum: '14', dayLbl: 'DAGEN ONDER BUDGET',
         wda: 'M', wdb: 'D', wdc: 'W', wdd: 'D', wde: 'V', wdf: 'Z', wdg: 'Z', trendLbl: 'DEZE WEEK' },
       { cc: 'fr', name: 'France', ln: 'Français (fr-FR) — captures App Store entièrement localisées', font: latinFont, wb: 'normal',
-        ph1: 'Votre suivi sodium gratuit', ps1: 'Toute votre journée tient dans un seul chiffre, et Pinch vous accompagne sur l’anneau.',
+        ph1: 'Votre suivi sodium au quotidien', ps1: 'Toute votre journée tient dans un seul chiffre, et Pinch vous accompagne sur l’anneau.',
         ph2: 'Avant de manger, vous savez', ps2: 'Pinch signale ce qui dépasse votre budget de sel avant même que cela n’arrive dans votre assiette.',
         ph3: 'Notez vos repas en secondes', ps3: 'Vos aliments habituels s’ajoutent en un geste. Plus rapide que de saisir la salière.',
         ph4: 'Des rappels, sans pression', ps4: 'Trois rappels bienveillants par jour : petit-déjeuner, déjeuner et dîner. C’est tout.',
-        ph5: 'Une série qui dure', ps5: 'Voyez les bonnes journées s’accumuler. Gratuit, sans inscription. Commencez aujourd’hui.',
+        ph5: 'Une série qui dure', ps5: 'Voyez les bonnes journées s’accumuler. Sans inscription. Commencez aujourd’hui.',
         date: 'DIMANCHE 9 AOÛT', today: 'Aujourd’hui', streak: '14 jours de suite', big: '1 240', ofline: 'sur 2 300 mg', leftline: '1 060 mg restants',
         c1n: '1 060', c1l: 'mg restants aujourd’hui', c2n: '2 sur 7', c2l: 'jours sous l’objectif',
         loggedLbl: 'NOTÉ AUJOURD’HUI', susLabel: 'ALIMENTS HABITUELS',
@@ -470,11 +470,11 @@ class Component extends DCLogic {
         p5scr: 'Votre série', dayNum: '14', dayLbl: 'JOURS SOUS L’OBJECTIF',
         wda: 'L', wdb: 'M', wdc: 'M', wdd: 'J', wde: 'V', wdf: 'S', wdg: 'D', trendLbl: 'CETTE SEMAINE' },
       { cc: 'it', name: 'Italy', ln: 'Italiano (it-IT) — screenshot App Store completamente localizzati', font: latinFont, wb: 'normal',
-        ph1: 'Il tuo tracker del sodio gratis', ps1: 'Tutta la giornata diventa un solo numero, e Pinch ti accompagna lungo l’anello.',
+        ph1: 'Il tuo tracker quotidiano del sodio', ps1: 'Tutta la giornata diventa un solo numero, e Pinch ti accompagna lungo l’anello.',
         ph2: 'Lo sai prima di mangiare', ps2: 'Pinch segnala ciò che non rientra nel budget di sale, prima che arrivi nel piatto.',
         ph3: 'Registra i pasti in pochi secondi', ps3: 'I tuoi cibi abituali si aggiungono con un tocco. Più veloce che prendere la saliera.',
         ph4: 'Promemoria, senza assillo', ps4: 'Tre check-in gentili al giorno: colazione, pranzo e cena. Tutto qui.',
-        ph5: 'Una serie che dura', ps5: 'Guarda i giorni positivi sommarsi. Gratis, senza registrazione. Inizia oggi.',
+        ph5: 'Una serie che dura', ps5: 'Guarda i giorni positivi sommarsi. Senza registrazione. Inizia oggi.',
         date: 'DOMENICA 9 AGOSTO', today: 'Oggi', streak: '14 giorni di fila', big: '1.240', ofline: 'su 2.300 mg', leftline: '1.060 mg rimasti',
         c1n: '1.060', c1l: 'mg rimasti oggi', c2n: '2 su 7', c2l: 'giorni sotto il budget',
         loggedLbl: 'REGISTRATI OGGI', susLabel: 'SCELTE ABITUALI',

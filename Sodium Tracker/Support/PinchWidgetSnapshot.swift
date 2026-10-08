@@ -19,6 +19,8 @@ enum PinchWidgetSnapshotStore {
         let remaining: Int
         let streak: Int
         let isPremium: Bool
+        let capturedAt: Date?
+        let lastLoggedDay: Date?
     }
 
     static func update(
@@ -33,7 +35,9 @@ enum PinchWidgetSnapshotStore {
             goal: isPremium ? max(goal, 1) : 0,
             remaining: isPremium ? goal - total : 0,
             streak: isPremium ? DayEngine.streak(entries) : 0,
-            isPremium: isPremium
+            isPremium: isPremium,
+            capturedAt: .now,
+            lastLoggedDay: entries.map(\.loggedAt).filter { $0 <= .now }.max()
         )
         guard let data = try? JSONEncoder().encode(snapshot),
               let defaults = UserDefaults(suiteName: appGroup) else { return }

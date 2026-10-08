@@ -29,6 +29,25 @@ a compiled mobile application and can eventually be extracted. Keep Vercel
 Firewall rate limiting enabled and use Apple App Attest plus Google Play
 Integrity if the API later needs strong client attestation.
 
+## iOS client configuration
+
+The app needs the public HTTPS proxy URL plus the app-scoped `PINCH_PROXY_API_KEY`.
+It must never contain `FATSECRET_CLIENT_SECRET` or OAuth access tokens.
+
+For local builds, copy the repository-root `PinchProxyConfig.sample.plist` to
+`Sodium Tracker/Resources/PinchProxyConfig.plist` and replace its `apiKey` value
+with the existing app proxy key. This destination is gitignored and bundled by
+Xcode. Provision it securely for CI/archive builds too, or supply the generated
+Info.plist `PinchProxyAPIKey` setting. A process environment override supports
+development runs. Never commit a real key to the sample file.
+
+`Resources/FatSecretSecrets.plist` is explicitly excluded from the iOS target.
+If any earlier distributed build included that legacy file, rotate the FatSecret
+OAuth client secret and update the server together before shipping again.
+
+Run `node --test test/proxy.test.mjs` to verify the proxy contract. Local changes
+to this directory do not update the production Vercel Function until deployed.
+
 ## FatSecret IP allowlisting
 
 Ordinary Vercel Functions do not have fixed egress addresses. For production,

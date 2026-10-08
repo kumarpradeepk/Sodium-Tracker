@@ -67,7 +67,7 @@ struct SaltyQuickAddSheet: View {
                     .foregroundStyle(s.ink)
                     .lineLimit(1)
                 Spacer(minLength: 0)
-                PinchText("+\(PinchFormat.mg(item.mg)) mg")
+                PinchText(PinchLocalization.format("+{0} mg", [String(describing: PinchFormat.mg(item.mg))]))
                     .saltyNum(15, .heavy)
                     .foregroundStyle(s.blue)
             }
@@ -75,7 +75,7 @@ struct SaltyQuickAddSheet: View {
         .background(GeometryReader { g in
             Color.clear.preference(key: QuickRowFrameKey.self, value: [item.id: g.frame(in: .global)])
         })
-        .accessibilityLabel("Quick add \(item.name), \(item.mg) milligrams")
+        .accessibilityLabel(PinchLocalization.format("Quick add {0}, {1} milligrams", [String(describing: item.name), String(describing: item.mg)]))
     }
 
     /// One sheet row: opaque card, comfortable hit area, springy press.

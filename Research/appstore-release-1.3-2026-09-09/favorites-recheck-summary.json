@@ -1,0 +1,36 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "543B6BFB-A91E-482E-A9F1-D8B2CE766E19",
+        "deviceName": "iPhone 17 Pro Max",
+        "modelName": "iPhone 17 Pro Max",
+        "osBuildNumber": "23D8133",
+        "osVersion": "26.3.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 1,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "Sodium Tracker \u00b7 Built with macOS 15.7.9",
+  "expectedFailures": 0,
+  "failedTests": 0,
+  "finishTime": 1788950918.36,
+  "passedTests": 1,
+  "result": "Passed",
+  "skippedTests": 0,
+  "startTime": 1788950863.668,
+  "statistics": [],
+  "testFailures": [],
+  "title": "Test - Sodium Tracker",
+  "topInsights": [],
+  "totalTestCount": 1
+}

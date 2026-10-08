@@ -1,0 +1,159 @@
+{
+  "data": [
+    {
+      "type": "appInfos",
+      "id": "f7ca3bd0-d404-44e8-89ab-475dc8127410",
+      "attributes": {
+        "appStoreState": "READY_FOR_SALE",
+        "state": "READY_FOR_DISTRIBUTION",
+        "appStoreAgeRating": "FOUR_PLUS",
+        "australiaAgeRating": null,
+        "brazilAgeRating": "L",
+        "brazilAgeRatingV2": "SELF_RATED_L",
+        "franceAgeRating": null,
+        "koreaAgeRating": null
+      },
+      "relationships": {
+        "ageRatingDeclaration": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/ageRatingDeclaration",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/ageRatingDeclaration"
+          }
+        },
+        "appInfoLocalizations": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/appInfoLocalizations",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/appInfoLocalizations"
+          }
+        },
+        "primaryCategory": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/primaryCategory",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/primaryCategory"
+          }
+        },
+        "primarySubcategoryOne": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/primarySubcategoryOne",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/primarySubcategoryOne"
+          }
+        },
+        "primarySubcategoryTwo": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/primarySubcategoryTwo",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/primarySubcategoryTwo"
+          }
+        },
+        "secondaryCategory": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/secondaryCategory",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/secondaryCategory"
+          }
+        },
+        "secondarySubcategoryOne": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/secondarySubcategoryOne",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/secondarySubcategoryOne"
+          }
+        },
+        "secondarySubcategoryTwo": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/secondarySubcategoryTwo",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/secondarySubcategoryTwo"
+          }
+        },
+        "territoryAgeRatings": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/relationships/territoryAgeRatings",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/territoryAgeRatings"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410"
+      }
+    },
+    {
+      "type": "appInfos",
+      "id": "c6399d39-3f08-494b-886d-4614a9bd800d",
+      "attributes": {
+        "appStoreState": "PREPARE_FOR_SUBMISSION",
+        "state": "PREPARE_FOR_SUBMISSION",
+        "appStoreAgeRating": "FOUR_PLUS",
+        "australiaAgeRating": null,
+        "brazilAgeRating": "L",
+        "brazilAgeRatingV2": "SELF_RATED_L",
+        "franceAgeRating": null,
+        "koreaAgeRating": null
+      },
+      "relationships": {
+        "ageRatingDeclaration": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/ageRatingDeclaration",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/ageRatingDeclaration"
+          }
+        },
+        "appInfoLocalizations": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/appInfoLocalizations",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/appInfoLocalizations"
+          }
+        },
+        "primaryCategory": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/primaryCategory",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/primaryCategory"
+          }
+        },
+        "primarySubcategoryOne": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/primarySubcategoryOne",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/primarySubcategoryOne"
+          }
+        },
+        "primarySubcategoryTwo": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/primarySubcategoryTwo",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/primarySubcategoryTwo"
+          }
+        },
+        "secondaryCategory": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/secondaryCategory",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/secondaryCategory"
+          }
+        },
+        "secondarySubcategoryOne": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/secondarySubcategoryOne",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/secondarySubcategoryOne"
+          }
+        },
+        "secondarySubcategoryTwo": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/secondarySubcategoryTwo",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/secondarySubcategoryTwo"
+          }
+        },
+        "territoryAgeRatings": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/relationships/territoryAgeRatings",
+            "related": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d/territoryAgeRatings"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfos/c6399d39-3f08-494b-886d-4614a9bd800d"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/apps/6800595930/appInfos?limit=20"
+  },
+  "meta": {
+    "paging": {
+      "total": 2,
+      "limit": 20
+    }
+  }
+}

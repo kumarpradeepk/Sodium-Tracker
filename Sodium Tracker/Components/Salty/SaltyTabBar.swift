@@ -25,7 +25,7 @@ struct SaltyTabBar: View {
             tabItem(.today, "Today")
             tabItem(.trends, "Trends")
             fab
-            tabItem(.awards, "Awards")
+            tabItem(.awards, "Rhythm")
             tabItem(.settings, "Settings")
         }
         .padding(.horizontal, 10)
@@ -92,7 +92,7 @@ struct SaltyTabBar: View {
         .offset(y: -30)
         // The FAB overhangs the bar; keep its slot from adding height.
         .frame(height: 44, alignment: .top)
-        .accessibilityLabel("Quick add")
+        .accessibilityLabel(PinchLocalization.resolve("Quick add"))
     }
 }
 

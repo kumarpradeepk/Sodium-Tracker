@@ -1,0 +1,13 @@
+{
+  "data": [],
+  "included": [],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a/appScreenshotSets?include=appScreenshots&limit=200"
+  },
+  "meta": {
+    "paging": {
+      "total": 0,
+      "limit": 200
+    }
+  }
+}

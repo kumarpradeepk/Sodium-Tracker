@@ -1,0 +1,19 @@
+{
+  "data": {
+    "type": "appInfoLocalizations",
+    "attributes": {
+      "locale": "zh-Hans",
+      "name": "Pinch 钠摄入与盐分记录",
+      "subtitle": "饮食日记与每日用量管理",
+      "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html"
+    },
+    "relationships": {
+      "appInfo": {
+        "data": {
+          "type": "appInfos",
+          "id": "9b0615c4-0585-4a1a-9129-26cd135f4604"
+        }
+      }
+    }
+  }
+}

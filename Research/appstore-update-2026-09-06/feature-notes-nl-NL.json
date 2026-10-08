@@ -1,0 +1,41 @@
+{
+  "data": {
+    "type": "appStoreVersionLocalizations",
+    "id": "8c30cf7c-1b5a-44e0-973a-993c5f2101ce",
+    "attributes": {
+      "description": "Je natrium, dag voor dag in beeld. Met Pinch registreer je maaltijden en zie je hoeveel ruimte er nog is binnen je dagelijkse natriumbudget.\n\nJE DAG IN ÉÉN OOGOPSLAG\n• Stel je dagdoel in en voer hoeveelheden in milligram in.\n• Vind favorieten en vaak geregistreerde voedingsmiddelen terug.\n• Vergelijk voeding met je resterende budget.\n• Kies optionele herinneringen voor maaltijden.\n• Bekijk weektrends en reeksen geregistreerde dagen.\n• Reken zout en natrium om.\n\nPINCH PLUS\nEen abonnement biedt zoeken en registreren via FatSecret, trends en een kalender over vier weken, onbeperkte eigen voedingsmiddelen, CSV-export en de widget. Prijzen en eventuele introductieaanbiedingen staan vóór aankoop in de app. Het abonnement wordt automatisch verlengd tenzij je het opzegt via je Apple Account-instellingen.\n\nDe resultaten zijn gebaseerd op je invoer; niet-geregistreerde maaltijden tellen niet mee. Voedingsgegevens van FatSecret, waar beschikbaar. Pinch geeft geen medisch advies. Bespreek een passend natriumdoel met een zorgprofessional.\n\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nPrivacybeleid: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "nl-NL",
+      "keywords": "zoutarm,dieet,zoutinname,dagboek,maaltijd,voeding,budget,herinnering,dash",
+      "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+      "promotionalText": null,
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": "Kleine momenten. Een helderder beeld van je dag.\n\nPinch helpt je natrium bij te houden, maaltijd voor maaltijd. Met deze versie is de app-interface beschikbaar in 14 talen, zodat je dagelijkse routine vertrouwder aanvoelt.\n\n• Log voeding en vergelijk je dagelijkse natriumtotaal met een doel dat je zelf kiest.\n• Bewaar favorieten en voeg vertrouwde voeding snel opnieuw toe.\n• Voer natrium in milligrammen of zout in grammen in vanaf het etiket.\n• Kies optionele maaltijdherinneringen die bij je ritme passen.\n\nWil je meer overzicht? Pinch Plus biedt trends over vier weken, een zoutkalender, zoeken naar voeding met FatSecret, CSV-export en een beginschermwidget.\n\nJe dagboek hoeft niet perfect te zijn. Begin bij je volgende maaltijd."
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce"
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce"
+  }
+}

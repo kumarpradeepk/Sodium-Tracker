@@ -1,0 +1,179 @@
+{
+  "verified_at": "2026-09-09T10:53:44.649308+00:00",
+  "app_id": "6800595930",
+  "version": "1.3",
+  "version_id": "552ba4af-72b4-41d0-8767-ff80c24a832d",
+  "build": "9",
+  "build_id": "e7daa9d9-d3b4-4943-9c0b-cba6255519a0",
+  "review_submission_id": "c18f0622-8b74-43ae-820e-08b4a12e808c",
+  "submission_state": "WAITING_FOR_REVIEW",
+  "version_state": "WAITING_FOR_REVIEW",
+  "release_type": "AFTER_APPROVAL",
+  "promotional_text_locales_preserved": 17,
+  "keyword_locales_corrected": 10,
+  "screenshots_preserved": 86,
+  "metadata_readback_verified_after_submission": true,
+  "source_release": "1.2 (8)",
+  "source_head": "dca80be",
+  "source_working_tree": "Current working tree including the user’s pre-existing changes; no app source files were edited during this release task.",
+  "build_settings_overrides": {
+    "MARKETING_VERSION": "1.3",
+    "CURRENT_PROJECT_VERSION": "9"
+  },
+  "project_version_values_changed": false,
+  "promotional_text_verification": [
+    {
+      "locale": "de-DE",
+      "characters": 155,
+      "utf8_bytes": 158,
+      "sha256": "5b0bf413f4257d8c8306c0c5eb379c9963e45aac3f21bf4f5f439ce390a03f49",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "en-AU",
+      "characters": 146,
+      "utf8_bytes": 148,
+      "sha256": "3e6d0ef6ac490c52a2a259dda67756eaf72c49a4f26d55acc344694e96602f69",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "en-CA",
+      "characters": 146,
+      "utf8_bytes": 148,
+      "sha256": "3e6d0ef6ac490c52a2a259dda67756eaf72c49a4f26d55acc344694e96602f69",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "en-GB",
+      "characters": 146,
+      "utf8_bytes": 148,
+      "sha256": "3e6d0ef6ac490c52a2a259dda67756eaf72c49a4f26d55acc344694e96602f69",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "en-US",
+      "characters": 145,
+      "utf8_bytes": 147,
+      "sha256": "b20d4c2ace5b56bb6e18652cba30ba159fce165f8200a5eac5ae0cc78de82fba",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "es-ES",
+      "characters": 150,
+      "utf8_bytes": 151,
+      "sha256": "cef6c6b896b05751c8c5464b2f83519e24d1445df5451103377a6d38ef9b1531",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "fr-CA",
+      "characters": 154,
+      "utf8_bytes": 158,
+      "sha256": "9c7cb919e851d3e2fffb36d854b07e65259d0066100d35fd6660d3aebdc6963b",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "fr-FR",
+      "characters": 154,
+      "utf8_bytes": 158,
+      "sha256": "9c7cb919e851d3e2fffb36d854b07e65259d0066100d35fd6660d3aebdc6963b",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "hi",
+      "characters": 140,
+      "utf8_bytes": 364,
+      "sha256": "822313a0c1d4a13c7844de5cbafebca4188f412fa90eba0fcf4a255ee1629f6c",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "it",
+      "characters": 154,
+      "utf8_bytes": 154,
+      "sha256": "9b445c4a37636e270b5fedb0cff9fd1cb21343ea5acec8d9b388fbc5ee4c82ac",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "ja",
+      "characters": 78,
+      "utf8_bytes": 234,
+      "sha256": "f0746a2975fcea5443497e1b09a412995f755439b77067155826c93772b90b45",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "ms",
+      "characters": 156,
+      "utf8_bytes": 156,
+      "sha256": "c54de6743271f4eaff499747db2828bb409a8bff7b4a1a925bc42635d20de32b",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "nl-NL",
+      "characters": 159,
+      "utf8_bytes": 159,
+      "sha256": "b3f6919838d93a4f799a19f0059cad792cf4163f3241b76bb882b0a7b6e7f459",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "sv",
+      "characters": 136,
+      "utf8_bytes": 142,
+      "sha256": "745943e4e95aa690275d95a5ddc3b12e34dbfb63ca1cd893893291646c9ae34e",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "ta-IN",
+      "characters": 133,
+      "utf8_bytes": 367,
+      "sha256": "420188f008f3c9ad5e9294ba744b6bb9ebced1df40741ab8a9bc2ec1e408d018",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "te-IN",
+      "characters": 137,
+      "utf8_bytes": 371,
+      "sha256": "a8e3714bae7c8d704d0aa2ece69072157c48661aefceb42616bbf89c9d2101cb",
+      "matches_previous_release": true
+    },
+    {
+      "locale": "zh-Hans",
+      "characters": 66,
+      "utf8_bytes": 198,
+      "sha256": "6076750bd0cd295a563cae8e099623bd8afc6492d6d6acc73b8f1a1528e01a7b",
+      "matches_previous_release": true
+    }
+  ],
+  "release_notes_preserved_locales": 17,
+  "app_information_exact_match_locales": 17,
+  "media": {
+    "screenshots": 86,
+    "previews": 0,
+    "locales": 17,
+    "content_and_order_match_source": true,
+    "all_assets_processed": true
+  },
+  "tests": {
+    "unit_tests_passed": 118,
+    "unique_ui_checks": 5,
+    "initial_run": {
+      "total": 123,
+      "passed": 122,
+      "failed": 1
+    },
+    "rerun": {
+      "test": "testFavoriteRecommendationsStayInSync",
+      "passed": 1,
+      "failed": 0,
+      "same_compiled_app": true
+    },
+    "limitation": "The favorites UI test initially failed at its first menu interaction and passed unchanged on rerun. Startup timing is suspected, not proven.",
+    "real_money_purchases_performed": false
+  },
+  "metadata_validation": {
+    "hard_errors": 0,
+    "review_advisories": 156,
+    "exact_readback_verified": true,
+    "note": "Advisories concern inferred keyword demand and locale-sensitive tokenization; this is not App Review approval."
+  },
+  "pricing_changed": false,
+  "approval_state": "Pending Apple review; not yet approved or released."
+}

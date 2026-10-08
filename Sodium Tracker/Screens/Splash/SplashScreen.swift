@@ -40,7 +40,8 @@ struct SplashScreen: View {
             onFinish()
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Pinch. One number a day.")
+        .accessibilityLabel(PinchLocalization.resolve("Pinch. One number a day."))
+        .accessibilityIdentifier("launch.splash")
     }
 
     // MARK: - Layout

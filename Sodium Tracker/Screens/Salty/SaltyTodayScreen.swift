@@ -177,7 +177,7 @@ struct SaltyTodayScreen: View {
         .buttonStyle(.saltyPress(scale: 0.82))
         .opacity(enabled ? 1 : 0.22)
         .disabled(!enabled)
-        .accessibilityLabel(leading ? "Previous day" : "Next day")
+        .accessibilityLabel(PinchLocalization.resolve(leading ? "Previous day" : "Next day"))
     }
 
     private var bell: some View {
@@ -203,7 +203,7 @@ struct SaltyTodayScreen: View {
             .saltyBellShadow(s)
         }
         .buttonStyle(.saltyPress(scale: 0.86))
-        .accessibilityLabel("Nudges")
+        .accessibilityLabel(PinchLocalization.resolve("Nudges"))
     }
 
     // MARK: - Title row
@@ -228,7 +228,7 @@ struct SaltyTodayScreen: View {
                     SaltyStar()
                         .fill(s.star)
                         .frame(width: 15, height: 15)
-                    PinchText("\(streak)-day streak")
+                    PinchText(PinchLocalization.format("{0}-day streak", [String(describing: streak)]))
                         .salty(15.5, .heavy)
                         .foregroundStyle(s.amberStreak)
                         .lineLimit(1)
@@ -273,7 +273,7 @@ struct SaltyTodayScreen: View {
                 Button {
                     withAnimation(.easeOut(duration: 0.35)) { ui.tab = .settings }
                 } label: {
-                    PinchText("of \(PinchFormat.mg(goal)) mg")
+                    PinchText(PinchLocalization.format("of {0} mg", [String(describing: PinchFormat.mg(goal))]))
                         .salty(16, .medium)
                         .foregroundStyle(s.inkCenterSub)
                         .padding(.bottom, 3)
@@ -288,8 +288,8 @@ struct SaltyTodayScreen: View {
                 .buttonStyle(.plain)
 
                 PinchText(d.remaining >= 0
-                     ? "\(PinchFormat.mg(d.remaining)) mg left"
-                     : "\(PinchFormat.mg(-d.remaining)) mg over")
+                     ? PinchLocalization.format("{0} mg left", [String(describing: PinchFormat.mg(d.remaining))])
+                     : PinchLocalization.format("{0} mg over", [String(describing: PinchFormat.mg(-d.remaining))]))
                     .saltyNum(19, .heavy)
                     .foregroundStyle(d.remaining >= 0 ? s.blue : s.amberText)
                     .padding(.top, 4)
@@ -302,8 +302,8 @@ struct SaltyTodayScreen: View {
         .frame(height: ringSize)
         .onPreferenceChange(RingCenterKey.self) { ringCenterFrame = $0 }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Sodium progress")
-        .accessibilityValue("\(PinchFormat.mg(d.consumed)) of \(PinchFormat.mg(goal)) milligrams")
+        .accessibilityLabel(PinchLocalization.resolve("Sodium progress"))
+        .accessibilityValue(PinchLocalization.format("{0} of {1} milligrams", [String(describing: PinchFormat.mg(d.consumed)), String(describing: PinchFormat.mg(goal))]))
     }
 
     // MARK: - Bubble
@@ -333,7 +333,7 @@ struct SaltyTodayScreen: View {
                             .padding(.leading, 6)
                     }
                     .buttonStyle(.saltyPress(opacity: 0.55))
-                    .accessibilityLabel("Undo last log")
+                    .accessibilityLabel(PinchLocalization.resolve("Undo last log"))
                 }
             }
             .frame(maxWidth: .infinity)
@@ -359,7 +359,7 @@ struct SaltyTodayScreen: View {
                 color: d.remaining >= 0 ? s.blue : s.amberText
             )
             statCard(
-                value: "\(d.underCount) of 7",
+                value: PinchLocalization.format("{0} of 7", [String(describing: d.underCount)]),
                 caption: "days under budget this week",
                 color: s.ink
             )
@@ -392,7 +392,7 @@ struct SaltyTodayScreen: View {
                 .salty(13, .heavy, tracking: 0.13)
                 .foregroundStyle(s.ink3)
             Spacer(minLength: 8)
-            PinchText("vs. \(PinchFormat.mg(max(d.remaining, 0))) mg left")
+            PinchText(PinchLocalization.format("vs. {0} mg left", [String(describing: PinchFormat.mg(max(d.remaining, 0)))]))
                 .saltyNum(13.5, .semibold)
                 .foregroundStyle(s.inkFaint)
                 .lineLimit(1)
@@ -429,7 +429,7 @@ struct SaltyTodayScreen: View {
                         .foregroundStyle(s.blue)
                         .frame(width: 32, height: 32)
                         .background(Circle().fill(s.blueSoft))
-                    PinchText(food.name)
+                    Text(verbatim: food.displayName)
                         .salty(16.5, .heavy)
                         .foregroundStyle(s.ink)
                         .fixedSize()
@@ -451,7 +451,7 @@ struct SaltyTodayScreen: View {
                 .saltyCardShadow(s)
         }
         .buttonStyle(.saltyPress(scale: 0.93, duration: 0.16, curve: (0.3, 1.5, 0.4, 1)))
-        .accessibilityLabel("Log \(food.name), \(food.mg) milligrams")
+        .accessibilityLabel(PinchLocalization.format("Log {0}, {1} milligrams", [food.displayName, String(describing: food.mg)]))
         // Reported without affecting layout, so the fly pill can launch from
         // wherever the chip actually sits after scrolling.
         .background(GeometryReader { g in
@@ -497,7 +497,7 @@ struct SaltyTodayScreen: View {
                     .salty(15, .heavy)
                     .foregroundStyle(s.ink)
                 Spacer()
-                PinchText("\(PinchFormat.mg(rows.reduce(0) { $0 + $1.totalMg })) mg")
+                PinchText(PinchLocalization.format("{0} mg", [String(describing: PinchFormat.mg(rows.reduce(0) { $0 + $1.totalMg }))]))
                     .saltyNum(13.5, .semibold)
                     .foregroundStyle(s.ink3)
             }
@@ -508,7 +508,7 @@ struct SaltyTodayScreen: View {
             ForEach(Array(rows.enumerated()), id: \.offset) { _, resolved in
                 HStack(spacing: 11) {
                     VStack(alignment: .leading, spacing: 1) {
-                        PinchText(resolved.name)
+                        Text(verbatim: resolved.displayName)
                             .salty(15, .semibold)
                             .foregroundStyle(s.ink)
                             .lineLimit(1)
@@ -530,7 +530,7 @@ struct SaltyTodayScreen: View {
                             .contentShape(Circle())
                     }
                     .buttonStyle(.saltyPress(scale: 0.85))
-                    .accessibilityLabel("Remove \(resolved.name)")
+                    .accessibilityLabel(PinchLocalization.format("Remove {0}", [resolved.displayName]))
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
@@ -551,7 +551,7 @@ struct SaltyTodayScreen: View {
             ? source
             : CGPoint(x: ringCenterFrame.midX, y: ringCenterFrame.midY)
 
-        engine.spawnFly(from: source, to: target, label: "+\(PinchFormat.mg(food.mg)) mg") {
+        engine.spawnFly(from: source, to: target, label: PinchLocalization.format("+{0} mg", [String(describing: PinchFormat.mg(food.mg))])) {
             applyAdd(mg: food.mg, remainingBefore: d.remaining) {
                 LogEntry(foodID: food.id, servings: 1, meal: Meal.auto(), loggedAt: timestamp(for: day))
             }

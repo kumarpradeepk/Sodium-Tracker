@@ -7,10 +7,12 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 @main
 struct Sodium_TrackerApp: App {
     @State private var subscriptions = SubscriptionStore()
+    @AppStorage(PinchLocalization.preferenceKey) private var language = "system"
 
     init() {
         // Defaults for keys read outside @AppStorage (NotificationManager
@@ -28,7 +30,15 @@ struct Sodium_TrackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .id(language)
+                .environment(\.locale, PinchLocalization.locale)
                 .environment(subscriptions)
+                .task(id: language) {
+                    UserDefaults(suiteName: PinchLocalization.appGroup)?.set(language, forKey: PinchLocalization.preferenceKey)
+                    NotificationManager.refresh(remaining: 0)
+                    await NotificationManager.refreshTrialLanguage()
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
                 .task { await subscriptions.prepare() }
         }
         .modelContainer(for: [LogEntry.self, CustomFood.self, Favorite.self])

@@ -1,0 +1,41 @@
+{
+  "data": {
+    "type": "appStoreVersionLocalizations",
+    "id": "65014269-bcf1-4db5-abd4-eefd8b0cd6ab",
+    "attributes": {
+      "description": "Il tuo sodio, un giorno alla volta. Pinch ti aiuta a registrare i pasti e a vedere quanto resta del tuo limite giornaliero di sodio.\n\nLA TUA GIORNATA A COLPO D’OCCHIO\n• Imposta un obiettivo e registra le quantità in milligrammi.\n• Ritrova i preferiti e gli alimenti registrati più spesso.\n• Confronta gli alimenti con il limite residuo.\n• Scegli promemoria facoltativi per i pasti.\n• Consulta tendenze settimanali e serie di giorni registrati.\n• Converti sale e sodio.\n\nPINCH PLUS\nL’abbonamento include ricerca e registrazione degli alimenti FatSecret, tendenze e calendario su quattro settimane, alimenti personalizzati illimitati, esportazione CSV e widget. Prezzi ed eventuali offerte introduttive idonee sono indicati prima dell’acquisto. L’abbonamento si rinnova automaticamente salvo disdetta nelle impostazioni dell’Apple Account.\n\nI risultati riflettono ciò che registri; i pasti non registrati sono esclusi. Dati alimentari di FatSecret, dove disponibili. Pinch non offre consulenza medica. Chiedi a un professionista sanitario quale obiettivo di sodio è adatto a te.\n\nCondizioni d’uso: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "it",
+      "keywords": "sale,alimentare,pasti,apporto,nutrizione,registro,promemoria,abitudini,dash",
+      "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+      "promotionalText": "Un pasto alla volta, fai chiarezza sul sodio. Registra gli alimenti, salva i preferiti e guarda il totale giornaliero. Promemoria gentili, se li desideri.",
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": "Piccoli momenti. Un quadro più chiaro della tua giornata.\n\nPinch ti aiuta a tenere traccia del sodio, un pasto alla volta. Con questa versione, l’interfaccia dell’app è disponibile in 14 lingue, per rendere più familiare la tua routine quotidiana.\n\n• Registra gli alimenti e confronta il totale giornaliero di sodio con un obiettivo scelto da te.\n• Tieni i preferiti a portata di mano e aggiungi rapidamente gli alimenti abituali.\n• Inserisci il sodio in milligrammi o il sale in grammi indicati sulle etichette.\n• Scegli promemoria facoltativi per i pasti, adatti ai tuoi ritmi.\n\nVuoi una visione più ampia? Pinch Plus offre tendenze di quattro settimane, un calendario del sale, la ricerca alimentare FatSecret, l’esportazione CSV e un widget per la schermata Home.\n\nIl tuo diario non deve essere perfetto. Inizia dal prossimo pasto."
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab"
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab"
+  }
+}

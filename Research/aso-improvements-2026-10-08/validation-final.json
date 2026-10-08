@@ -1,0 +1,1231 @@
+{
+  "status": "needs_review",
+  "errors": [],
+  "warnings": [
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: food"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: diary"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: nutrition"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: meal"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: log"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: milligram"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: gram"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: goal"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: reminder"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: low"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: diet"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: journal"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: calculator"
+    },
+    {
+      "path": "en-AU.keywords",
+      "message": "Inferred term is not measured demand: converter"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: journal"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: alimentaire"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: repas"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: apport"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: nutrition"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: r\u00e9gime"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: pauvre"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: calculateur"
+    },
+    {
+      "path": "fr-CA.keywords",
+      "message": "Inferred term is not measured demand: conversion"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: journal"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: alimentaire"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: repas"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: apport"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: nutrition"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: r\u00e9gime"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: pauvre"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: calculateur"
+    },
+    {
+      "path": "fr-FR.keywords",
+      "message": "Inferred term is not measured demand: conversion"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u98df\u4e8b"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Inferred term is not measured demand: \u98df\u4e8b"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u65e5\u8a18"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Inferred term is not measured demand: \u65e5\u8a18"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u6804\u990a"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Inferred term is not measured demand: \u6804\u990a"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u98df\u5869"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Inferred term is not measured demand: \u98df\u5869"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Inferred term is not measured demand: \u6442\u53d6\u91cf"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u98df\u54c1"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Inferred term is not measured demand: \u98df\u54c1"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u8a08\u7b97"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Inferred term is not measured demand: \u8a08\u7b97"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u63db\u7b97"
+    },
+    {
+      "path": "ja.keywords",
+      "message": "Inferred term is not measured demand: \u63db\u7b97"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u51cf\u76d0"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Inferred term is not measured demand: \u51cf\u76d0"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u4f4e\u94a0"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Inferred term is not measured demand: \u4f4e\u94a0"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u98df\u7269"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Inferred term is not measured demand: \u98df\u7269"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u8425\u517b"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Inferred term is not measured demand: \u8425\u517b"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u98df\u76d0"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Inferred term is not measured demand: \u98df\u76d0"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Inferred term is not measured demand: \u6444\u53d6\u91cf"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Short term needs locale-sensitive review against field-reference wording: \u6362\u7b97"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Inferred term is not measured demand: \u6362\u7b97"
+    },
+    {
+      "path": "zh-Hans.keywords",
+      "message": "Inferred term is not measured demand: \u8ba1\u7b97\u5668"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: makanan"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: pemakanan"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: diari"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: hidangan"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: pengambilan"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: diet"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: rendah"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: kalkulator"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: penukaran"
+    },
+    {
+      "path": "ms.keywords",
+      "message": "Inferred term is not measured demand: salt"
+    },
+    {
+      "path": "te-IN.keywords",
+      "message": "Repeated word within/across keyword/title fields: \u0c06\u0c39\u0c3e\u0c30\u0c02 (language-sensitive check)."
+    },
+    {
+      "path": "te-IN.keywords",
+      "message": "Inferred term is not measured demand: \u0c06\u0c39\u0c3e\u0c30\u0c02"
+    },
+    {
+      "path": "te-IN.keywords",
+      "message": "Repeated word within/across keyword/title fields: \u0c2a\u0c4b\u0c37\u0c23 (language-sensitive check)."
+    },
+    {
+      "path": "te-IN.keywords",
+      "message": "Inferred term is not measured demand: \u0c2a\u0c4b\u0c37\u0c23"
+    },
+    {
+      "path": "te-IN.keywords",
+      "message": "Repeated word within/across keyword/title fields: \u0c1f\u0c4d\u0c30\u0c3e\u0c15\u0c30\u0c4d (language-sensitive check)."
+    },
+    {
+      "path": "te-IN.keywords",
+      "message": "Inferred term is not measured demand: \u0c1f\u0c4d\u0c30\u0c3e\u0c15\u0c30\u0c4d"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: food"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: diary"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: nutrition"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: meal"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: log"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: milligram"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: gram"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: goal"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: reminder"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: low"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: diet"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: journal"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: calculator"
+    },
+    {
+      "path": "en-CA.keywords",
+      "message": "Inferred term is not measured demand: converter"
+    },
+    {
+      "path": "de-DE.keywords",
+      "message": "Inferred term is not measured demand: salzarm"
+    },
+    {
+      "path": "de-DE.keywords",
+      "message": "Inferred term is not measured demand: ern\u00e4hrung"
+    },
+    {
+      "path": "de-DE.keywords",
+      "message": "Inferred term is not measured demand: lebensmittel"
+    },
+    {
+      "path": "de-DE.keywords",
+      "message": "Inferred term is not measured demand: tagebuch"
+    },
+    {
+      "path": "de-DE.keywords",
+      "message": "Inferred term is not measured demand: mahlzeit"
+    },
+    {
+      "path": "de-DE.keywords",
+      "message": "Inferred term is not measured demand: salzaufnahme"
+    },
+    {
+      "path": "de-DE.keywords",
+      "message": "Inferred term is not measured demand: rechner"
+    },
+    {
+      "path": "de-DE.keywords",
+      "message": "Inferred term is not measured demand: umrechner"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: food"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: diary"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: nutrition"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: meal"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: log"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: gram"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: goal"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: reminder"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: low"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: diet"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: journal"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: calculator"
+    },
+    {
+      "path": "en-GB.keywords",
+      "message": "Inferred term is not measured demand: converter"
+    },
+    {
+      "path": "ta-IN.keywords",
+      "message": "Inferred term is not measured demand: \u0b89\u0ba3\u0bb5\u0bc1"
+    },
+    {
+      "path": "ta-IN.keywords",
+      "message": "Repeated word within/across keyword/title fields: \u0b8a\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0ba4\u0bcd\u0ba4\u0bc1 (language-sensitive check)."
+    },
+    {
+      "path": "ta-IN.keywords",
+      "message": "Inferred term is not measured demand: \u0b8a\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0ba4\u0bcd\u0ba4\u0bc1"
+    },
+    {
+      "path": "ta-IN.keywords",
+      "message": "Repeated word within/across keyword/title fields: \u0b9f\u0bbf\u0bb0\u0bbe\u0b95\u0bcd\u0b95\u0bb0\u0bcd (language-sensitive check)."
+    },
+    {
+      "path": "ta-IN.keywords",
+      "message": "Inferred term is not measured demand: \u0b9f\u0bbf\u0bb0\u0bbe\u0b95\u0bcd\u0b95\u0bb0\u0bcd"
+    },
+    {
+      "path": "nl-NL.keywords",
+      "message": "Inferred term is not measured demand: zoutarm"
+    },
+    {
+      "path": "nl-NL.keywords",
+      "message": "Inferred term is not measured demand: dieet"
+    },
+    {
+      "path": "nl-NL.keywords",
+      "message": "Inferred term is not measured demand: zoutinname"
+    },
+    {
+      "path": "nl-NL.keywords",
+      "message": "Inferred term is not measured demand: dagboek"
+    },
+    {
+      "path": "nl-NL.keywords",
+      "message": "Inferred term is not measured demand: maaltijd"
+    },
+    {
+      "path": "nl-NL.keywords",
+      "message": "Inferred term is not measured demand: voeding"
+    },
+    {
+      "path": "nl-NL.keywords",
+      "message": "Inferred term is not measured demand: calculator"
+    },
+    {
+      "path": "nl-NL.keywords",
+      "message": "Inferred term is not measured demand: omrekenen"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: food"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: diary"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: nutrition"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: meal"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: log"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: gram"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: goal"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: reminder"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: low"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: diet"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: journal"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: calculator"
+    },
+    {
+      "path": "en-US.keywords",
+      "message": "Inferred term is not measured demand: converter"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: dieta"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: baja"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: alimentos"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: comidas"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: nutrici\u00f3n"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: ingesta"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: calculadora"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: consumo"
+    },
+    {
+      "path": "es-ES.keywords",
+      "message": "Inferred term is not measured demand: contador"
+    },
+    {
+      "path": "it.keywords",
+      "message": "Inferred term is not measured demand: sale"
+    },
+    {
+      "path": "it.keywords",
+      "message": "Inferred term is not measured demand: alimentare"
+    },
+    {
+      "path": "it.keywords",
+      "message": "Inferred term is not measured demand: pasti"
+    },
+    {
+      "path": "it.keywords",
+      "message": "Inferred term is not measured demand: apporto"
+    },
+    {
+      "path": "it.keywords",
+      "message": "Inferred term is not measured demand: nutrizione"
+    },
+    {
+      "path": "it.keywords",
+      "message": "Inferred term is not measured demand: registro"
+    },
+    {
+      "path": "it.keywords",
+      "message": "Inferred term is not measured demand: calcolatore"
+    },
+    {
+      "path": "it.keywords",
+      "message": "Inferred term is not measured demand: consumo"
+    },
+    {
+      "path": "sv.keywords",
+      "message": "Inferred term is not measured demand: saltintag"
+    },
+    {
+      "path": "sv.keywords",
+      "message": "Inferred term is not measured demand: kost"
+    },
+    {
+      "path": "sv.keywords",
+      "message": "Inferred term is not measured demand: m\u00e5ltid"
+    },
+    {
+      "path": "sv.keywords",
+      "message": "Inferred term is not measured demand: n\u00e4ring"
+    },
+    {
+      "path": "sv.keywords",
+      "message": "Inferred term is not measured demand: logg"
+    },
+    {
+      "path": "sv.keywords",
+      "message": "Inferred term is not measured demand: saltfattig"
+    },
+    {
+      "path": "sv.keywords",
+      "message": "Inferred term is not measured demand: r\u00e4knare"
+    },
+    {
+      "path": "sv.keywords",
+      "message": "Inferred term is not measured demand: omvandling"
+    },
+    {
+      "path": "hi.keywords",
+      "message": "Inferred term is not measured demand: \u092d\u094b\u091c\u0928"
+    },
+    {
+      "path": "hi.keywords",
+      "message": "Inferred term is not measured demand: \u092a\u094b\u0937\u0923"
+    },
+    {
+      "path": "hi.keywords",
+      "message": "Repeated word within/across keyword/title fields: \u092e\u093f\u0932\u0940\u0917\u094d\u0930\u093e\u092e (language-sensitive check)."
+    },
+    {
+      "path": "hi.keywords",
+      "message": "Inferred term is not measured demand: \u092e\u093f\u0932\u0940\u0917\u094d\u0930\u093e\u092e"
+    },
+    {
+      "path": "hi.keywords",
+      "message": "Repeated word within/across keyword/title fields: \u091f\u094d\u0930\u0948\u0915\u0930 (language-sensitive check)."
+    },
+    {
+      "path": "hi.keywords",
+      "message": "Inferred term is not measured demand: \u091f\u094d\u0930\u0948\u0915\u0930"
+    }
+  ],
+  "counts": {
+    "en-AU": {
+      "name": {
+        "code_points": 27,
+        "utf8_bytes": 27,
+        "utf16_units": 27,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 21,
+        "utf8_bytes": 21,
+        "utf16_units": 21,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 96,
+        "utf8_bytes": 96,
+        "utf16_units": 96,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 146,
+        "utf8_bytes": 148,
+        "utf16_units": 146,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1222,
+        "utf8_bytes": 1234,
+        "utf16_units": 1222,
+        "limit": 4000
+      }
+    },
+    "fr-CA": {
+      "name": {
+        "code_points": 20,
+        "utf8_bytes": 20,
+        "utf16_units": 20,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 25,
+        "utf8_bytes": 25,
+        "utf16_units": 25,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 87,
+        "utf8_bytes": 88,
+        "utf16_units": 87,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 154,
+        "utf8_bytes": 158,
+        "utf16_units": 154,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1422,
+        "utf8_bytes": 1475,
+        "utf16_units": 1422,
+        "limit": 4000
+      }
+    },
+    "fr-FR": {
+      "name": {
+        "code_points": 20,
+        "utf8_bytes": 20,
+        "utf16_units": 20,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 25,
+        "utf8_bytes": 25,
+        "utf16_units": 25,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 87,
+        "utf8_bytes": 88,
+        "utf16_units": 87,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 154,
+        "utf8_bytes": 158,
+        "utf16_units": 154,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1422,
+        "utf8_bytes": 1475,
+        "utf16_units": 1422,
+        "limit": 4000
+      }
+    },
+    "ja": {
+      "name": {
+        "code_points": 16,
+        "utf8_bytes": 36,
+        "utf16_units": 16,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 14,
+        "utf8_bytes": 42,
+        "utf16_units": 14,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 39,
+        "utf8_bytes": 73,
+        "utf16_units": 39,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 78,
+        "utf8_bytes": 234,
+        "utf16_units": 78,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 684,
+        "utf8_bytes": 1554,
+        "utf16_units": 684,
+        "limit": 4000
+      }
+    },
+    "zh-Hans": {
+      "name": {
+        "code_points": 14,
+        "utf8_bytes": 30,
+        "utf16_units": 14,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 11,
+        "utf8_bytes": 33,
+        "utf16_units": 11,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 40,
+        "utf8_bytes": 76,
+        "utf16_units": 40,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 66,
+        "utf8_bytes": 198,
+        "utf16_units": 66,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 556,
+        "utf8_bytes": 1186,
+        "utf16_units": 556,
+        "limit": 4000
+      }
+    },
+    "ms": {
+      "name": {
+        "code_points": 20,
+        "utf8_bytes": 20,
+        "utf16_units": 20,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 20,
+        "utf8_bytes": 20,
+        "utf16_units": 20,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 97,
+        "utf8_bytes": 97,
+        "utf16_units": 97,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 156,
+        "utf8_bytes": 156,
+        "utf16_units": 156,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1242,
+        "utf8_bytes": 1254,
+        "utf16_units": 1242,
+        "limit": 4000
+      }
+    },
+    "te-IN": {
+      "name": {
+        "code_points": 18,
+        "utf8_bytes": 38,
+        "utf16_units": 18,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 20,
+        "utf8_bytes": 56,
+        "utf16_units": 20,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 33,
+        "utf8_bytes": 65,
+        "utf16_units": 33,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 137,
+        "utf8_bytes": 371,
+        "utf16_units": 137,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1398,
+        "utf8_bytes": 3386,
+        "utf16_units": 1398,
+        "limit": 4000
+      }
+    },
+    "en-CA": {
+      "name": {
+        "code_points": 27,
+        "utf8_bytes": 27,
+        "utf16_units": 27,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 21,
+        "utf8_bytes": 21,
+        "utf16_units": 21,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 96,
+        "utf8_bytes": 96,
+        "utf16_units": 96,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 146,
+        "utf8_bytes": 148,
+        "utf16_units": 146,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1222,
+        "utf8_bytes": 1234,
+        "utf16_units": 1222,
+        "limit": 4000
+      }
+    },
+    "de-DE": {
+      "name": {
+        "code_points": 22,
+        "utf8_bytes": 22,
+        "utf16_units": 22,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 28,
+        "utf8_bytes": 29,
+        "utf16_units": 28,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 86,
+        "utf8_bytes": 87,
+        "utf16_units": 86,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 155,
+        "utf8_bytes": 158,
+        "utf16_units": 155,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1342,
+        "utf8_bytes": 1365,
+        "utf16_units": 1342,
+        "limit": 4000
+      }
+    },
+    "en-GB": {
+      "name": {
+        "code_points": 27,
+        "utf8_bytes": 27,
+        "utf16_units": 27,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 21,
+        "utf8_bytes": 21,
+        "utf16_units": 21,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 96,
+        "utf8_bytes": 96,
+        "utf16_units": 96,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 146,
+        "utf8_bytes": 148,
+        "utf16_units": 146,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1222,
+        "utf8_bytes": 1234,
+        "utf16_units": 1222,
+        "limit": 4000
+      }
+    },
+    "ta-IN": {
+      "name": {
+        "code_points": 20,
+        "utf8_bytes": 44,
+        "utf16_units": 20,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 19,
+        "utf8_bytes": 53,
+        "utf16_units": 19,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 41,
+        "utf8_bytes": 89,
+        "utf16_units": 41,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 133,
+        "utf8_bytes": 367,
+        "utf16_units": 133,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1401,
+        "utf8_bytes": 3449,
+        "utf16_units": 1401,
+        "limit": 4000
+      }
+    },
+    "nl-NL": {
+      "name": {
+        "code_points": 22,
+        "utf8_bytes": 22,
+        "utf16_units": 22,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 25,
+        "utf8_bytes": 25,
+        "utf16_units": 25,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 77,
+        "utf8_bytes": 77,
+        "utf16_units": 77,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 159,
+        "utf8_bytes": 159,
+        "utf16_units": 159,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1280,
+        "utf8_bytes": 1296,
+        "utf16_units": 1280,
+        "limit": 4000
+      }
+    },
+    "en-US": {
+      "name": {
+        "code_points": 27,
+        "utf8_bytes": 27,
+        "utf16_units": 27,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 21,
+        "utf8_bytes": 21,
+        "utf16_units": 21,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 96,
+        "utf8_bytes": 96,
+        "utf16_units": 96,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 145,
+        "utf8_bytes": 147,
+        "utf16_units": 145,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1221,
+        "utf8_bytes": 1233,
+        "utf16_units": 1221,
+        "limit": 4000
+      }
+    },
+    "es-ES": {
+      "name": {
+        "code_points": 23,
+        "utf8_bytes": 23,
+        "utf16_units": 23,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 22,
+        "utf8_bytes": 22,
+        "utf16_units": 22,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 90,
+        "utf8_bytes": 91,
+        "utf16_units": 90,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 150,
+        "utf8_bytes": 151,
+        "utf16_units": 150,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1336,
+        "utf8_bytes": 1360,
+        "utf16_units": 1336,
+        "limit": 4000
+      }
+    },
+    "it": {
+      "name": {
+        "code_points": 20,
+        "utf8_bytes": 20,
+        "utf16_units": 20,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 24,
+        "utf8_bytes": 24,
+        "utf16_units": 24,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 84,
+        "utf8_bytes": 84,
+        "utf16_units": 84,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 154,
+        "utf8_bytes": 154,
+        "utf16_units": 154,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1347,
+        "utf8_bytes": 1377,
+        "utf16_units": 1347,
+        "limit": 4000
+      }
+    },
+    "sv": {
+      "name": {
+        "code_points": 21,
+        "utf8_bytes": 21,
+        "utf16_units": 21,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 21,
+        "utf8_bytes": 21,
+        "utf16_units": 21,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 78,
+        "utf8_bytes": 81,
+        "utf16_units": 78,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 136,
+        "utf8_bytes": 142,
+        "utf16_units": 136,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1190,
+        "utf8_bytes": 1235,
+        "utf16_units": 1190,
+        "limit": 4000
+      }
+    },
+    "hi": {
+      "name": {
+        "code_points": 19,
+        "utf8_bytes": 41,
+        "utf16_units": 19,
+        "limit": 30
+      },
+      "subtitle": {
+        "code_points": 20,
+        "utf8_bytes": 52,
+        "utf16_units": 20,
+        "limit": 30
+      },
+      "keywords": {
+        "code_points": 41,
+        "utf8_bytes": 87,
+        "utf16_units": 41,
+        "limit": 100
+      },
+      "promotional_text": {
+        "code_points": 140,
+        "utf8_bytes": 364,
+        "utf16_units": 140,
+        "limit": 170
+      },
+      "description": {
+        "code_points": 1323,
+        "utf8_bytes": 3077,
+        "utf16_units": 1323,
+        "limit": 4000
+      }
+    }
+  },
+  "store_acceptance_verified": false,
+  "readback_differences": [],
+  "readback_text_matches": true
+}

@@ -1,0 +1,9 @@
+{
+  "data": {
+    "type": "appScreenshots",
+    "id": "$ASSET_ID",
+    "attributes": {
+      "uploaded": true
+    }
+  }
+}

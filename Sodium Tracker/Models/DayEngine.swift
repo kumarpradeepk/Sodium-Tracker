@@ -39,17 +39,88 @@ enum SodiumConverter {
     /// Sodium chloride is about 39.34% sodium by mass.
     static let sodiumMilligramsPerSaltGram = 393.4
 
-    static func sodiumMilligrams(from text: String, unit: SodiumInputUnit) -> Int? {
-        let normalized = text.trimmingCharacters(in: .whitespacesAndNewlines)
-            .replacingOccurrences(of: ",", with: ".")
-        guard let value = Double(normalized), value.isFinite, value > 0 else { return nil }
+    static func sodiumMilligrams(from text: String, unit: SodiumInputUnit, locale: Locale = PinchLocalization.locale) -> Int? {
+        guard let normalized = normalizedNumber(text, locale: locale),
+              let value = Double(normalized), value.isFinite, value > 0 else { return nil }
         let milligrams: Double
         switch unit {
         case .sodiumMilligrams: milligrams = value
         case .saltGrams: milligrams = value * sodiumMilligramsPerSaltGram
         }
-        guard milligrams <= Double(Int.max) else { return nil }
-        return Int(milligrams.rounded())
+        return Int(exactly: milligrams.rounded())
+    }
+
+    /// Interpret the complete input rather than removing punctuation while the
+    /// user types. Otherwise pasting "1.234,5" can silently become "1.2345".
+    /// Locale-valid grouping wins; a single comma/point is also accepted as a
+    /// decimal separator when it cannot be valid grouping (e.g. "1,5" in English).
+    private static func normalizedNumber(_ text: String, locale: Locale) -> String? {
+        let formatter = NumberFormatter()
+        formatter.locale = locale
+        formatter.numberStyle = .decimal
+        let decimal = formatter.decimalSeparator ?? "."
+        let grouping = formatter.groupingSeparator ?? ","
+        let primarySize = max(formatter.groupingSize, 1)
+        let secondarySize = formatter.secondaryGroupingSize > 0 ? formatter.secondaryGroupingSize : primarySize
+
+        var input = ""
+        for character in text.trimmingCharacters(in: .whitespacesAndNewlines) {
+            // isNumber alone includes fractions and superscripts. Only decimal
+            // digits can be normalized without changing the represented value.
+            if character.unicodeScalars.allSatisfy({ CharacterSet.decimalDigits.contains($0) }),
+               let digit = character.wholeNumberValue, (0...9).contains(digit) {
+                input += String(digit)
+            } else {
+                input.append(character)
+            }
+        }
+        guard !input.isEmpty else { return nil }
+
+        // French uses a narrow no-break space and Swiss locales an apostrophe.
+        // Accept their typographic variants, but never erase arbitrary whitespace.
+        let spaces = [" ", "\u{00A0}", "\u{202F}"]
+        if spaces.contains(grouping) {
+            for space in spaces { input = input.replacingOccurrences(of: space, with: grouping) }
+        } else if grouping == "’" || grouping == "'" {
+            input = input.replacingOccurrences(of: "’", with: grouping)
+                .replacingOccurrences(of: "'", with: grouping)
+        }
+
+        func digits(_ value: String) -> Bool {
+            !value.isEmpty && value.utf8.allSatisfy { (48...57).contains($0) }
+        }
+
+        func parse(decimalSeparator: String, groupingSeparator: String?) -> String? {
+            let parts = input.components(separatedBy: decimalSeparator)
+            guard parts.count <= 2 else { return nil }
+            let whole = parts[0]
+            let fraction = parts.count == 2 ? parts[1] : nil
+            if let fraction, !digits(fraction) { return nil }
+
+            let integer: String
+            if let groupingSeparator, !groupingSeparator.isEmpty, whole.contains(groupingSeparator) {
+                let groups = whole.components(separatedBy: groupingSeparator)
+                guard groups.count > 1, groups.allSatisfy(digits),
+                      groups.last?.count == primarySize,
+                      (1...secondarySize).contains(groups[0].count),
+                      groups.dropFirst().dropLast().allSatisfy({ $0.count == secondarySize }) else { return nil }
+                integer = groups.joined()
+            } else if whole.isEmpty, fraction != nil {
+                integer = "0"
+            } else {
+                guard digits(whole) else { return nil }
+                integer = whole
+            }
+            return integer + (fraction.map { "." + $0 } ?? "")
+        }
+
+        if let result = parse(decimalSeparator: decimal, groupingSeparator: grouping) { return result }
+        // Do not guess a second locale for mixed or repeated separators.
+        for alternate in [".", ","] where alternate != decimal {
+            if input.filter({ String($0) == alternate }).count == 1,
+               let result = parse(decimalSeparator: alternate, groupingSeparator: nil) { return result }
+        }
+        return nil
     }
 
     static func saltGrams(fromSodiumMilligrams milligrams: Int) -> Double {
@@ -135,6 +206,8 @@ enum DayEngine {
     struct WeekStats {
         let dayTotals: [Int]      // 7 values, oldest → newest
         let dayDates: [Date]
+        let loggedDays: [Bool]
+        var loggedDayCount: Int { loggedDays.filter { $0 }.count }
         let average: Double
         let underCount: Int       // days ≤ goal
         let lightestDate: Date?   // among fully elapsed days
@@ -145,13 +218,15 @@ enum DayEngine {
         let offsets = ((endOffset - 6)...endOffset)
         let dates = offsets.map { day(offset: $0, from: today, calendar: calendar) }
         let totals = dates.map { total(all, on: $0, customFoods: customFoods, calendar: calendar) }
-        let avg = Double(totals.reduce(0, +)) / 7
-        let under = totals.filter { $0 <= goal }.count
+        let logged = dates.map { date in all.contains { calendar.isDate($0.loggedAt, inSameDayAs: date) } }
+        let recordedTotals = zip(totals, logged).filter { $0.1 }.map { $0.0 }
+        let avg = recordedTotals.isEmpty ? 0 : Double(recordedTotals.reduce(0, +)) / Double(recordedTotals.count)
+        let under = recordedTotals.filter { $0 <= goal }.count
 
         // "Lightest day" excludes today (it is still in progress).
-        let elapsed = zip(dates, totals).filter { !calendar.isDate($0.0, inSameDayAs: today) }
-        let lightest = elapsed.min { $0.1 < $1.1 }?.0
-        return WeekStats(dayTotals: totals, dayDates: dates, average: avg, underCount: under, lightestDate: lightest)
+        let elapsed = dates.indices.filter { logged[$0] && dates[$0] < calendar.startOfDay(for: today) }
+        let lightest = elapsed.min { totals[$0] < totals[$1] }.map { dates[$0] }
+        return WeekStats(dayTotals: totals, dayDates: dates, loggedDays: logged, average: avg, underCount: under, lightestDate: lightest)
     }
 
     /// Percent change of this week's average vs last week's. Nil when last week
@@ -169,10 +244,10 @@ enum DayEngine {
         guard !q.isEmpty else { return [] }
         let pool = custom.map(\.asFoodItem) + builtIn
         return pool
-            .filter { $0.name.lowercased().contains(q) }
+            .filter { $0.name.localizedStandardContains(q) || $0.displayName.localizedStandardContains(q) }
             .sorted { a, b in
-                let ap = a.name.lowercased().hasPrefix(q)
-                let bp = b.name.lowercased().hasPrefix(q)
+                let ap = a.name.lowercased().hasPrefix(q) || a.displayName.lowercased().hasPrefix(q)
+                let bp = b.name.lowercased().hasPrefix(q) || b.displayName.lowercased().hasPrefix(q)
                 if ap != bp { return ap }
                 return a.mg > b.mg
             }
@@ -214,34 +289,34 @@ enum BadgeEngine {
         sleuthEarnedAt: Date?,
         streak: Int,
         today: Date = .now,
-        calendar: Calendar = .current
+        calendar: Calendar = .current,
+        legacyCoolRule: Bool = false,
+        legacyCoolEarnedAt: Date? = nil
     ) -> [BadgeState] {
-        let loggedDays = Set(entries.map { calendar.startOfDay(for: $0.loggedAt) }).sorted()
+        let validEntries = entries.filter { $0.loggedAt <= today }
+        let loggedDays = Set(validEntries.map { calendar.startOfDay(for: $0.loggedAt) }).sorted()
         let firstDay = loggedDays.first
 
-        /// Day the streak ending today first reached `length`.
+        /// Keep a milestone earned by a historical streak after that streak ends.
         func streakReached(_ length: Int) -> Date? {
-            guard streak >= length else { return nil }
-            var cursor = calendar.startOfDay(for: today)
-            if !loggedDays.contains(cursor), let previous = calendar.date(byAdding: .day, value: -1, to: cursor) {
-                cursor = previous
+            var count = 0
+            var previous: Date?
+            for date in loggedDays where date <= calendar.startOfDay(for: today) {
+                let consecutive = previous.map { calendar.dateComponents([.day], from: $0, to: date).day == 1 } ?? false
+                count = consecutive ? count + 1 : 1
+                if count >= length { return date }
+                previous = date
             }
-            // Walk back to the start of the current streak, then forward length-1 days.
-            var start = cursor
-            while let previous = calendar.date(byAdding: .day, value: -1, to: start),
-                  loggedDays.contains(previous) {
-                start = previous
-            }
-            return calendar.date(byAdding: .day, value: length - 1, to: start)
+            return nil
         }
 
-        let coolDays = loggedDays.filter { day in
-            let dayEntries = entries.filter { calendar.isDate($0.loggedAt, inSameDayAs: day) }
+        let coolDays = legacyCoolRule ? loggedDays.filter { day in
+            let dayEntries = validEntries.filter { calendar.isDate($0.loggedAt, inSameDayAs: day) }
             let total = dayEntries.reduce(0) {
                 $0 + EntryResolver.resolve($1, customFoods: customFoods).totalMg
             }
             return total > 0 && total < 1500
-        }
+        } : loggedDays
         let coolCount = coolDays.count
 
         let firstPath = "M8 6 C8 3.8 8.8 3 10 3 C11.2 3 12 3.8 12 6 L12 6.8 L8 6.8 Z M7.5 8.5 C7.5 8 8.5 7.8 10 7.8 C11.5 7.8 12.5 8 12.5 8.5 L12.8 13.5 C12.9 15.5 11.7 16.8 10 16.8 C8.3 16.8 7.1 15.5 7.2 13.5 Z"
@@ -258,31 +333,31 @@ enum BadgeEngine {
                 id: "hat", name: "Hat Trick", detail: "A 3-day logging streak",
                 iconPath: "", iconText: "3",
                 earnedDate: streakReached(3),
-                progressNote: streak >= 3 ? nil : "\(3 - streak) day\(3 - streak == 1 ? "" : "s") to go"
+                progressNote: streak >= 3 ? nil : PinchLocalization.format("Days remaining: {0}", [PinchLocalization.number(3 - streak)])
             ),
             BadgeState(
                 id: "sleuth", name: "Label Sleuth", detail: "Looked up 25 foods",
                 iconPath: sleuthPath, iconText: "",
                 earnedDate: sleuthEarnedAt,
-                progressNote: sleuthEarnedAt == nil ? "\(min(lookupCount, 25)) of 25 so far" : nil
+                progressNote: sleuthEarnedAt == nil ? PinchLocalization.format("{0} of 25 so far", [String(describing: min(lookupCount, 25))]) : nil
             ),
             BadgeState(
                 id: "week", name: "Salt Week", detail: "A 7-day logging streak",
                 iconPath: "", iconText: "7",
                 earnedDate: streakReached(7),
-                progressNote: streak >= 7 ? nil : "\(7 - streak) day\(7 - streak == 1 ? "" : "s") to go"
+                progressNote: streak >= 7 ? nil : PinchLocalization.format("Days remaining: {0}", [PinchLocalization.number(7 - streak)])
             ),
             BadgeState(
-                id: "cool", name: "Cool Cucumber", detail: "5 days under 1,500 mg",
+                id: "cool", name: "Cool Cucumber", detail: "Logged on 5 different days",
                 iconPath: cucumberPath, iconText: "",
-                earnedDate: coolCount >= 5 ? coolDays.dropFirst(4).first : nil,
-                progressNote: coolCount >= 5 ? nil : "\(coolCount) of 5 so far"
+                earnedDate: legacyCoolEarnedAt ?? (coolCount >= 5 ? coolDays.dropFirst(4).first : nil),
+                progressNote: coolCount >= 5 ? nil : PinchLocalization.format("{0} of 5 so far", [String(describing: coolCount)])
             ),
             BadgeState(
                 id: "steady", name: "Steady Shaker", detail: "A 30-day logging streak",
                 iconPath: "", iconText: "30",
                 earnedDate: streakReached(30),
-                progressNote: streak >= 30 ? nil : "\(30 - streak) to go"
+                progressNote: streak >= 30 ? nil : PinchLocalization.format("{0} to go", [String(describing: 30 - streak)])
             ),
         ]
     }

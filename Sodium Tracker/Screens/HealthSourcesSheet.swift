@@ -75,11 +75,11 @@ struct HealthSourcesSheet: View {
                 .padding(.bottom, 32)
             }
             .background(p.bg)
-            .navigationTitle("Sources")
+            .navigationTitle(PinchLocalization.resolve("Sources"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Close") { dismiss() }
+                    Button(PinchLocalization.resolve("Close")) { dismiss() }
                         .foregroundStyle(p.brand)
                 }
             }

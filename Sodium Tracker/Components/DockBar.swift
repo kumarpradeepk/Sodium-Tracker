@@ -55,9 +55,10 @@ struct DockBar: View {
             }
             .buttonStyle(.pressScale(0.92))
             .padding(.horizontal, 6)
-            .accessibilityLabel(PinchLocalization.resolve("Log a food"))
+            .accessibilityLabel(PinchLocalization.resolve(isAddOpen ? "Close add menu" : "Log a food"))
+            .accessibilityIdentifier("dock-add-button")
 
-            tabButton(.awards, label: "Awards") { color in
+            tabButton(.awards, label: "Rhythm") { color in
                 ZStack {
                     SVGShape("M10 3.2 A4.8 4.8 0 1 0 10 12.8 A4.8 4.8 0 1 0 10 3.2")
                         .stroke(color, lineWidth: 2.1 * iconScale)
@@ -114,11 +115,17 @@ struct DockBar: View {
                 PinchText(label)
                     .pinchBody(11, .heavy, tracking: 0.01)
                     .foregroundStyle(color)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.8)
+                    .frame(maxWidth: 56)
             }
-            .frame(width: 64)
+            .frame(maxWidth: .infinity)
             .padding(.vertical, 6)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.pressScale(0.94))
+        .accessibilityIdentifier("dock-tab-\(target.rawValue)")
         .accessibilityAddTraits(active ? [.isSelected] : [])
     }
 }

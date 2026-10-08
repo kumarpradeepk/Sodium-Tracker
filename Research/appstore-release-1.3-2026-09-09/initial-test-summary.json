@@ -1,0 +1,51 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "543B6BFB-A91E-482E-A9F1-D8B2CE766E19",
+        "deviceName": "iPhone 17 Pro Max",
+        "modelName": "iPhone 17 Pro Max",
+        "osBuildNumber": "23D8133",
+        "osVersion": "26.3.1",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 122,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "Sodium Tracker \u00b7 Built with macOS 15.7.9",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1788950790.763,
+  "passedTests": 122,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1788950542.395,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "Failed to tap \"Open full food log\" Button: No matches found for Elements matching predicate '\"Open full food log\" IN identifiers' from input {(\n    Button, identifier: 'dock-tab-today', label: 'Today', Selected,\n    Button, identifier: 'dock-tab-trends', label: 'Trends',\n    Button, identifier: 'dock-add-button', label: 'Log a food',\n    Button, identifier: 'dock-tab-awards', label: 'Rhythm',\n    Button, identifier: 'dock-tab-settings', label: 'Settings',\n    Button,\n    Button, label: 'WEDNESDAY, SEPTEMBER 9',\n    Button, Disabled,\n    Button, label: 'Open meal check-ins and nudges',\n    Button, label: '0 day streak',\n    Button, label: 'of 2,300 mg',\n    Button, identifier: 'today-recommendation-wrap', label: 'Chicken salad wrap, 610 milligrams. Fits in today\u2019s remaining budget. Add to log', value: Recommended,\n    Button, identifier: 'today-recommendation-ram', label: 'Instant ramen, 1,560 milligrams. Fits in today\u2019s remaining budget. Add to log', value: Recommended,\n    Button, identifier: 'today-recommendation-pick', label: 'Dill pickle, 283 milligrams. Fits in today\u2019s remaining budget. Add to log', value: Recommended,\n    Button, identifier: 'today-recommendation-yog', label: 'Greek yogurt, 65 milligrams. Fits in today\u2019s remaining budget. Add to log', value: Recommended\n)}",
+      "targetName": "Sodium TrackerUITests",
+      "testIdentifier": 119,
+      "testIdentifierString": "Sodium_TrackerUITests/testFavoriteRecommendationsStayInSync()",
+      "testIdentifierURL": "test://com.apple.xcode/Sodium%20Tracker/Sodium%20TrackerUITests/Sodium_TrackerUITests/testFavoriteRecommendationsStayInSync",
+      "testName": "testFavoriteRecommendationsStayInSync()"
+    }
+  ],
+  "title": "Test - Sodium Tracker",
+  "topInsights": [
+    {
+      "category": "Longest Test Runs",
+      "impact": "100% of duration",
+      "text": "1 longest test run with outlier durations exceeding 0.28s (three standard deviations)"
+    }
+  ],
+  "totalTestCount": 123
+}

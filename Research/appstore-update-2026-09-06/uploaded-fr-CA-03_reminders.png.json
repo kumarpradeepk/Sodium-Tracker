@@ -1,0 +1,21 @@
+{
+  "data": {
+    "type": "appScreenshots",
+    "id": "913dc858-a30e-4d84-a7b6-bfd6b8b0799c",
+    "attributes": {
+      "fileSize": 1675955,
+      "fileName": "03_reminders.png",
+      "sourceFileChecksum": null,
+      "imageAsset": null,
+      "assetType": "SCREENSHOT",
+      "assetDeliveryState": {
+        "errors": [],
+        "warnings": null,
+        "state": "UPLOAD_COMPLETE"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/913dc858-a30e-4d84-a7b6-bfd6b8b0799c"
+    }
+  }
+}

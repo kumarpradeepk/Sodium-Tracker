@@ -13,7 +13,7 @@
       </style>
       <div data-shot="nl-ios-1" style="position:relative; width:430px; height:932px; font-size:10px; font-family:'Baloo 2', -apple-system, 'Segoe UI', sans-serif; background:linear-gradient(175deg, #4b8ed3 0%, #2a6db4 48%, #21578f 100%); overflow:hidden; box-sizing:border-box; color:#ffffff; display:flex; flex-direction:column;">
           <div style="height:40%; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; text-align:center; padding:0 2.6em; flex-shrink:0;">
-            <div style="font-size:4.3em; font-weight:800; line-height:1.1; word-break:normal; text-wrap:balance;">Jouw gratis natriumtracker</div>
+            <div style="font-size:4.3em; font-weight:800; line-height:1.1; word-break:normal; text-wrap:balance;">Jouw dagelijkse natriumtracker</div>
             <div style="font-size:2em; line-height:1.45; font-weight:600; color:#eaf3ff; max-width:18.5em; width:fit-content; margin:1em auto 0; padding:0.55em 1.2em; background:rgba(13,40,70,0.28); border-radius:1.3em; text-wrap:pretty;">Je hele dag wordt één duidelijk getal. Pinch volgt je vriendelijk rond de ring.</div>
           </div>
           <div style="position:relative; flex:1;">

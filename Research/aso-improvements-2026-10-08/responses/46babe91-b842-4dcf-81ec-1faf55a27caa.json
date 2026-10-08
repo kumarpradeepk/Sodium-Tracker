@@ -1,0 +1,143 @@
+{
+  "before": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "46babe91-b842-4dcf-81ec-1faf55a27caa",
+      "attributes": {
+        "description": "Dein Natrium, Tag für Tag im Blick. Mit Pinch erfasst du Mahlzeiten und siehst, wie viel von deinem täglichen Natrium-Budget übrig ist.\n\nDEIN TAG AUF EINEN BLICK\n• Tagesziel festlegen und Mengen in Milligramm eintragen.\n• Favoriten und häufig erfasste Lebensmittel wiederfinden.\n• Lebensmittel mit dem verbleibenden Budget vergleichen.\n• Freiwillige Mahlzeitenerinnerungen auswählen.\n• Wochentrends und Serien erfasster Tage ansehen.\n• Salz und Natrium umrechnen.\n\nPINCH PLUS\nEin Abonnement bietet die FatSecret-Lebensmittelsuche und Erfassung, Vier-Wochen-Trends und Kalender, unbegrenzte eigene Lebensmittel, CSV-Export und das Widget. Preise und verfügbare Einführungsangebote werden vor dem Kauf angezeigt. Das Abonnement verlängert sich automatisch, sofern du es nicht in den Einstellungen deines Apple Accounts kündigst.\n\nDie Auswertung basiert auf deinen Einträgen; nicht erfasste Mahlzeiten fehlen. Lebensmitteldaten von FatSecret, soweit verfügbar. Pinch ersetzt keine medizinische Beratung. Besprich ein passendes Natriumziel mit medizinischem Fachpersonal.\n\nNutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nDatenschutz: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "de-DE",
+        "keywords": "sodium,salzarm,ernährung,lebensmittel,tagebuch,mahlzeit,budget,erinnerung,salzaufnahme,rechner",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "Mahlzeit für Mahlzeit mehr Überblick: Natrium erfassen, Favoriten griffbereit halten und deine Tagesmenge sehen. Sanfte Erinnerungen, wenn du sie möchtest.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "Kleine Momente. Ein klarerer Blick auf deinen Tag.\n\nPinch hilft dir, Natrium Mahlzeit für Mahlzeit im Blick zu behalten. Mit diesem Update ist die App-Oberfläche in 14 Sprachen verfügbar – damit sich deine tägliche Routine vertrauter anfühlt.\n\n• Erfasse Lebensmittel und vergleiche deine tägliche Natriummenge mit einem selbst gewählten Ziel.\n• Speichere Favoriten und füge vertraute Lebensmittel schnell erneut hinzu.\n• Übernimm Natrium in Milligramm oder Salz in Gramm vom Lebensmitteletikett.\n• Wähle auf Wunsch Mahlzeiterinnerungen, die zu deinem Alltag passen.\n\nDu möchtest mehr Überblick? Pinch Plus bietet Vier-Wochen-Trends, einen Salzkalender, die FatSecret-Lebensmittelsuche, CSV-Export und ein Home-Bildschirm-Widget.\n\nDein Tagebuch muss nicht perfekt sein. Beginne mit deiner nächsten Mahlzeit."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa"
+    }
+  },
+  "patch_response": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "46babe91-b842-4dcf-81ec-1faf55a27caa",
+      "attributes": {
+        "description": "Erfasse deine tägliche Natriumzufuhr mit Pinch. Gib Natrium in Milligramm oder Salz in Gramm ein, protokolliere deine Lebensmittel und sieh, wie viel bis zu deinem selbst gewählten Tagesziel noch übrig ist.\n\nDEIN TAG AUF EINEN BLICK\n• Tagesziel festlegen und Mengen in Milligramm eintragen.\n• Favoriten und häufig erfasste Lebensmittel wiederfinden.\n• Lebensmittel mit dem verbleibenden Budget vergleichen.\n• Freiwillige Mahlzeitenerinnerungen auswählen.\n• Wochentrends und Serien erfasster Tage ansehen.\n• Salz und Natrium umrechnen.\n\nPINCH PLUS\nEin Abonnement bietet die FatSecret-Lebensmittelsuche und Erfassung, Vier-Wochen-Trends und Kalender, unbegrenzte eigene Lebensmittel, CSV-Export und das Widget. Preise und verfügbare Einführungsangebote werden vor dem Kauf angezeigt. Das Abonnement verlängert sich automatisch, sofern du es nicht in den Einstellungen deines Apple Accounts kündigst.\n\nDie Auswertung basiert auf deinen Einträgen; nicht erfasste Mahlzeiten fehlen. Lebensmitteldaten von FatSecret, soweit verfügbar. Pinch ersetzt keine medizinische Beratung. Besprich ein passendes Natriumziel mit medizinischem Fachpersonal.\n\nNutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nDatenschutz: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "de-DE",
+        "keywords": "sodium,salzarm,ernährung,lebensmittel,tagebuch,mahlzeit,salzaufnahme,rechner,umrechner",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "Mahlzeit für Mahlzeit mehr Überblick: Natrium erfassen, Favoriten griffbereit halten und deine Tagesmenge sehen. Sanfte Erinnerungen, wenn du sie möchtest.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "Aktualisierte App-Store-Informationen und klarere Beschreibungen zu Natriumprotokoll, Tageszielen und Pinch Plus."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa"
+    }
+  },
+  "after": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "46babe91-b842-4dcf-81ec-1faf55a27caa",
+      "attributes": {
+        "description": "Erfasse deine tägliche Natriumzufuhr mit Pinch. Gib Natrium in Milligramm oder Salz in Gramm ein, protokolliere deine Lebensmittel und sieh, wie viel bis zu deinem selbst gewählten Tagesziel noch übrig ist.\n\nDEIN TAG AUF EINEN BLICK\n• Tagesziel festlegen und Mengen in Milligramm eintragen.\n• Favoriten und häufig erfasste Lebensmittel wiederfinden.\n• Lebensmittel mit dem verbleibenden Budget vergleichen.\n• Freiwillige Mahlzeitenerinnerungen auswählen.\n• Wochentrends und Serien erfasster Tage ansehen.\n• Salz und Natrium umrechnen.\n\nPINCH PLUS\nEin Abonnement bietet die FatSecret-Lebensmittelsuche und Erfassung, Vier-Wochen-Trends und Kalender, unbegrenzte eigene Lebensmittel, CSV-Export und das Widget. Preise und verfügbare Einführungsangebote werden vor dem Kauf angezeigt. Das Abonnement verlängert sich automatisch, sofern du es nicht in den Einstellungen deines Apple Accounts kündigst.\n\nDie Auswertung basiert auf deinen Einträgen; nicht erfasste Mahlzeiten fehlen. Lebensmitteldaten von FatSecret, soweit verfügbar. Pinch ersetzt keine medizinische Beratung. Besprich ein passendes Natriumziel mit medizinischem Fachpersonal.\n\nNutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nDatenschutz: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "de-DE",
+        "keywords": "sodium,salzarm,ernährung,lebensmittel,tagebuch,mahlzeit,salzaufnahme,rechner,umrechner",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": "Mahlzeit für Mahlzeit mehr Überblick: Natrium erfassen, Favoriten griffbereit halten und deine Tagesmenge sehen. Sanfte Erinnerungen, wenn du sie möchtest.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "Aktualisierte App-Store-Informationen und klarere Beschreibungen zu Natriumprotokoll, Tageszielen und Pinch Plus."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/46babe91-b842-4dcf-81ec-1faf55a27caa"
+    }
+  }
+}

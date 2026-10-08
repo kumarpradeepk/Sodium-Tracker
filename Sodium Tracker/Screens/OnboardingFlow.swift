@@ -68,7 +68,8 @@ struct OnboardingFlow: View {
             .padding(.top, 14)
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(PinchLocalization.resolve("Setup progress"))
-            .accessibilityValue("Step \(ui.obStep + 1) of 8")
+            .accessibilityIdentifier("onboarding.progress")
+            .accessibilityValue(PinchLocalization.format("Step {0} of 8", [String(describing: ui.obStep + 1)]))
 
             // Back button
             if ui.obStep > 0 {
@@ -129,6 +130,7 @@ struct OnboardingFlow: View {
                 .padding(.top, 10)
             Spacer()
             PinchCTA(title: "Nice to meet you") { advance() }
+                .accessibilityIdentifier("onboarding.start")
             Button {
                 finish()
             } label: {
@@ -174,6 +176,7 @@ struct OnboardingFlow: View {
                     }) {
                         choiceLabel(choice)
                     }
+                    .accessibilityIdentifier("onboarding.why-\(choice.id)")
                 }
             }
         }
@@ -200,6 +203,7 @@ struct OnboardingFlow: View {
                     }) {
                         choiceLabel(choice)
                     }
+                    .accessibilityIdentifier("onboarding.diet-\(choice.id)")
                 }
             }
         }
@@ -226,7 +230,7 @@ struct OnboardingFlow: View {
         stepScaffold(
             title: "Set your salt budget",
             sub: "Milligrams of sodium per day. You can change it anytime.",
-            ctaTitle: "Set \(PinchFormat.mg(goal)) mg budget",
+            ctaTitle: PinchLocalization.format("Set {0} mg budget", [String(describing: PinchFormat.mg(goal))]),
             ctaEnabled: true,
             footnote: "Not medical advice. Ask your doctor what’s right for you."
         ) {
@@ -317,12 +321,12 @@ struct OnboardingFlow: View {
             VStack(alignment: .leading, spacing: 0) {
                 PinchCard {
                     VStack(spacing: 0) {
-                        checkinRow("Breakfast", time: "8:00 AM", isOn: $remBreakfast, first: true)
-                        checkinRow("Lunch", time: "12:30 PM", isOn: $remLunch)
-                        checkinRow("Dinner", time: "6:30 PM", isOn: $remDinner)
+                        checkinRow("Breakfast", time: PinchFormat.clock(hour: 8, minute: 0), isOn: $remBreakfast, first: true)
+                        checkinRow("Lunch", time: PinchFormat.clock(hour: 12, minute: 30), isOn: $remLunch)
+                        checkinRow("Dinner", time: PinchFormat.clock(hour: 18, minute: 30), isOn: $remDinner)
                     }
                 }
-                PinchText("Quiet hours respected, always. Tune times later in Settings.")
+                PinchText("These are your preferred check-ins. We'll explain notifications before asking for permission. You can change your choices in Settings.")
                     .pinchBody(11.5)
                     .foregroundStyle(p.ink3)
                     .lineSpacing(3)
@@ -455,15 +459,16 @@ struct OnboardingFlow: View {
 
             PinchCard {
                 VStack(spacing: 0) {
-                    summaryRow("Daily budget", value: "\(PinchFormat.mg(goal)) mg", first: true)
+                    summaryRow("Daily budget", value: PinchLocalization.format("{0} mg", [String(describing: PinchFormat.mg(goal))]), first: true)
                     summaryRow("Your why", value: whyLabel)
-                    summaryRow("Check-ins", value: "\(checkinCount) a day")
+                    summaryRow("Check-ins", value: PinchLocalization.format("{0} a day", [String(describing: checkinCount)]))
                 }
             }
             .padding(.top, 20)
 
             Spacer()
             PinchCTA(title: "Open my tracker") { finish() }
+                .accessibilityIdentifier("onboarding.finish")
         }
         .padding(EdgeInsets(top: 40, leading: 28, bottom: 24, trailing: 28))
     }
@@ -508,6 +513,8 @@ struct OnboardingFlow: View {
             PinchText(title)
                 .pinchDisplay(28, .heavy)
                 .foregroundStyle(p.ink)
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityIdentifier("onboarding.title")
             PinchText(sub)
                 .pinchBody(13.5)
                 .foregroundStyle(p.ink2)
@@ -532,6 +539,7 @@ struct OnboardingFlow: View {
             PinchCTA(title: ctaTitle, enabled: ctaEnabled) {
                 advance()
             }
+            .accessibilityIdentifier("onboarding.continue")
         }
         .padding(EdgeInsets(top: 40, leading: 24, bottom: 24, trailing: 24))
     }

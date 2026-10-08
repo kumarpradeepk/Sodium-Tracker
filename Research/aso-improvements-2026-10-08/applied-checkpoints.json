@@ -1,0 +1,246 @@
+[
+  {
+    "locale": "en-AU",
+    "resource": "appStoreVersionLocalizations",
+    "id": "7dc6df10-2180-409e-874e-e1b7218a7c18",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "en-AU",
+    "resource": "appInfoLocalizations",
+    "id": "3d2e91fc-acdd-423c-bceb-ee792c2bffa4",
+    "fields": [
+      "subtitle"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "fr-CA",
+    "resource": "appStoreVersionLocalizations",
+    "id": "8142c682-02c4-43ee-ab39-4af07e3d99de",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "fr-FR",
+    "resource": "appStoreVersionLocalizations",
+    "id": "8c0758f4-e255-444c-92f8-5aa8358fcfcd",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "ja",
+    "resource": "appStoreVersionLocalizations",
+    "id": "bc94147c-3c7d-4a81-b468-c99acc6e2c04",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "zh-Hans",
+    "resource": "appStoreVersionLocalizations",
+    "id": "add59184-4356-4b6e-9de2-512b6b1c44c0",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "ms",
+    "resource": "appStoreVersionLocalizations",
+    "id": "b0d6c3d0-b932-471e-abdf-2a72a5bb1ece",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "te-IN",
+    "resource": "appStoreVersionLocalizations",
+    "id": "4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "en-CA",
+    "resource": "appStoreVersionLocalizations",
+    "id": "72961917-6d8d-44b9-a91d-5a0ed6e77f14",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "en-CA",
+    "resource": "appInfoLocalizations",
+    "id": "85c2aaab-02ff-40f4-ba5d-a6987d667a74",
+    "fields": [
+      "subtitle"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "de-DE",
+    "resource": "appStoreVersionLocalizations",
+    "id": "46babe91-b842-4dcf-81ec-1faf55a27caa",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "en-GB",
+    "resource": "appStoreVersionLocalizations",
+    "id": "7b40402f-7ed6-4304-96ef-65e7b167eb9b",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "en-GB",
+    "resource": "appInfoLocalizations",
+    "id": "1f191b68-24bc-45da-a2b9-3ae10748029e",
+    "fields": [
+      "subtitle"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "ta-IN",
+    "resource": "appStoreVersionLocalizations",
+    "id": "0b50ef46-17e2-49b3-b46e-3c9ee9d4998a",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "nl-NL",
+    "resource": "appStoreVersionLocalizations",
+    "id": "39510bb3-b9ef-4a6d-88f9-12c77fd5f684",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "en-US",
+    "resource": "appStoreVersionLocalizations",
+    "id": "74a48a52-c46f-4521-a290-9ecbb790cfc2",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "en-US",
+    "resource": "appInfoLocalizations",
+    "id": "b2159fcd-c101-40c8-86d1-c144c3c320cd",
+    "fields": [
+      "subtitle"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "es-ES",
+    "resource": "appStoreVersionLocalizations",
+    "id": "5d41b39a-f9a8-469d-be91-089543a9cc15",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "it",
+    "resource": "appStoreVersionLocalizations",
+    "id": "5503e06d-f922-40c9-ba6c-ba78afe40f94",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "sv",
+    "resource": "appStoreVersionLocalizations",
+    "id": "358935d6-29ce-4024-8acd-29092c60b8b1",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  },
+  {
+    "locale": "hi",
+    "resource": "appStoreVersionLocalizations",
+    "id": "66182df0-bfbd-489f-b3ed-a0b605b79c33",
+    "fields": [
+      "keywords",
+      "description",
+      "whatsNew"
+    ],
+    "get_readback_verified": true,
+    "unrelated_attributes_preserved": true
+  }
+]

@@ -35,9 +35,9 @@ struct NudgeHost: ViewModifier {
             goal: goal,
             consumed: DayEngine.total(entries, on: .now, customFoods: customFoods),
             streak: DayEngine.streak(entries),
-            breakfastTime: "8:00 AM",
-            lunchTime: "12:30 PM",
-            dinnerTime: "6:30 PM"
+            breakfastTime: PinchFormat.clock(hour: 8, minute: 0),
+            lunchTime: PinchFormat.clock(hour: 12, minute: 30),
+            dinnerTime: PinchFormat.clock(hour: 18, minute: 30)
         )
     }
 

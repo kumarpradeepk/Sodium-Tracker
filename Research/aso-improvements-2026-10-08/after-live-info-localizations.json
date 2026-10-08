@@ -1,0 +1,268 @@
+{
+  "data": [
+    {
+      "type": "appInfoLocalizations",
+      "id": "60be5c2b-0461-4cec-8f8d-5950afc308f3",
+      "attributes": {
+        "locale": "en-CA",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Daily Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/60be5c2b-0461-4cec-8f8d-5950afc308f3"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "b23006b9-8eab-44b1-9c3e-2c89f3864a0a",
+      "attributes": {
+        "locale": "en-GB",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/b23006b9-8eab-44b1-9c3e-2c89f3864a0a"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "3ee84904-cacb-4f78-852d-16427647f084",
+      "attributes": {
+        "locale": "de-DE",
+        "name": "Natrium Tracker: Pinch",
+        "subtitle": "Salz Zähler & Tagesprotokoll",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/3ee84904-cacb-4f78-852d-16427647f084"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "01e5a13b-f6a3-42db-98ac-f92c19a8573b",
+      "attributes": {
+        "locale": "ja",
+        "name": "塩分・ナトリウム管理 Pinch",
+        "subtitle": "毎日の塩分記録と減塩サポート",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/01e5a13b-f6a3-42db-98ac-f92c19a8573b"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "f9f2bf0e-ea45-4345-a68c-8aa6cec356b7",
+      "attributes": {
+        "locale": "it",
+        "name": "Monitor Sodio: Pinch",
+        "subtitle": "Dieta iposodica e diario",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/f9f2bf0e-ea45-4345-a68c-8aa6cec356b7"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "c742b330-8e72-40ad-8742-2d19a8e53509",
+      "attributes": {
+        "locale": "zh-Hans",
+        "name": "Pinch 钠摄入与盐分记录",
+        "subtitle": "饮食日记与每日用量管理",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/c742b330-8e72-40ad-8742-2d19a8e53509"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "778b7643-c7c9-4c03-a9c1-b87901ae30e7",
+      "attributes": {
+        "locale": "ta-IN",
+        "name": "Pinch: சோடியம் பதிவு",
+        "subtitle": "தினசரி உப்பு கணக்கு",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/778b7643-c7c9-4c03-a9c1-b87901ae30e7"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "b9682cae-7383-45ab-8775-1dde009f2c90",
+      "attributes": {
+        "locale": "ms",
+        "name": "Jejak Natrium: Pinch",
+        "subtitle": "Catatan garam harian",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/b9682cae-7383-45ab-8775-1dde009f2c90"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "902d239c-263e-4a26-bd8c-959906c99549",
+      "attributes": {
+        "locale": "sv",
+        "name": "Natrium & salt: Pinch",
+        "subtitle": "Din dagliga matdagbok",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/902d239c-263e-4a26-bd8c-959906c99549"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "38001f7b-641b-4b10-a5c6-566023708a3c",
+      "attributes": {
+        "locale": "fr-FR",
+        "name": "Suivi Sodium : Pinch",
+        "subtitle": "Compteur de sel quotidien",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/38001f7b-641b-4b10-a5c6-566023708a3c"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "98cabd72-2fa4-4419-ac6a-90deb0f36f6c",
+      "attributes": {
+        "locale": "en-AU",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/98cabd72-2fa4-4419-ac6a-90deb0f36f6c"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "e4c38ecd-808b-4a31-b3cb-ba2a59369c9b",
+      "attributes": {
+        "locale": "fr-CA",
+        "name": "Suivi Sodium : Pinch",
+        "subtitle": "Compteur de sel quotidien",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/e4c38ecd-808b-4a31-b3cb-ba2a59369c9b"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "18ed05d5-0ca6-4c92-bb67-d7fb429085ab",
+      "attributes": {
+        "locale": "te-IN",
+        "name": "Pinch: సోడియం డైరీ",
+        "subtitle": "రోజువారీ ఉప్పు లెక్క",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/18ed05d5-0ca6-4c92-bb67-d7fb429085ab"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "4faddc3d-2d18-4f38-900e-566c608b117f",
+      "attributes": {
+        "locale": "nl-NL",
+        "name": "Natrium Tracker: Pinch",
+        "subtitle": "Zout Teller & Voedingslog",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/4faddc3d-2d18-4f38-900e-566c608b117f"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "a5416f17-641c-4662-940b-08cefff7dac2",
+      "attributes": {
+        "locale": "es-ES",
+        "name": "Control de sodio: Pinch",
+        "subtitle": "Registro diario de sal",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/a5416f17-641c-4662-940b-08cefff7dac2"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "1a7432bc-8223-4f7a-958e-e4641c9f7c9d",
+      "attributes": {
+        "locale": "hi",
+        "name": "Pinch: सोडियम डायरी",
+        "subtitle": "रोज़ के नमक का हिसाब",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/1a7432bc-8223-4f7a-958e-e4641c9f7c9d"
+      }
+    },
+    {
+      "type": "appInfoLocalizations",
+      "id": "607b9b97-12be-47c0-99f2-bae63f9ae659",
+      "attributes": {
+        "locale": "en-US",
+        "name": "Sodium Tracker: Pinch Daily",
+        "subtitle": "Salt Counter & Intake",
+        "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+        "privacyChoicesUrl": null,
+        "privacyPolicyText": null
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/607b9b97-12be-47c0-99f2-bae63f9ae659"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appInfos/f7ca3bd0-d404-44e8-89ab-475dc8127410/appInfoLocalizations?limit=200"
+  },
+  "meta": {
+    "paging": {
+      "total": 17,
+      "limit": 200
+    }
+  }
+}

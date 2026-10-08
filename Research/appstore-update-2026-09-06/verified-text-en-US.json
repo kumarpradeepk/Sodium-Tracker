@@ -1,0 +1,53 @@
+{
+  "appInfo": {
+    "type": "appInfoLocalizations",
+    "id": "d9e51640-f13b-4106-8d4c-1815c5d963e5",
+    "attributes": {
+      "locale": "en-US",
+      "name": "Sodium Tracker: Pinch Daily",
+      "subtitle": "Salt Counter & Intake",
+      "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/d9e51640-f13b-4106-8d4c-1815c5d963e5"
+    }
+  },
+  "versionLocalization": {
+    "type": "appStoreVersionLocalizations",
+    "id": "3afb757d-dfa3-4b87-8d3a-16030d696571",
+    "attributes": {
+      "description": "See your sodium, one day at a time. Pinch helps you log meals and see how much remains in your daily sodium budget.\n\nYOUR DAY AT A GLANCE\n• Set a daily target and log amounts in milligrams.\n• Find favorite foods and frequently logged meals.\n• Compare foods with your remaining budget.\n• Choose optional meal reminders.\n• Review weekly trends and streaks of logged days.\n• Convert between salt and sodium.\n\nPINCH PLUS\nA subscription unlocks FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export and the Home Screen widget. Prices and any eligible introductory offer appear before purchase. Subscriptions renew automatically unless cancelled in your Apple Account settings.\n\nYour totals reflect what you log; unlogged meals are not included. Food data is provided by FatSecret where available. Pinch supports personal tracking, not medical diagnosis or treatment. Ask a qualified healthcare professional which sodium target is right for you.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "en-US",
+      "keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+      "promotionalText": null,
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": null
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"data":{"type":"reviewSubmissionItems","relationships":{"reviewSubmission":{"data":{"type":"reviewSubmissions","id":"4bd4b584-de4e-4a73-a3fe-6e2ae3978332"}},"appStoreVersion":{"data":{"type":"appStoreVersions","id":"1f016dcd-1be3-451c-b89a-9c08a242288f"}}}}}

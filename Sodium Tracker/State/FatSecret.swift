@@ -5,7 +5,7 @@
 //  FatSecret Platform API integration: live food search and per-serving
 //  sodium for the salt shelf. Requests go only to an app-owned HTTPS proxy.
 //  The proxy, not this app, owns the FatSecret OAuth 2 credentials and token.
-//  With no proxy configured, Pinch quietly falls back to local-only search.
+//  Search failures are surfaced explicitly; saved foods remain available.
 //
 
 import Foundation
@@ -46,10 +46,15 @@ enum FatSecretConfig {
     }
 
     private static func resolveProxyAPIKey() -> String {
-        let value = ProcessInfo.processInfo.environment["PINCH_PROXY_API_KEY"]
-            ?? Bundle.main.object(forInfoDictionaryKey: "PinchProxyAPIKey") as? String
-            ?? ""
-        return value.trimmingCharacters(in: .whitespacesAndNewlines)
+        var candidates = [ProcessInfo.processInfo.environment["PINCH_PROXY_API_KEY"],
+                          Bundle.main.object(forInfoDictionaryKey: "PinchProxyAPIKey") as? String]
+        if let url = Bundle.main.url(forResource: "PinchProxyConfig", withExtension: "plist"),
+           let data = try? Data(contentsOf: url),
+           let config = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: String] {
+            candidates.append(config["apiKey"])
+        }
+        return candidates.compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .first { !$0.isEmpty && !$0.hasPrefix("$(") } ?? ""
     }
 
     /// Prefix for FatSecret-sourced food ids, so entries and favorites can
@@ -64,6 +69,7 @@ struct RemoteFood: Identifiable, Equatable {
     let name: String
     let brand: String?
     let summary: String     // e.g. "Per 100g - Calories: 52kcal | …"
+    var displayName: String { name }
 
     /// Row subtitle: brand when present, else the portion the summary is for.
     var subtitle: String {
@@ -91,7 +97,8 @@ enum FatSecretError: Error {
 
 // MARK: - Service
 
-actor FatSecretService {
+@MainActor
+final class FatSecretService {
     static let shared = FatSecretService()
 
     private let session: URLSession = {
@@ -114,7 +121,7 @@ actor FatSecretService {
     }
 
     func details(id: String) async throws -> RemoteFoodDetail {
-        guard id.allSatisfy({ $0.isNumber }) else { throw FatSecretError.badResponse }
+        guard !id.isEmpty, id.count <= 20, id.utf8.allSatisfy({ (48...57).contains($0) }) else { throw FatSecretError.badResponse }
         let data = try await get(path: "food/\(id)")
         do {
             let detail = try FatSecretProxyParser.foodDetail(from: data)
@@ -158,6 +165,7 @@ actor FatSecretService {
             throw FatSecretError.badResponse
         }
         fatSecretLog.debug("← proxy \(path, privacy: .public) HTTP \(http.statusCode) (\(data.count) bytes)")
+        if http.statusCode == 422 { throw FatSecretError.noSodium }
         guard http.statusCode == 200 else {
             fatSecretLog.error("✗ proxy \(path, privacy: .public) HTTP \(http.statusCode): \(Self.snippet(data), privacy: .public)")
             throw FatSecretError.badResponse
@@ -191,14 +199,14 @@ enum FatSecretProxyParser {
     static func foodDetail(from data: Data) throws -> RemoteFoodDetail {
         guard let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               let name = FatSecretParser.string(root["name"]),
-              let sodium = FatSecretParser.number(root["sodiumMg"]) else {
+              let sodium = FatSecretParser.nonnegativeInt(root["sodiumMg"]) else {
             throw FatSecretError.badResponse
         }
         return RemoteFoodDetail(
             name: name,
             serving: FatSecretParser.string(root["serving"]) ?? "1 serving",
-            sodiumMg: Int(sodium.rounded()),
-            calories: FatSecretParser.number(root["calories"]).map { Int($0.rounded()) }
+            sodiumMg: sodium,
+            calories: FatSecretParser.nonnegativeInt(root["calories"])
         )
     }
 }
@@ -246,12 +254,12 @@ enum FatSecretParser {
 
         // First serving carrying a sodium value (FatSecret's default first).
         for serving in servings {
-            if let sodium = number(serving["sodium"]) {
+            if let sodium = nonnegativeInt(serving["sodium"]) {
                 return RemoteFoodDetail(
                     name: name,
                     serving: string(serving["serving_description"]) ?? "1 serving",
-                    sodiumMg: Int(sodium.rounded()),
-                    calories: number(serving["calories"]).map { Int($0.rounded()) }
+                    sodiumMg: sodium,
+                    calories: nonnegativeInt(serving["calories"])
                 )
             }
         }
@@ -259,6 +267,12 @@ enum FatSecretParser {
     }
 
     /// FatSecret encodes numbers as strings ("870"); accept both.
+    static func nonnegativeInt(_ value: Any?) -> Int? {
+        guard let number = number(value), number.isFinite, number >= 0,
+              number.rounded() < Double(Int.max) else { return nil }
+        return Int(number.rounded())
+    }
+
     static func number(_ value: Any?) -> Double? {
         if let d = value as? Double { return d }
         if let s = value as? String { return Double(s) }

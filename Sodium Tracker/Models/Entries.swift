@@ -43,6 +43,8 @@ final class LogEntry {
     var servings: Double
     var mealRaw: String
     var loggedAt: Date
+    /// Optional for lightweight migration. Never infer ownership from user text.
+    var usesDefaultServing: Bool?
 
     init(
         foodID: String? = nil,
@@ -51,7 +53,8 @@ final class LogEntry {
         adhocServing: String? = nil,
         servings: Double = 1,
         meal: Meal,
-        loggedAt: Date = .now
+        loggedAt: Date = .now,
+        usesDefaultServing: Bool? = nil
     ) {
         self.foodID = foodID
         self.adhocName = adhocName
@@ -60,6 +63,7 @@ final class LogEntry {
         self.servings = servings
         self.mealRaw = meal.rawValue
         self.loggedAt = loggedAt
+        self.usesDefaultServing = usesDefaultServing
     }
 
     var meal: Meal { Meal(rawValue: mealRaw) ?? .snacks }
@@ -77,6 +81,7 @@ final class CustomFood {
     var protein: Int?
     var fat: Int?
     var createdAt: Date
+    var usesDefaultServing: Bool?
 
     init(
         id: String = UUID().uuidString,
@@ -87,7 +92,8 @@ final class CustomFood {
         carbs: Int? = nil,
         protein: Int? = nil,
         fat: Int? = nil,
-        createdAt: Date = .now
+        createdAt: Date = .now,
+        usesDefaultServing: Bool? = nil
     ) {
         self.id = id
         self.name = name
@@ -98,10 +104,11 @@ final class CustomFood {
         self.protein = protein
         self.fat = fat
         self.createdAt = createdAt
+        self.usesDefaultServing = usesDefaultServing
     }
 
     var asFoodItem: FoodItem {
-        FoodItem(id: id, name: name, serving: serving, mg: mg, category: .custom)
+        FoodItem(id: id, name: name, serving: serving, mg: mg, category: .custom, usesDefaultServing: usesDefaultServing == true)
     }
 }
 
@@ -124,8 +131,21 @@ struct ResolvedEntry {
     let serving: String   // "quick log" for ad-hoc entries, per the design
     let baseMg: Int
     let category: FoodCategory
+    var isMissingSource = false
+    var usesDefaultServing = false
 
     var totalMg: Int { Int((Double(baseMg) * entry.servings).rounded()) }
+    var displayName: String {
+        if isMissingSource { return PinchLocalization.resolve("Unknown") }
+        guard let id = entry.foodID, let food = FoodItem.builtIn(id), name == food.name else { return name }
+        return food.displayName
+    }
+    var displayServing: String {
+        if usesDefaultServing || entry.usesDefaultServing == true { return PinchLocalization.resolve("1 serving") }
+        if let id = entry.foodID, let food = FoodItem.builtIn(id), serving == food.serving { return food.displayServing }
+        if entry.adhocServing == nil, serving == "quick log" { return PinchLocalization.resolve(serving) }
+        return serving
+    }
 }
 
 enum EntryResolver {
@@ -137,7 +157,7 @@ enum EntryResolver {
                 name: name,
                 serving: entry.adhocServing ?? "quick log",
                 baseMg: mg,
-                category: .custom
+                category: entry.foodID.flatMap(FoodItem.builtIn)?.category ?? .custom
             )
         }
         if let id = entry.foodID {
@@ -145,9 +165,10 @@ enum EntryResolver {
                 return ResolvedEntry(entry: entry, name: food.name, serving: food.serving, baseMg: food.mg, category: food.category)
             }
             if let custom = customFoods.first(where: { $0.id == id }) {
-                return ResolvedEntry(entry: entry, name: custom.name, serving: custom.serving, baseMg: custom.mg, category: .custom)
+                return ResolvedEntry(entry: entry, name: custom.name, serving: custom.serving, baseMg: custom.mg, category: .custom,
+                                     usesDefaultServing: custom.usesDefaultServing == true)
             }
         }
-        return ResolvedEntry(entry: entry, name: "Unknown", serving: "—", baseMg: 0, category: .custom)
+        return ResolvedEntry(entry: entry, name: "Unknown", serving: "—", baseMg: 0, category: .custom, isMissingSource: true)
     }
 }

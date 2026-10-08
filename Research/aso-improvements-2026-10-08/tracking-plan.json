@@ -1,0 +1,246 @@
+{
+  "status": "proposed_not_applied",
+  "app_id": "6800595930",
+  "platform": "iphone",
+  "baseline_date": "2026-10-08",
+  "queries": [
+    {
+      "store": "us",
+      "keyword": "sodium tracker",
+      "observed_rank": 8,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "us",
+      "keyword": "salt tracker",
+      "observed_rank": 18,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "us",
+      "keyword": "sodium calculator",
+      "observed_rank": 13,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "gb",
+      "keyword": "sodium tracker",
+      "observed_rank": 17,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "gb",
+      "keyword": "salt tracker",
+      "observed_rank": 50,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "ca",
+      "keyword": "sodium tracker",
+      "observed_rank": 10,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "ca",
+      "keyword": "suivi sodium",
+      "observed_rank": 32,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "au",
+      "keyword": "sodium tracker",
+      "observed_rank": 9,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "au",
+      "keyword": "salt tracker",
+      "observed_rank": 42,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "de",
+      "keyword": "natrium tracker",
+      "observed_rank": 5,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "de",
+      "keyword": "sodium tracker",
+      "observed_rank": 16,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "fr",
+      "keyword": "suivi sodium",
+      "observed_rank": 4,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "fr",
+      "keyword": "sodium tracker",
+      "observed_rank": 16,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "es",
+      "keyword": "control de sodio",
+      "observed_rank": 1,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "es",
+      "keyword": "sodium tracker",
+      "observed_rank": 5,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "it",
+      "keyword": "dieta iposodica",
+      "observed_rank": 1,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "it",
+      "keyword": "sodium tracker",
+      "observed_rank": 18,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "nl",
+      "keyword": "natrium tracker",
+      "observed_rank": 1,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "nl",
+      "keyword": "sodium tracker",
+      "observed_rank": 3,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "se",
+      "keyword": "saltintag",
+      "observed_rank": 1,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "se",
+      "keyword": "sodium tracker",
+      "observed_rank": 15,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "jp",
+      "keyword": "塩分記録",
+      "observed_rank": 25,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "jp",
+      "keyword": "sodium tracker",
+      "observed_rank": 13,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "jp",
+      "keyword": "ナトリウム",
+      "observed_rank": 3,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "cn",
+      "keyword": "低钠",
+      "observed_rank": null,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "cn",
+      "keyword": "钠摄入",
+      "observed_rank": 10,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "cn",
+      "keyword": "sodium tracker",
+      "observed_rank": 22,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "my",
+      "keyword": "jejak natrium",
+      "observed_rank": 1,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "my",
+      "keyword": "sodium tracker",
+      "observed_rank": 20,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "in",
+      "keyword": "sodium tracker",
+      "observed_rank": 6,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "in",
+      "keyword": "salt tracker",
+      "observed_rank": 17,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "in",
+      "keyword": "नमक ट्रैकर",
+      "observed_rank": 1,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "in",
+      "keyword": "உப்பு",
+      "observed_rank": null,
+      "popularity": null,
+      "difficulty": null
+    },
+    {
+      "store": "in",
+      "keyword": "సోడియం",
+      "observed_rank": null,
+      "popularity": null,
+      "difficulty": null
+    }
+  ]
+}

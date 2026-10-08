@@ -1,26 +1,40 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import sharp from "/Users/pradeep.kumar1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/lib/index.js";
+import sharp from "/Users/pradeep.kumar1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp/dist/index.mjs";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const outputRoot = path.join(root, "png-output");
 
-const locales = {
-  nl: "nl-NL",
-  fr: "fr-FR",
-  it: "it-IT",
-};
+const locales = [
+  ["en-us", "en-US"],
+  ["en-gb", "en-AU"],
+  ["en-gb", "en-CA"],
+  ["en-gb", "en-GB"],
+  ["nl", "nl-NL"],
+  ["fr", "fr-FR"],
+  ["de", "de-DE"],
+  ["it", "it-IT"],
+  ["ja", "ja-JP"],
+];
+const requestedTarget = process.argv[2];
+const localesToFinalize = requestedTarget
+  ? locales.filter(([, targetLocale]) => targetLocale === requestedTarget)
+  : locales;
+
+if (requestedTarget && localesToFinalize.length === 0) {
+  throw new Error(`Unknown target locale: ${requestedTarget}`);
+}
 
 const names = [
-  "01-your-free-sodium-tracker.png",
+  "01-your-everyday-sodium-tracker.png",
   "02-know-before-you-bite.png",
   "03-log-meals-in-seconds.png",
   "04-reminders-not-nagging.png",
   "05-streaks-that-stick.png",
 ];
 
-for (const [sourceLocale, targetLocale] of Object.entries(locales)) {
+for (const [sourceLocale, targetLocale] of localesToFinalize) {
   const targetDir = path.join(outputRoot, targetLocale);
   fs.mkdirSync(targetDir, { recursive: true });
 
@@ -56,4 +70,4 @@ for (const [sourceLocale, targetLocale] of Object.entries(locales)) {
     .toFile(path.join(contactSheetDir, `${targetLocale}.png`));
 }
 
-console.log(`Finalized ${Object.keys(locales).length * names.length} App Store PNG screenshots in ${outputRoot}`);
+console.log(`Finalized ${localesToFinalize.length * names.length} App Store PNG screenshots in ${outputRoot}`);

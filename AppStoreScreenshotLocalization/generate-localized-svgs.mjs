@@ -25,7 +25,9 @@ class DCLogic {
 const Component = new Function("DCLogic", `${componentScript}\nreturn Component;`)(DCLogic);
 const component = new Component();
 component.props = { showIOS: true, showAndroid: false };
-const rows = component.renderVals().rows.filter((row) => row.isIos && ["nl", "fr", "it"].includes(row.cc));
+const rows = component.renderVals().rows.filter((row) =>
+  row.isIos && ["en-us", "en-gb", "ja", "de", "nl", "fr", "it"].includes(row.cc),
+);
 
 function resolveTemplate(template, row) {
   let html = template;
@@ -58,6 +60,10 @@ function toSvg(shotHtml) {
     .replace(
       /font-family:\"Baloo 2\", -apple-system, \"Segoe UI\", sans-serif;/g,
       "font-family:'Baloo 2', -apple-system, 'Segoe UI', sans-serif;",
+    )
+    .replace(
+      /font-family:\"M PLUS Rounded 1c\", \"Noto Sans JP\", -apple-system, sans-serif;/g,
+      "font-family:'M PLUS Rounded 1c', 'Noto Sans JP', -apple-system, sans-serif;",
     )
     .replace(/&(?![A-Za-z0-9#]+;)/g, "&amp;")
     .replace(/<svg\b/g, '<svg xmlns="http://www.w3.org/2000/svg"');

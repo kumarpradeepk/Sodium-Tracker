@@ -1,0 +1,176 @@
+{
+  "data": [
+    {
+      "type": "appScreenshotSets",
+      "id": "928ae08e-0064-44ad-8515-ca810f878ab5",
+      "attributes": {
+        "screenshotDisplayType": "APP_IPHONE_67"
+      },
+      "relationships": {
+        "appScreenshots": {
+          "meta": {
+            "paging": {
+              "total": 5,
+              "limit": 10
+            }
+          },
+          "data": [
+            {
+              "type": "appScreenshots",
+              "id": "3ff451cb-5161-4918-bc06-ed07b4ac151e"
+            },
+            {
+              "type": "appScreenshots",
+              "id": "fff2f2d5-7093-46b3-8ac1-499c1ccc6abb"
+            },
+            {
+              "type": "appScreenshots",
+              "id": "ba63852d-f6ba-415d-acbf-da936f914216"
+            },
+            {
+              "type": "appScreenshots",
+              "id": "93338b6f-99bd-43dd-8dd8-80b5085f5f6c"
+            },
+            {
+              "type": "appScreenshots",
+              "id": "19dc64b0-b127-45e9-8cd6-8bf24df56ec0"
+            }
+          ],
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/928ae08e-0064-44ad-8515-ca810f878ab5/relationships/appScreenshots",
+            "related": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/928ae08e-0064-44ad-8515-ca810f878ab5/appScreenshots"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshotSets/928ae08e-0064-44ad-8515-ca810f878ab5"
+      }
+    }
+  ],
+  "included": [
+    {
+      "type": "appScreenshots",
+      "id": "3ff451cb-5161-4918-bc06-ed07b4ac151e",
+      "attributes": {
+        "fileSize": 1115942,
+        "fileName": "01-your-everyday-sodium-tracker.png",
+        "sourceFileChecksum": "6a8626b8d3e01cb4e4d00ae2504bab4c",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fa/17/9c/fa179ce5-e78b-2d7b-0eab-10b42a50eef3/01-your-everyday-sodium-tracker.png/{w}x{h}bb.{f}",
+          "width": 1290,
+          "height": 2796
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/3ff451cb-5161-4918-bc06-ed07b4ac151e"
+      }
+    },
+    {
+      "type": "appScreenshots",
+      "id": "fff2f2d5-7093-46b3-8ac1-499c1ccc6abb",
+      "attributes": {
+        "fileSize": 1115823,
+        "fileName": "02-know-before-you-bite.png",
+        "sourceFileChecksum": "480ca10f75cd4382d4117434b2602ae8",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c2/9f/00/c29f00ac-b1a3-8ef7-e69c-80938b471fbb/02-know-before-you-bite.png/{w}x{h}bb.{f}",
+          "width": 1290,
+          "height": 2796
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/fff2f2d5-7093-46b3-8ac1-499c1ccc6abb"
+      }
+    },
+    {
+      "type": "appScreenshots",
+      "id": "ba63852d-f6ba-415d-acbf-da936f914216",
+      "attributes": {
+        "fileSize": 1637175,
+        "fileName": "03-log-meals-in-seconds.png",
+        "sourceFileChecksum": "311960f96de0ff5964aef4e0bcfb2c97",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ed/98/ea/ed98eacf-1c48-cc13-e1f9-27f712345427/03-log-meals-in-seconds.png/{w}x{h}bb.{f}",
+          "width": 1290,
+          "height": 2796
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/ba63852d-f6ba-415d-acbf-da936f914216"
+      }
+    },
+    {
+      "type": "appScreenshots",
+      "id": "93338b6f-99bd-43dd-8dd8-80b5085f5f6c",
+      "attributes": {
+        "fileSize": 1017203,
+        "fileName": "04-reminders-not-nagging.png",
+        "sourceFileChecksum": "53571d51131df6f73677338c15f83edc",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/db/40/16/db4016ee-1dd2-b67e-56e0-d878aeb9bbb3/04-reminders-not-nagging.png/{w}x{h}bb.{f}",
+          "width": 1290,
+          "height": 2796
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/93338b6f-99bd-43dd-8dd8-80b5085f5f6c"
+      }
+    },
+    {
+      "type": "appScreenshots",
+      "id": "19dc64b0-b127-45e9-8cd6-8bf24df56ec0",
+      "attributes": {
+        "fileSize": 995538,
+        "fileName": "05-streaks-that-stick.png",
+        "sourceFileChecksum": "af674dbd626437f67f5478e00171a41b",
+        "imageAsset": {
+          "templateUrl": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a0/79/c6/a079c620-ec4c-3c22-6fd7-b5e57682d336/05-streaks-that-stick.png/{w}x{h}bb.{f}",
+          "width": 1290,
+          "height": 2796
+        },
+        "assetType": "SortedD74ScreenShot",
+        "assetDeliveryState": {
+          "errors": [],
+          "warnings": null,
+          "state": "COMPLETE"
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appScreenshots/19dc64b0-b127-45e9-8cd6-8bf24df56ec0"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/f3bee50b-bae2-4ebf-97c7-6026bb4fe050/appScreenshotSets?include=appScreenshots&limit=200"
+  },
+  "meta": {
+    "paging": {
+      "total": 1,
+      "limit": 200
+    }
+  }
+}

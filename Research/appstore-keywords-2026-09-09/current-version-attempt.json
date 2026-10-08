@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-09-09T10:32:13.447479+00:00",
+  "app_id": "6800595930",
+  "version": "1.2",
+  "version_state": "READY_FOR_DISTRIBUTION",
+  "attempted_locale": "en-US",
+  "requested_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,habits",
+  "patch_succeeded": false,
+  "api_error": {
+    "error": "API request failed: PATCH /v1/appStoreVersionLocalizations/07a8907f-15c8-4b11-99e8-c2ed957d414f",
+    "status": 409,
+    "response": {
+      "errors": [
+        {
+          "id": "5f1aaa02-8725-4620-96b3-a7bb806636fd",
+          "status": "409",
+          "code": "STATE_ERROR",
+          "title": "The request cannot be fulfilled because of the state of another resource.",
+          "detail": "Attribute 'keywords' cannot be edited at this time"
+        }
+      ]
+    }
+  },
+  "readback_keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+  "diff": [],
+  "new_versions_created": 0,
+  "submissions_created": 0,
+  "readback_verified": true
+}

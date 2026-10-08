@@ -1,0 +1,53 @@
+{
+  "appInfo": {
+    "type": "appInfoLocalizations",
+    "id": "00b85913-f800-43b7-867b-c3603a10ec5c",
+    "attributes": {
+      "locale": "zh-Hans",
+      "name": "Pinch 钠摄入与盐分记录",
+      "subtitle": "饮食日记与每日用量管理",
+      "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/00b85913-f800-43b7-867b-c3603a10ec5c"
+    }
+  },
+  "versionLocalization": {
+    "type": "appStoreVersionLocalizations",
+    "id": "9dd98ea1-4224-4f56-a2d6-d49c59c3236f",
+    "attributes": {
+      "description": "每天摄入多少钠，一目了然。用Pinch记录食物，查看距离每日钠摄入目标还剩多少毫克。\n\n轻松记录每一天\n• 设置每日目标，按毫克输入摄入量。\n• 快速找到收藏和经常记录的食物。\n• 将食物的钠含量与今日剩余额度比较。\n• 自主选择是否开启用餐提醒。\n• 查看每周趋势和连续记录天数。\n• 换算盐和钠的含量。\n\nPINCH PLUS\n订阅后可使用FatSecret食物搜索与记录、四周趋势与日历、无限自定义食物、CSV导出和小组件。购买前，应用会显示当前价格及你符合条件的首次订阅优惠。除非在Apple账户设置中取消，否则订阅将自动续订。\n\n统计仅依据你记录的食物，不包括未记录的餐食。食物数据由FatSecret在可用范围内提供。Pinch用于个人记录，不提供医疗诊断或治疗。请向医疗专业人士咨询适合你的钠摄入目标。\n\n使用条款: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\n隐私政策: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "zh-Hans",
+      "keywords": "减盐,低钠,食物,营养,摄取量,提醒,习惯,餐食",
+      "marketingUrl": null,
+      "promotionalText": null,
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": null
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9dd98ea1-4224-4f56-a2d6-d49c59c3236f/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9dd98ea1-4224-4f56-a2d6-d49c59c3236f/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9dd98ea1-4224-4f56-a2d6-d49c59c3236f/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9dd98ea1-4224-4f56-a2d6-d49c59c3236f/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9dd98ea1-4224-4f56-a2d6-d49c59c3236f/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9dd98ea1-4224-4f56-a2d6-d49c59c3236f/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/9dd98ea1-4224-4f56-a2d6-d49c59c3236f"
+    }
+  }
+}

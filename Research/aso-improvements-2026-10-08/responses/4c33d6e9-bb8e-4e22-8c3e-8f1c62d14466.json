@@ -1,0 +1,143 @@
+{
+  "before": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466",
+      "attributes": {
+        "description": "మీ రోజువారీ సోడియం మోతాదును తెలుసుకోండి. Pinchలో భోజనాన్ని నమోదు చేసి, మీ రోజువారీ లక్ష్యంలో ఎన్ని మిల్లీగ్రాములు మిగిలాయో చూడండి.\n\nరోజువారీ నమోదు సులభంగా\n• రోజువారీ లక్ష్యాన్ని నిర్ణయించి, మోతాదులను మిల్లీగ్రాముల్లో నమోదు చేయండి.\n• ఇష్టమైన, తరచుగా నమోదు చేసే ఆహారాలను కనుగొనండి.\n• ఆహారంలోని మోతాదును ఈ రోజు మిగిలిన పరిమితితో పోల్చండి.\n• కావాలంటే భోజన సమయపు రిమైండర్‌లను ఎంచుకోండి.\n• వారపు ధోరణులు, వరుసగా నమోదు చేసిన రోజులను చూడండి.\n• ఉప్పు, సోడియం మోతాదులను మార్చి లెక్కించండి.\n\nPINCH PLUS\nసబ్‌స్క్రిప్షన్‌తో FatSecret ఆహార శోధన, నమోదు, నాలుగు వారాల ధోరణులు, క్యాలెండర్, అపరిమిత కస్టమ్ ఆహారాలు, CSV ఎగుమతి, విడ్జెట్ లభిస్తాయి. కొనుగోలుకు ముందు ధర, మీకు వర్తించే ప్రారంభ ఆఫర్ చూపబడతాయి. Apple ఖాతా సెట్టింగ్‌లలో రద్దు చేయకపోతే సబ్‌స్క్రిప్షన్ స్వయంచాలకంగా పునరుద్ధరించబడుతుంది.\n\nలెక్కలు మీరు నమోదు చేసిన ఆహారంపై మాత్రమే ఆధారపడతాయి. అందుబాటులో ఉన్న ఆహార డేటాను FatSecret అందిస్తుంది. Pinch వైద్య సలహా లేదా చికిత్స అందించదు. మీకు సరైన సోడియం లక్ష్యం గురించి అర్హత గల ఆరోగ్య నిపుణుడిని అడగండి.\n\nవినియోగ నిబంధనలు: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nగోప్యతా విధానం: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "te-IN",
+        "keywords": "ఆహారం,పోషణ,అలవాటు,ట్రాకర్,తక్కువ",
+        "marketingUrl": null,
+        "promotionalText": "ఒక్కో భోజనంతో మొదలుపెట్టండి. సోడియాన్ని నమోదు చేయండి, ఇష్టమైన ఆహారాలను సేవ్ చేసి రోజువారీ మొత్తం చూడండి. మీకు కావాలంటేనే భోజన రిమైండర్లు.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "చిన్న చిన్న క్షణాలు. మీ రోజువారీ ఆహారంపై మరింత స్పష్టత.\n\nప్రతి భోజనంలోని సోడియాన్ని నమోదు చేయడానికి Pinch సహాయపడుతుంది. ఈ వెర్షన్‌లో యాప్ ఇంటర్‌ఫేస్ 14 భాషల్లో అందుబాటులో ఉంది, కాబట్టి రోజువారీ నమోదు మరింత పరిచయంగా అనిపిస్తుంది.\n\n• ఆహారాన్ని నమోదు చేసి, రోజువారీ మొత్తం సోడియాన్ని మీరు ఎంచుకున్న లక్ష్యంతో పోల్చండి.\n• ఇష్టమైన ఆహారాలను సేవ్ చేసి, తరచూ తినేవాటిని త్వరగా మళ్లీ జోడించండి.\n• ఆహార లేబుల్ ప్రకారం సోడియాన్ని మిల్లీగ్రాముల్లో లేదా ఉప్పును గ్రాముల్లో నమోదు చేయండి.\n• మీ దినచర్యకు సరిపోయే భోజన రిమైండర్లను కావాలనుకుంటే ఎంచుకోండి.\n\nఎక్కువ రోజుల వివరాలు చూడాలనుకుంటున్నారా? Pinch Plus నాలుగు వారాల పోకడలు, ఉప్పు క్యాలెండర్, FatSecret ఆహార శోధన, CSV ఎగుమతి మరియు హోమ్ స్క్రీన్ విడ్జెట్‌ను అందిస్తుంది.\n\nమీ ఆహార డైరీ పరిపూర్ణంగా ఉండాల్సిన అవసరం లేదు. తదుపరి భోజనంతో మొదలుపెట్టండి."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466"
+    }
+  },
+  "patch_response": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466",
+      "attributes": {
+        "description": "Pinchతో రోజువారీ సోడియం తీసుకునే పరిమాణాన్ని నమోదు చేయండి. సోడియాన్ని మిల్లీగ్రాముల్లో లేదా ఉప్పును గ్రాముల్లో నమోదు చేసి, ఆహారాన్ని జోడించండి. మీరు ఎంచుకున్న రోజువారీ లక్ష్యానికి ఇంకా ఎంత మిగిలి ఉందో చూడండి.\n\nయాప్ ఇంటర్‌ఫేస్ ప్రస్తుతం తెలుగులో అందుబాటులో లేదు. తెలుగు పరికరాల్లో యాప్ మరో మద్దతు ఉన్న భాషలో లేదా ఆంగ్లంలో తెరవబడవచ్చు.\n\nరోజువారీ నమోదు సులభంగా\n• రోజువారీ లక్ష్యాన్ని నిర్ణయించి, మోతాదులను మిల్లీగ్రాముల్లో నమోదు చేయండి.\n• ఇష్టమైన, తరచుగా నమోదు చేసే ఆహారాలను కనుగొనండి.\n• ఆహారంలోని మోతాదును ఈ రోజు మిగిలిన పరిమితితో పోల్చండి.\n• కావాలంటే భోజన సమయపు రిమైండర్‌లను ఎంచుకోండి.\n• వారపు ధోరణులు, వరుసగా నమోదు చేసిన రోజులను చూడండి.\n• ఉప్పు, సోడియం మోతాదులను మార్చి లెక్కించండి.\n\nPINCH PLUS\nసబ్‌స్క్రిప్షన్‌తో FatSecret ఆహార శోధన, నమోదు, నాలుగు వారాల ధోరణులు, క్యాలెండర్, అపరిమిత కస్టమ్ ఆహారాలు, CSV ఎగుమతి, విడ్జెట్ లభిస్తాయి. కొనుగోలుకు ముందు ధర, మీకు వర్తించే ప్రారంభ ఆఫర్ చూపబడతాయి. Apple ఖాతా సెట్టింగ్‌లలో రద్దు చేయకపోతే సబ్‌స్క్రిప్షన్ స్వయంచాలకంగా పునరుద్ధరించబడుతుంది.\n\nలెక్కలు మీరు నమోదు చేసిన ఆహారంపై మాత్రమే ఆధారపడతాయి. అందుబాటులో ఉన్న ఆహార డేటాను FatSecret అందిస్తుంది. Pinch వైద్య సలహా లేదా చికిత్స అందించదు. మీకు సరైన సోడియం లక్ష్యం గురించి అర్హత గల ఆరోగ్య నిపుణుడిని అడగండి.\n\nవినియోగ నిబంధనలు: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nగోప్యతా విధానం: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "te-IN",
+        "keywords": "ఆహారం,పోషణ,ట్రాకర్,sodium,tracker",
+        "marketingUrl": null,
+        "promotionalText": "ఒక్కో భోజనంతో మొదలుపెట్టండి. సోడియాన్ని నమోదు చేయండి, ఇష్టమైన ఆహారాలను సేవ్ చేసి రోజువారీ మొత్తం చూడండి. మీకు కావాలంటేనే భోజన రిమైండర్లు.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "App Store సమాచారాన్ని నవీకరించాం. సోడియం నమోదు, రోజువారీ లక్ష్యాలు మరియు Pinch Plus వివరాలను మరింత స్పష్టంగా వివరించాం."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466"
+    }
+  },
+  "after": {
+    "data": {
+      "type": "appStoreVersionLocalizations",
+      "id": "4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466",
+      "attributes": {
+        "description": "Pinchతో రోజువారీ సోడియం తీసుకునే పరిమాణాన్ని నమోదు చేయండి. సోడియాన్ని మిల్లీగ్రాముల్లో లేదా ఉప్పును గ్రాముల్లో నమోదు చేసి, ఆహారాన్ని జోడించండి. మీరు ఎంచుకున్న రోజువారీ లక్ష్యానికి ఇంకా ఎంత మిగిలి ఉందో చూడండి.\n\nయాప్ ఇంటర్‌ఫేస్ ప్రస్తుతం తెలుగులో అందుబాటులో లేదు. తెలుగు పరికరాల్లో యాప్ మరో మద్దతు ఉన్న భాషలో లేదా ఆంగ్లంలో తెరవబడవచ్చు.\n\nరోజువారీ నమోదు సులభంగా\n• రోజువారీ లక్ష్యాన్ని నిర్ణయించి, మోతాదులను మిల్లీగ్రాముల్లో నమోదు చేయండి.\n• ఇష్టమైన, తరచుగా నమోదు చేసే ఆహారాలను కనుగొనండి.\n• ఆహారంలోని మోతాదును ఈ రోజు మిగిలిన పరిమితితో పోల్చండి.\n• కావాలంటే భోజన సమయపు రిమైండర్‌లను ఎంచుకోండి.\n• వారపు ధోరణులు, వరుసగా నమోదు చేసిన రోజులను చూడండి.\n• ఉప్పు, సోడియం మోతాదులను మార్చి లెక్కించండి.\n\nPINCH PLUS\nసబ్‌స్క్రిప్షన్‌తో FatSecret ఆహార శోధన, నమోదు, నాలుగు వారాల ధోరణులు, క్యాలెండర్, అపరిమిత కస్టమ్ ఆహారాలు, CSV ఎగుమతి, విడ్జెట్ లభిస్తాయి. కొనుగోలుకు ముందు ధర, మీకు వర్తించే ప్రారంభ ఆఫర్ చూపబడతాయి. Apple ఖాతా సెట్టింగ్‌లలో రద్దు చేయకపోతే సబ్‌స్క్రిప్షన్ స్వయంచాలకంగా పునరుద్ధరించబడుతుంది.\n\nలెక్కలు మీరు నమోదు చేసిన ఆహారంపై మాత్రమే ఆధారపడతాయి. అందుబాటులో ఉన్న ఆహార డేటాను FatSecret అందిస్తుంది. Pinch వైద్య సలహా లేదా చికిత్స అందించదు. మీకు సరైన సోడియం లక్ష్యం గురించి అర్హత గల ఆరోగ్య నిపుణుడిని అడగండి.\n\nవినియోగ నిబంధనలు: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nగోప్యతా విధానం: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "te-IN",
+        "keywords": "ఆహారం,పోషణ,ట్రాకర్,sodium,tracker",
+        "marketingUrl": null,
+        "promotionalText": "ఒక్కో భోజనంతో మొదలుపెట్టండి. సోడియాన్ని నమోదు చేయండి, ఇష్టమైన ఆహారాలను సేవ్ చేసి రోజువారీ మొత్తం చూడండి. మీకు కావాలంటేనే భోజన రిమైండర్లు.",
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": "App Store సమాచారాన్ని నవీకరించాం. సోడియం నమోదు, రోజువారీ లక్ష్యాలు మరియు Pinch Plus వివరాలను మరింత స్పష్టంగా వివరించాం."
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/searchKeywords"
+          }
+        },
+        "placements": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/relationships/placements",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466/placements"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4c33d6e9-bb8e-4e22-8c3e-8f1c62d14466"
+    }
+  }
+}

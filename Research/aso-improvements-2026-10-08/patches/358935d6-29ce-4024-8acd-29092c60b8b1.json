@@ -1,0 +1,11 @@
+{
+  "data": {
+    "type": "appStoreVersionLocalizations",
+    "id": "358935d6-29ce-4024-8acd-29092c60b8b1",
+    "attributes": {
+      "keywords": "saltintag,kost,måltid,näring,logg,saltfattig,räknare,omvandling,sodium,tracker",
+      "description": "Följ ditt dagliga natriumintag med Pinch. Ange natrium i milligram eller salt i gram, logga maten och se hur mycket som återstår av ditt eget dagsmål.\n\nDIN DAG I EN ÖVERBLICK\n• Ange ett dagsmål och logga mängder i milligram.\n• Hitta favoriter och mat som du ofta loggar.\n• Jämför livsmedel med din återstående budget.\n• Välj frivilliga måltidspåminnelser.\n• Se veckotrender och sviter av loggade dagar.\n• Omvandla mellan salt och natrium.\n\nPINCH PLUS\nEn prenumeration ger matsökning och loggning via FatSecret, fyraveckorstrender och kalender, obegränsat antal egna livsmedel, CSV-export och widgeten. Priser och eventuella introduktionserbjudanden visas före köp. Prenumerationen förnyas automatiskt om du inte säger upp den i inställningarna för ditt Apple-konto.\n\nResultaten bygger på det du loggar; oregistrerade måltider ingår inte. Livsmedelsdata från FatSecret där de finns tillgängliga. Pinch ger inte medicinsk rådgivning. Fråga vårdpersonal vilket natriummål som passar dig.\n\nAnvändarvillkor: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nIntegritetspolicy: https://tinkersmithstudio.com/pinch/privacy.html",
+      "whatsNew": "Uppdaterad App Store-information och tydligare beskrivningar av natriumloggning, dagsmål och Pinch Plus."
+    }
+  }
+}

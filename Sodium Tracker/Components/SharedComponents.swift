@@ -121,7 +121,7 @@ struct PinchSwitch: View {
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(.isToggle)
-        .accessibilityValue(isOn ? "On" : "Off")
+        .accessibilityValue(PinchLocalization.resolve(isOn ? "On" : "Off"))
     }
 }
 
@@ -152,6 +152,8 @@ struct PinchSegmented<Value: Hashable>: View {
                     PinchText(segment.label)
                         .pinchBody(fontSize, .semibold)
                         .foregroundStyle(active ? p.ink : p.ink3)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 8)
                         .background(
@@ -209,7 +211,7 @@ struct RadioCard<Content: View>: View {
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(selected ? .isSelected : [])
-        .accessibilityValue(selected ? "Selected" : "Not selected")
+        .accessibilityValue(PinchLocalization.resolve(selected ? "Selected" : "Not selected"))
         .animation(.easeInOut(duration: 0.2), value: selected)
     }
 }
@@ -229,13 +231,17 @@ struct PinchCTA: View {
             PinchText(title)
                 .pinchBody(height >= 54 ? 16 : 15.5, .bold)
                 .foregroundStyle(p.onBrand)
-                .frame(maxWidth: .infinity)
-                .frame(height: height)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 12)
+                .frame(maxWidth: .infinity, minHeight: height)
                 .background(Capsule().fill(p.brand))
                 .shadow(color: p.brand.opacity(0.55), radius: 11, y: 6)
                 .opacity(enabled ? 1 : 0.45)
         }
         .buttonStyle(.pressScale(0.98))
+        .disabled(!enabled)
     }
 }
 
@@ -426,20 +432,9 @@ struct SunkField: View {
             .foregroundStyle(p.ink)
             .monospacedDigit()
             .keyboardType(numeric ? (allowsDecimal ? .decimalPad : .numberPad) : .default)
-            .onChange(of: text) { _, newValue in
-                if numeric {
-                    var hasSeparator = false
-                    let filtered = newValue.filter { character in
-                        if character.isNumber { return true }
-                        if allowsDecimal, (character == "." || character == ","), !hasSeparator {
-                            hasSeparator = true
-                            return true
-                        }
-                        return false
-                    }
-                    if filtered != newValue { text = filtered }
-                }
-            }
+            // Keep pasted values intact. SodiumConverter validates the complete
+            // localized number; stripping separators or a minus sign here could
+            // silently change the quantity before the user submits it.
         }
         .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
         .frame(maxWidth: .infinity, alignment: .leading)

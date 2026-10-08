@@ -1,0 +1,15 @@
+{
+  "target": {
+    "app_id": "6800595930",
+    "platform": "IOS",
+    "version": "1.4"
+  },
+  "state": "PREPARE_FOR_SUBMISSION",
+  "version_locale_count": 17,
+  "resource_updates": 21,
+  "all_patch_fields_get_verified": true,
+  "all_unrelated_attributes_preserved": true,
+  "live_1_3_metadata_preserved": true,
+  "build_attached": false,
+  "submitted": false
+}

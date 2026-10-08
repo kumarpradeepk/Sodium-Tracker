@@ -1,0 +1,192 @@
+{
+  "appId": "6800595930",
+  "version": "1.1",
+  "versionId": "1f016dcd-1be3-451c-b89a-9c08a242288f",
+  "state": "PREPARE_FOR_SUBMISSION",
+  "verifiedAt": "2026-09-07T13:55:09.945Z",
+  "locales": [
+    {
+      "locale": "en-US",
+      "name": "Sodium Tracker: Pinch Daily",
+      "subtitle": "Salt Counter & Intake",
+      "keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "3afb757d-dfa3-4b87-8d3a-16030d696571",
+      "screenshotSetId": "c4e1aa7c-2594-43e7-8332-5ff5e856e8af"
+    },
+    {
+      "locale": "en-GB",
+      "name": "Sodium Tracker: Pinch Daily",
+      "subtitle": "Salt Counter & Intake",
+      "keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "96367a0d-1ecb-4574-9e5c-6a6ae592bb06",
+      "screenshotSetId": "363b4d83-cfd6-49bd-809e-4bcfdb4e87c6"
+    },
+    {
+      "locale": "en-AU",
+      "name": "Sodium Tracker: Pinch Daily",
+      "subtitle": "Salt Counter & Intake",
+      "keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "a103bd98-3a31-4769-8f00-9270ffe457f3",
+      "screenshotSetId": "99646543-96f1-4864-9980-d7891c0aad9c"
+    },
+    {
+      "locale": "en-CA",
+      "name": "Sodium Tracker: Pinch Daily",
+      "subtitle": "Daily Salt Counter & Intake",
+      "keywords": "food,diary,nutrition,meal,log,milligrams,budget,reminder,low,diet,dash,habits",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "4b49a984-f83f-4d3e-b3f7-c769c4ee22a6",
+      "screenshotSetId": "781dc6a4-d559-43a9-aa3c-05ed63fcf81a"
+    },
+    {
+      "locale": "fr-FR",
+      "name": "Suivi Sodium : Pinch",
+      "subtitle": "Compteur de sel quotidien",
+      "keywords": "journal,alimentaire,repas,apport,nutrition,régime,pauvre,dash,habitudes,rappel",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "a6c8caab-722c-44b0-8f24-bad31de910f7",
+      "screenshotSetId": "ab835d9a-8eb7-4248-b5c5-e7942967df08"
+    },
+    {
+      "locale": "fr-CA",
+      "name": "Suivi Sodium : Pinch",
+      "subtitle": "Compteur de sel quotidien",
+      "keywords": "journal,alimentaire,repas,apport,nutrition,régime,pauvre,dash,habitudes,rappel",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "d766588c-5ab7-4d4d-bb28-af7fcfb82bbb",
+      "screenshotSetId": "9705d6e1-dd5d-4509-930d-d1641991507b"
+    },
+    {
+      "locale": "de-DE",
+      "name": "Natrium Tracker: Pinch",
+      "subtitle": "Salz Zähler & Tagesprotokoll",
+      "keywords": "sodium,salzarm,ernährung,lebensmittel,tagebuch,mahlzeit,budget,erinnerung,dash",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "29273af5-1b48-41f8-9010-cd54377f7c3c",
+      "screenshotSetId": "734e2bab-06f5-4717-ae92-024256c0f5cb"
+    },
+    {
+      "locale": "nl-NL",
+      "name": "Natrium Tracker: Pinch",
+      "subtitle": "Zout Teller & Voedingslog",
+      "keywords": "zoutarm,dieet,zoutinname,dagboek,maaltijd,voeding,budget,herinnering,dash",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "8c30cf7c-1b5a-44e0-973a-993c5f2101ce",
+      "screenshotSetId": "7ace81fe-f16b-4127-92bb-d6cbfd7733ce"
+    },
+    {
+      "locale": "it",
+      "name": "Monitor Sodio: Pinch",
+      "subtitle": "Dieta iposodica e diario",
+      "keywords": "sale,alimentare,pasti,apporto,nutrizione,registro,promemoria,abitudini,dash",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "65014269-bcf1-4db5-abd4-eefd8b0cd6ab",
+      "screenshotSetId": "aa23e7ba-ca1a-4852-bd98-bc3894709799"
+    },
+    {
+      "locale": "ja",
+      "name": "塩分・ナトリウム管理 Pinch",
+      "subtitle": "毎日の塩分記録と減塩サポート",
+      "keywords": "食事,日記,栄養,食塩,摂取量,食品,リマインダー,習慣",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "91319755-a103-44db-8d36-2ac4721776ba",
+      "screenshotSetId": "e8eb6cc8-f67d-4dcb-b520-5e12e46ecfff"
+    },
+    {
+      "locale": "es-ES",
+      "name": "Control de sodio: Pinch",
+      "subtitle": "Registro diario de sal",
+      "keywords": "dieta,baja,alimentos,comidas,nutrición,ingesta,recordatorio,hábitos,dash",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "9d7ae495-6c02-4c88-a117-d021e7ee07e2",
+      "screenshotSetId": "062032ce-c968-4b24-a924-d3575aab46c8"
+    },
+    {
+      "locale": "sv",
+      "name": "Natrium & salt: Pinch",
+      "subtitle": "Din dagliga matdagbok",
+      "keywords": "saltintag,kost,måltid,näring,logg,påminnelse,vanor,saltfattig,budget",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "28e671e6-abb9-4e83-807e-8e7a3c8e09a4",
+      "screenshotSetId": "67b3704f-e452-487e-921b-04d5103da269"
+    },
+    {
+      "locale": "zh-Hans",
+      "name": "Pinch 钠摄入与盐分记录",
+      "subtitle": "饮食日记与每日用量管理",
+      "keywords": "减盐,低钠,食物,营养,摄取量,提醒,习惯,餐食",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "9dd98ea1-4224-4f56-a2d6-d49c59c3236f",
+      "screenshotSetId": "652363f0-dd0a-4623-bfe1-4ae56ecea0e9"
+    },
+    {
+      "locale": "ms",
+      "name": "Jejak Natrium: Pinch",
+      "subtitle": "Catatan garam harian",
+      "keywords": "makanan,pemakanan,diari,hidangan,pengambilan,peringatan,tabiat,diet",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "2681024d-a289-479c-966a-3ed6524cf25d",
+      "screenshotSetId": "01ba0f8d-ea7d-481b-84b4-688e946717cf"
+    },
+    {
+      "locale": "hi",
+      "name": "Pinch: सोडियम डायरी",
+      "subtitle": "रोज़ के नमक का हिसाब",
+      "keywords": "भोजन,पोषण,आहार,याद,मिलीग्राम",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "49f2c0cf-7774-49f6-b595-1a5ba70ee134",
+      "screenshotSetId": "822e0662-a5f9-45c9-b8d2-4472c7a6a98b"
+    },
+    {
+      "locale": "ta-IN",
+      "name": "Pinch: சோடியம் பதிவு",
+      "subtitle": "தினசரி உப்பு கணக்கு",
+      "keywords": "உணவு,ஊட்டச்சத்து,பழக்கம்",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "728921c7-ccc2-4fcf-8dfb-cd0e3ba5d00a",
+      "screenshotSetId": "13848199-e016-4630-a0b4-3d3f593d0fda"
+    },
+    {
+      "locale": "te-IN",
+      "name": "Pinch: సోడియం డైరీ",
+      "subtitle": "రోజువారీ ఉప్పు లెక్క",
+      "keywords": "ఆహారం,పోషణ,అలవాటు",
+      "screenshotCount": 5,
+      "status": "verified",
+      "versionLocalizationId": "289e6dbe-83c0-43c7-ae6b-e2194de090f2",
+      "screenshotSetId": "8a12d0d9-8316-4359-b5ee-8dafbd89a070"
+    }
+  ],
+  "localeCount": 17,
+  "screenshotCount": 85,
+  "liveVersionUnchanged": true,
+  "scope": "Localized iPhone listing screenshots, names, descriptions and keywords; new locale subtitles and required URLs. No price, build, review submission or release changes.",
+  "caveats": [
+    "13 languages across 17 locale records.",
+    "65 unique supplied images reused for regional English and French; 85 uploads total.",
+    "Screenshots retain English app UI and are not certified for release-build fidelity.",
+    "Irish, Māori and Romansh have no separate App Store listing locales.",
+    "Existing iPad screenshots preserved; no replacement iPad assets supplied.",
+    "Native-language keyword demand is not fully validated in all markets; no conversion claims.",
+    "The app binary translations and pricing/trial rollout remain separate release work."
+  ]
+}

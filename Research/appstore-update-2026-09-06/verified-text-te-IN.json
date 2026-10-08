@@ -1,0 +1,53 @@
+{
+  "appInfo": {
+    "type": "appInfoLocalizations",
+    "id": "87e604be-3911-45d1-935c-76adb8b69c88",
+    "attributes": {
+      "locale": "te-IN",
+      "name": "Pinch: సోడియం డైరీ",
+      "subtitle": "రోజువారీ ఉప్పు లెక్క",
+      "privacyPolicyUrl": "https://tinkersmithstudio.com/pinch/privacy.html",
+      "privacyChoicesUrl": null,
+      "privacyPolicyText": null
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appInfoLocalizations/87e604be-3911-45d1-935c-76adb8b69c88"
+    }
+  },
+  "versionLocalization": {
+    "type": "appStoreVersionLocalizations",
+    "id": "289e6dbe-83c0-43c7-ae6b-e2194de090f2",
+    "attributes": {
+      "description": "మీ రోజువారీ సోడియం మోతాదును తెలుసుకోండి. Pinchలో భోజనాన్ని నమోదు చేసి, మీ రోజువారీ లక్ష్యంలో ఎన్ని మిల్లీగ్రాములు మిగిలాయో చూడండి.\n\nరోజువారీ నమోదు సులభంగా\n• రోజువారీ లక్ష్యాన్ని నిర్ణయించి, మోతాదులను మిల్లీగ్రాముల్లో నమోదు చేయండి.\n• ఇష్టమైన, తరచుగా నమోదు చేసే ఆహారాలను కనుగొనండి.\n• ఆహారంలోని మోతాదును ఈ రోజు మిగిలిన పరిమితితో పోల్చండి.\n• కావాలంటే భోజన సమయపు రిమైండర్‌లను ఎంచుకోండి.\n• వారపు ధోరణులు, వరుసగా నమోదు చేసిన రోజులను చూడండి.\n• ఉప్పు, సోడియం మోతాదులను మార్చి లెక్కించండి.\n\nPINCH PLUS\nసబ్‌స్క్రిప్షన్‌తో FatSecret ఆహార శోధన, నమోదు, నాలుగు వారాల ధోరణులు, క్యాలెండర్, అపరిమిత కస్టమ్ ఆహారాలు, CSV ఎగుమతి, విడ్జెట్ లభిస్తాయి. కొనుగోలుకు ముందు ధర, మీకు వర్తించే ప్రారంభ ఆఫర్ చూపబడతాయి. Apple ఖాతా సెట్టింగ్‌లలో రద్దు చేయకపోతే సబ్‌స్క్రిప్షన్ స్వయంచాలకంగా పునరుద్ధరించబడుతుంది.\n\nలెక్కలు మీరు నమోదు చేసిన ఆహారంపై మాత్రమే ఆధారపడతాయి. అందుబాటులో ఉన్న ఆహార డేటాను FatSecret అందిస్తుంది. Pinch వైద్య సలహా లేదా చికిత్స అందించదు. మీకు సరైన సోడియం లక్ష్యం గురించి అర్హత గల ఆరోగ్య నిపుణుడిని అడగండి.\n\nవినియోగ నిబంధనలు: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch: https://tinkersmithstudio.com/pinch/terms.html\nగోప్యతా విధానం: https://tinkersmithstudio.com/pinch/privacy.html",
+      "locale": "te-IN",
+      "keywords": "ఆహారం,పోషణ,అలవాటు",
+      "marketingUrl": null,
+      "promotionalText": null,
+      "supportUrl": "https://tinkersmithstudio.com/pinch/",
+      "whatsNew": null
+    },
+    "relationships": {
+      "appScreenshotSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/289e6dbe-83c0-43c7-ae6b-e2194de090f2/relationships/appScreenshotSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/289e6dbe-83c0-43c7-ae6b-e2194de090f2/appScreenshotSets"
+        }
+      },
+      "appPreviewSets": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/289e6dbe-83c0-43c7-ae6b-e2194de090f2/relationships/appPreviewSets",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/289e6dbe-83c0-43c7-ae6b-e2194de090f2/appPreviewSets"
+        }
+      },
+      "searchKeywords": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/289e6dbe-83c0-43c7-ae6b-e2194de090f2/relationships/searchKeywords",
+          "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/289e6dbe-83c0-43c7-ae6b-e2194de090f2/searchKeywords"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/289e6dbe-83c0-43c7-ae6b-e2194de090f2"
+    }
+  }
+}

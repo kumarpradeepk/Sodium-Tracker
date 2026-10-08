@@ -67,6 +67,6 @@ struct ProgressRing: View {
         .frame(width: size, height: size)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(PinchLocalization.resolve("Sodium progress for the selected day"))
-        .accessibilityValue("\(PinchFormat.mg(Int(consumed.rounded()))) of \(PinchFormat.mg(goal)) milligrams")
+        .accessibilityValue(PinchLocalization.format("{0} of {1} milligrams", [String(describing: PinchFormat.mg(Int(consumed.rounded()))), String(describing: PinchFormat.mg(goal))]))
     }
 }

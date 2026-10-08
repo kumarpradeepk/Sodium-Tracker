@@ -1,0 +1,337 @@
+{
+  "data": [
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "a6c8caab-722c-44b0-8f24-bad31de910f7",
+      "attributes": {
+        "description": "Pinch est un suivi du sodium et un compteur de sel simple et bienveillant pour le quotidien.\n\nDéfinissez un budget quotidien, enregistrez vos repas et voyez immédiatement combien de milligrammes il vous reste.\n\nSUIVEZ VOTRE JOURNÉE\n• Enregistrez petit-déjeuner, déjeuner, dîner et collations\n• Recherchez des aliments dans la base fournie par FatSecret\n• Saisissez rapidement une quantité en milligrammes\n• Enregistrez les aliments que vous consommez souvent\n• Consultez votre budget restant en un coup d’œil\n• Convertissez facilement le sel et le sodium\n\nPINCH PLUS\nDébloquez la recherche alimentaire FatSecret, les tendances et le calendrier sur quatre semaines, les aliments personnalisés illimités, l’export CSV et le widget sodium.\n\nPinch est conçu pour le suivi personnel et les habitudes quotidiennes. Il ne fournit pas de conseil médical. Demandez à un professionnel de santé quel objectif de sodium vous convient.\n\nDonnées alimentaires fournies par FatSecret.\n\nConditions d’utilisation : https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nPolitique de confidentialité : https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "fr-FR",
+        "keywords": "journal,alimentaire,santé,cardiaque,dash,tension,hypertension,calcul,régime,pauvre,apport,aliments",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a6c8caab-722c-44b0-8f24-bad31de910f7/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a6c8caab-722c-44b0-8f24-bad31de910f7/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a6c8caab-722c-44b0-8f24-bad31de910f7/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a6c8caab-722c-44b0-8f24-bad31de910f7/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a6c8caab-722c-44b0-8f24-bad31de910f7/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a6c8caab-722c-44b0-8f24-bad31de910f7/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a6c8caab-722c-44b0-8f24-bad31de910f7"
+      }
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "3afb757d-dfa3-4b87-8d3a-16030d696571",
+      "attributes": {
+        "description": "Sodium Tracker: Pinch Daily is a clear, friendly way to track sodium and keep your daily salt intake in view.\n\nSet a sodium budget, log foods and meals, and instantly see how many milligrams remain. Pinch keeps the focus on one useful number, with gentle encouragement instead of guilt.\n\nTRACK YOUR SODIUM\n• Set a daily sodium budget\n• Log breakfast, lunch, dinner, and snacks\n• Search a broad food database powered by FatSecret\n• Quick-log milligrams when you already know the amount\n• Save regular foods for faster daily logging\n• See remaining sodium at a glance\n\nBUILD HEALTHIER ROUTINES\n• Review weekly progress and streaks\n• Use gentle meal-time check-ins\n• Compare usual foods with your remaining budget\n• Convert between salt and sodium when needed\n• Personalize your target at any time\n\nPINCH PLUS\nUpgrade for FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export, and the sodium home-screen widget.\n\nSodium Tracker: Pinch Daily is designed for personal awareness and habit building. It does not provide medical advice. Ask a qualified healthcare professional which sodium target is right for you.\n\nFood data powered by FatSecret.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "en-US",
+        "keywords": "dash,diet,blood,pressure,heart,health,food,scan,nutrition,low,log,milligrams,barcode,meal",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/3afb757d-dfa3-4b87-8d3a-16030d696571"
+      }
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "29273af5-1b48-41f8-9010-cd54377f7c3c",
+      "attributes": {
+        "description": "Pinch ist ein freundlicher Natrium-Tracker und Salzzähler für deinen Alltag.\n\nLege ein tägliches Natrium-Budget fest, erfasse Mahlzeiten und sieh sofort, wie viele Milligramm noch übrig sind.\n\nDEIN TAG IM BLICK\n• Frühstück, Mittagessen, Abendessen und Snacks erfassen\n• Lebensmittel in der von FatSecret bereitgestellten Datenbank suchen\n• Natrium schnell direkt in Milligramm eintragen\n• Regelmäßige Lebensmittel speichern\n• Verbleibendes Tagesbudget auf einen Blick sehen\n• Salz und Natrium umrechnen\n\nPINCH PLUS\nSchalte die FatSecret-Lebensmittelsuche, Vier-Wochen-Trends und Kalender, unbegrenzte eigene Lebensmittel, CSV-Export und das Natrium-Widget frei.\n\nPinch dient der persönlichen Übersicht und Gewohnheitsbildung und ersetzt keine medizinische Beratung. Frage medizinisches Fachpersonal, welches Natriumziel für dich geeignet ist.\n\nLebensmitteldaten bereitgestellt von FatSecret.\n\nNutzungsbedingungen: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nDatenschutzrichtlinie: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "de-DE",
+        "keywords": "Salzzufuhr,Blutdruck,Tagebuch,Herzgesundheit,Essenscan,DASH,Ernährung,salzarm,Milligramm",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/29273af5-1b48-41f8-9010-cd54377f7c3c/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/29273af5-1b48-41f8-9010-cd54377f7c3c/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/29273af5-1b48-41f8-9010-cd54377f7c3c/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/29273af5-1b48-41f8-9010-cd54377f7c3c/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/29273af5-1b48-41f8-9010-cd54377f7c3c/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/29273af5-1b48-41f8-9010-cd54377f7c3c/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/29273af5-1b48-41f8-9010-cd54377f7c3c"
+      }
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "a103bd98-3a31-4769-8f00-9270ffe457f3",
+      "attributes": {
+        "description": "Sodium Tracker: Pinch Daily is a clear, friendly way to track sodium and keep your daily salt intake in view.\n\nSet a sodium budget, log foods and meals, and instantly see how many milligrams remain. Pinch keeps the focus on one useful number, with gentle encouragement instead of guilt.\n\nTRACK YOUR SODIUM\n• Set a daily sodium budget\n• Log breakfast, lunch, dinner, and snacks\n• Search a broad food database powered by FatSecret\n• Quick-log milligrams when you already know the amount\n• Save regular foods for faster daily logging\n• See remaining sodium at a glance\n\nBUILD HEALTHIER ROUTINES\n• Review weekly progress and streaks\n• Use gentle meal-time check-ins\n• Compare usual foods with your remaining budget\n• Convert between salt and sodium when needed\n• Personalize your target at any time\n\nPINCH PLUS\nUpgrade for FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export, and the sodium home-screen widget.\n\nSodium Tracker: Pinch Daily is designed for personal awareness and habit building. It does not provide medical advice. Ask a qualified healthcare professional which sodium target is right for you.\n\nFood data powered by FatSecret.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "en-AU",
+        "keywords": "intake,food,scan,heart,health,blood,pressure,log,dash,diet,low,barcode,nutrition,meal",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a103bd98-3a31-4769-8f00-9270ffe457f3/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a103bd98-3a31-4769-8f00-9270ffe457f3/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a103bd98-3a31-4769-8f00-9270ffe457f3/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a103bd98-3a31-4769-8f00-9270ffe457f3/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a103bd98-3a31-4769-8f00-9270ffe457f3/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a103bd98-3a31-4769-8f00-9270ffe457f3/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/a103bd98-3a31-4769-8f00-9270ffe457f3"
+      }
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "96367a0d-1ecb-4574-9e5c-6a6ae592bb06",
+      "attributes": {
+        "description": "Sodium Tracker: Pinch Daily is a clear, friendly way to track sodium and keep your daily salt intake in view.\n\nSet a sodium budget, log foods and meals, and instantly see how many milligrams remain. Pinch keeps the focus on one useful number, with gentle encouragement instead of guilt.\n\nTRACK YOUR SODIUM\n• Set a daily sodium budget\n• Log breakfast, lunch, dinner, and snacks\n• Search a broad food database powered by FatSecret\n• Quick-log milligrams when you already know the amount\n• Save regular foods for faster daily logging\n• See remaining sodium at a glance\n\nBUILD HEALTHIER ROUTINES\n• Review weekly progress and streaks\n• Use gentle meal-time check-ins\n• Compare usual foods with your remaining budget\n• Convert between salt and sodium when needed\n• Personalize your target at any time\n\nPINCH PLUS\nUpgrade for FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export, and the sodium home-screen widget.\n\nSodium Tracker: Pinch Daily is designed for personal awareness and habit building. It does not provide medical advice. Ask a qualified healthcare professional which sodium target is right for you.\n\nFood data powered by FatSecret.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "en-GB",
+        "keywords": "intake,food,scan,heart,health,blood,pressure,log,dash,diet,low,barcode,nutrition,meal",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/96367a0d-1ecb-4574-9e5c-6a6ae592bb06/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/96367a0d-1ecb-4574-9e5c-6a6ae592bb06/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/96367a0d-1ecb-4574-9e5c-6a6ae592bb06/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/96367a0d-1ecb-4574-9e5c-6a6ae592bb06/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/96367a0d-1ecb-4574-9e5c-6a6ae592bb06/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/96367a0d-1ecb-4574-9e5c-6a6ae592bb06/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/96367a0d-1ecb-4574-9e5c-6a6ae592bb06"
+      }
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "91319755-a103-44db-8d36-2ac4721776ba",
+      "attributes": {
+        "description": "Pinchは、毎日の塩分とナトリウム摂取量をわかりやすく記録できるナトリウム管理アプリです。\n\n1日の目標を設定し、食事を記録すると、残りのナトリウム量をミリグラムで確認できます。\n\n毎日の塩分管理\n• 朝食・昼食・夕食・間食を記録\n• FatSecret提供の食品データベースを検索\n• 数値がわかる食品はミリグラムでかんたん入力\n• よく食べる食品を保存\n• 残りの1日分をひと目で確認\n• 塩分とナトリウムを換算\n\nPINCH PLUS\nFatSecret食品検索、4週間の傾向とカレンダー、無制限のカスタム食品、CSV書き出し、ホーム画面のナトリウムウィジェットを利用できます。\n\n本アプリは日々の記録と習慣づくりを目的としており、医療上の助言を提供するものではありません。適切な目標については医療専門家にご相談ください。\n\n食品データ提供：FatSecret\n\n利用規約：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nプライバシーポリシー：https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "ja",
+        "keywords": "食事記録,栄養管理,高血圧,血圧管理,食塩相当量,DASH,摂取量,食事,バーコード",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/91319755-a103-44db-8d36-2ac4721776ba/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/91319755-a103-44db-8d36-2ac4721776ba/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/91319755-a103-44db-8d36-2ac4721776ba/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/91319755-a103-44db-8d36-2ac4721776ba/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/91319755-a103-44db-8d36-2ac4721776ba/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/91319755-a103-44db-8d36-2ac4721776ba/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/91319755-a103-44db-8d36-2ac4721776ba"
+      }
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "65014269-bcf1-4db5-abd4-eefd8b0cd6ab",
+      "attributes": {
+        "description": "Pinch è un monitor del sodio e contatore giornaliero pensato per essere semplice e incoraggiante.\n\nImposta un budget quotidiano, registra i pasti e controlla subito quanti milligrammi ti restano.\n\nMONITORA LA TUA GIORNATA\n• Registra colazione, pranzo, cena e spuntini\n• Cerca gli alimenti nel database fornito da FatSecret\n• Inserisci rapidamente il sodio in milligrammi\n• Salva gli alimenti che consumi più spesso\n• Controlla il budget rimanente a colpo d’occhio\n• Converti facilmente sale e sodio\n\nPINCH PLUS\nSblocca la ricerca alimentare FatSecret, tendenze e calendario di quattro settimane, alimenti personalizzati illimitati, esportazione CSV e widget del sodio.\n\nPinch è pensato per la consapevolezza personale e le abitudini quotidiane. Non fornisce consigli medici. Chiedi a un professionista sanitario quale obiettivo di sodio è adatto a te.\n\nDati alimentari forniti da FatSecret.\n\nTermini di utilizzo: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nInformativa sulla privacy: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "it",
+        "keywords": "salute,cuore,nutrizione,sana,contatore,traccia,apporto,pressione,alimenti,calcolo,sale,DASH",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/65014269-bcf1-4db5-abd4-eefd8b0cd6ab"
+      }
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "4b49a984-f83f-4d3e-b3f7-c769c4ee22a6",
+      "attributes": {
+        "description": "Sodium Tracker: Pinch Daily is a clear, friendly way to track sodium and keep your daily salt intake in view. Set a sodium budget, log foods and meals, and instantly see how many milligrams remain. Pinch keeps the focus on one useful number, with gentle encouragement instead of guilt.\n\nTRACK YOUR SODIUM\n• Set a daily sodium budget\n• Log breakfast, lunch, dinner, and snacks\n• Search a broad food database powered by FatSecret\n• Quick-log milligrams when you already know the amount\n• Save regular foods for faster daily logging\n• See remaining sodium at a glance\n\nBUILD HEALTHIER ROUTINES\n• Review weekly progress and streaks\n• Use gentle meal-time check-ins\n• Compare usual foods with your remaining budget\n• Convert between salt and sodium when needed\n• Personalize your target at any time\n\nPINCH PLUS\nUpgrade for FatSecret food search and logging, four-week trends and calendar, unlimited custom foods, CSV export, and the sodium home-screen widget.\n\nSodium Tracker: Pinch Daily is designed for personal awareness and habit building. It does not provide medical advice. Ask a qualified healthcare professional which sodium target is right for you.\n\nFood data powered by FatSecret.\n\nTerms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nPrivacy Policy: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "en-CA",
+        "keywords": "intake,food,scan,heart,health,blood,pressure,log,dash,diet,low,barcode,nutrition,meal",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/4b49a984-f83f-4d3e-b3f7-c769c4ee22a6"
+      }
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "id": "8c30cf7c-1b5a-44e0-973a-993c5f2101ce",
+      "attributes": {
+        "description": "Pinch is een vriendelijke natriumtracker en zoutteller voor elke dag.\n\nStel een dagelijks natriumbudget in, registreer maaltijden en zie direct hoeveel milligram je nog over hebt.\n\nHOUD JE DAG BIJ\n• Registreer ontbijt, lunch, avondeten en tussendoortjes\n• Zoek voeding in de database van FatSecret\n• Voer natrium snel in milligram in\n• Bewaar producten die je vaak eet\n• Bekijk je resterende dagbudget in één oogopslag\n• Reken zout en natrium eenvoudig om\n\nPINCH PLUS\nOntgrendel FatSecret-voedingszoekopdrachten, trends en kalender van vier weken, onbeperkte eigen producten, CSV-export en de natriumwidget voor je beginscherm.\n\nPinch is bedoeld voor persoonlijk inzicht en gezonde gewoonten. De app geeft geen medisch advies. Vraag een bevoegde zorgverlener welk natriumdoel voor jou geschikt is.\n\nVoedingsgegevens geleverd door FatSecret.\n\nGebruiksvoorwaarden: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\nPinch Terms: https://tinkersmithstudio.com/pinch/terms.html\nPrivacybeleid: https://tinkersmithstudio.com/pinch/privacy.html",
+        "locale": "nl-NL",
+        "keywords": "zoutarm,dieet,zoutinname,zoutlogboek,nierdieet,gezondheid,bloeddruk,voeding,maaltijd,DASH",
+        "marketingUrl": "https://tinkersmithstudio.com/pinch/",
+        "promotionalText": null,
+        "supportUrl": "https://tinkersmithstudio.com/pinch/",
+        "whatsNew": null
+      },
+      "relationships": {
+        "appScreenshotSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/relationships/appScreenshotSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/appScreenshotSets"
+          }
+        },
+        "appPreviewSets": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/relationships/appPreviewSets",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/appPreviewSets"
+          }
+        },
+        "searchKeywords": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/relationships/searchKeywords",
+            "related": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce/searchKeywords"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/8c30cf7c-1b5a-44e0-973a-993c5f2101ce"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appStoreVersions/1f016dcd-1be3-451c-b89a-9c08a242288f/appStoreVersionLocalizations?limit=200"
+  },
+  "meta": {
+    "paging": {
+      "total": 9,
+      "limit": 200
+    }
+  }
+}

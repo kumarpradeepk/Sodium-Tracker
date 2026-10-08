@@ -36,7 +36,7 @@ struct CalendarSheet: View {
         let calendar = Calendar.current
         var result: [Cell] = []
         let first = DayEngine.day(offset: UIState.minOffset)
-        let pad = calendar.component(.weekday, from: first) - 1
+        let pad = PinchFormat.weekdayColumn(for: first, calendar: calendar)
         for i in 0..<pad {
             result.append(Cell(id: 1000 + i, offset: nil, number: 0, mg: 0))
         }
@@ -56,15 +56,15 @@ struct CalendarSheet: View {
         PinchSheet(onClose: { ui.calOpen = false }) {
             VStack(alignment: .leading, spacing: 0) {
                 SheetHeader(title: "Jump to a day") { ui.calOpen = false }
-                PinchText("Last two weeks: the dot shows sodium level")
+                PinchText("Last four weeks: colored dots show logged days")
                     .pinchBody(12.5)
                     .foregroundStyle(p.ink3)
                     .padding(.top, 2)
 
                 let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 7)
                 LazyVGrid(columns: columns, spacing: 4) {
-                    ForEach(["S", "M", "T", "W", "T", "F", "S"].indices, id: \.self) { i in
-                        PinchText(["S", "M", "T", "W", "T", "F", "S"][i])
+                    ForEach(PinchFormat.weekdaySymbols.indices, id: \.self) { i in
+                        PinchText(PinchFormat.weekdaySymbols[i])
                             .pinchBody(9.5, .bold)
                             .foregroundStyle(p.ink3)
                     }
@@ -128,6 +128,7 @@ struct CalendarSheet: View {
                     Circle()
                         .fill(selected ? p.onBrand : dotColor(mg: cell.mg))
                         .frame(width: 7, height: 7)
+                        .opacity(entries.contains { Calendar.current.isDate($0.loggedAt, inSameDayAs: DayEngine.day(offset: offset)) } ? 1 : 0)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 7, trailing: 0))
@@ -158,6 +159,8 @@ struct CalendarSheet: View {
 struct NudgesSheet: View {
     @Environment(\.pinch) private var p
     @Environment(UIState.self) private var ui
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var notificationAuthorized = false
 
     @AppStorage(PinchDefaults.notif) private var notif = true
     @AppStorage(PinchDefaults.mealRemBreakfast) private var remBreakfast = true
@@ -179,7 +182,7 @@ struct NudgesSheet: View {
                 VStack(alignment: .leading, spacing: 0) {
                     SheetHeader(title: "Nudges") { ui.notifCenterOpen = false }
 
-                    if notif {
+                    if notif && notificationAuthorized {
                         onContent
                     } else {
                         offContent
@@ -195,6 +198,13 @@ struct NudgesSheet: View {
         .onChange(of: remBreakfast) { refresh() }
         .onChange(of: remLunch) { refresh() }
         .onChange(of: remDinner) { refresh() }
+        .task { notificationAuthorized = await NotificationManager.isAuthorized() }
+        .onChange(of: ui.notificationPrompt?.id) { _, _ in
+            Task { notificationAuthorized = await NotificationManager.isAuthorized() }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { Task { notificationAuthorized = await NotificationManager.isAuthorized() } }
+        }
     }
 
     private func refresh() {
@@ -219,7 +229,7 @@ struct NudgesSheet: View {
                 .lineSpacing(3)
                 .padding(.top, 4)
             Button {
-                withAnimation(.easeInOut(duration: 0.25)) { notif = true }
+                ui.notificationPrompt = NotificationPrompt(context: .settings)
             } label: {
                 PinchText("Turn on nudges")
                     .pinchBody(12.5, .bold)
@@ -249,9 +259,9 @@ struct NudgesSheet: View {
 
         PinchCard {
             VStack(spacing: 0) {
-                checkinRow("Breakfast", time: "8:00 AM", isOn: $remBreakfast, first: true)
-                checkinRow("Lunch", time: "12:30 PM", isOn: $remLunch)
-                checkinRow("Dinner", time: "6:30 PM", isOn: $remDinner)
+                checkinRow("Breakfast", time: PinchFormat.clock(hour: 8, minute: 0), isOn: $remBreakfast, first: true)
+                checkinRow("Lunch", time: PinchFormat.clock(hour: 12, minute: 30), isOn: $remLunch)
+                checkinRow("Dinner", time: PinchFormat.clock(hour: 18, minute: 30), isOn: $remDinner)
             }
         }
 
@@ -265,7 +275,7 @@ struct NudgesSheet: View {
                 tileColor: p.brand,
                 tile: AnyView(PinchGlyph(width: 13)),
                 time: "Yesterday 6:30 PM",
-                body: "Dinner check-in — \(PinchFormat.mg(max(0, yesterdayRemain))) mg still in the budget. Soup counts, I’m keeping track."
+                body: PinchLocalization.format("Dinner check-in — {0} mg still in the budget. Soup counts, I’m keeping track.", [String(describing: PinchFormat.mg(max(0, yesterdayRemain)))])
             )
             recentCard(
                 tileColor: p.amber,
@@ -347,169 +357,5 @@ struct NudgesSheet: View {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .strokeBorder(p.line, lineWidth: 1)
         )
-    }
-}
-
-// MARK: - Paywall (z80)
-
-struct PaywallSheet: View {
-    @Environment(\.pinch) private var p
-    @Environment(UIState.self) private var ui
-    @Environment(SubscriptionStore.self) private var subscriptions
-    @Environment(\.openURL) private var openURL
-
-    var body: some View {
-        PinchSheet(onClose: { ui.payOpen = false }) {
-            ScrollView {
-                VStack(spacing: 0) {
-                    HStack {
-                        Spacer()
-                        SheetCloseButton { ui.payOpen = false }
-                    }
-
-                    PinchMascot(variant: .party, width: 86)
-                        .padding(.top, -8)
-
-                    PinchText("Pinch Plus")
-                        .pinchDisplay(26, .heavy)
-                        .foregroundStyle(p.ink)
-                        .padding(.top, 6)
-                    PinchText("Tracking is free forever. Plus adds the extras.")
-                        .pinchBody(13)
-                        .foregroundStyle(p.ink2)
-                        .padding(.top, 4)
-
-                    VStack(alignment: .leading, spacing: 8) {
-                        perk("Four-week trends and the salt calendar")
-                        perk("FatSecret food search and logging")
-                        perk("Unlimited custom shelf foods")
-                        perk("CSV export for every logged entry")
-                        perk("Sodium widget for your Home Screen")
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 16)
-
-                    VStack(spacing: 10) {
-                        planCard(
-                            plan: .yearly,
-                            title: "Yearly",
-                            tag: "BEST VALUE",
-                            sub: planSubtitle(.yearly)
-                        )
-                        planCard(
-                            plan: .monthly,
-                            title: "Monthly",
-                            tag: nil,
-                            sub: planSubtitle(.monthly)
-                        )
-                    }
-                    .padding(.top, 16)
-
-                    PinchCTA(
-                        title: ctaTitle,
-                        height: 52,
-                        enabled: subscriptions.isPremium ||
-                            (subscriptions.product(for: ui.plan) != nil && !subscriptions.isPurchasing)
-                    ) {
-                        continueTapped()
-                    }
-                    .padding(.top, 14)
-
-                    if let error = subscriptions.errorMessage {
-                        PinchText(error)
-                            .pinchBody(11.5, .semibold)
-                            .foregroundStyle(p.coral)
-                            .multilineTextAlignment(.center)
-                            .padding(.top, 10)
-                    }
-
-                    HStack(spacing: 7) {
-                        Button {
-                            Task { await subscriptions.restore() }
-                        } label: {
-                            PinchText("Restore purchases")
-                        }
-                        PinchText("·")
-                        Link("Terms", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
-                    }
-                    .pinchBody(11, .semibold)
-                    .foregroundStyle(p.ink3)
-                    .padding(.top, 12)
-                }
-                .padding(EdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 20))
-            }
-            .scrollIndicators(.hidden)
-            .frame(maxHeight: 700)
-            .fixedSize(horizontal: false, vertical: true)
-        }
-        .task { await subscriptions.prepare() }
-    }
-
-    private func perk(_ text: String) -> some View {
-        HStack(spacing: 10) {
-            ZStack {
-                Circle().fill(p.brandSoft)
-                SVGShape("M6.5 10.2 L9 12.7 L13.5 7.6")
-                    .stroke(p.brand, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
-                    .frame(width: 16, height: 16)
-            }
-            .frame(width: 16, height: 16)
-            PinchText(text)
-                .pinchBody(13.5)
-                .foregroundStyle(p.ink2)
-        }
-    }
-
-    private func planCard(plan: PlusPlan, title: String, tag: String?, sub: String) -> some View {
-        RadioCard(selected: ui.plan == plan, action: { ui.plan = plan }) {
-            VStack(alignment: .leading, spacing: 2) {
-                HStack(spacing: 7) {
-                    PinchText(title)
-                        .pinchBody(15, .bold)
-                        .foregroundStyle(p.ink)
-                    if let tag {
-                        PinchText(tag)
-                            .pinchBody(8.5, .heavy, tracking: 0.09)
-                            .foregroundStyle(p.amber)
-                            .padding(.horizontal, 7)
-                            .padding(.vertical, 3)
-                            .background(Capsule().fill(p.amberSoft))
-                    }
-                }
-                PinchText(sub)
-                    .pinchBody(12)
-                    .foregroundStyle(p.ink3)
-            }
-        }
-    }
-
-    private var ctaTitle: String {
-        if subscriptions.isPremium { return "Manage subscription" }
-        if subscriptions.isPurchasing { return "Working…" }
-        if subscriptions.isLoading { return "Loading plans…" }
-        return "Continue with Plus"
-    }
-
-    private func planSubtitle(_ plan: PlusPlan) -> String {
-        guard let product = subscriptions.product(for: plan) else {
-            return subscriptions.isLoading ? "Loading price…" : "Currently unavailable"
-        }
-        let cadence = plan == .yearly ? "year" : "month"
-        return "\(product.displayPrice) per \(cadence). Cancel anytime."
-    }
-
-    private func continueTapped() {
-        if subscriptions.isPremium {
-            if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
-                openURL(url)
-            }
-            return
-        }
-        Task {
-            if await subscriptions.purchase(ui.plan) {
-                ui.payOpen = false
-                ui.showToast("Pinch Plus is active", "Your premium tools are unlocked.")
-            }
-        }
     }
 }
